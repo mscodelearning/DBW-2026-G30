@@ -129,12 +129,59 @@ h1 {
 }
 /*Fim - bloco de codigo botao voltar -ecra sign in*/
 
+/*Inicio - bloco de codigo caixa com os elementos de sign in - ecra sign in*/
+
+.caixa-fundo-container {
+    position: fixed;
+    top: 2%;
+    right: 50%;
+    left: 9%;
+    width: 968px;           /* Seu tamanho fixo */
+    height: 500px;
+    margin: 170px; /* Centraliza */
+    background-color: #7bd08850;  /* Verde do Skriven (ajuste cor: rgba para transparência) */
+    border-radius: 24px;     /* Cantos arredondados iguais (aumente para mais suave) */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);  /* Sombra externa como na img */
+}
+
+.user-icon2-container {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 100px;
+    left: 150px;
+}
+
+.user-icon2-container img {
+    width: 200px;
+    height: 200px;
+    right: 40px;
+}
+
+.botao-signin-container {
+    position: absolute;
+    top: 380px;
+    right: 400px;
+    z-index: 3;
+}
+
+.botao-signin-container img {
+    width: 150px;
+    height: 55px; 
+}
+
+/*Fim - bloco de codigo caixa com os elementos de sign in -ecra sign in*/
+
+
+
+/*inicio - elementos para o login*/
 
 .login-container {
     height: calc(100vh - 62px);
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .fundo-login {
@@ -142,7 +189,72 @@ h1 {
     max-height: 75%;
 }
 
-.user-icon {
+.user-icon-container {
+    position: absolute;
+    width: 100px; 
+    display: flex;
+    justify-content: center;
+    top: 20%;
+}
 
-    
+.user-icon-img {
+    width: 100%;
+    height: auto;
+}
+
+
+.botao-login-container {
+    position: absolute;
+    width: 135px; 
+    display: flex;
+    justify-content: center;
+    bottom: 25%;
+
+}
+
+.botao-login {
+    width: 100%;
+    height: auto;
+}
+
+/*fim - elementos para o login*/
+
+
+/*inicio - campos para meter username e password no login*/
+
+#form-area-login {
+    position: absolute;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 45%; 
+}
+
+.login-input {
+    width: 250px;
+    padding: 8px;
+    border: 1px solid #ffffff;
+    border-radius: 15px;
+    display: block;
+}
+
+
+
+/*fim - campos para meter o username e password no login*/
+
+.login-signin {
+    position: absolute;
+    width: 135px; 
+    display: flex;
+    justify-content: center;
+    bottom: 19%;
+}
+
+.login-signin > a {
+    color: #53b562;
+    text-align: center;
+    text-decoration: none;
 }
