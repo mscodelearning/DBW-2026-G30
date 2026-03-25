@@ -9,6 +9,7 @@ body {
     text-align: center;
     overflow: hidden;
     width: 100%;
+    height: 62px;
 }
 
 nav>a{
@@ -64,3 +65,84 @@ h1 {
     margin: 80px;
 }
 
+/*
+.voltar{
+    float: right;
+    width: 100px;
+    height: auto;
+    margin-top: 15px;
+    margin-right: 15px;
+}*/
+
+/*Inicio - bloco de codigo botao voltar -ecra sign in*/
+.botao-voltar-container {
+    position: absolute;
+    /*display: inline-block;*/
+    top: 80px;
+    right: 15px;
+    width: 100px;
+    height: auto;
+    overflow: hidden;
+    z-index: 100; /*garantir que nao fica escondido por outros elementos*/
+    /*background: none;*/
+}
+
+.botao-voltar-container img {
+    float: right;
+    width: 100px;
+    height: auto;
+    object-fit: cover;
+    transition: filter 0.3s ease;
+}
+
+.botao-voltar-container:hover img{
+    filter: brightness(0.6); /*mais escuro*/
+}
+
+.overlay-text {
+   position: absolute;
+   top: 52%;
+   left: 45%;
+   transform: translate(-50%, -50%);
+   color: white;
+   text-align: center;
+   font-family: Arial, sans-serif;
+   font-size: 16px;
+   /*pointer-events: none; /*texto nao atrapalha o clique*/
+   transition: color 0.3s ease; /*mudanca de cor suave do texto*/
+
+}
+
+.botao-voltar-container:hover .overlay-text {
+    color: rgb(166, 255, 166);
+    /*text-shadow: 0 0 3px #000;*/
+}
+
+.botao-voltar-container a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    display: block;
+}
+/*Fim - bloco de codigo botao voltar -ecra sign in*/
+
+
+.login-container {
+    height: calc(100vh - 62px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fundo-login {
+    max-width: 75%;
+    max-height: 75%;
+}
+
+.user-icon {
+
+    
+}
