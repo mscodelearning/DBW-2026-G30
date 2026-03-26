@@ -1,4 +1,6 @@
 body {
+    position: relative; /*novo*/
+    margin: 0; /*novo*/
     background-color: #1E4A25;
     color: white;
     overflow-block: hidden; /*overflow-block: scroll;*/
@@ -158,6 +160,12 @@ h1 {
     right: 40px;
 }
 
+.alteraImagem-container {
+    position: absolute;
+    top: 320px;
+    left: 200px;
+}
+
 .botao-signin-container {
     position: absolute;
     top: 380px;
@@ -169,6 +177,33 @@ h1 {
     width: 150px;
     height: 55px; 
 }
+
+#form-area-signin {
+    position: absolute;
+    display: flex;
+    top: 120px;
+    left: 520px;
+    gap: 20px;
+    z-index: 10;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.caixa-texto {
+    padding: 15px;
+    width: 250px;
+    height: 45px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+}
+
+/*
+.caixa-texto:focus {
+    border-color: blue;
+    box-shadow: 0 0 5px rgba(0, 0, 255, 0.3)
+}*/
+
 
 /*Fim - bloco de codigo caixa com os elementos de sign in -ecra sign in*/
 
