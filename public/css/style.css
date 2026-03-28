@@ -147,24 +147,34 @@ h1 {
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);  /* Sombra externa como na img */
 }
 
+.caixa-fundo-container h1 {
+  margin: 0;
+  padding: 25px 0 15px 0;
+  position: relative;
+  top: 5px;
+  right: 25px;
+  text-align: center;
+  font-size: 36px;
+}
+
 .user-icon2-container {
     position: absolute;
     width: 20px;
     height: 20px;
-    top: 100px;
+    top: 150px;
     left: 150px;
 }
 
 .user-icon2-container img {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     right: 40px;
 }
 
 .alteraImagem-container {
     position: absolute;
     top: 320px;
-    left: 200px;
+    left: 175px;
 }
 
 .botao-signup-container {
@@ -220,7 +230,7 @@ h1 {
 #form-area-signup {
     position: absolute;
     display: flex;
-    top: 120px;
+    top: 140px;
     left: 550px;
     gap: 20px;
     z-index: 10;
@@ -232,7 +242,7 @@ h1 {
 .caixa-texto {
     padding: 15px;
     width: 250px;
-    height: 45px;
+    height: 40px;
     border: 1px solid #ccc;
     border-radius: 15px;
 }
@@ -315,7 +325,6 @@ h1 {
     transition: color 0.3s ease;
     font-weight: bold;
     z-index: 10;
-
 }
 
 

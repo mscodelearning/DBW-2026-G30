@@ -26,15 +26,14 @@ usernameInputSignup.setAttribute('placeholder', 'Username');
 usernameInputSignup.classList.add('signup-input');
 
 const passwordInputSignup = document.createElement('input');
-passwordInpuSignup.setAttribute('type', 'password');
+passwordInputSignup.setAttribute('type', 'password');
 passwordInputSignup.setAttribute('placeholder', 'Password');
 passwordInputSignup.classList.add('signup-input');
 
 const nicknameInput = document.createElement('input');
-passwordInputSignup.setAttribute('type', 'nickname');
-passwordInputSignup.setAttribute('placeholder', 'Nickname');
-passwordInputSignup.classList.add('signup-input');
-
+nicknameInput.setAttribute('type', 'text');
+nicknameInput.setAttribute('placeholder', 'Nickname');
+nicknameInput.classList.add('signup-input');
 
 formAreaSignup.appendChild(nicknameInput);
 formAreaSignup.appendChild(usernameInputSignup);
