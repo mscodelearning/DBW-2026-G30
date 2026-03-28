@@ -108,7 +108,7 @@ h1 {
    transform: translate(-50%, -50%);
    color: white;
    text-align: center;
-   font-family: Arial, sans-serif;
+   /*font-family: Arial, sans-serif;*/
    font-size: 16px;
    /*pointer-events: none; /*texto nao atrapalha o clique*/
    transition: color 0.3s ease; /*mudanca de cor suave do texto*/
@@ -137,7 +137,7 @@ h1 {
     position: fixed;
     top: 30%;
     /*right: 50%;*/
-    left: 42%;
+    left: 41%;
     transform: translate(-50%, -50%);
     width: 968px;           /* Seu tamanho fixo */
     height: 500px;
@@ -170,20 +170,58 @@ h1 {
 .botao-signup-container {
     position: absolute;
     top: 380px;
-    right: 400px;
-    z-index: 3;
+    right: 430px;
+    /*object-fit: cover;*/
+    z-index: 2;
 }
 
 .botao-signup-container img {
     width: 150px;
-    height: 55px; 
+    height: 55px;
+    position: relative;
+    z-index: 2;
+}
+
+.fundo-verde-botao-signup {
+    position: absolute;
+    top: 394px;
+    right: 432px;
+    /*display: flex;*/
+    z-index: 3;
+}
+
+
+.fundo-verde-botao-signup img {
+    width: 137px;
+    height: 39px;
+    position: relative;
+    z-index: 1;
+}
+
+.overlay-text-signup {
+   position: absolute;
+   top: 46%;
+   left: 47%;
+   transform: translate(-50%, -50%);
+   color: rgb(90, 133, 73);
+   text-align: center;
+   font-family: Arial, sans-serif;
+   font-size: 16px;
+   font-weight: bold;
+   /*pointer-events: none; /*texto nao atrapalha o clique*/
+   transition: color 0.3s ease; /*mudanca de cor suave do texto*/
+   z-index: 10;
+}
+
+.fundo-verde-botao-signup:hover .overlay-text-signup{
+    color: #1E4A25;
 }
 
 #form-area-signup {
     position: absolute;
     display: flex;
     top: 120px;
-    left: 520px;
+    left: 550px;
     gap: 20px;
     z-index: 10;
     flex-direction: column;
@@ -227,7 +265,7 @@ h1 {
 
 .user-icon-container {
     position: absolute;
-    width: 100px; 
+    width: 130px; 
     display: flex;
     justify-content: center;
     top: 20%;
@@ -241,7 +279,7 @@ h1 {
 
 .botao-login-container {
     position: absolute;
-    width: 135px; 
+    width: 140px; 
     display: flex;
     justify-content: center;
     bottom: 25%;
@@ -252,6 +290,37 @@ h1 {
     width: 100%;
     height: auto;
 }
+
+.botao-login-verde {
+    position: absolute;
+    width: 128px; 
+    display: flex;
+    justify-content: center;
+    bottom: 4%;
+    left: 3.89%;
+}
+
+.botao-login-verde img{
+    width: 100%;
+    height: auto;
+}
+
+.overlay-text-login {
+    position: absolute;
+    color: rgb(90, 133, 73);
+    top: 28%;
+    text-align: center;
+    font-size: 16px;
+    transition: color 0.3s ease;
+    font-weight: bold;
+
+}
+
+
+.botao-login-container:hover .overlay-text-login{
+    color: #1E4A25;
+}
+
 
 /*fim - elementos para o login*/
 
@@ -293,4 +362,10 @@ h1 {
     color: #53b562;
     text-align: center;
     text-decoration: none;
+}
+
+.login-signup :hover {
+    color:rgb(166, 255, 166);
+    transition: color 0.3s ease;
+
 }
