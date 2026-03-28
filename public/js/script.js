@@ -17,26 +17,26 @@ formAreaLogin.appendChild(usernameInputLogin);
 formAreaLogin.appendChild(passwordInputLogin);
 
 
-/*Caixa de texto do ecra signin*/ 
-const formAreaSignIn = document.getElementById('form-area-signin');
+/*Caixa de texto do ecra signup*/ 
+const formAreaSignup = document.getElementById('form-area-signup');
 
-const usernameInputSignIn = document.createElement('input');
-usernameInputSignIn.setAttribute('type', 'text');
-usernameInputSignIn.setAttribute('placeholder', 'Username');
-usernameInputSignIn.classList.add('signIn-input');
+const usernameInputSignup = document.createElement('input');
+usernameInputSignup.setAttribute('type', 'text');
+usernameInputSignup.setAttribute('placeholder', 'Username');
+usernameInputSignup.classList.add('signup-input');
 
-const passwordInputSignIn = document.createElement('input');
-passwordInpuSignIn.setAttribute('type', 'password');
-passwordInputSignIn.setAttribute('placeholder', 'Password');
-passwordInputSignIn.classList.add('signIn-input');
+const passwordInputSignup = document.createElement('input');
+passwordInpuSignup.setAttribute('type', 'password');
+passwordInputSignup.setAttribute('placeholder', 'Password');
+passwordInputSignup.classList.add('signup-input');
 
 const nicknameInput = document.createElement('input');
-passwordInputSignIn.setAttribute('type', 'nickname');
-passwordInputSignIn.setAttribute('placeholder', 'Nickname');
-passwordInputSignIn.classList.add('signIn-input');
+passwordInputSignup.setAttribute('type', 'nickname');
+passwordInputSignup.setAttribute('placeholder', 'Nickname');
+passwordInputSignup.classList.add('signup-input');
 
 
-formAreaSignIn.appendChild(nicknameInput);
-formAreaSignIn.appendChild(usernameInputSignIn);
-formAreaSignIn.appendChild(passwordInputSignIn);
+formAreaSignup.appendChild(nicknameInput);
+formAreaSignup.appendChild(usernameInputSignup);
+formAreaSignup.appendChild(passwordInputSignup);
 

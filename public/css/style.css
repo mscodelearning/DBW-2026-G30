@@ -131,13 +131,14 @@ h1 {
 }
 /*Fim - bloco de codigo botao voltar -ecra sign in*/
 
-/*Inicio - bloco de codigo caixa com os elementos de sign in - ecra sign in*/
+/*Inicio - bloco de codigo caixa com os elementos de sign up - ecra sign up*/
 
 .caixa-fundo-container {
     position: fixed;
-    top: 2%;
-    right: 50%;
-    left: 9%;
+    top: 30%;
+    /*right: 50%;*/
+    left: 42%;
+    transform: translate(-50%, -50%);
     width: 968px;           /* Seu tamanho fixo */
     height: 500px;
     margin: 170px; /* Centraliza */
@@ -166,19 +167,19 @@ h1 {
     left: 200px;
 }
 
-.botao-signin-container {
+.botao-signup-container {
     position: absolute;
     top: 380px;
     right: 400px;
     z-index: 3;
 }
 
-.botao-signin-container img {
+.botao-signup-container img {
     width: 150px;
     height: 55px; 
 }
 
-#form-area-signin {
+#form-area-signup {
     position: absolute;
     display: flex;
     top: 120px;
@@ -280,7 +281,7 @@ h1 {
 
 /*fim - campos para meter o username e password no login*/
 
-.login-signin {
+.login-signup {
     position: absolute;
     width: 135px; 
     display: flex;
@@ -288,7 +289,7 @@ h1 {
     bottom: 19%;
 }
 
-.login-signin > a {
+.login-signup > a {
     color: #53b562;
     text-align: center;
     text-decoration: none;
