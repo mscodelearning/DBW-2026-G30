@@ -161,7 +161,7 @@ h1 {
     position: absolute;
     width: 20px;
     height: 20px;
-    top: 150px;
+    top: 140px;
     left: 150px;
 }
 
@@ -173,8 +173,8 @@ h1 {
 
 .alteraImagem-container {
     position: absolute;
-    top: 320px;
-    left: 175px;
+    top: 310px;
+    left: 170px;
 }
 
 .botao-signup-container {
