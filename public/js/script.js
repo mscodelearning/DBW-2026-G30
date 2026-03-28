@@ -1,6 +1,9 @@
+
 'use strict';
 
 /*Caixa de texto do ecra login*/ 
+
+/*
 const formAreaLogin = document.getElementById('form-area-login');
 
 const usernameInputLogin = document.createElement('input');
@@ -15,27 +18,187 @@ passwordInputLogin.classList.add('login-input');
 
 formAreaLogin.appendChild(usernameInputLogin);
 formAreaLogin.appendChild(passwordInputLogin);
-
+*/
 
 /*Caixa de texto do ecra signup*/ 
-const formAreaSignup = document.getElementById('form-area-signup');
+/* 
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOMContentLoaded');
 
-const usernameInputSignup = document.createElement('input');
-usernameInputSignup.setAttribute('type', 'text');
-usernameInputSignup.setAttribute('placeholder', 'Username');
-usernameInputSignup.classList.add('signup-input');
+    const formAreaSignup = document.getElementById('form-area-signup');
+    console.log('formAreaSignup:', formAreaSignup);
 
-const passwordInputSignup = document.createElement('input');
-passwordInputSignup.setAttribute('type', 'password');
-passwordInputSignup.setAttribute('placeholder', 'Password');
-passwordInputSignup.classList.add('signup-input');
+    const usernameInputSignup = document.createElement('input');
+    usernameInputSignup.setAttribute('type', 'text');
+    usernameInputSignup.setAttribute('placeholder', 'Username');
+    usernameInputSignup.classList.add('signup-input');
 
-const nicknameInput = document.createElement('input');
-nicknameInput.setAttribute('type', 'text');
-nicknameInput.setAttribute('placeholder', 'Nickname');
-nicknameInput.classList.add('signup-input');
+    const passwordInputSignup = document.createElement('input');
+    passwordInputSignup.setAttribute('type', 'password');
+    passwordInputSignup.setAttribute('placeholder', 'Password');
+    passwordInputSignup.classList.add('signup-input');
 
-formAreaSignup.appendChild(nicknameInput);
-formAreaSignup.appendChild(usernameInputSignup);
-formAreaSignup.appendChild(passwordInputSignup);
+    const nicknameInput = document.createElement('input');
+    nicknameInput.setAttribute('type', 'text');
+    nicknameInput.setAttribute('placeholder', 'Nickname');
+    nicknameInput.classList.add('signup-input');
+
+    formAreaSignup.appendChild(nicknameInput);
+    formAreaSignup.appendChild(usernameInputSignup);
+    formAreaSignup.appendChild(passwordInputSignup);
+
+    const validateInputs= () => {
+        const nickname = nicknameInput.value.trim();
+        const username = usernameInputSignup.value.trim();
+        const password = passwordInputSignup.value.trim();
+
+        if (!nickname) {
+            alert('O campo Nickname é obrigatorio.');
+            nicknameInput.focus();
+            return false;
+        }
+
+        if (!username) {
+            alert('O campo Username é obrigatorio.');
+            usernameInputSignup.focus();
+            return false;
+        }
+
+        if (!password || password.length < 6) {
+            alert('O campo Password é obrigatorio e deve ter pelo menos 6 caracteres.');
+            return false;
+        }
+
+        return true;
+    }
+
+    const signupBtn = document.getElementById('signup-link');
+
+    signupBtn.addEventListener('click', function(event) {
+        
+        event.preventDefault();
+
+        if (validateInputs()) {
+            window.location.href = signupBtn.getAttribute('href');
+        }
+
+    });
+});*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*novo codigoooooooooooooooooooooooooooooooooooooo com o pop-up na web*/
+
+const validateUserPassword = (usernameInput, passwordInput) => {
+  const username = usernameInput.value.trim();
+  const password = passwordInput.value.trim();
+
+  if (!username) {
+    alert('O campo Username é obrigatório.');
+    usernameInput.focus();
+    return false;
+  }
+
+  if (!password || password.length < 6) {
+    alert('O campo Password é obrigatório e deve ter pelo menos 6 caracteres.');
+    passwordInput.focus();
+    return false;
+  }
+
+  return true;
+};
+
+
+const validateSignupInputs = (nicknameInput, usernameInput, passwordInput) => {
+  const nickname = nicknameInput.value.trim();
+
+  if (!nickname) {
+    alert('O campo Nickname é obrigatório.');
+    nicknameInput.focus();
+    return false;
+  }
+
+  return validateUserPassword(usernameInput, passwordInput);
+};
+
+
+/* LOGIN (página que tem #form-area-login) */
+
+const formAreaLogin = document.getElementById('form-area-login');
+
+if (formAreaLogin) {
+  const usernameInputLogin = document.createElement('input');
+  usernameInputLogin.type = 'text';
+  usernameInputLogin.placeholder = 'Username';
+  usernameInputLogin.classList.add('login-input');
+
+  const passwordInputLogin = document.createElement('input');
+  passwordInputLogin.type = 'password';
+  passwordInputLogin.placeholder = 'Password';
+  passwordInputLogin.classList.add('login-input');
+
+  formAreaLogin.appendChild(usernameInputLogin);
+  formAreaLogin.appendChild(passwordInputLogin);
+
+  const loginBtn = document.getElementById('login-link');
+
+  if (loginBtn) {
+    loginBtn.addEventListener('click', (event) => {
+      event.preventDefault();
+
+      if (validateUserPassword(usernameInputLogin, passwordInputLogin)) {
+        window.location.href = loginBtn.getAttribute('href');
+      }
+    });
+  }
+}
+
+/* SIGNUP (página que tem #form-area-signup) */
+
+document.addEventListener('DOMContentLoaded', () => {
+  const formAreaSignup = document.getElementById('form-area-signup');
+
+  if (!formAreaSignup) return;
+
+  const nicknameInput = document.createElement('input');
+  nicknameInput.type = 'text';
+  nicknameInput.placeholder = 'Nickname';
+  nicknameInput.classList.add('caixa-texto','signup-input');
+
+  const usernameInputSignup = document.createElement('input');
+  usernameInputSignup.type = 'text';
+  usernameInputSignup.placeholder = 'Username';
+  usernameInputSignup.classList.add('caixa-texto', 'signup-input');
+
+  const passwordInputSignup = document.createElement('input');
+  passwordInputSignup.type = 'password';
+  passwordInputSignup.placeholder = 'Password';
+  passwordInputSignup.classList.add('caixa-texto', 'signup-input');
+
+  formAreaSignup.appendChild(nicknameInput);
+  formAreaSignup.appendChild(usernameInputSignup);
+  formAreaSignup.appendChild(passwordInputSignup);
+
+  const signupBtn = document.getElementById('signup-link');
+
+  if (signupBtn) {
+    signupBtn.addEventListener('click', (event) => {
+      event.preventDefault();
+
+      if (validateSignupInputs(nicknameInput, usernameInputSignup, passwordInputSignup)) {
+        window.location.href = signupBtn.getAttribute('href');
+      }
+    });
+  }
+});
 
