@@ -309,10 +309,12 @@ h1 {
     position: absolute;
     color: rgb(90, 133, 73);
     top: 28%;
+    left: 50px;
     text-align: center;
     font-size: 16px;
     transition: color 0.3s ease;
     font-weight: bold;
+    z-index: 10;
 
 }
 
