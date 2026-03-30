@@ -534,3 +534,27 @@ h1 {
 
 
 /*Fim - codigo do pop up para colocar/alterar imagem*/
+
+
+/* Inicio - icon-user na barra de navegacao */
+
+.perfil-link {
+    position: relative;
+    display: inline-block;
+}
+
+.perfil {
+    display: block;
+}
+
+.user-icon {
+    position: absolute;
+    top: 52%;
+    left: 42%;
+    width: 38px;
+    height: 38px;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+/* Fim - icon-user na barra de navegacao */
