@@ -230,13 +230,42 @@ const dropArea = document.getElementById("drop-area");
 const inputFile = document.getElementById("input-file");
 const imageView = document.getElementById("img-view");
 
-inputFile.addEventListener("change", uploadImage);
+const uploadText = document.querySelector("#img-view .upload-text");
+const btnRemover = document.getElementById("btn-remover");
+const btnAplicar = document.getElementById("btn-aplicar");
+const perfilImg = document.getElementById("perfil-img");
 
+const defaultPerfilSrc = perfilImg.src;
+
+let currentImageUrl = null; // guarda o url do preview
+
+inputFile.addEventListener("change", uploadImage);
+/*
 function uploadImage(){
   let imgLink = URL.createObjectURL(inputFile.files[0]);
   imageView.style.backgroundImage = `url(${imgLink})`
   imageView.textContent = "";
   imageView.style.border = 0;
+}
+*/
+
+function uploadImage(){
+
+  const file = inputFile.files[0];
+  if (!file)return;
+  if (currentImageUrl) {
+    URL.revokeObjectURL(currentImageUrl);
+  }
+
+  currentImageUrl = URL.createObjectURL(file);
+  imageView.style.backgroundImage = `url(${currentImageUrl})`
+  imageView.style.border = 0;
+  /*imageView.innerHTML = "";*/
+
+  if (uploadText) {
+    uploadText.style.display = "none";
+  }
+
 }
 
 dropArea.addEventListener("dragover", function(e) {
@@ -248,6 +277,73 @@ dropArea.addEventListener("drop", function(e) {
   inputFile.files = e.dataTransfer.files;
   uploadImage();
 });
+
+// Botao remover
+btnRemover.addEventListener("click", () => {
+  inputFile.value = ""; // limpa o input
+  imageView.style.backgroundImage = "none"; // limpa o background
+  imageView.style.border = "2px dashed #81C96D";
+
+  if (uploadText) {
+    uploadText.style.display = "block";
+  }
+
+  perfilImg.src = defaultPerfilSrc;
+
+  if (currentImageUrl) {
+    URL.revokeObjectURL(currentImageUrl);
+  }
+
+  /*
+  // repoe conteudo inicial
+  imageView.innerHTML = `
+        <img src="../public/symbols/symbol_upload.png" alt="symbol-upload">
+    <p>Drag and drop or click here<br> to upload image</p>
+    <span>Upload any images from desktop</span>
+    <div class="botoes-popup">
+        <button type="button" id="btn-remover">Remover</button>
+        <button type="button" id="btn-aplicar">Aplicar</button>
+    </div>
+    `;
+    attachButtonsHandlers(); // reatribui as referencias dos botoes pk ele volta ao inicio
+*/
+    currentImageUrl = null;
+});
+
+
+// Botao Aplicar imagem
+
+btnAplicar.addEventListener("click", () => {
+  if (!currentImageUrl) return;
+  perfilImg.src = currentImageUrl;
+  document.getElementById("pop-up").style.display = "none";
+})
+
+/*
+function attachButtonsHandlers() {
+  const newBtnRemover = document.getElementById("btn-remover");
+  const newBtnAplicar = document.getElementById("btn-aplicar");
+
+  newBtnRemover.addEventListener("click", () => {
+    inputFile.value = "";
+    imageView.style.backgroundImage = "none";
+    imageView.style.border = " 2px dashed #81C96D";
+    
+
+
+  });
+
+  newBtnAplicar.addEventListener("click", () => {
+    if (!currentImageUrl) return;
+    perfilImg.src = currentImageUrl;
+
+
+  });
+
+}
+*/
+
+
 
 
 /* Fim - codigo do drag and drop imagem */

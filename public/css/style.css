@@ -157,18 +157,37 @@ h1 {
   font-size: 36px;
 }
 
+/*
 .user-icon2-container {
     position: absolute;
     width: 20px;
     height: 20px;
     top: 140px;
     left: 150px;
+}*/
+
+.user-icon2-container {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    margin-left: 124px;
+    
+    /*position: absolute;
+    top: 140px;
+    left: 150px;*/
 }
 
 .user-icon2-container img {
     width: 150px;
     height: 150px;
-    right: 40px;
+    /*right: 40px;*/
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .alteraImagem-container {
@@ -419,16 +438,17 @@ h1 {
 */
 
 .popup {
-    display: none;                 /* escondido por defeito */
+    display: none;         
     position: fixed;
-    inset: -60px;                      /* top:0; right:0; bottom:0; left:0 */
+    inset: -60px;                    
     background: rgba(31, 54, 32, 0.649);
-    justify-content: center;       /* centro horizontal */
+    justify-content: center;      
     align-items: center;   
-    border-radius: 24px;        /* centro vertical */
-    z-index: 9999;                 /* acima de tudo (inclui o botão voltar) */
-}
+    border-radius: 24px;        
+    z-index: 9999;   
+}             
 
+/*
 .conteudo-popup {
     background: #05330B;
     padding: 30px;
@@ -436,41 +456,47 @@ h1 {
     max-width: 35vw;
     height: 35vh;
     width: 90%;
-}
+    display: flex;              
+    justify-content: center;   
+    align-items: center;       
 
-/*
+}*/
 
-.hero {
-    width: 100%;
-    min-height: 100vh;
-    background: linear-gradient(#e7baff, #c2b6d9);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-
-#drop-area {
-    width:500px;
-    height: 300px;
+.conteudo-popup {
+    background: #05330B;
     padding: 30px;
-    background: #fff;
-    text-align: center;
-    border-radius: 20px;
+    border-radius: 15px;
+    max-width: 35vw;
+    height: 40vh;
+    width: 90%;
+    display: flex;     
+    flex-direction: column;         
+    justify-content: center;   
+    align-items: center;       
+
 }
-*/
+
 
 #img-view {
-    width: 100%;
-    height:100%;
+    width: 400px;
+    height: 225px;
     border-radius: 20px;
     border: 2px dashed #81C96D;
     background: #205228;
+    background-position: center;
+    background-size: cover;
+    margin-left: -5px;
+    margin-top: 10px;
+    display: flex;              
+    flex-direction: column;     
+    justify-content: center;    
+    align-items: center;        
+    text-align: center;         
 }
 
 #img-view img {
     width: 100px;
-    margin-top: 25px;
+    margin-top: 10px;
 
 }
 
@@ -478,9 +504,33 @@ h1 {
     display: block;
     font-size: 12px;
     color: #777;
-    margin-top: 15px;
+    margin-top: 4px;
 }
 
-/*inacabado*/
+.botoes-popup {
+    margin-top: 20px;
+    display: flex;
+    gap: 100px;
+    justify-content: center;
+}
+
+.botoes-popup button {
+    padding: 6px 14px;
+    border-radius: 8px;
+    border: none;
+    font-size: 12px;
+    cursor: pointer;
+    background: #81C96D;
+    color: #05330B;
+}
+
+
+/*
+.botoes-popup #btn-remover{
+    background: #cc4b4b;
+    color: #fff;
+}
+*/
+
 
 /*Fim - codigo do pop up para colocar/alterar imagem*/
