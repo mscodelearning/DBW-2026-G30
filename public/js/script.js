@@ -343,7 +343,4 @@ function attachButtonsHandlers() {
 }
 */
 
-
-
-
 /* Fim - codigo do drag and drop imagem */
