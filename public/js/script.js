@@ -202,3 +202,52 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+
+
+/*Inicio - codigo do pop up para colocar/alterar imagem*/
+
+const texto = document.getElementById("texto-altera-imagem");
+const popup = document.getElementById("pop-up");
+const conteudo = document.querySelector(".conteudo-popup");
+
+texto.addEventListener("click", () => {
+  popup.style.display = "flex";
+});
+
+popup.addEventListener("click", (e) => {
+  if (e.target === popup){ //clica no overlay, ou seja, fora do popup
+  popup.style.display = "none";
+  }
+});
+
+/*Fim - codigo do pop up para colocar/alterar imagem*/
+
+
+
+/* Inicio - codigo do drag and drop imagem */
+
+const dropArea = document.getElementById("drop-area");
+const inputFile = document.getElementById("input-file");
+const imageView = document.getElementById("img-view");
+
+inputFile.addEventListener("change", uploadImage);
+
+function uploadImage(){
+  let imgLink = URL.createObjectURL(inputFile.files[0]);
+  imageView.style.backgroundImage = `url(${imgLink})`
+  imageView.textContent = "";
+  imageView.style.border = 0;
+}
+
+dropArea.addEventListener("dragover", function(e) {
+  e.preventDefault();
+});
+
+dropArea.addEventListener("drop", function(e) {
+  e.preventDefault();
+  inputFile.files = e.dataTransfer.files;
+  uploadImage();
+});
+
+
+/* Fim - codigo do drag and drop imagem */

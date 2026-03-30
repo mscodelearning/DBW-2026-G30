@@ -85,7 +85,7 @@ h1 {
     width: 100px;
     height: auto;
     overflow: hidden;
-    z-index: 100; /*garantir que nao fica escondido por outros elementos*/
+    z-index: 60; /*garantir que nao fica escondido por outros elementos*/
     /*background: none;*/
 }
 
@@ -200,7 +200,6 @@ h1 {
     z-index: 3;
 }
 
-
 .fundo-verde-botao-signup img {
     width: 137px;
     height: 39px;
@@ -246,13 +245,6 @@ h1 {
     border: 1px solid #ccc;
     border-radius: 15px;
 }
-
-/*
-.caixa-texto:focus {
-    border-color: blue;
-    box-shadow: 0 0 5px rgba(0, 0, 255, 0.3)
-}*/
-
 
 /*Fim - bloco de codigo caixa com os elementos de sign in -ecra sign in*/
 
@@ -383,3 +375,112 @@ h1 {
 
 
 
+
+
+
+
+
+
+
+
+
+/*Inicio - codigo do pop up para colocar/alterar imagem*/
+
+#texto-altera-imagem {
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    text-decoration:underline;
+}
+/*
+.popup {
+    display: none;
+    position: fixed;
+    inset: 0;
+    top: 54%;              
+    left: 50%;           
+    transform: translate(-50%, -50%);  
+    width: 100vw;         
+    height: 101vh;        
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.conteudo-popup {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 35vw;
+    height: 35vh;
+    width: 90%;
+}
+*/
+
+.popup {
+    display: none;                 /* escondido por defeito */
+    position: fixed;
+    inset: -60px;                      /* top:0; right:0; bottom:0; left:0 */
+    background: rgba(31, 54, 32, 0.649);
+    justify-content: center;       /* centro horizontal */
+    align-items: center;   
+    border-radius: 24px;        /* centro vertical */
+    z-index: 9999;                 /* acima de tudo (inclui o botão voltar) */
+}
+
+.conteudo-popup {
+    background: #05330B;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 35vw;
+    height: 35vh;
+    width: 90%;
+}
+
+/*
+
+.hero {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(#e7baff, #c2b6d9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#drop-area {
+    width:500px;
+    height: 300px;
+    padding: 30px;
+    background: #fff;
+    text-align: center;
+    border-radius: 20px;
+}
+*/
+
+#img-view {
+    width: 100%;
+    height:100%;
+    border-radius: 20px;
+    border: 2px dashed #81C96D;
+    background: #205228;
+}
+
+#img-view img {
+    width: 100px;
+    margin-top: 25px;
+
+}
+
+#img-view span {
+    display: block;
+    font-size: 12px;
+    color: #777;
+    margin-top: 15px;
+}
+
+/*inacabado*/
+
+/*Fim - codigo do pop up para colocar/alterar imagem*/
