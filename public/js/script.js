@@ -1,6 +1,6 @@
 
 'use strict';
-console.log("JS loaded");
+
 
 /*Caixa de texto do ecra login*/ 
 
@@ -206,14 +206,14 @@ if (formAreaLogin) {
   }
 });
 
+
 document.addEventListener("DOMContentLoaded", () => {
 
 /*Inicio - codigo do pop up para colocar/alterar imagem*/
 
 const texto = document.getElementById("texto-altera-imagem");
 const popup = document.getElementById("pop-up");
-const conteudo = document.querySelector(".conteudo-popup");
-
+/*const conteudo = document.querySelector(".conteudo-popup");
 texto.addEventListener("click", () => {
   popup.style.display = "flex";
 });
@@ -222,7 +222,14 @@ popup.addEventListener("click", (e) => {
   if (e.target === popup){ //clica no overlay, ou seja, fora do popup
   popup.style.display = "none";
   }
+*/
 
+if (texto && popup) {
+        texto.addEventListener("click", () => popup.style.display = "flex");
+        popup.addEventListener("click", (e) => {
+            if (e.target === popup) popup.style.display = "none";
+        });
+}
 
 /*Fim - codigo do pop up para colocar/alterar imagem*/
 
@@ -241,11 +248,16 @@ const btnRemover = document.getElementById("btn-remover");
 const btnAplicar = document.getElementById("btn-aplicar");
 const perfilImg = document.getElementById("perfil-img");
 
-const defaultPerfilSrc = perfilImg.src;
+if (!inputFile || !imageView || !perfilImg) {
+        console.error("Elementos obrigatórios faltando!");
+        return;
+    }
 
+
+const defaultPerfilSrc = perfilImg.src;
 let currentImageUrl = null; // guarda o url do preview
 
-inputFile.addEventListener("change", uploadImage);
+/*inputFile.addEventListener("change", uploadImage);*/
 
 function uploadImage(){
 
@@ -258,7 +270,7 @@ function uploadImage(){
   currentImageUrl = URL.createObjectURL(file);
   imageView.style.backgroundImage = `url(${currentImageUrl})`
   imageView.style.border = 0;
-  /*imageView.innerHTML = "";*/
+ 
 
   if (uploadText) {
     uploadText.style.display = "none";
@@ -308,7 +320,7 @@ btnAplicar.addEventListener("click", () => {
 
 /* Fim - codigo do drag and drop imagem */
 
-});
+
 
 
 

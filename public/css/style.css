@@ -326,7 +326,7 @@ h1 {
 
 .overlay-text-login {
     position: absolute;
-    color: rgb(90, 133, 73);
+    color: #5a8549;
     top: 28%;
     left: 50px;
     text-align: center;
@@ -845,12 +845,22 @@ h1 {
     background: transparent;
     padding: 0;
     cursor: pointer;
+    width: 170px;
+    height: 65px;
+
+    background-image: url("../images/botao-login.png");
+    background-size: cover;
+    background-position: center;
+
 }
 
 .image-button img {
+    position: absolute;
     display: block;
-    width: 220px;
+    width: 155px;
     height: auto;
+    left: 7.5%;
+    top: 24%;
 }
 
 .image-button span {
@@ -858,13 +868,13 @@ h1 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: white;
+    color: #1E4A25;
     font-weight: bold;
     pointer-events: none;
 }
 
 .image-button:disabled {
-    cursor: not-allowed;
+    color: #5a8549;
 }
 
 
