@@ -344,3 +344,27 @@ function attachButtonsHandlers() {
 */
 
 /* Fim - codigo do drag and drop imagem */
+
+
+
+
+
+/*inicio - selecao do modo de jogo para o singleplayer
+
+function setupSelection(containerId) {
+  const container = document.getElementById(containerId);
+  const options = container.querySelectorAll('.option');
+
+  options.forEach(option => {
+    option.addEventListener('click', () => {
+      // remove selection from all
+      options.forEach(opt => opt.classList.remove('selected'));
+
+      // add to clicked one
+      option.classList.add('selected');
+    });
+  });
+}
+
+setupSelection('timer-options');
+setupSelection('challenge-options'); */

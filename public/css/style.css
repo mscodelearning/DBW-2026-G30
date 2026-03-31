@@ -268,7 +268,6 @@ h1 {
 /*Fim - bloco de codigo caixa com os elementos de sign in -ecra sign in*/
 
 
-
 /*inicio - elementos para o login*/
 
 .login-container {
@@ -296,7 +295,6 @@ h1 {
     width: 100%;
     height: auto;
 }
-
 
 .botao-login-container {
     position: absolute;
@@ -338,11 +336,9 @@ h1 {
     z-index: 10;
 }
 
-
 .botao-login-container:hover .overlay-text-login{
     color: #1E4A25;
 }
-
 
 /*fim - elementos para o login*/
 
@@ -368,8 +364,6 @@ h1 {
     display: block;
 }
 
-
-
 /*fim - campos para meter o username e password no login*/
 
 .login-signup {
@@ -391,17 +385,6 @@ h1 {
     transition: color 0.3s ease;
 
 }
-
-
-
-
-
-
-
-
-
-
-
 
 /*Inicio - codigo do pop up para colocar/alterar imagem*/
 
@@ -567,7 +550,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 50px; /* espaço entre os dois */
+    gap: -50px; /* espaço entre os dois */
 }
 
 
@@ -730,3 +713,185 @@ h1 {
 .botao-multiplayer-container:hover .overlay-text-multiplayer{
     color: #1E4A25;
 }
+
+
+/*fim - elementos do ecra de selecao de multiplayer*/
+
+
+
+/*inicio - elementos do ecra de selecao de modo de jogo singleplayer*/
+
+
+
+.modos-singleplayer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px; /* espaço entre os dois */
+}
+
+
+.contra-relogio {
+    height: calc(100vh - 62px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 600px;
+}
+
+
+.desafio {
+    height: calc(100vh - 62px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 600px;
+}
+
+
+.fundo-cr {
+    position: absolute;
+    width: 170px; 
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+}
+
+.fundo-desafio {
+    position: absolute;
+    width: 170px; 
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+}
+
+
+.options {
+  display: flex;
+  gap: 10px;
+}
+
+.option {
+  padding: 10px 20px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.option:hover {
+  background-color: #eee;
+}
+
+.option.selected {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+
+
+/*fim - elementos do ecra de selecao de modo de jogo singleplayer*/
+
+
+
+
+/* Inicio - posicionamento icon user e texto alterar imagem na pagina do perfil */
+
+.user-icon2-perfil-container {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 160px;
+    margin-left: 248px;
+}
+
+.user-icon2-perfil-container img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.alteraImagem-perfil-container {
+    position: absolute;
+    top: 420px;
+    left: 294px;
+}
+
+/* Fim - posicionamento icon user e texto alterar imagem na pagina do perfil */
+
+/* Inicio - botao sair pagina de perfil*/
+
+.botao-sair-container {
+    position: absolute;
+    top: 80px;
+    right: 15px;
+    width: 100px;
+    height: auto;
+    overflow: hidden;
+    z-index: 60; /*garantir que nao fica escondido por outros elementos*/
+}
+
+.botao-sair-container img {
+    float: right;
+    width: 100px;
+    height: auto;
+    object-fit: cover;
+    transition: filter 0.3s ease;
+}
+
+.botao-sair-container:hover img{
+    filter: brightness(0.6); /*mais escuro*/
+}
+
+.overlay-text-perfil {
+   position: absolute;
+   top: 52%;
+   left: 45%;
+   transform: translate(-50%, -50%);
+   color: white;
+   text-align: center;
+   font-size: 16px;
+   transition: color 0.3s ease; /*mudanca de cor suave do texto*/
+
+}
+
+.botao-sair-container:hover .overlay-text-perfil {
+    color: rgb(166, 255, 166);
+}
+
+.botao-sair-container a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    display: block;
+}
+/* Inicio - botao sair pagina de perfil*/
+
+/* Inicio - caixas de dados (como nickname, username, password) na pagina de perfil*/
+
+.centrado-direita {
+    max-width: 300px;       
+    margin: 0 auto;          
+    text-align: left;      
+    margin-bottom: -90px;     /* espaçamento entre os <p> */
+    margin-top: -30px;
+}
+
+/* Fim - caixas de dados (como nickname, username, password) na pagina de perfil*/
+
+

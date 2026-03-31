@@ -20,5 +20,51 @@
         </nav>
     </header>
     </div>
+
+    <div class="botao-sair-container">
+        <img src="../public/images/botao-sair.png" alt="sair">
+        <div class="overlay-text-perfil">sair</div>
+        <a href="selectMultiplayerPage.html"></a>
+    </div>
+
+    <div class="user-icon2-perfil-container">
+        <img id="perfil-img" src="../public/symbols/user-icon-2.png" alt="user-icon"> <!--id novo-->
+    </div>
+    <div class="alteraImagem-perfil-container">
+            <!--<p>Alterar Imagem</p>-->
+
+            <p id="texto-altera-imagem">Alterar Imagem</p>
+            <div id="pop-up" class="popup">
+                <div class="conteudo-popup">
+                    <!--<p>Este conteudo é do pop-up.</p>-->
+                    
+                    <label for="input-file" id="drop-area">
+                        <input type="file" accept="image/*" id="input-file" hidden>
+                        <div id="img-view">
+                            <div class="upload-text">
+                                <img src="../public/symbols/symbol_upload.png" alt="symbol-upload">
+                                <p>Drag and drop or click here<br> to upload image</p>
+                                <span> Upload any images from desktop</span>
+                            </div>
+                                
+
+                        </div>
+                    </label>
+                    
+                    <div class="botoes-popup">
+                            <button type="button" id="btn-remover">Remover</button>
+                            <button type="button" id="btn-aplicar">Aplicar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <p class="centrado-direita">Nome exibido</p>
+        <p class="centrado-direita">Nome de Utilizador</p>
+        <p class="centrado-direita">Palavra-passe</p>
+        
+
+        <script src="../public/js/script.js"></script>
 </body>
 </html>
