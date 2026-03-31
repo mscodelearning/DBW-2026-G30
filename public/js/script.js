@@ -167,7 +167,6 @@ if (formAreaLogin) {
   }
 }
 
-
 /* SIGNUP (página que tem #form-area-signup) */
 
   const formAreaSignup = document.getElementById('form-area-signup');
@@ -213,19 +212,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const texto = document.getElementById("texto-altera-imagem");
 const popup = document.getElementById("pop-up");
-/*const conteudo = document.querySelector(".conteudo-popup");
-texto.addEventListener("click", () => {
-  popup.style.display = "flex";
-});
 
-popup.addEventListener("click", (e) => {
-  if (e.target === popup){ //clica no overlay, ou seja, fora do popup
-  popup.style.display = "none";
-  }
-*/
 
 if (texto && popup) {
-        texto.addEventListener("click", () => popup.style.display = "flex");
+        texto.addEventListener("click", () => 
+          popup.style.display = "flex");
         popup.addEventListener("click", (e) => {
             if (e.target === popup) popup.style.display = "none";
         });
@@ -234,10 +225,7 @@ if (texto && popup) {
 /*Fim - codigo do pop up para colocar/alterar imagem*/
 
 
-
 /* Inicio - codigo do drag and drop imagem */
-
-
 
 const dropArea = document.getElementById("drop-area");
 const inputFile = document.getElementById("input-file");
@@ -320,13 +308,10 @@ btnAplicar.addEventListener("click", () => {
 
 /* Fim - codigo do drag and drop imagem */
 
-
-
-
-
 /*inicio - selecao do modo de jogo para o singleplayer*/
 
 document.addEventListener("DOMContentLoaded", () => {
+  const customInput = document.getElementById("custom-timer");
   const timerOptions = document.querySelectorAll("#timer-options .item");
   const challengeOptions = document.querySelectorAll("#challenge-options .item");
   const startButton = document.getElementById("start-game");
@@ -338,15 +323,28 @@ document.addEventListener("DOMContentLoaded", () => {
     startButton.disabled = !(selectedTimer && selectedChallenge);
   }
 
-  function selectOne(group, clicked, type) {
-    group.forEach(item => item.classList.remove("selected"));
-    clicked.classList.add("selected");
+function selectOne(group, clicked, type) {
+  group.forEach(item => item.classList.remove("selected"));
+  clicked.classList.add("selected");
 
-    if (type === "timer") selectedTimer = clicked.textContent.trim();
-    if (type === "challenge") selectedChallenge = clicked.textContent.trim();
+  if (type === "timer") {
+    const value = clicked.textContent.trim();
 
-    updateButton();
+    if (value === "Personalizado") {
+      customInput.style.display = "block";
+      selectedTimer = null; // wait for user input
+    } else {
+      customInput.style.display = "none";
+      selectedTimer = value;
+    }
   }
+
+  if (type === "challenge") {
+    selectedChallenge = clicked.textContent.trim();
+  }
+
+  updateButton();
+}
 
   timerOptions.forEach(item => {
     item.addEventListener("click", () => selectOne(timerOptions, item, "timer"));
@@ -354,6 +352,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   challengeOptions.forEach(item => {
     item.addEventListener("click", () => selectOne(challengeOptions, item, "challenge"));
+  });
+
+  startButton.addEventListener("click", () => {
+    if (!startButton.disabled) {
+      window.location.href = "jogoSingleplayer.html";
+    }
   });
 });
 

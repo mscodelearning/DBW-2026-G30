@@ -157,15 +157,6 @@ h1 {
   font-size: 36px;
 }
 
-/*
-.user-icon2-container {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    top: 140px;
-    left: 150px;
-}*/
-
 .user-icon2-container {
     width: 200px;
     height: 200px;
@@ -176,16 +167,11 @@ h1 {
     align-items: center;
     margin-top: 46px;
     margin-left: 124px;
-    
-    /*position: absolute;
-    top: 140px;
-    left: 150px;*/
 }
 
 .user-icon2-container img {
     width: 150px;
     height: 150px;
-    /*right: 40px;*/
     object-fit: cover;
     border-radius: 50%;
 }
@@ -200,7 +186,6 @@ h1 {
     position: absolute;
     top: 380px;
     right: 430px;
-    /*object-fit: cover;*/
     z-index: 2;
 }
 
@@ -393,32 +378,6 @@ h1 {
     color: rgb(255, 255, 255);
     text-decoration:underline;
 }
-/*
-.popup {
-    display: none;
-    position: fixed;
-    inset: 0;
-    top: 54%;              
-    left: 50%;           
-    transform: translate(-50%, -50%);  
-    width: 100vw;         
-    height: 101vh;        
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-}
-
-.conteudo-popup {
-    background: white;
-    padding: 30px;
-    border-radius: 15px;
-    max-width: 35vw;
-    height: 35vh;
-    width: 90%;
-}
-*/
 
 .popup {
     display: none;         
@@ -430,20 +389,6 @@ h1 {
     border-radius: 24px;        
     z-index: 9999;   
 }             
-
-/*
-.conteudo-popup {
-    background: #05330B;
-    padding: 30px;
-    border-radius: 15px;
-    max-width: 35vw;
-    height: 35vh;
-    width: 90%;
-    display: flex;              
-    justify-content: center;   
-    align-items: center;       
-
-}*/
 
 .conteudo-popup {
     background: #05330B;
@@ -458,7 +403,6 @@ h1 {
     align-items: center;       
 
 }
-
 
 #img-view {
     width: 400px;
@@ -506,15 +450,6 @@ h1 {
     background: #81C96D;
     color: #05330B;
 }
-
-
-/*
-.botoes-popup #btn-remover{
-    background: #cc4b4b;
-    color: #fff;
-}
-*/
-
 
 /*Fim - codigo do pop up para colocar/alterar imagem*/
 
@@ -819,6 +754,9 @@ h1 {
 
 .item.selected {
     color: #4eff5a;
+    transform: scale(1.15);
+
+
 }
 
 .bg-opcoes {
@@ -841,13 +779,13 @@ h1 {
 
 .image-button {
     position: relative;
+    display: block;
+    margin: 170px auto 0;
     border: none;
     background: transparent;
     padding: 0;
-    cursor: pointer;
     width: 170px;
     height: 65px;
-
     background-image: url("../images/botao-login.png");
     background-size: cover;
     background-position: center;
@@ -856,11 +794,18 @@ h1 {
 
 .image-button img {
     position: absolute;
-    display: block;
     width: 155px;
     height: auto;
     left: 7.5%;
     top: 24%;
+}
+
+.image-button:disabled img {
+    opacity: 0.8;
+}
+
+.image-button:disabled {
+    cursor: not-allowed;
 }
 
 .image-button span {
@@ -871,12 +816,32 @@ h1 {
     color: #1E4A25;
     font-weight: bold;
     pointer-events: none;
+    transition: 0.2s;
 }
 
-.image-button:disabled {
+.image-button:disabled span{
     color: #5a8549;
 }
 
+#custom-timer {
+    position: absolute;
+    top: 157%;
+    left: 105%;
+    transform: translateY(-50%);
+    width: 120px;
+    height: 40px;
+    display: none;
+    text-align: center;
+    border-radius: 8px;
+    border: none;
+    background-color: rgb(166, 255, 166);
+    color: #003809;
+
+}
+
+#custom-timer::placeholder {
+    color: #1c4500;
+}
 
 
 /*fim - elementos do ecra de selecao de modo de jogo singleplayer*/
@@ -887,8 +852,8 @@ h1 {
 /* Inicio - posicionamento icon user e texto alterar imagem na pagina do perfil */
 .perfil-header {
     position: absolute;
-    top: 270px;
-    margin-left: 320px;
+    top: 330px;
+    margin-left: 460px;
 }
 
 .user-icon2-perfil-container {
@@ -975,8 +940,8 @@ h1 {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-top: 220px;
-    margin-left: 610px;
+    margin-top: 278px;
+    margin-left: 760px;
 }
 
 .grupo-campo {
@@ -1026,3 +991,36 @@ h1 {
 /* Fim - caixas de dados (como nickname, username, password) e caixas de texto usando imagem pagina do perfil */
 
 /* Inicio - quadro estatisticas na pagina do perfil */
+
+.quadro-estatistico-container {
+    position: fixed;
+    top: 170px;
+    left: 1060px;
+    right: 50px;
+    z-index: 1000;
+    transform: translate(-50%, -50%);
+    overflow:visible;
+    width: 280px;
+    height: 350px;
+}
+
+.quadro-estatistico-container img {
+    position:absolute;
+    top: 58px;
+    left:47px;
+    width: 160%;
+    height: 160%;
+    z-index:1024;
+}
+.fundo-verde-quadro-estatistico {
+    position: absolute;
+    top: 45px;
+    left: 44px;
+    width: 80%;
+    height: 85%;
+    z-index: 1024;
+}
+
+
+/* Fim - quadro estatisticas na pagina do perfil */
+
