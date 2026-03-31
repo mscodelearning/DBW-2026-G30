@@ -27,17 +27,16 @@
         <a href="selectMultiplayerPage.html"></a>
     </div>
 
-    <div class="user-icon2-perfil-container">
-        <img id="perfil-img" src="../public/symbols/user-icon-2.png" alt="user-icon"> <!--id novo-->
-    </div>
-    <div class="alteraImagem-perfil-container">
+    <div  class="perfil-header">
+        <div class="user-icon2-perfil-container">
+            <img id="perfil-img" src="../public/symbols/user-icon-2.png" alt="user-icon"> <!--id novo-->
+        </div>
+        <div class="alteraImagem-perfil-container">
             <!--<p>Alterar Imagem</p>-->
-
             <p id="texto-altera-imagem">Alterar Imagem</p>
             <div id="pop-up" class="popup">
                 <div class="conteudo-popup">
                     <!--<p>Este conteudo é do pop-up.</p>-->
-                    
                     <label for="input-file" id="drop-area">
                         <input type="file" accept="image/*" id="input-file" hidden>
                         <div id="img-view">
@@ -46,24 +45,44 @@
                                 <p>Drag and drop or click here<br> to upload image</p>
                                 <span> Upload any images from desktop</span>
                             </div>
-                                
-
                         </div>
                     </label>
-                    
                     <div class="botoes-popup">
-                            <button type="button" id="btn-remover">Remover</button>
-                            <button type="button" id="btn-aplicar">Aplicar</button>
+                        <button type="button" id="btn-remover">Remover</button>
+                        <button type="button" id="btn-aplicar">Aplicar</button>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    
+    <div class="coluna-caixas">
+        <div class="grupo-campo">
+            <p class="label-campo">Nome exibido</p>
+            <div class="caixa-texto-imagem">
+                <input type="text" placeholder="escreva o texto aqui">
+            </div>
+        </div>
 
-        
-        <p class="centrado-direita">Nome exibido</p>
-        <p class="centrado-direita">Nome de Utilizador</p>
-        <p class="centrado-direita">Palavra-passe</p>
-        
+        <div class="grupo-campo">
+            <p class="label-campo">Nome de Utilizador</p>
+            <div class="caixa-texto-imagem">
+                <input type="text" placeholder="escreva o texto aqui">
+            </div>
+        </div>
+
+        <div class="grupo-campo">
+            <p class="label-campo">Palavra-passe</p>
+            <div class="caixa-texto-imagem">
+                <input type="password" placeholder="escreva o texto aqui">
+            </div>
+        </div>
+    </div>
+
+    <div class="bloco-estatistico-container">
+
+    </div>
+
 
         <script src="../public/js/script.js"></script>
 </body>

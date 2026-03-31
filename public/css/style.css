@@ -727,72 +727,147 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 50px; /* espaço entre os dois */
+    gap: 200px;
+    min-height: 480px;
 }
 
 
-.contra-relogio {
-    height: calc(100vh - 62px);
+.coluna {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.titulo-container {
+    position: relative;
+    margin-bottom: 35px;
+    width: 220px;
+}
+
+.titulo-conteudo h5 {
+    margin: 0;
+    color: white;
+    white-space: nowrap;
+}
+
+.bg-titulo {
+    width: 220px;
+    display: block;
+}
+
+.titulo-conteudo {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.icon-titulo-cr {
+    width: 22px;
+    height: auto;
+}
+
+.icon-titulo-desafio {
+    width: 35px;
+    height: auto;
+}
+
+
+.lista {
+    position: relative;
+    width: 250px;
+    height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.lista-opcoes {
     position: relative;
-    width: 600px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+    padding-top: 150px;
 }
 
 
-.desafio {
-    height: calc(100vh - 62px);
+.item {
+    position: relative;
+    width: 240px;
+    height: 50px;
+    cursor: pointer;
     display: flex;
-    justify-content: center;
     align-items: center;
-    position: relative;
-    width: 600px;
-}
-
-
-.fundo-cr {
-    position: absolute;
-    width: 170px; 
-    top: 25%;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
     justify-content: center;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    font-weight: bold;
+    transition: 0.2s;
+    z-index: 2;
 }
 
-.fundo-desafio {
+.item:hover {
+    transform: scale(1.15);
+}
+
+.item.selected {
+    outline: 3px solid #00b621;
+}
+
+.bg-opcoes {
     position: absolute;
-    width: 170px; 
-    top: 25%;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    justify-content: center;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 0;
 }
 
 
-.options {
-  display: flex;
-  gap: 10px;
-}
 
-.option {
-  padding: 10px 20px;
-  border: 2px solid #ccc;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.option:hover {
-  background-color: #eee;
-}
 
 .option.selected {
-  background-color: #007bff;
-  color: white;
-  border-color: #007bff;
+    background-color: #00ff1566;
+    color: white;
+    border-color: #09a904;
+}
+
+.image-button {
+    position: relative;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+}
+
+.image-button img {
+    display: block;
+    width: 220px; /* adjust to your image */
+    height: auto;
+}
+
+.image-button span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+    pointer-events: none;
+}
+
+.image-button:disabled {
+    cursor: not-allowed;
 }
 
 
@@ -803,6 +878,11 @@ h1 {
 
 
 /* Inicio - posicionamento icon user e texto alterar imagem na pagina do perfil */
+.perfil-header {
+    position: absolute;
+    top: 270px;
+    margin-left: 320px;
+}
 
 .user-icon2-perfil-container {
     width: 200px;
@@ -812,8 +892,8 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 160px;
-    margin-left: 248px;
+   /* margin-top: 180px;
+    margin-left: 248px;*/
 }
 
 .user-icon2-perfil-container img {
@@ -825,8 +905,8 @@ h1 {
 
 .alteraImagem-perfil-container {
     position: absolute;
-    top: 420px;
-    left: 294px;
+    top: 200px;
+    left: 50px;
 }
 
 /* Fim - posicionamento icon user e texto alterar imagem na pagina do perfil */
@@ -864,7 +944,6 @@ h1 {
    text-align: center;
    font-size: 16px;
    transition: color 0.3s ease; /*mudanca de cor suave do texto*/
-
 }
 
 .botao-sair-container:hover .overlay-text-perfil {
@@ -882,16 +961,61 @@ h1 {
 }
 /* Inicio - botao sair pagina de perfil*/
 
-/* Inicio - caixas de dados (como nickname, username, password) na pagina de perfil*/
 
-.centrado-direita {
-    max-width: 300px;       
-    margin: 0 auto;          
-    text-align: left;      
-    margin-bottom: -90px;     /* espaçamento entre os <p> */
-    margin-top: -30px;
+/* Inicio - caixas de dados (como nickname, username, password) e caixas de texto usando imagem pagina do perfil */
+
+.coluna-caixas {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 220px;
+    margin-left: 610px;
 }
 
-/* Fim - caixas de dados (como nickname, username, password) na pagina de perfil*/
+.grupo-campo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 300px;
+}
+
+.label-campo {
+    width: 90%;
+    margin: 0 0 2px 0;   
+    color: #ffffff;
+    font-size: 18px;
+    text-align: left;
+    padding-left: 5px;    /* recuo do texto para alinhar com o texto dentro da caixa */
+}
+
+.caixa-texto-imagem {
+    width: 220px;
+    height: 45px;
+    background-image: url("../../public/images/barra-insere-texto-perfil.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.caixa-texto-imagem input {
+    background: rgba(0, 0, 0, 0.1);    
+    width: 90%;
+    height: 22px;
+    padding: 4px 8px;
+    line-height: 1.4;
+    background: transparent ;    /* !important  */
+    border: none ;               /* !important  */
+    outline: none;                       
+    border-radius: 0;                   
+    font-size: 18px;
+    color: #ffffff ;                           /* !important  */
+}
 
 
+/* Fim - caixas de dados (como nickname, username, password) e caixas de texto usando imagem pagina do perfil */
+
+/* Inicio - quadro estatisticas na pagina do perfil */

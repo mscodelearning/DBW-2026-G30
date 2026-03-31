@@ -25,39 +25,58 @@
         <div class="overlay-text">voltar</div>
         <a href="selectMultiplayerPage.html"></a>
     </div>
+    
     <div class="modos-singleplayer-container">
-        <div class="contra-relogio">
-            <img src="../public/images/nome-modo.png" alt="nome-modo" class="nome-modo-cr">
-            <div class="fundo-cr">
-                <img src="../public/images/fundo-estrutura-login.png" alt="fundo-cr" class="fundo-cr">
-                <div class="selection-container">
-                    <div class="section">
-                        <h5>Contra-relógio</h5>
-                        <div class="options" id="timer-options">
-                            <div class="option">30s</div>
-                            <div class="option">60s</div>
-                            <div class="option">120s</div>
-                        </div>
-                    </div>
+
+<!-- contra-relógio -->
+        <div class="coluna">
+            <div class="titulo-container">
+                <img src="../public/images/nome-modo.png" class="bg-titulo">
+
+                <div class="titulo-conteudo">
+                    <img src="../public/symbols/contra-relogio.png" class="icon-titulo-cr">
+                    <h5>Contra-relógio</h5>
                 </div>
-            </div>  
+            </div>
+
+            <div class="lista" id="timer-options">
+                <img src="../public/images/fundo-opcoes.webp" class="bg-opcoes">
+                <div class="lista-opcoes">
+                    <div class="item">Não</div>
+                    <div class="item">30s</div>
+                    <div class="item">60s</div>
+                    <div class="item">120s</div>
+                </div>
+            </div>
         </div>
-        <div class="desafio">
-            <img src="../public/images/nome-modo.png" alt="nome-modo" class="nome-modo-desafio">
-            <div class="fundo-desafio">
-                <img src="../public/images/fundo-estrutura-login.png" alt="fundo-desafio" class="fundo-desafio">
-                <div class="selection-container">
-                    <div class="section">
-                        <h5>Desafio</h5>
-                        <div class="options" id="challenge-options">
-                            <div class="option">Easy</div>
-                            <div class="option">Medium</div>
-                            <div class="option">Hard</div>
-                        </div>
-                    </div>
+
+<!-- desafio -->
+        <div class="coluna">
+            <div class="titulo-container">
+                <img src="../public/images/nome-modo.png" class="bg-titulo">
+
+                <div class="titulo-conteudo">
+                    <img src="../public/symbols/estrela.png" class="icon-titulo-desafio">
+                    <h5>Desafio</h5>
+                </div>
+            </div>
+
+            <div class="lista" id="challenge-options">
+                <img src="../public/images/fundo-opcoes.webp" class="bg-opcoes">
+                <div class="lista-opcoes">
+                    <div class="item">Não</div>
+                    <div class="item">Objetivo: nº de palavras</div>
+                    <div class="item">Min. letras</div>
+                    <div class="item">Máx. letras</div>
                 </div>
             </div>
         </div>
     </div>
+    <button id="start-game" class="image-button" disabled>
+        <img src="../public/images/retangulo-verde-botao-login.png" alt="">
+        <span>Start</span>
+    </button>
+    
+<script src="../public/js/script.js" defer></script>
 </body>
 </html>

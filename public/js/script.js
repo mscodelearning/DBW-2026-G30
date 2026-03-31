@@ -1,5 +1,6 @@
 
 'use strict';
+console.log("JS loaded");
 
 /*Caixa de texto do ecra login*/ 
 
@@ -99,6 +100,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /*novo codigoooooooooooooooooooooooooooooooooooooo com o pop-up na web*/
 
+
+document.addEventListener("DOMContentLoaded", () => {
+
 const validateUserPassword = (usernameInput, passwordInput) => {
   const username = usernameInput.value.trim();
   const password = passwordInput.value.trim();
@@ -162,6 +166,7 @@ if (formAreaLogin) {
     });
   }
 }
+});
 
 /* SIGNUP (página que tem #form-area-signup) */
 
@@ -226,6 +231,8 @@ popup.addEventListener("click", (e) => {
 
 /* Inicio - codigo do drag and drop imagem */
 
+document.addEventListener("DOMContentLoaded", () => {
+
 const dropArea = document.getElementById("drop-area");
 const inputFile = document.getElementById("input-file");
 const imageView = document.getElementById("img-view");
@@ -240,14 +247,6 @@ const defaultPerfilSrc = perfilImg.src;
 let currentImageUrl = null; // guarda o url do preview
 
 inputFile.addEventListener("change", uploadImage);
-/*
-function uploadImage(){
-  let imgLink = URL.createObjectURL(inputFile.files[0]);
-  imageView.style.backgroundImage = `url(${imgLink})`
-  imageView.textContent = "";
-  imageView.style.border = 0;
-}
-*/
 
 function uploadImage(){
 
@@ -294,19 +293,6 @@ btnRemover.addEventListener("click", () => {
     URL.revokeObjectURL(currentImageUrl);
   }
 
-  /*
-  // repoe conteudo inicial
-  imageView.innerHTML = `
-        <img src="../public/symbols/symbol_upload.png" alt="symbol-upload">
-    <p>Drag and drop or click here<br> to upload image</p>
-    <span>Upload any images from desktop</span>
-    <div class="botoes-popup">
-        <button type="button" id="btn-remover">Remover</button>
-        <button type="button" id="btn-aplicar">Aplicar</button>
-    </div>
-    `;
-    attachButtonsHandlers(); // reatribui as referencias dos botoes pk ele volta ao inicio
-*/
     currentImageUrl = null;
 });
 
@@ -319,29 +305,7 @@ btnAplicar.addEventListener("click", () => {
   document.getElementById("pop-up").style.display = "none";
 })
 
-/*
-function attachButtonsHandlers() {
-  const newBtnRemover = document.getElementById("btn-remover");
-  const newBtnAplicar = document.getElementById("btn-aplicar");
-
-  newBtnRemover.addEventListener("click", () => {
-    inputFile.value = "";
-    imageView.style.backgroundImage = "none";
-    imageView.style.border = " 2px dashed #81C96D";
-    
-
-
-  });
-
-  newBtnAplicar.addEventListener("click", () => {
-    if (!currentImageUrl) return;
-    perfilImg.src = currentImageUrl;
-
-
-  });
-
-}
-*/
+});
 
 /* Fim - codigo do drag and drop imagem */
 
@@ -349,22 +313,37 @@ function attachButtonsHandlers() {
 
 
 
-/*inicio - selecao do modo de jogo para o singleplayer
+/*inicio - selecao do modo de jogo para o singleplayer*/
 
-function setupSelection(containerId) {
-  const container = document.getElementById(containerId);
-  const options = container.querySelectorAll('.option');
+document.addEventListener("DOMContentLoaded", () => {
+  const timerOptions = document.querySelectorAll("#timer-options .item");
+  const challengeOptions = document.querySelectorAll("#challenge-options .item");
+  const startButton = document.getElementById("start-game");
 
-  options.forEach(option => {
-    option.addEventListener('click', () => {
-      // remove selection from all
-      options.forEach(opt => opt.classList.remove('selected'));
+  let selectedTimer = null;
+  let selectedChallenge = null;
 
-      // add to clicked one
-      option.classList.add('selected');
-    });
+  function updateButton() {
+    startButton.disabled = !(selectedTimer && selectedChallenge);
+  }
+
+  function selectOne(group, clicked, type) {
+    group.forEach(item => item.classList.remove("selected"));
+    clicked.classList.add("selected");
+
+    if (type === "timer") selectedTimer = clicked.textContent.trim();
+    if (type === "challenge") selectedChallenge = clicked.textContent.trim();
+
+    updateButton();
+  }
+
+  timerOptions.forEach(item => {
+    item.addEventListener("click", () => selectOne(timerOptions, item, "timer"));
   });
-}
 
-setupSelection('timer-options');
-setupSelection('challenge-options'); */
+  challengeOptions.forEach(item => {
+    item.addEventListener("click", () => selectOne(challengeOptions, item, "challenge"));
+  });
+});
+
+/*fim - selecao do modo de jogo para o singleplayer*/
