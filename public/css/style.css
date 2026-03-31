@@ -174,7 +174,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 40px;
+    margin-top: 46px;
     margin-left: 124px;
     
     /*position: absolute;
@@ -727,8 +727,8 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 200px;
-    min-height: 480px;
+    gap: 400px;
+    min-height: 380px;
 }
 
 
@@ -761,7 +761,6 @@ h1 {
     top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
-    
     display: flex;
     align-items: center;
     gap: 8px;
@@ -819,7 +818,7 @@ h1 {
 }
 
 .item.selected {
-    outline: 3px solid #00b621;
+    color: #4eff5a;
 }
 
 .bg-opcoes {
@@ -832,8 +831,6 @@ h1 {
     pointer-events: none;
     z-index: 0;
 }
-
-
 
 
 .option.selected {
@@ -852,7 +849,7 @@ h1 {
 
 .image-button img {
     display: block;
-    width: 220px; /* adjust to your image */
+    width: 220px;
     height: auto;
 }
 

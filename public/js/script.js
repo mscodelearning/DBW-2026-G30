@@ -166,11 +166,10 @@ if (formAreaLogin) {
     });
   }
 }
-});
+
 
 /* SIGNUP (página que tem #form-area-signup) */
 
-document.addEventListener('DOMContentLoaded', () => {
   const formAreaSignup = document.getElementById('form-area-signup');
 
   if (!formAreaSignup) return;
@@ -207,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-
+document.addEventListener("DOMContentLoaded", () => {
 
 /*Inicio - codigo do pop up para colocar/alterar imagem*/
 
@@ -223,7 +222,7 @@ popup.addEventListener("click", (e) => {
   if (e.target === popup){ //clica no overlay, ou seja, fora do popup
   popup.style.display = "none";
   }
-});
+
 
 /*Fim - codigo do pop up para colocar/alterar imagem*/
 
@@ -231,7 +230,7 @@ popup.addEventListener("click", (e) => {
 
 /* Inicio - codigo do drag and drop imagem */
 
-document.addEventListener("DOMContentLoaded", () => {
+
 
 const dropArea = document.getElementById("drop-area");
 const inputFile = document.getElementById("input-file");
@@ -309,7 +308,7 @@ btnAplicar.addEventListener("click", () => {
 
 /* Fim - codigo do drag and drop imagem */
 
-
+});
 
 
 
