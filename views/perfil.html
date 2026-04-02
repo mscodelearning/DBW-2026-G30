@@ -26,75 +26,66 @@
         <div class="overlay-text-perfil">sair</div>
         <a href="selectMultiplayerPage.html"></a>
     </div>
-
-
-    <div class="container-geral-pagina">
-
-    <div  class="perfil-header">
-        <div class="user-icon2-perfil-container">
-            <img id="perfil-img" src="../public/symbols/user-icon-2.png" alt="user-icon"> <!--id novo-->
-        </div>
-        <div class="alteraImagem-perfil-container">
-            <!--<p>Alterar Imagem</p>-->
-            <p id="texto-altera-imagem">Alterar Imagem</p>
-            <div id="pop-up" class="popup">
-                <div class="conteudo-popup">
-                    <!--<p>Este conteudo é do pop-up.</p>-->
-                    <label  id="drop-area">
-                        <input type="file" accept="image/*" id="input-file" hidden>
-                        <div id="img-view">
-                            <div class="upload-text">
-                                <img src="../public/symbols/symbol_upload.png" alt="symbol-upload">
-                                <p>Drag and drop or click here<br> to upload image</p>
-                                <span> Upload any images from desktop</span>
+    <div class="container">
+        <div  class="perfil-header">
+            <div class="user-icon2-perfil-container">
+                <img id="perfil-img" src="../public/symbols/user-icon-2.png" alt="user-icon"> <!--id novo-->
+            </div>
+            <div class="alteraImagem-perfil-container">
+                <!--<p>Alterar Imagem</p>-->
+                <p id="texto-altera-imagem">Alterar Imagem</p>
+                <div id="pop-up" class="popup">
+                    <div class="conteudo-popup">
+                        <!--<p>Este conteudo é do pop-up.</p>-->
+                        <label  id="drop-area">
+                            <input type="file" accept="image/*" id="input-file" hidden>
+                            <div id="img-view">
+                                <div class="upload-text">
+                                    <img src="../public/symbols/symbol_upload.png" alt="symbol-upload">
+                                    <p>Drag and drop or click here<br> to upload image</p>
+                                    <span> Upload any images from desktop</span>
+                                </div>
                             </div>
+                        </label>
+                        <div class="botoes-popup">
+                            <button type="button" id="btn-remover">Remover</button>
+                            <button type="button" id="btn-aplicar">Aplicar</button>
                         </div>
-                    </label>
-                    <div class="botoes-popup">
-                        <button type="button" id="btn-remover">Remover</button>
-                        <button type="button" id="btn-aplicar">Aplicar</button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    
-    <div class="coluna-caixas">
-        <div class="grupo-campo">
-            <p class="label-campo">Nome exibido</p>
-            <div class="caixa-texto-imagem">
-                <input type="text" placeholder="escreva o texto aqui">
+        
+        <div class="coluna-caixas">
+            <div class="grupo-campo">
+                <p class="label-campo">Nome exibido</p>
+                <div class="caixa-texto-imagem">
+                    <input type="text" placeholder="escreva o texto aqui">
+                </div>
+            </div>
+
+            <div class="grupo-campo">
+                <p class="label-campo">Nome de Utilizador</p>
+                <div class="caixa-texto-imagem">
+                    <input type="text" placeholder="escreva o texto aqui">
+                </div>
+            </div>
+
+            <div class="grupo-campo">
+                <p class="label-campo">Palavra-passe</p>
+                <div class="caixa-texto-imagem">
+                    <input type="password" placeholder="escreva o texto aqui">
+                </div>
             </div>
         </div>
-
-        <div class="grupo-campo">
-            <p class="label-campo">Nome de Utilizador</p>
-            <div class="caixa-texto-imagem">
-                <input type="text" placeholder="escreva o texto aqui">
+        <div class="quadro-estatistico-container">
+            <img src="../public/images/quadro-estatisticas-perfil.png" alt="quadro-madeira">
+            <div class="fundo-verde-quadro-estatistico">
+                <img src="../public/images/fundo-quadro-estatisticas.png" alt="quadro-madeira">
             </div>
-        </div>
 
-        <div class="grupo-campo">
-            <p class="label-campo">Palavra-passe</p>
-            <div class="caixa-texto-imagem">
-                <input type="password" placeholder="escreva o texto aqui">
-            </div>
         </div>
-
-       
     </div>
-
-    <div class="quadro-estatistico-container">
-        <img src="../public/images/quadro-estatisticas-perfil.png" alt="quadro-madeira">
-        <div class="fundo-verde-quadro-estatistico">
-            <img src="../public/images/fundo-quadro-estatisticas.png" alt="quadro-madeira">
-        </div>
-
-    </div>
-</div>
-    
-
-
 <script src="../public/js/script.js" defer></script>
 </body>
 </html>

@@ -664,12 +664,21 @@ h1 {
 
 
 
+.geral-modos-sp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    flex: 1;
+    transform: translateY(-62px);
+}
+
 .modos-singleplayer-container {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 400px;
-    flex: 1;
 }
 
 
@@ -786,7 +795,8 @@ h1 {
 .image-button {
     position: relative;
     display: block;
-    margin: 170px auto 0;
+    /*margin: 170px auto 0;*/
+    margin: 0 auto;
     border: none;
     background: transparent;
     padding: 0;
@@ -795,7 +805,6 @@ h1 {
     background-image: url("../images/botao-login.png");
     background-size: cover;
     background-position: center;
-
 }
 
 .image-button img {
@@ -859,7 +868,7 @@ h1 {
 .perfil-header {
     position: absolute;
     top: 330px;
-    margin-left: 460px;
+    margin-left: 160px;
 }
 
 .user-icon2-perfil-container {
@@ -884,7 +893,7 @@ h1 {
 .alteraImagem-perfil-container {
     position: absolute;
     top: 200px;
-    left: 50px;
+    left: 45px;
 }
 
 /* Fim - posicionamento icon user e texto alterar imagem na pagina do perfil */
@@ -942,16 +951,12 @@ h1 {
 
 /* Inicio - caixas de dados (como nickname, username, password) e caixas de texto usando imagem pagina do perfil */
 
-.container-geral {
-    
-}
-
 .coluna-caixas {
     display: flex;
     flex-direction: column;
     gap: 10px;
     margin-top: 278px;
-    margin-left: 760px;
+    margin-left: 440px;
 }
 
 .grupo-campo {
@@ -1003,10 +1008,10 @@ h1 {
 /* Inicio - quadro estatisticas na pagina do perfil */
 
 .quadro-estatistico-container {
-    position: fixed;
-    top: 170px;
-    left: 1060px;
-    right: 50px;
+    position: relative;
+    top: 20%;
+    left: 50%;
+    /*right: 10px;*/
     z-index: 1000;
     transform: translate(-50%, -50%);
     overflow:visible;
@@ -1016,16 +1021,19 @@ h1 {
 
 .quadro-estatistico-container img {
     position:absolute;
-    top: 58px;
-    left:47px;
+   /* top: 0px;
+    left: 470px;*/
+    top: 20%;
+    left: 90%;
+    transform: translateY(-50%);
     width: 160%;
     height: 160%;
     z-index:1024;
 }
 .fundo-verde-quadro-estatistico {
     position: absolute;
-    top: 45px;
-    left: 44px;
+    top: 14px;
+    left: 94px;
     width: 80%;
     height: 85%;
     z-index: 1024;
