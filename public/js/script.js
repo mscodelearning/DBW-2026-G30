@@ -426,3 +426,46 @@ function selectOne(group, clicked, type) {
 });
 
 /*fim - selecao do modo de jogo para o singleplayer*/
+
+/* Inicio - atualizacao dos dados estatisticos no quadro da pagina do perfil */
+document.addEventListener("DOMContentLoaded", async () => {
+    try {
+        const response = await fetch("/api/estatisticas/perfil");
+        const estatisticas = await response.json();
+
+        document.getElementById("total-pontos").textContent = estatisticas.totalPontos;
+        document.getElementById("respostas-encontradas").textContent = estatisticas.respostasEncontradas;
+        document.getElementById("respostas-erradas").textContent = estatisticas.respostasErradas;
+        document.getElementById("tempo-total").textContent = estatisticas.tempoTotal;
+    } catch (error) {
+        console.error("Erro ao carregar estatísticas:", error);
+    }
+});
+/* Fim - atualizacao dos dados estatisticos no quadro da pagina do perfil */
+
+/* Inicio - atualizacao dos dados do utilizador dentro das respetovas caixas de texto na pagina de perfil */
+
+document.addEventListener("DOMContentLoaded", async () => {
+    try {
+        const resposta = await fetch("/profile", {
+            method: "GET",
+            credentials: "include"
+        });
+
+        if (!resposta.ok) {
+            throw new Error("Erro ao carregar perfil");
+        }
+
+        const utilizador = await resposta.json();
+
+        document.getElementById("displayName").value = utilizador.nickname || "";
+        document.getElementById("username").value = utilizador.username || "";
+
+        // Nunca preencher a password real
+        document.getElementById("password").value = "********";
+    } catch (erro) {
+        console.error("Erro:", erro);
+    }
+});
+
+/* Fim - atualizacao dos dados do utilizador dentro das respetovas caixas de texto na pagina de perfil */
