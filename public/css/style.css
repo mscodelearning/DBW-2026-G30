@@ -4,6 +4,12 @@ body {
     background-color: #1E4A25;
     color: white;
     overflow-block: hidden; /*overflow-block: scroll;*/
+
+    /*novo - tirar se der problemas*/
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
 }
 
 .barra-navegacao {
@@ -663,7 +669,7 @@ h1 {
     justify-content: center;
     align-items: center;
     gap: 400px;
-    min-height: 380px;
+    flex: 1;
 }
 
 
@@ -935,6 +941,10 @@ h1 {
 
 
 /* Inicio - caixas de dados (como nickname, username, password) e caixas de texto usando imagem pagina do perfil */
+
+.container-geral {
+    
+}
 
 .coluna-caixas {
     display: flex;
