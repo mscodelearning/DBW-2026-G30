@@ -1040,6 +1040,57 @@ h1 {
     z-index: 1024;
 }
 
-
 /* Fim - quadro estatisticas na pagina do perfil */
+
+/* Inicio - botao terminar sessao pagina do perfil */
+
+
+.botao-terminar-sessao {
+    position: absolute;
+    top: 665px;
+    left: 770px;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.botao-terminar-sessao img {
+    display: block;
+    width: 180px;
+    height: auto;
+}
+
+.overlay-text-termina-sessao {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/*
+.container-botao {
+    position: relative;
+}
+
+.botao-terminar-sessao {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-block;
+}
+
+.overlay-text-termina-sessao {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    white-space: nowrap;
+}*/
+
+/* Fim - botao terminar sessao pagina do perfil */
 
