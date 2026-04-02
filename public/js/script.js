@@ -469,3 +469,54 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 /* Fim - atualizacao dos dados do utilizador dentro das respetovas caixas de texto na pagina de perfil */
+
+
+/* Inicio - Barra pop-up para guardar as alteracoes feitas aquando o utilizador comeca a escrver na barra do nickname na pagina de perfil */
+/*
+const nicknameInput = document.getElementById('nickname');
+const saveBar       = document.getElementById('save-bar');
+const btnSave       = document.getElementById('btn-save');
+
+// Guarda o valor inicial (quando a página carrega)
+let originalValue = nicknameInput.value;
+
+nicknameInput.addEventListener('input', () => {
+  const isDirty = nicknameInput.value !== originalValue;
+  saveBar.classList.toggle('show', isDirty);
+});
+
+btnSave.addEventListener('click', () => {
+  // TODO: substitui por um fetch() para guardar no servidor
+  console.log('Guardado:', nicknameInput.value);
+
+  originalValue = nicknameInput.value; // atualiza o original após guardar
+  saveBar.classList.remove('show');    // esconde o popup
+});
+*/
+
+
+const nicknameInput = document.getElementById('nickname');
+const saveBar = document.getElementById('save-bar');
+const btnSave = document.getElementById('btn-save');
+const btnReset = document.getElementById('btn-reset');
+
+let originalValue = nicknameInput.value;
+
+nicknameInput.addEventListener('input', () => {
+  const isDirty = nicknameInput.value !== originalValue;
+  saveBar.classList.toggle('show', isDirty);
+});
+
+btnReset.addEventListener('click', () => {
+  nicknameInput.value = originalValue;
+  saveBar.classList.remove('show');
+});
+
+btnSave.addEventListener('click', () => {
+  console.log('Guardado:', nicknameInput.value);
+
+  originalValue = nicknameInput.value;
+  saveBar.classList.remove('show');
+});
+
+/* Inicio - Barra pop-up para guardar as alteracoes feitas aquando o utilizador comeca a escrver na barra do nickname na pagina de perfil */

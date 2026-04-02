@@ -20,7 +20,6 @@
         </nav>
     </header>
     </div>
-
     <div class="botao-sair-container">
         <img src="../public/images/botao-sair.png" alt="sair">
         <div class="overlay-text-perfil">sair</div>
@@ -55,22 +54,28 @@
                 </div>
             </div>
         </div>
-        
         <div class="coluna-caixas">
             <div class="grupo-campo">
                 <p class="label-campo">Nome exibido</p>
                 <div class="caixa-texto-imagem">
-                    <input type="text" placeholder="escreva o texto aqui">
+                    <input type="text" id="nickname" placeholder="escreva o texto aqui">
                 </div>
             </div>
-
+            <div id="save-bar" role="alert" aria-live="polite">
+                <div class="alert alert-success d-flex align-items-center justify-content-between shadow mb-0 gap-3">
+                    <span>Tens alterações não guardadas.</span>
+                    <div class="d-flex gap-2">
+                    <button id="btn-reset" class="btn btn-secondary btn-sm" type="button">Redefinir</button>
+                    <button id="btn-save" class="btn btn-success btn-sm" type="button">Salvar alterações</button>
+                    </div>
+                </div>
+            </div>
             <div class="grupo-campo">
                 <p class="label-campo">Nome de Utilizador</p>
                 <div class="caixa-texto-imagem">
                     <input type="text" placeholder="escreva o texto aqui">
                 </div>
             </div>
-
             <div class="grupo-campo">
                 <p class="label-campo">Palavra-passe</p>
                 <div class="caixa-texto-imagem">
@@ -86,11 +91,8 @@
             <div class="fundo-verde-quadro-estatistico">
                 <!--<img src="../public/images/fundo-quadro-estatisticas.png" alt="quadro-madeira">-->
                 <img class="img-fundo-verde" src="../public/images/fundo-quadro-estatisticas.png" alt="fundo-verde">
-
-
                 <div class="stats-overlay">
                     <h3 class="stats-title">Estatísticas</h3>
-
                     <div class="stat-item">
                         <span class="stat-label">Total pontos</span>
                         <span class="stat-value" id="total-pontos">1250</span>
@@ -108,18 +110,15 @@
                         <span class="stat-value" id="tempo-total">04:32</span>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
-
     <div class="zona-botao-termina">
         <a href="paginaInicial.html" class="botao-terminar-sessao">
             <img src="../public/images/barra-insere-texto-perfil.png" alt="botao-termina-sessao">
             <span class="overlay-text-termina-sessao">Terminar Sessão</span>
         </a>
     </div>
-    
 <script src="../public/js/script.js" defer></script>
 </body>
 </html>

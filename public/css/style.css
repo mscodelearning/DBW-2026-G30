@@ -1215,3 +1215,26 @@ h1 {
 
 /* Fim - botao terminar sessao pagina do perfil */
 
+/*Inicio - Barra pop-up para guardar as alteracoes feitas aquando da alteracao do nickname na pagina de perfil */
+
+#save-bar {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  z-index: 1055;
+  min-width: 320px;
+  max-width: 90vw;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#save-bar.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/*Fim - Barra pop-up para guardar as alteracoes feitas aquando da alteracao do nickname na pagina de perfil */
+
