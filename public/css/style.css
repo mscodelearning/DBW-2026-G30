@@ -852,10 +852,67 @@ h1 {
     border: none;
     background-color: rgb(166, 255, 166);
     color: #003809;
-
 }
 
 #custom-timer::placeholder {
+    color: #1c4500;
+}
+
+#custom-num {
+    position: absolute;
+    top: 65%;
+    left: 105%;
+    transform: translateY(-50%);
+    width: 120px;
+    height: 40px;
+    display: none;
+    text-align: center;
+    border-radius: 8px;
+    border: none;
+    background-color: rgb(166, 255, 166);
+    color: #003809;
+}
+
+#custom-num::placeholder {
+    color: #1c4500;
+}
+
+#custom-min {
+    position: absolute;
+    top: 109%;
+    left: 105%;
+    transform: translateY(-50%);
+    width: 120px;
+    height: 40px;
+    display: none;
+    text-align: center;
+    border-radius: 8px;
+    border: none;
+    background-color: rgb(166, 255, 166);
+    color: #003809;
+}
+
+#custom-min::placeholder {
+    color: #1c4500;
+}
+
+
+#custom-max {
+    position: absolute;
+    top: 157%;
+    left: 105%;
+    transform: translateY(-50%);
+    width: 120px;
+    height: 40px;
+    display: none;
+    text-align: center;
+    border-radius: 8px;
+    border: none;
+    background-color: rgb(166, 255, 166);
+    color: #003809;
+}
+
+#custom-max::placeholder {
     color: #1c4500;
 }
 

@@ -315,9 +315,49 @@ document.addEventListener("DOMContentLoaded", () => {
   const timerOptions = document.querySelectorAll("#timer-options .item");
   const challengeOptions = document.querySelectorAll("#challenge-options .item");
   const startButton = document.getElementById("start-game");
+  const customNum = document.getElementById("custom-num");
+  const customMin = document.getElementById("custom-min");
+  const customMax = document.getElementById("custom-max");
 
   let selectedTimer = null;
   let selectedChallenge = null;
+
+  customInput.addEventListener("input", () => {
+    if (customInput.value.trim() !== "") {
+      selectedTimer = customInput.value;
+    } else {
+      selectedTimer = null;
+    }
+    updateButton();
+  });
+
+  customNum.addEventListener("input", () => {
+    if (customNum.value.trim() !== "") {
+      selectedChallenge = customNum.value;
+    } else {
+      selectedChallenge = null;
+    }
+    updateButton();
+});
+
+  customMin.addEventListener("input", () => {
+    if (customMin.value.trim() !== "") {
+      selectedChallenge = customMin.value;
+    } else {
+      selectedChallenge = null;
+    }
+    updateButton();
+});
+
+  customMax.addEventListener("input", () => {
+    if (customMax.value.trim() !== "") {
+      selectedChallenge = customMax.value;
+    } else {
+      selectedChallenge = null;
+    }
+    updateButton();
+});
+
 
   function updateButton() {
     startButton.disabled = !(selectedTimer && selectedChallenge);
@@ -330,6 +370,8 @@ function selectOne(group, clicked, type) {
   if (type === "timer") {
     const value = clicked.textContent.trim();
 
+
+
     if (value === "Personalizado") {
       customInput.style.display = "block";
       selectedTimer = null; // wait for user input
@@ -339,8 +381,30 @@ function selectOne(group, clicked, type) {
     }
   }
 
-  if (type === "challenge") {
-    selectedChallenge = clicked.textContent.trim();
+    if (type === "challenge") {
+    const value = clicked.textContent.trim();
+
+    // hide all inputs first
+    customNum.style.display = "none";
+    customMin.style.display = "none";
+    customMax.style.display = "none";
+
+    selectedChallenge = value;
+
+    if (value === "Objetivo: nº de palavras") {
+      customNum.style.display = "block";
+      selectedChallenge = null;
+    }
+
+    if (value === "Mín. letras") {
+      customMin.style.display = "block";
+      selectedChallenge = null;
+    }
+
+    if (value === "Máx. letras") {
+      customMax.style.display = "block";
+      selectedChallenge = null;
+    }
   }
 
   updateButton();
