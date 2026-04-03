@@ -472,28 +472,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
 /* Inicio - Barra pop-up para guardar as alteracoes feitas aquando o utilizador comeca a escrver na barra do nickname na pagina de perfil */
-/*
-const nicknameInput = document.getElementById('nickname');
-const saveBar       = document.getElementById('save-bar');
-const btnSave       = document.getElementById('btn-save');
-
-// Guarda o valor inicial (quando a página carrega)
-let originalValue = nicknameInput.value;
-
-nicknameInput.addEventListener('input', () => {
-  const isDirty = nicknameInput.value !== originalValue;
-  saveBar.classList.toggle('show', isDirty);
-});
-
-btnSave.addEventListener('click', () => {
-  // TODO: substitui por um fetch() para guardar no servidor
-  console.log('Guardado:', nicknameInput.value);
-
-  originalValue = nicknameInput.value; // atualiza o original após guardar
-  saveBar.classList.remove('show');    // esconde o popup
-});
-*/
-
 
 const nicknameInput = document.getElementById('nickname');
 const saveBar = document.getElementById('save-bar');
@@ -519,4 +497,28 @@ btnSave.addEventListener('click', () => {
   saveBar.classList.remove('show');
 });
 
-/* Inicio - Barra pop-up para guardar as alteracoes feitas aquando o utilizador comeca a escrver na barra do nickname na pagina de perfil */
+/* Fim - Barra pop-up para guardar as alteracoes feitas aquando o utilizador comeca a escrver na barra do nickname na pagina de perfil */
+
+/* Inicio - Validacao dos campos da pagina de alteracao da password */
+
+const form = document.getElementById("formAlterarPassword");
+    const nova = document.getElementById("nova");
+    const confirmar = document.getElementById("confirmar");
+    const erro = document.getElementById("erroPassword");
+
+    form.addEventListener("submit", function(event) {
+      erro.textContent = "";
+
+      if (nova.value !== confirmar.value) {
+        event.preventDefault();
+        erro.textContent = "A nova palavra-passe e a confirmação não coincidem.";
+        return;
+      }
+
+      // Se quiseres apenas testar sem servidor:
+      event.preventDefault();
+      alert("Palavra-passe alterada com sucesso!");
+      window.location.href = "perfil.html";
+});
+
+/* Fim - Validacao dos campos da pagina de alteracao da password */

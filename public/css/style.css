@@ -1238,3 +1238,45 @@ h1 {
 
 /*Fim - Barra pop-up para guardar as alteracoes feitas aquando da alteracao do nickname na pagina de perfil */
 
+/* Inicio - caixa para altera a palavra passe na pagina alteraPalavraPasse */
+
+.card {
+  margin-top: 150px;
+  background-color: #a6e5ac;
+  border: 1px solid #a6e5ac;
+  border-radius: 12px;
+}
+
+.form-control {
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #043c03;
+}
+
+.form-control::placeholder {
+  color: #ffffff;
+}
+
+.form-control:focus {
+  background-color: #ffffff;
+  border-color: #ededed;
+  box-shadow: 0 0 0 0.2rem rgba(0, 51, 8, 0.655);
+}
+
+.btn-primary {
+  background-color: #1c762f;
+  border-color: #1c762f;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #ffffff;
+  border-color: #f4f4f4;
+}
+
+.btn-primary:focus {
+  box-shadow: 0 0 0 0.2rem rgba(68, 248, 113, 0.25);
+}
+
+/* Fim - caixa para altera a palavra passe na pagina alteraPalavraPasse */
+
