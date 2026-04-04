@@ -3,6 +3,9 @@
 <html>
     <head>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="../public/css/style.css">
         <title>Skriven</title>
     </head>
@@ -20,11 +23,41 @@
         </nav>
     </header>
     </div>
-    <div class="botao-voltar-container">
-        <img src="../public/images/botao-sair.png" alt="voltar">
+    <a href="selectMultiplayerPage.html" class="botao-voltar-container">
+        <img src="../public/images/botao-sair.png" alt="sair">
         <div class="overlay-text">Sair</div>
-        <a href="selectMultiplayerPage.html"></a>
+    </a>
+    <div class="jogo-singleplayer-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-6 coluna-sp">
+                    <div class="quadro-palavra-mestra">
+                        <img src="../public/Images/quadro-palavras.png" alt="quadro-palavras">
+                        <h1 id="palavra-mestra">SOLIDARIEDADE</h1>
+                    </div>
+                        <h2 id="timer-display"></h2>
+                        <button id="finalizar-jogo">Finalizar Jogo</button>
+                </div>
+                <div class="col-6 coluna-sp">
+                    <input type="text" id="caixa-texto" placeholder="Insira uma palavra">                    
+                    <div class="caixa-palavras-descobertas">
+                        <img src="../public/Images/palavras-descobertas.png">
+                        <div id="palavras-descobertas"></div>
+                    </div>
+                    <div class="caixa-pessoa">
+                        <img src="../public/Images/icone-pessoa.png">
+                        <h5>
+                            <span id="nome-jogador"></span>
+                            <span id="pontuacao"></span>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-<script src="../public/js/script.js" defer></script>
+
+<script src="../public/js/paginaJogoSp.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
