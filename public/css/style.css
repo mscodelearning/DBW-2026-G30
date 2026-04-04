@@ -1473,22 +1473,23 @@ h1 {
     padding-right: 40px;
     box-sizing: border-box;
     margin-top: 140px;
+    transform: translate(-50%, -50%);
     display: flex;
+    justify-content: center;
     align-items: center;
     flex-direction: row;
     gap: 100px;
+    transform: none;
+}
+
+.btn-cria-sala, .btn-sala-privada, .btn-sala-publica{
+    width: 360px;
+    height: auto;
 }
 
 /* Fim - container da pagina do mode multiplayer */
 
 /* Inicio - caixa cria sala da pagina game mode multiplayer */
-
-.btn-cria-sala{
-    width: 360px;
-    height: auto;
-
-}
-
 
 
 /* Fim - caixa cria sala da pagina game mode multiplayer */
@@ -1496,17 +1497,10 @@ h1 {
 
 /* Inicio - caixa sala privada da pagina game mode multiplayer */
 
-.btn-sala-privada{
-    width: 360px;
-    height: auto;
-}
 /* Fim - caixa sala privada da pagina game mode multiplayer */
 
 /* Inicio - caixa sala publica da pagina game mode multiplayer */
 
-.btn-sala-publica{
-    width: 360px;
-    height: auto;
-}
+
 /* Fim - caixa sala publica da pagina game mode multiplayer */
 
