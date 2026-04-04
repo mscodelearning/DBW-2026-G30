@@ -1462,5 +1462,45 @@ h1 {
     color: #eaeaea !important;
 }
 
-
 /* fim - menu off-canvas*/
+
+/* Inicio - container da pagina do mode multiplayer */
+
+.container-mode-multiplayer {
+    position: relative;
+    width: 100%;
+    padding-left: 130px;
+    padding-right: 40px;
+    box-sizing: border-box;
+    margin-top: 140px;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 100px;
+    transform: none;
+}
+
+.btn-cria-sala, .btn-sala-privada, .btn-sala-publica{
+    width: 360px;
+    height: auto;
+}
+
+/* Fim - container da pagina do mode multiplayer */
+
+/* Inicio - caixa cria sala da pagina game mode multiplayer */
+
+
+/* Fim - caixa cria sala da pagina game mode multiplayer */
+
+
+/* Inicio - caixa sala privada da pagina game mode multiplayer */
+
+/* Fim - caixa sala privada da pagina game mode multiplayer */
+
+/* Inicio - caixa sala publica da pagina game mode multiplayer */
+
+
+/* Fim - caixa sala publica da pagina game mode multiplayer */
+
