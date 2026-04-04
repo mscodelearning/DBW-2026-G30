@@ -522,3 +522,15 @@ const form = document.getElementById("formAlterarPassword");
 });
 
 /* Fim - Validacao dos campos da pagina de alteracao da password */
+
+/* Inicio - pop-up icon user na barra de navegacao */
+
+let subMenu = document.getElementById("subMenu");
+
+function toggleMenu(){
+  subMenu.classList.toggle("open-menu");
+
+}
+
+/* Fim - pop-up icon user na barra de navegacao */
+

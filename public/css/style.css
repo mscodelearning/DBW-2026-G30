@@ -12,16 +12,20 @@ body {
 
 }
 
+/* Inicio - barra de navegacao */ 
+
 .barra-navegacao {
     background-color: #38623d;
-    text-align: center;
-    overflow: hidden;
-    width: 100%;
-    height: 62px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+    height: 70px;
+    padding: 0 20px;
+    overflow: visible;
 }
 
 nav>a{
-    float: right;
     color: rgb(255, 255, 255);
     text-align: center;
     margin: 6px 0 6px;
@@ -39,17 +43,54 @@ nav>a:active{
 .nav-logo {
     width: 170px;
     margin-top: 5px;
-    /*margin-left: 5px;*/
-    /*height: 50px;*/
 }
 
+
 .botao-menu {
-    float: left;
+    position: absolute;
+    left: 0px;
+    top: 50%;
+    transform: translateY(-50%);
     width: 65px;
     height: 65px;
-    /*margin-top:1px;*/
-    margin-left: 1px;
 }
+
+.user-dropdown {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.user-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Inicio - pop-up icon user na barra de navegacao*/
+
+.dropdown-menu {
+    background: rgb(103, 147, 102);
+    min-width: 280px;
+    border-radius: 12px;
+    border: none;
+    color: #ffffff;             
+}
+
+.dropdown-menu .dropdown-item {
+    color: #ffffff;               
+}
+
+.dropdown-menu .dropdown-item:hover, .dropdown-menu .dropdown-item:focus {
+    background-color: #244b2f;  
+    color: #ffffff;          
+}
+
+/* fim - pop-up icon user na barra de navegacao*/
+
+/* Fim - barra de navegacao */ 
 
 .login {
     float: right;
@@ -72,15 +113,6 @@ h1 {
     color: rgb(255, 255, 255);
     margin: 80px;
 }
-
-/*
-.voltar{
-    float: right;
-    width: 100px;
-    height: auto;
-    margin-top: 15px;
-    margin-right: 15px;
-}*/
 
 /*Inicio - bloco de codigo botao voltar -ecra sign in*/
 .botao-voltar-container {
@@ -1280,3 +1312,32 @@ h1 {
 
 /* Fim - caixa para altera a palavra passe na pagina alteraPalavraPasse */
 
+/* inicio - menu off-canvas*/
+
+.offcanvas {
+    background-color: #38623d !important;
+    color: white !important;
+}
+
+.offcanvas-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 23px;
+}
+
+.offcanvas .offcanvas-title {
+    color: white !important;
+}
+
+.offcanvas .offcanvas-body a {
+    color: white !important;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.offcanvas .offcanvas-body a:hover {
+    color: #eaeaea !important;
+}
+
+/* fim - menu off-canvas*/
