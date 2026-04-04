@@ -1274,8 +1274,8 @@ h1 {
 
 .card {
   margin-top: 150px;
-  background-color: #a6e5ac;
-  border: 1px solid #a6e5ac;
+  background-color: #a6e5ac91;
+  border: 1px solid #a6e5ac91;
   border-radius: 12px;
 }
 
@@ -1302,7 +1302,7 @@ h1 {
 }
 
 .btn-primary:hover {
-  background-color: #ffffff;
+  background-color: #ffffff42;
   border-color: #f4f4f4;
 }
 
@@ -1339,5 +1339,6 @@ h1 {
 .offcanvas .offcanvas-body a:hover {
     color: #eaeaea !important;
 }
+
 
 /* fim - menu off-canvas*/
