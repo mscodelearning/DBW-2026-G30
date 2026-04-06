@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const customMin = document.getElementById("custom-min");
     const customMax = document.getElementById("custom-max");
 
+
     let selectedTimer = null;
     let challengeType = null;
     let challengeValue = null;
@@ -48,7 +49,6 @@ document.addEventListener("DOMContentLoaded", () => {
             challengeType = value;
             challengeValue = null;
 
-            // hide all inputs
             customNum.style.display = "none";
             customMin.style.display = "none";
             customMax.style.display = "none";
