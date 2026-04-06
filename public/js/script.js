@@ -308,7 +308,6 @@ btnAplicar.addEventListener("click", () => {
 
 /* Fim - codigo do drag and drop imagem */
 
-<<<<<<< HEAD
 /*inicio - selecao do modo de jogo para o singleplayer*/
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -535,6 +534,4 @@ function toggleMenu(){
 
 /* Fim - pop-up icon user na barra de navegacao */
 
-/*
-=======
->>>>>>> 51a2535 (implementação da página de jogo do modo Singleplayer com e sem timer, mas ainda sem os desafios)
+
