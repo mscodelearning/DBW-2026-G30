@@ -60,6 +60,7 @@ nav>a:active{
     right: 20px;
     top: 50%;
     transform: translateY(-50%);
+    z-index: 99999; /* novo para que fique em cima de todos os elemntos da pagina*/
 }
 
 .user-icon {
@@ -1491,11 +1492,11 @@ h1 {
 
 /* Inicio - caixa cria sala da pagina game mode multiplayer */
 
-
 /* Fim - caixa cria sala da pagina game mode multiplayer */
 
 
 /* Inicio - caixa sala privada da pagina game mode multiplayer */
+
 
 /* Fim - caixa sala privada da pagina game mode multiplayer */
 
