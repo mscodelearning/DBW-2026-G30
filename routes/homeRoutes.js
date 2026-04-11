@@ -9,7 +9,7 @@ router.get("/selectMultiplayerPage", (req, res) => {
   res.render("selectMultiplayerPage");
 });
 
-router.get("/alterarPalavraPasse", (req, res) => {
+router.get("/alterarPassword", (req, res) => {
   res.render("alteraPalavraPasse");
 });
 
@@ -33,6 +33,10 @@ router.get("/signup", (req, res) => {
 
 router.get("/tutorial", (req, res) => {
   res.render("tutorialPage");
+});
+
+router.get("/gamemodeMultiplayer", (req, res) => {
+  res.render("gamemodeMultiplayer");
 });
 
 

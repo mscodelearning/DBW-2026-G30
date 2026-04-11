@@ -3,12 +3,13 @@
 <html>
     <head>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-        <link rel="stylesheet" href="../public/css/style.css">
+        <link rel="stylesheet" href="/css/style.css">
         <title>Skriven</title>
     </head>
 <body>
     <div>
-        <header>
+        <%- include("partials/header") %>
+        <!--<header>
         <nav class="barra-navegacao">
             <a href="index.html"></a>
             <a href="perfil.html" class="perfil-link">
@@ -18,21 +19,21 @@
             <img src="../public/images/logo-skriven.png" alt="Logo" class="nav-logo">
             <img src="../public/images/botao-menu-perfil.png" alt="botao-menu" class="botao-menu">
         </nav>
-    </header>
+    </header>-->
     </div>
     <div class="botao-voltar-container">
-        <img src="../public/images/botao-sair.png" alt="voltar">
+        <img src="/images/botao-sair.png" alt="voltar">
         <div class="overlay-text">Voltar</div>
-        <a href="selectMultiplayerPage.html"></a>
+        <a href="/selectMultiplayerPage"></a>
     </div>
 
     <div class="container-mode-multiplayer">
-        <img class="btn-cria-sala" src="../public/images/fundo-contorno.png">
-        <img class="btn-sala-privada" src="../public/images/fundo-contorno.png">
-        <img class="btn-sala-publica" src="../public/images/fundo-contorno.png">
+        <img class="btn-cria-sala" src="/images/fundo-contorno.png">
+        <img class="btn-sala-privada" src="/images/fundo-contorno.png">
+        <img class="btn-sala-publica" src="/images/fundo-contorno.png">
     </div>
 
-<script src="../public/js/script.js" defer></script>
+<script src="js/script.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
