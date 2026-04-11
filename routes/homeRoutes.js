@@ -36,7 +36,7 @@ router.get("/tutorial", (req, res) => {
 });
 
 
-router.get("/gameSinglePlayer", (req, res) => {
+router.get("/gamemodeSinglePlayer", (req, res) => {
   res.render("gamemodeSingleplayer");
 });
 
@@ -47,7 +47,6 @@ router.get("/gameMultiplayerPlayer", (req, res) => {
 router.get("/jogoSinglePlayer", (req, res) => {
   res.render("jogoSingleplayer");
 });
-
 
 
 
