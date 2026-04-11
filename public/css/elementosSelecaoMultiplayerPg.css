@@ -1,0 +1,175 @@
+
+
+
+/*inicio - elementos do ecra de selecao de multiplayer*/
+
+.game-modes-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: -50px; /* espaço entre os dois */
+}
+
+
+.singleplayer-container {
+    height: calc(100vh - 62px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 600px;
+}
+
+.fundo-contorno1 {
+    max-width: 75%;
+    max-height: 75%;
+}
+
+.singleplayer-icon-container {
+    position: absolute;
+    width: 170px; 
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+}
+
+.singleplayer-icon-img {
+    width: 100%;
+    height: auto;
+}
+
+
+.botao-singleplayer-container {
+    position: absolute;
+    width: 200px; 
+    display: flex;
+    justify-content: center;
+    bottom: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+
+}
+
+
+.botao-singleplayer {
+    width: 100%;
+    height: auto;
+}
+
+.botao-singleplayer-verde {
+    position: absolute;
+    width: 182px; 
+    display: flex;
+    justify-content: center;
+    bottom: 4%;
+    left: 3.89%;
+}
+
+.botao-singleplayer-verde img{
+    width: 100%;
+    height: auto;
+}
+
+
+.overlay-text-singleplayer {
+    position: absolute;
+    color: rgb(90, 133, 73);
+    top: 30%;
+    text-align: center;
+    font-size: 20px;
+    transition: color 0.3s ease;
+    font-weight: bold;
+    z-index: 10;
+}
+
+
+.botao-singleplayer-container:hover .overlay-text-singleplayer{
+    color: #1E4A25;
+}
+
+
+
+
+
+.multiplayer-container {
+    height: calc(100vh - 62px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 600px;
+}
+
+.fundo-contorno2 {
+    max-width: 75%;
+    max-height: 75%;
+}
+
+.multiplayer-icon-container {
+    position: absolute;
+    width: 250px; 
+    display: flex;
+    justify-content: center;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+
+}
+
+.multiplayer-icon-img {
+    width: 100%;
+    height: auto;
+}
+
+
+.botao-multiplayer-container {
+    position: absolute;
+    width: 200px; 
+    display: flex;
+    justify-content: center;
+    bottom: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+
+}
+
+.botao-multiplayer {
+    width: 100%;
+    height: auto;
+}
+
+.botao-multiplayer-verde {
+    position: absolute;
+    width: 182px; 
+    display: flex;
+    justify-content: center;
+    bottom: 4%;
+    left: 3.89%;
+}
+
+.botao-multiplayer-verde img{
+    width: 100%;
+    height: auto;
+}
+
+
+.overlay-text-multiplayer {
+    position: absolute;
+    color: rgb(90, 133, 73);
+    top: 30%;
+    text-align: center;
+    font-size: 20px;
+    transition: color 0.3s ease;
+    font-weight: bold;
+    z-index: 10;
+}
+
+
+.botao-multiplayer-container:hover .overlay-text-multiplayer{
+    color: #1E4A25;
+}
+
+
+/*fim - elementos do ecra de selecao de multiplayer*/
