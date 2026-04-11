@@ -27,7 +27,7 @@ router.get("/login", (req, res) => {
 
 
 
-router.get("/", (req, res) => {
+router.get("/signup", (req, res) => {
   res.render("signupPage");
 });
 
@@ -43,6 +43,11 @@ router.get("/gameSinglePlayer", (req, res) => {
 router.get("/gameMultiplayerPlayer", (req, res) => {
   res.render("gamemodeMultiplayer");
 });
+
+router.get("/jogoSinglePlayer", (req, res) => {
+  res.render("jogoSingleplayer");
+});
+
 
 
 
