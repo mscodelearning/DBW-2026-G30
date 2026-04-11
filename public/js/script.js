@@ -149,7 +149,7 @@ if (!inputFile || !imageView || !perfilImg) {
 const defaultPerfilSrc = perfilImg.src;
 let currentImageUrl = null; // guarda o url do preview
 
-
+inputFile.addEventListener("change", uploadImage); 
 
 function uploadImage(){
 

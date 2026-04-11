@@ -31,7 +31,7 @@ const btnAplicar = document.getElementById("btn-aplicar");
 const perfilImg = document.getElementById("perfil-img");
 
 if (!inputFile || !imageView || !perfilImg) {
-        console.error("Elementos obrigatórios faltando!");
+        console.error("Elementos obrigatórios em falta!");
         return;
     }
 
