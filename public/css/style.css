@@ -12,7 +12,7 @@ body {
 
 }
 
-/* Inicio - barra de navegacao */ 
+/* Inicio - barra de navegacao */
 
 .barra-navegacao {
     background-color: #38623d;
@@ -60,7 +60,7 @@ nav>a:active{
     right: 20px;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 99999; /* novo para que fique em cima de todos os elemntos da pagina*/
+    z-index: 99999; /* novo para que fique em cima de todos os elemntos da pagina */
 }
 
 .user-icon {
@@ -70,7 +70,7 @@ nav>a:active{
     cursor: pointer;
 }
 
-/* Inicio - pop-up icon user na barra de navegacao*/
+/* Inicio - pop-up icon user na barra de navegacao */
 
 .dropdown-menu {
     background: rgb(103, 147, 102);
@@ -1436,7 +1436,7 @@ h1 {
 
 /* Fim - caixa para altera a palavra passe na pagina alteraPalavraPasse */
 
-/* inicio - menu off-canvas*/
+/* inicio - menu off-canvas
 
 
 .offcanvas {
@@ -1465,9 +1465,9 @@ h1 {
     color: #eaeaea !important;
 }
 
-/* fim - menu off-canvas*/
+ fim - menu off-canvas*/
 
-/* Inicio - container da pagina do mode multiplayer */
+/* Inicio - container da pagina do mode multiplayer 
 
 .container-mode-multiplayer {
     position: relative;
@@ -1490,7 +1490,7 @@ h1 {
     height: auto;
 }
 
-/* Fim - container da pagina do mode multiplayer */
+ Fim - container da pagina do mode multiplayer */
 
 /* Inicio - caixa cria sala da pagina game mode multiplayer */
 

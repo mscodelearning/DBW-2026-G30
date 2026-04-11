@@ -1,0 +1,25 @@
+.offcanvas {
+    background-color: #38623d !important;
+    color: white !important;
+}
+
+.offcanvas-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 23px;
+}
+
+.offcanvas .offcanvas-title {
+    color: white !important;
+}
+
+.offcanvas .offcanvas-body a {
+    color: white !important;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.offcanvas .offcanvas-body a:hover {
+    color: #eaeaea !important;
+}

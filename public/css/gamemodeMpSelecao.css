@@ -1,0 +1,21 @@
+
+.container-mode-multiplayer {
+    position: relative;
+    width: 100%;
+    padding-left: 130px;
+    padding-right: 40px;
+    box-sizing: border-box;
+    margin-top: 140px;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 100px;
+    transform: none;
+}
+
+.btn-cria-sala, .btn-sala-privada, .btn-sala-publica{
+    width: 360px;
+    height: auto;
+}
