@@ -13,7 +13,7 @@ router.get("/alterarPalavraPasse", (req, res) => {
   res.render("alteraPalavraPasse");
 });
 
-router.get("/paginaInicial", (req, res) => {
+router.get("/", (req, res) => {
   res.render("paginaInicial");
 });
 

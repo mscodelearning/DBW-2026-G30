@@ -3,14 +3,16 @@
 <html>
     <head>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-        <link rel="stylesheet" href="../public/css/style.css">
+        <!--<link rel="stylesheet" href="../public/css/style.css">-->
+        <link rel="stylesheet" href="/css/style.css">
         <title>Skriven</title>
     </head>
 <body>
     <div>
-        <header>
+        <%- include("partials/header") %>
+        <!--<header>
             <nav class="barra-navegacao">
-                <!--<a href="index.html"></a>-->
+                <a href="index.html"></a>
 
                 <img src="../public/images/logo-skriven.png" alt="Logo" class="nav-logo">
 
@@ -77,9 +79,10 @@
                     </div>
                 </div>
             </nav>
-        </header>
+        </header>-->
 
-    <a href="loginPage.html"><img class="login" src="../public/images/botao-login-text.png" alt="login"></a>
+    <!--<a href="loginPage.html"><img class="login" src="../public/images/botao-login-text.png" alt="login"></a>-->
+    <a href="/login"><img class="login" src="/images/botao-login-text.png" alt="login"></a>
         <div class="container">
             <h1>Skriven</h1>
             <p> ipsum dolor sit amet, consectetur adipisicing elit. Iure id, rerum aliquid eveniet a nulla quas nesciunt doloribus accusamus, nisi nostrum, quo esse. Corrupti harum ut distinctio at aliquid sequi?
@@ -89,7 +92,8 @@
     
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../public/js/script.js" defer></script>
+<!--<script src="../public/js/script.js" defer></script>-->
+<script src="/js/script.js" defer></script>
 
 </body>
 </html>

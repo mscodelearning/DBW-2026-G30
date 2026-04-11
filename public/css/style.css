@@ -1340,7 +1340,7 @@ h1 {
     width: 180px;
     height: 43px;
     text-decoration: none;
-    z-index: 99999;
+    z-index: 90000;
 }
 
 .botao-terminar-sessao img {
@@ -1437,6 +1437,7 @@ h1 {
 /* Fim - caixa para altera a palavra passe na pagina alteraPalavraPasse */
 
 /* inicio - menu off-canvas*/
+
 
 .offcanvas {
     background-color: #38623d !important;
