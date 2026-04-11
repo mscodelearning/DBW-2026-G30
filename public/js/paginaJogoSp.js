@@ -1,3 +1,5 @@
+'use strict';
+
 document.addEventListener("DOMContentLoaded", () => {
 
     const timer = localStorage.getItem("timer");
@@ -96,7 +98,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
         }
-        window.location.href = "fimDeJogo.html";
+        /*window.location.href = "fimDeJogo.html";*/
+        window.location.href = "/fimJogo";
     }
 
     finalizarBtn.addEventListener("click", terminarJogo);

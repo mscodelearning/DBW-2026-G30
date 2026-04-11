@@ -1,3 +1,5 @@
+'use strict';
+
 document.addEventListener("DOMContentLoaded", () => {
     const customInput = document.getElementById("custom-timer");
     const timerOptions = document.querySelectorAll("#timer-options .item");
@@ -102,7 +104,8 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.setItem("timer", selectedTimer);
             localStorage.setItem("challengeType", challengeType);
             localStorage.setItem("challengeValue", challengeValue);
-            window.location.href = "jogoSingleplayer.html";
+            /*window.location.href = "jogoSingleplayer.html";*/
+            window.location.href = "/jogoSingleplayer";
         }
     });
 });
