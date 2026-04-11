@@ -13,7 +13,7 @@ router.get("/alterarPalavraPasse", (req, res) => {
   res.render("alteraPalavraPasse");
 });
 
-router.get("/", (req, res) => {
+router.get("/paginaInicial", (req, res) => {
   res.render("paginaInicial");
 });
 
@@ -27,14 +27,22 @@ router.get("/login", (req, res) => {
 
 
 
-router.get("/signin", (req, res) => {
-  res.render("signinPage");
+router.get("/", (req, res) => {
+  res.render("signupPage");
 });
 
 router.get("/tutorial", (req, res) => {
   res.render("tutorialPage");
 });
 
+
+router.get("/gameSinglePlayer", (req, res) => {
+  res.render("gamemodeSingleplayer");
+});
+
+router.get("/gameMultiplayerPlayer", (req, res) => {
+  res.render("gamemodeMultiplayer");
+});
 
 
 
