@@ -1,3 +1,5 @@
+'use strict';
+
 document.addEventListener("DOMContentLoaded", () => {
     const customInput = document.getElementById("custom-timer");
     const timerOptions = document.querySelectorAll("#timer-options .item");
