@@ -9,11 +9,12 @@ router.get("/selectMultiplayerPage", (req, res) => {
   res.render("selectMultiplayerPage");
 });
 
-router.get("/alterarPassword", (req, res) => {
+router.get("/alterarPalavraPasse", (req, res) => {
   res.render("alteraPalavraPasse");
 });
 
-router.get("/paginaInicial", (req, res) => {
+/*/paginaInicial*/
+router.get("/", (req, res) => {
   res.render("paginaInicial");
 });
 
@@ -35,12 +36,8 @@ router.get("/tutorial", (req, res) => {
   res.render("tutorialPage");
 });
 
-router.get("/gamemodeMultiplayer", (req, res) => {
-  res.render("gamemodeMultiplayer");
-});
 
-
-router.get("/gamemodeSinglePlayer", (req, res) => {
+router.get("/gameSinglePlayer", (req, res) => {
   res.render("gamemodeSingleplayer");
 });
 
@@ -48,7 +45,7 @@ router.get("/gameMultiplayerPlayer", (req, res) => {
   res.render("gamemodeMultiplayer");
 });
 
-router.get("/jogoSinglePlayer", (req, res) => {
+router.get("/jogoSingleplayer", (req, res) => {
   res.render("jogoSingleplayer");
 });
 
