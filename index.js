@@ -1,16 +1,20 @@
-import express from "express"; // importação do pacote express em syntax module 
-const app = express(); 
-import path from 'path'; // Importa o módulo 'path' do Node.js para lidar com caminhos de ficheiros e diretórios. 
-import { fileURLToPath } from 'url'; // Importa a função 'fileURLToPath' do módulo 'url' para converter URLs de ficheiro em caminhos de ficheiro. 
-const __filename = fileURLToPath(import.meta.url); 
-const __dirname = path.dirname(__filename); // apanha o diretório de execução do ficheiro
+import express from "express"; // Framework HTTP usado para criar a aplicação web.
+import path from "path"; // Ajuda a construir caminhos de ficheiros de forma segura.
+import { fileURLToPath } from "url"; // Converte a URL do módulo ES num caminho real do sistema.
 
-app.set("view engine", "ejs"); //método para configurar a nossa view engine para “ejs”   
-app.use(express.static(__dirname + "/public")); //é uma função middleware no framework Express.js para Node.js que serve arquivos estáticos, como imagens, arquivos CSS e JavaScript. 
-app.use(express.urlencoded({ extended: true })); //é uma função middleware do Express.js que é usada para analisar dados de formulários HTML que são enviados para o servidor.
+import homeRoutes from "./routes/homeRoutes.js";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename); // Equivalente moderno do __dirname em projetos com ES Modules.
+
+const app = express();
+app.set("view engine", "ejs"); // Diz ao Express que as views serão renderizadas com EJS.
+app.use(express.static(path.join(__dirname, "public"))); // Expõe CSS, JS e imagens da pasta public.
+app.use(express.urlencoded({ extended: true })); // Converte dados enviados por formulários em req.body.
+
 
 /** definir o app.use das rotas aqui */
-
+app.use("/", homeRoutes);
 
 app.listen(3000, (err) => { 
 if (err) 

@@ -1192,7 +1192,8 @@ h1 {
 .caixa-texto-imagem {
     width: 220px;
     height: 45px;
-    background-image: url("../../public/images/barra-insere-texto-perfil.png");
+    /*background-image: url("../../public/images/barra-insere-texto-perfil.png");*/
+    background-image: url("/images/barra-insere-texto-perfil.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;

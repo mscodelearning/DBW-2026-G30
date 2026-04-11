@@ -1,0 +1,84 @@
+<header>
+            <nav class="barra-navegacao">
+                <!--<a href="index.html"></a>-->
+
+                <!--<img src="../public/images/logo-skriven.png" alt="Logo" class="nav-logo">-->
+                <img src="/images/logo-skriven.png" alt="Logo" class="nav-logo">
+
+                <button class="botao-menu border-0 bg-transparent p-0" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#menuLateral" aria-controls="menuLateral">
+                    <!--<img src="../public/images/botao-menu-perfil.png" alt="botao-menu" class="botao-menu">-->
+                    <img src="/images/botao-menu-perfil.png" alt="botao-menu" class="botao-menu">
+                </button>
+                <div class="dropdown user-dropdown">
+                    <a href="#"
+                    class="d-flex align-items-center text-decoration-none"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                        <!--<img class="perfil" src="../public/images/botao-perfil.png" alt="perfil">-->
+                        <img class="perfil" src="/images/botao-perfil.png" alt="perfil">
+                        <!--<img class="user-icon" src="../public/symbols/Union-user-icon.png" alt="user">-->
+                        <img class="user-icon" src="/symbols/Union-user-icon.png" alt="user">
+                    </a>
+
+                    <ul class="dropdown-menu dropdown-menu-end p-3 shadow">
+                        
+                        <li class="d-flex align-items-center mb-3">
+                            <!--<img src="../public/symbols/Union-user-icon.png" alt="user" width="60" height="60" class="rounded-circle me-3">-->
+                            <img src="/symbols/Union-user-icon.png" alt="user" width="60" height="60" class="rounded-circle me-3">
+                            <h6 class="mb-0 ">Nome Apelido</h6>
+                        </li>
+
+                        <li><hr class="dropdown-divider"></li>
+
+                        <li>
+                            <!--<a class="dropdown-item d-flex align-items-center gap-2" href="perfil.html">-->
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="/perfil">
+                                <!--<img src="../public/symbols/Union-user-icon.png" alt="" width="35" height="35" class="rounded-circle bg-light p-1">-->
+                                <img src="/symbols/Union-user-icon.png" alt="" width="35" height="35" class="rounded-circle bg-light p-1">
+                                <span class="flex-grow-1">Edit Profile</span>
+                                <span>></span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <!--<a class="dropdown-item d-flex align-items-center gap-2" href="tutorialPage.html">-->
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="/tutorial">
+                                <!--<img src="../public/symbols/simbolo-interrogacao.png" alt="" width="35" height="35" class="rounded-circle bg-light p-1">-->
+                                <img src="/symbols/simbolo-interrogacao.png" alt="" width="35" height="35" class="rounded-circle bg-light p-1">
+                                <span class="flex-grow-1">Tutorial</span>
+                                <span>></span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                                <!--<img src="../public/symbols/simbolo-logout.png" alt="" width="35" height="35" class="rounded-circle bg-light p-1">-->
+                                <img src="/symbols/simbolo-logout.png" alt="" width="35" height="35" class="rounded-circle bg-light p-1">
+                                <span class="flex-grow-1">Logout</span>
+                                <span>></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="offcanvas offcanvas-start" tabindex="-1" id="menuLateral" aria-labelledby="menuLateralLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="menuLateralLabel">Menu</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+                    </div>
+
+                    <div class="offcanvas-body">
+                        <!--<a href="perfil.html" class="d-block text-white text-decoration-none mb-3">Perfil</a>-->
+                        <a href="/perfilPage" class="d-block text-white text-decoration-none mb-3">Perfil</a>
+                        <!--<a href="paginaInicial.html" class="d-block text-white text-decoration-none mb-3">Página inicial</a>-->
+                        <a href="/paginaInicial" class="d-block text-white text-decoration-none mb-3">Página inicial</a>
+                        <!--<a href="tutorialPage.html" class="d-block text-white text-decoration-none mb-3">Tutorial</a>-->
+                        <a href="/tutorial" class="d-block text-white text-decoration-none mb-3">Tutorial</a>
+                        <!--<a href="selectMultiplayerPage.html" class="d-block text-white text-decoration-none mb-3">Multiplayer</a>-->
+                        <a href="/selectMultiplayerPage" class="d-block text-white text-decoration-none mb-3">Multiplayer</a>
+                        <a href="#" class="d-block text-white text-decoration-none mb-3">Salas Privadas</a>
+                        <a href="/paginaInicial" class="d-block text-white text-decoration-none">Terminar Sessão</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
