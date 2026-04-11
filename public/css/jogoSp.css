@@ -1,0 +1,113 @@
+/*início - elementos do ecrã de jogo singleplayer*/
+
+
+
+.jogo-singleplayer-container {
+    min-height: calc(100vh - 62px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.quadro-palavra-mestra {
+    position: relative;
+}
+
+
+#palavra-mestra {
+    font-family: "Merienda", cursive;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+
+    position: absolute;
+    top: 16%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+}
+
+
+
+.quadro-palavra-mestra img {
+    height: auto;
+    width: 400px;
+}
+
+.coluna-sp {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.caixa-palavras-descobertas {
+    padding: 10px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
+
+.caixa-palavras-descobertas img {
+    width: 80%;
+}
+
+#palavras-descobertas {
+    position: absolute;
+    top: 20px;
+    left: auto;
+}
+
+#caixa-texto {
+    padding: 12px;
+    width: 30%;
+    border-radius: 10px;
+}
+
+
+.caixa-pessoa {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.caixa-pessoa img {
+    width: 50px;
+    height: auto;
+}
+
+
+#finalizar-jogo {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #307940;
+    color: #1E4A25;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 100px;
+    transition: 0.2s;
+
+}
+
+#finalizar-jogo:hover {
+    background-color: #45a855;
+}
+
+#timer-display {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #55784C;
+    color: #ffffff;
+    margin-top: 100px;
+}
+
+/*fim - elementos do ecrã de jogo singleplayer*/

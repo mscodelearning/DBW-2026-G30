@@ -1,0 +1,320 @@
+
+/* Inicio - posicionamento icon user e texto alterar imagem na pagina do perfil */
+.perfil-header {
+    position: absolute;
+    top: 330px;
+    margin-left: 160px;
+}
+
+.user-icon2-perfil-container {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   /* margin-top: 180px;
+    margin-left: 248px;*/
+}
+
+.user-icon2-perfil-container img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.alteraImagem-perfil-container {
+    position: absolute;
+    top: 200px;
+    left: 45px;
+}
+
+
+
+/* Fim - posicionamento icon user e texto alterar imagem na pagina do perfil */
+
+
+/* Inicio - botao sair pagina de perfil*/
+
+.botao-sair-container {
+    position: absolute;
+    top: 80px;
+    right: 15px;
+    width: 100px;
+    height: auto;
+    overflow: hidden;
+    z-index: 60; /*garantir que nao fica escondido por outros elementos*/
+}
+
+.botao-sair-container img {
+    float: right;
+    width: 100px;
+    height: auto;
+    object-fit: cover;
+    transition: filter 0.3s ease;
+}
+
+.botao-sair-container:hover img{
+    filter: brightness(0.6); /*mais escuro*/
+}
+
+.overlay-text-perfil {
+   position: absolute;
+   top: 52%;
+   left: 45%;
+   transform: translate(-50%, -50%);
+   color: white;
+   text-align: center;
+   font-size: 16px;
+   transition: color 0.3s ease; /*mudanca de cor suave do texto*/
+}
+
+.botao-sair-container:hover .overlay-text-perfil {
+    color: rgb(166, 255, 166);
+}
+
+.botao-sair-container a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    display: block;
+}
+
+/* Inicio - botao sair pagina de perfil*/
+
+/* Inicio - caixas de dados (como nickname, username, password) e caixas de texto usando imagem pagina do perfil */
+
+.coluna-caixas {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 278px;
+    margin-left: 440px;
+}
+
+.grupo-campo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 300px;
+}
+
+.label-campo {
+    width: 90%;
+    margin: 0 0 2px 0;   
+    color: #ffffff;
+    font-size: 18px;
+    text-align: left;
+    padding-left: 5px;    /* recuo do texto para alinhar com o texto dentro da caixa */
+}
+
+.caixa-texto-imagem {
+    width: 220px;
+    height: 45px;
+    /*background-image: url("../../public/images/barra-insere-texto-perfil.png");*/
+    background-image: url("/images/barra-insere-texto-perfil.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.caixa-texto-imagem input {
+    background: rgba(0, 0, 0, 0.1);    
+    width: 90%;
+    height: 22px;
+    padding: 4px 8px;
+    line-height: 1.4;
+    background: transparent ;    /* !important  */
+    border: none ;               /* !important  */
+    outline: none;                       
+    border-radius: 0;                   
+    font-size: 18px;
+    color: #ffffff ;
+    z-index: 8888;                           /* !important  */
+}
+
+/* Fim - caixas de dados (como nickname, username, password) e caixas de texto usando imagem pagina do perfil */
+
+/* Inicio - texto para ir para pagina de alterar palavra passe atraves do click */
+
+.texto-alterar-password {
+    display: flex;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    padding-left: 32px;
+    z-index: 9999;
+}
+
+.texto-alterar-password:hover {
+    text-decoration: underline;
+}
+
+/* Fim - texto para ir para pagina de alterar palavra passe atraves do click */
+
+/* Inicio - quadro estatisticas na pagina do perfil */
+
+.quadro-estatistico-container {
+    position: relative;
+    top: 20%;
+    left: 50%;
+    z-index: 1000;
+    transform: translate(-50%, -50%);
+    overflow: visible;
+    width: 280px;
+    height: 350px;
+}
+
+.img-quadro {
+    position: absolute;
+    top: 10%;
+    left: 90%;
+    transform: translateY(-50%);
+    width: 160%;
+    height: 160%;
+    z-index: 1024;
+}
+
+.fundo-verde-quadro-estatistico {
+    position: absolute;
+    top: -200px;
+    left: 296px;
+    width: 128%;
+    height: 136%;
+    z-index: 1025;
+}
+
+.img-fundo-verde {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Inicio - dados estatisticos quadro da pagina do perfil */
+
+.stats-overlay {
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 18px 16px;
+    box-sizing: border-box;
+    z-index: 1026;
+    color: rgb(255, 255, 255);
+}
+
+.stats-title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    
+    
+}
+
+.stat-label {
+    font-size: 25px;
+    font-weight: 400;
+    color: rgb(255, 255, 255);
+    
+}
+
+.stat-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: rgb(104, 226, 119);
+}    
+
+/* Fim - dados estatisticos quadro da pagina do perfil */
+
+/* Fim - quadro estatisticas na pagina do perfil */
+
+/* Inicio - botao terminar sessao pagina do perfil */
+
+.zona-botao-termina {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99999;
+}
+
+.botao-terminar-sessao {
+    position: relative;
+    display: block;
+    width: 180px;
+    height: 43px;
+    text-decoration: none;
+    z-index: 90000;
+}
+
+.botao-terminar-sessao img {
+    display: flex;
+    width: 180px;
+    height: 43px;
+    pointer-events: none;
+}
+
+.overlay-text-termina-sessao {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.botao-terminar-sessao:hover .overlay-text-termina-sessao {
+    color: rgb(255, 57, 57);
+}
+
+.botao-terminar-sessao:hover img {
+    filter: brightness(0.8);
+}
+
+/* Fim - botao terminar sessao pagina do perfil */
+
+/*Inicio - Barra pop-up para guardar as alteracoes feitas aquando da alteracao do nickname na pagina de perfil */
+
+#save-bar {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  z-index: 1055;
+  min-width: 320px;
+  max-width: 90vw;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#save-bar.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+/*Fim - Barra pop-up para guardar as alteracoes feitas aquando da alteracao do nickname na pagina de perfil */

@@ -1,0 +1,257 @@
+/*inicio - elementos do ecra de selecao de modo de jogo singleplayer*/
+
+
+
+.geral-modos-sp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    flex: 1;
+    transform: translateY(-62px);
+}
+
+.modos-singleplayer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 400px;
+    margin: 130px auto;
+}
+
+
+.coluna {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.titulo-container {
+    position: relative;
+    margin-bottom: 35px;
+    width: 220px;
+}
+
+.titulo-conteudo h5 {
+    margin: 0;
+    color: white;
+    white-space: nowrap;
+}
+
+.bg-titulo {
+    width: 220px;
+    display: block;
+}
+
+.titulo-conteudo {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.icon-titulo-cr {
+    width: 22px;
+    height: auto;
+}
+
+.icon-titulo-desafio {
+    width: 35px;
+    height: auto;
+}
+
+.lista {
+    position: relative;
+    width: 250px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lista-opcoes {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+    padding-top: 150px;
+}
+
+
+.item {
+    position: relative;
+    width: 240px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    font-weight: bold;
+    transition: 0.2s;
+    z-index: 2;
+}
+
+.item:hover {
+    transform: scale(1.15);
+}
+
+.item.selected {
+    color: #4eff5a;
+    transform: scale(1.15);
+
+
+}
+
+.bg-opcoes {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+
+.option.selected {
+    background-color: #00ff1566;
+    color: white;
+    border-color: #09a904;
+}
+
+.image-button {
+    position: relative;
+    display: block;
+    /*margin: 170px auto 0;*/
+    margin: 0 auto;
+    border: none;
+    background: transparent;
+    padding: 0;
+    width: 170px;
+    height: 65px;
+    background-image: url("../images/botao-login.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.image-button img {
+    position: absolute;
+    width: 155px;
+    height: auto;
+    left: 7.5%;
+    top: 24%;
+}
+
+.image-button:disabled img {
+    opacity: 0.8;
+}
+
+.image-button:disabled {
+    cursor: not-allowed;
+}
+
+.image-button span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #1E4A25;
+    font-weight: bold;
+    pointer-events: none;
+    transition: 0.2s;
+}
+
+.image-button:disabled span{
+    color: #5a8549;
+}
+
+#custom-timer {
+    position: absolute;
+    top: 157%;
+    left: 105%;
+    transform: translateY(-50%);
+    width: 120px;
+    height: 40px;
+    display: none;
+    text-align: center;
+    border-radius: 8px;
+    border: none;
+    background-color: rgb(166, 255, 166);
+    color: #003809;
+}
+
+#custom-timer::placeholder {
+    color: #1c4500;
+}
+
+#custom-num {
+    position: absolute;
+    top: 65%;
+    left: 105%;
+    transform: translateY(-50%);
+    width: 120px;
+    height: 40px;
+    display: none;
+    text-align: center;
+    border-radius: 8px;
+    border: none;
+    background-color: rgb(166, 255, 166);
+    color: #003809;
+}
+
+#custom-num::placeholder {
+    color: #1c4500;
+}
+
+#custom-min {
+    position: absolute;
+    top: 109%;
+    left: 105%;
+    transform: translateY(-50%);
+    width: 120px;
+    height: 40px;
+    display: none;
+    text-align: center;
+    border-radius: 8px;
+    border: none;
+    background-color: rgb(166, 255, 166);
+    color: #003809;
+}
+
+#custom-min::placeholder {
+    color: #1c4500;
+}
+
+
+#custom-max {
+    position: absolute;
+    top: 157%;
+    left: 105%;
+    transform: translateY(-50%);
+    width: 120px;
+    height: 40px;
+    display: none;
+    text-align: center;
+    border-radius: 8px;
+    border: none;
+    background-color: rgb(166, 255, 166);
+    color: #003809;
+}
+
+#custom-max::placeholder {
+    color: #1c4500;
+}
+
+
+/*fim - elementos do ecra de selecao de modo de jogo singleplayer*/
