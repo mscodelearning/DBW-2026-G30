@@ -96,7 +96,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
         }
-        window.location.href = "fimDeJogo.html";
+        /*window.location.href = "fimDeJogo.html";*/
+        window.location.href = "/fimJogo";
     }
 
     finalizarBtn.addEventListener("click", terminarJogo);
