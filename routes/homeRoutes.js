@@ -46,6 +46,16 @@ router.get("/fimJogo", (req, res) => {
   res.render("fimDeJogo");
 });
 
+router.get("/salasPrivadas", (req, res) => {
+  res.render("salaPrivada");
+});
 
+router.get("/paginaCriaSala", (req, res) => {
+  res.render("criaSalaPage");
+});
+
+router.get("/paginaSalasPublicas", (req, res) => {
+  res.render("salasPublicasPage");
+});
 
 export default router;

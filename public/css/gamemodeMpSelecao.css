@@ -2,8 +2,8 @@
 .container-mode-multiplayer {
     position: relative;
     width: 100%;
-    padding-left: 130px;
-    padding-right: 40px;
+    padding-left: 120px;
+    padding-right: 125px;
     box-sizing: border-box;
     margin-top: 140px;
     transform: translate(-50%, -50%);
@@ -15,7 +15,123 @@
     transform: none;
 }
 
+/*
 .btn-cria-sala, .btn-sala-privada, .btn-sala-publica{
     width: 360px;
     height: auto;
+}*/
+
+.caixas-btn-mp {
+    position:relative;
+    width: 360px;
+    height: 500px;
 }
+
+/*
+.caixas-btn-mp img {
+    width: 360px;
+    height: auto;
+    display: block;
+}*/
+
+.fundo-caixa {
+    width: 360px;
+    height: 500px;
+    display: block;
+}
+
+.titulo-caixa {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    color: rgb(192, 192, 192);
+    font-weight: 480;
+    font-size: 28px;
+}
+
+.simbolo-mais, .simbolo-mundo{
+    position: absolute;
+    top: 120px;
+    left: 80px;
+    width: 200px;
+    justify-content: center;
+    height: auto;
+}
+
+
+.botao-signup-container {
+    position: absolute;
+    top: 380px;
+    right: 92px;
+    z-index: 2;
+}
+
+.botao-signup-container img {
+    width: 180px;
+    height: 68px;
+    position: relative;
+    z-index: 2;
+}
+
+.fundo-verde-botao-signup {
+    position: absolute;
+    top: 397px;
+    right: 95px;
+    /*display: flex;*/
+    z-index: 3;
+}
+
+.fundo-verde-botao-signup img {
+    width: 164px;
+    height: 49px;
+    position: relative;
+    z-index: 1;
+}
+
+.overlay-text-signup {
+   position: absolute;
+   top: 42%;
+   left: 47%;
+   transform: translate(-50%, -50%);
+   color: rgb(90, 133, 73);
+   text-align: center;
+   font-family: Arial, sans-serif;
+   font-size: 16px;
+   font-weight: bold;
+   /*pointer-events: none; /*texto nao atrapalha o clique*/
+   transition: color 0.3s ease; /*mudanca de cor suave do texto*/
+   z-index: 10;
+}
+
+.fundo-verde-botao-signup:hover .overlay-text-signup{
+    color: #1E4A25;
+}
+
+.simbolo-sala-privada {
+    position: absolute;
+    top: 184px;
+    left: 98px;
+    width: 160px;
+    justify-content: center;
+    height: auto;
+}
+
+
+.area-codigo {
+    position: absolute;
+    top: 114px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    z-index: 2;
+}
+
+.input-codigo {
+    text-align: center;
+    border-radius: 10px;
+    border: none;
+    background-color: #b1afafad;
+}
+

@@ -519,12 +519,12 @@ h1 {
 
 
 /*inicio - elementos do ecra de selecao de multiplayer*/
-
+/*
 .game-modes-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: -50px; /* espaço entre os dois */
+    gap: -50px; espaço entre os dois 
 }
 
 
@@ -688,6 +688,7 @@ h1 {
     color: #1E4A25;
 }
 
+*/
 
 /*fim - elementos do ecra de selecao de multiplayer*/
 
