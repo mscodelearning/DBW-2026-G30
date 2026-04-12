@@ -1,0 +1,52 @@
+.fim-jogo-body {
+    background-position: center;
+    height: calc(100vh - 62px);
+    margin: 0;
+}
+
+.overlay-box {
+    background: #16381b;
+    border-radius: 20px;
+    color:#cdcdcd;
+    max-width: 1200px;
+    height: calc(100vh - 62px);
+    max-height: 550px;
+    width: 100%;
+}
+
+/*números*/
+.stat-num {
+    font-family: "Bree Serif", serif;
+    font-weight: 550;
+    font-style: normal;
+    color:#cdcdcd;
+    font-size: 35px;
+    margin: 10px 0;
+    text-align: center;
+    height: 70px;
+
+}
+
+/*labels*/
+.stat-label {
+    font-family: "Bree Serif", serif;
+    font-weight: 400;
+    font-style: normal;
+    color:#cdcdcd;
+    font-size: 30px;
+    margin: 10px 0;
+    text-align: center;
+    height: 70px;
+
+}
+
+h2 {
+    font-family: "Bree Serif", serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 40px;
+    color:#cdcdcd;
+    padding-top: 20px;
+    margin-bottom: 60px;
+
+}

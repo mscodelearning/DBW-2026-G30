@@ -2,11 +2,14 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
+
     const timer = localStorage.getItem("timer");
     const finalizarBtn = document.getElementById("finalizar-jogo");
     const display = document.getElementById("timer-display");
     const challengeType = localStorage.getItem("challengeType");
     const challengeValue = localStorage.getItem("challengeValue");
+    let tempoInicial = Date.now();
+    let erros = 0;
 
     let palavrasValidas = 0;
 
@@ -36,8 +39,10 @@ document.addEventListener("DOMContentLoaded", () => {
         adicionarPontos(20);
         palavrasValidas++;
     } else {
+        erros++;
         mostrarAlerta("Palavra inválida para este desafio!");
     }
+    
 
         input.value = "";
         }
@@ -92,14 +97,35 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
     function terminarJogo() {
+
         if (challengeType === "Objetivo: nº de palavras") {
             if (palavrasValidas < parseInt(challengeValue)) {
                 mostrarAlerta("Ainda não atingiu o número de palavras necessário!");
                 return;
             }
         }
+
+        let tempoFinal = Date.now();
+        let tempoJogado = Math.floor((tempoFinal - tempoInicial) / 1000);
+
+        const estatisticasJogo = {
+            tempoJogado: tempoJogado,
+            palavrasValidas: palavrasValidas,
+            pontos: pontos,
+            erros: erros
+        };
+
+        localStorage.setItem("estatisticasJogo", JSON.stringify(estatisticasJogo));
+
+        atualizarEstatisticasGlobais(estatisticasJogo);
+
+        console.log("SALVO:", estatisticasJogo); // DEBUG
+
+
         /*window.location.href = "fimDeJogo.html";*/
-        window.location.href = "/fimJogo";
+        setTimeout(() => {
+            window.location.href = "/fimJogo";
+        }, 50);
     }
 
     finalizarBtn.addEventListener("click", terminarJogo);
@@ -117,6 +143,30 @@ document.addEventListener("DOMContentLoaded", () => {
             container.innerHTML = "";
         }, 2000);
     }
-
 });
 
+
+/*estatísticas globais de jogo para colocar no perfil*/
+
+function atualizarEstatisticasGlobais(statsJogo) {
+
+    let statsGlobais = JSON.parse(localStorage.getItem("estatisticasGlobais"));
+
+    if (!statsGlobais) {
+        statsGlobais = {
+            tempoTotal: 0,
+            pontosTotal: 0,
+            palavrasTotal: 0,
+            errosTotal: 0,
+            jogosJogados: 0
+        };
+    }
+
+    statsGlobais.tempoTotal += statsJogo.tempoJogado;
+    statsGlobais.pontosTotal += statsJogo.pontos;
+    statsGlobais.palavrasTotal += statsJogo.palavrasValidas;
+    statsGlobais.errosTotal += statsJogo.erros;
+    statsGlobais.jogosJogados += 1;
+
+    localStorage.setItem("estatisticasGlobais", JSON.stringify(statsGlobais));
+}
