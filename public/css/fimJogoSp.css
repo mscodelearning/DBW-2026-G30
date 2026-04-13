@@ -16,9 +16,9 @@
 
 /*números*/
 .stat-num {
-    font-family: "Bree Serif", serif;
-    font-weight: 550;
-    font-style: normal;
+    /*font-family: "Bree Serif", serif;*/
+    /*font-weight: 550;*/
+    /*font-style: normal;*/
     color:#cdcdcd;
     font-size: 35px;
     margin: 10px 0;
@@ -29,9 +29,9 @@
 
 /*labels*/
 .stat-label {
-    font-family: "Bree Serif", serif;
+    /*font-family: "Bree Serif", serif;
     font-weight: 400;
-    font-style: normal;
+    font-style: normal;*/
     color:#cdcdcd;
     font-size: 30px;
     margin: 10px 0;
@@ -41,9 +41,9 @@
 }
 
 h2 {
-    font-family: "Bree Serif", serif;
+    /*font-family: "Bree Serif", serif;
     font-weight: 500;
-    font-style: normal;
+    font-style: normal;*/
     font-size: 40px;
     color:#cdcdcd;
     padding-top: 20px;
