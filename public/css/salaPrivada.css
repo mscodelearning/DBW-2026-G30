@@ -1,0 +1,220 @@
+
+/*
+.container-sala-privada {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+.fundo-chat {
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 490px;
+    height: 590px;
+}
+
+.fundo-caixa {
+    width: 490px;
+    height: 560px;
+    display: block;
+}
+
+.fundo-bottom-chat {
+    position: absolute;
+    top: 486px;
+    left: 2px;
+    width: 485px;
+    height: auto;
+    z-index: 2;
+}
+
+.caixa-texto-chat{ 
+    position: absolute;
+    top: 498px;
+    left: 35px;
+    width: 360px;
+    height: auto;
+    z-index: 4;
+}
+
+.fundo-btn-send {
+    position: absolute;
+    top: 498px;
+    left: 415px;
+    width: 46px;
+    height: auto;
+    z-index: 4;
+}
+
+.icon-send {
+    position: absolute;
+    top: 508px;
+    left: 425px;
+    width: 22px;
+    height: auto;
+    z-index: 6;
+}*/
+
+
+.container-sala-privada {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.fundo-chat {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 490px;
+  height: 590px;
+}
+
+.fundo-caixa {
+  width: 490px;
+  height: 560px;
+  display: block;
+}
+
+.fundo-bottom-chat {
+  position: absolute;
+  top: 486px;
+  left: 2px;
+  width: 485px;
+  z-index: 2;
+}
+
+.mensagens {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 450px;
+  height: 440px;
+  overflow-y: auto;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mensagem {
+  align-self: flex-end;
+  background: #265c2f;
+  color: #ffffff;
+  padding: 10px 14px;
+  border-radius: 14px;
+  max-width: 70%;
+  font-size: 14px;
+}
+
+.input-area {
+  position: absolute;
+  top: 498px;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  z-index: 4;
+}
+
+.caixa-texto-chat { 
+  position: absolute;
+  top: 0;
+  left: 35px;
+  width: 360px;
+  z-index: 4;
+}
+
+.input-chat {
+  position: absolute;
+  top: 8px;
+  left: 50px;
+  width: 325px;
+  height: 28px;
+  border: none;
+  outline: none;
+  background: transparent;
+  z-index: 5;
+  font-size: 14px;
+  color: #153a18;
+}
+
+.btn-send {
+  position: absolute;
+  top: 0;
+  left: 415px;
+  width: 46px;
+  height: 46px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  z-index: 5;
+}
+
+.fundo-btn-send {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 46px;
+  z-index: 4;
+}
+
+.icon-send {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 22px;
+  z-index: 6;
+}
+
+
+.botao-signup-container {
+    position: absolute;
+    top: 703px;
+    right: 92px;
+    z-index: 2;
+}
+
+.botao-signup-container img {
+    width: 180px;
+    height: 68px;
+    position: relative;
+    z-index: 2;
+}
+
+.fundo-verde-botao-signup {
+    position: absolute;
+    top: 720px;
+    right: 95px;
+    /*display: flex;*/
+    z-index: 3;
+}
+
+.fundo-verde-botao-signup img {
+    width: 164px;
+    height: 49px;
+    position: relative;
+    z-index: 1;
+}
+
+.overlay-text-signup {
+   position: absolute;
+   top: 42%;
+   left: 47%;
+   transform: translate(-50%, -50%);
+   color: rgb(90, 133, 73);
+   text-align: center;
+    width: 180px;          /* aumenta a largura da caixa */
+   font-size: 16px;
+   font-weight: bold;
+   /*pointer-events: none; /*texto nao atrapalha o clique*/
+   transition: color 0.3s ease; /*mudanca de cor suave do texto*/
+   z-index: 10;
+}
+
+.fundo-verde-botao-signup:hover .overlay-text-signup{
+    color: #1E4A25;
+}
