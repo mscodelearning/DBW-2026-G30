@@ -6,7 +6,7 @@ const mensagens = document.getElementById("mensagens");
 
 function enviarMensagem() {
   const texto = input.value.trim();
-s
+
   if (texto === "") return;
 
   const novaMensagem = document.createElement("div");
