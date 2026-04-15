@@ -11,6 +11,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename); // Equivalente moderno do __dirname em projetos com ES Modules.
 
 const app = express();
+
+
+
 app.set("view engine", "ejs"); // Diz ao Express que as views serão renderizadas com EJS.
 app.use(express.static(path.join(__dirname, "public"))); // Expõe CSS, JS e imagens da pasta public.
 app.use(express.urlencoded({ extended: true })); // Converte dados enviados por formulários em req.body.
