@@ -271,50 +271,18 @@
 
 /* Inicio - icon dos jogadores da sala com o nome */
 
-/*
-
-.icon-user {
-  position: absolute;
-  top: 40px;
-  right: 40px;
-  width: 80px; 
-  height: 80px;
-}
-
-
-.fundo-utilizador {
-  position: absolute;
-  inset: 0;          
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
-.icon-square-utilizador {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 40px;       
-  height: auto;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-}
-*/
-
-
-
 .lista-jogadores {
-  position: absolute;      /* ou relative, consoante o layout */
-  top: 200px;              /* exemplo */
+  position: absolute;     
+  top: 200px;            
   right: 160px;
   display: flex;
   flex-direction: column;
-  gap: 60px;               /* espaço entre jogadores */
+  gap: 60px;            
 }
 
 .jogador {
   position: relative;
-  width: 180px;            /* tamanho do “cartão” */
+  width: 180px;            
   height: 60px;
 }
 
@@ -347,3 +315,5 @@
 }
 
 /* Fim - icon dos jogadores da sala com o nome */
+
+
