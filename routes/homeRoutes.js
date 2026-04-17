@@ -58,4 +58,8 @@ router.get("/paginaSalasPublicas", (req, res) => {
   res.render("salasPublicasPage");
 });
 
+router.get("/paginaJogoMultiplayer", (req, res) => {
+  res.render("jogoMultiplayer");
+});
+
 export default router;
