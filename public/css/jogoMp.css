@@ -1,0 +1,143 @@
+.jogo-container {
+    display: flex;
+    padding: 20px;
+    min-height: calc(100vh - 62px);
+}
+
+.esquerda, .centro, .direita {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* direita - adversarios */
+.direita {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* cada adversario */
+.adversario {
+    padding-bottom: 20px;
+    padding-top: 20px;
+    width: 100%;
+    max-width: 180px;
+}
+
+/*caixas com numero de palavras dos adversarios */
+.mensagem-box {
+    height: 50px;
+    width: 100%;
+    background-color: #55784C;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* info dos jogadores */
+.player-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+
+}
+
+.player-info img{
+    width: 50px;
+    height: auto;
+}
+
+.quadro-palavra-mestra {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#palavra-mestra {
+    font-family: "Merienda", cursive;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+
+    position: absolute;
+    color: white;
+    text-align: center;
+    top: 5%;
+}
+
+
+.quadro-palavra-mestra img {
+    height: auto;
+    width: 100%;
+    max-width: 400px;
+}
+
+.caixa-palavras-descobertas {
+    padding: 10px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
+
+.caixa-palavras-descobertas img {
+    width: 80%;
+}
+
+#palavras-descobertas {
+    position: absolute;
+    top: 20px;
+    left: auto;
+}
+
+#caixa-texto {
+    padding: 12px;
+    width: 30%;
+    border-radius: 10px;
+}
+
+
+.caixa-pessoa {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.caixa-pessoa img {
+    width: 50px;
+    height: auto;
+}
+
+
+#finalizar-jogo {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #307940;
+    color: #1E4A25;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 100px;
+    transition: 0.2s;
+
+}
+
+#finalizar-jogo:hover {
+    background-color: #45a855;
+}
+
+#timer-display {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #55784C;
+    color: #ffffff;
+    margin-top: 100px;
+}

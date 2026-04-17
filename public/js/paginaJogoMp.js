@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const display = document.getElementById("timer-display");
     const challengeType = localStorage.getItem("challengeType");
     const challengeValue = localStorage.getItem("challengeValue");
+    const players = JSON.parse(localStorage.getItem("players")) || [];    const access = localStorage.getItem("access");
     let tempoInicial = Date.now();
     let erros = 0;
 
@@ -42,10 +43,8 @@ document.addEventListener("DOMContentLoaded", () => {
         erros++;
         mostrarAlerta("Palavra inválida para este desafio!");
     }
-    
-
         input.value = "";
-        }
+    }
     });
 
     function validarPalavra(palavra) {
@@ -143,6 +142,22 @@ document.addEventListener("DOMContentLoaded", () => {
             container.innerHTML = "";
         }, 2000);
     }
+
+    // dados para testar multiplayer
+    const fakePlayers = [
+        { id: "1", name: "Maria", score: 0 },
+        { id: "2", name: "João", score: 0 },
+        { id: "3", name: "Mário", score: 0 },
+        { id: "4", name: "Joana", score: 0 }
+];
+
+// simular "eu"
+    const myId = "1";
+
+    // testar diferentes numeros de jogadores
+    //renderPlayers(fakePlayers.slice(0, 2), myId); // 2 players
+     //renderPlayers(fakePlayers.slice(0, 3), myId); // 3 players
+     renderPlayers(fakePlayers, myId); // 4 players
 });
 
 
@@ -169,4 +184,37 @@ function atualizarEstatisticasGlobais(statsJogo) {
     statsGlobais.jogosJogados += 1;
 
     localStorage.setItem("estatisticasGlobais", JSON.stringify(statsGlobais));
+}
+
+/*novo*/
+
+
+function renderPlayers(players, myId) {
+    const container = document.getElementById("adversarios-container");
+    container.innerHTML = "";
+
+    const eu = players.find(p => p.id === myId);
+    const adversarios = players.filter(p => p.id !== myId);
+
+    // eu (esquerda)
+    document.getElementById("nome-jogador").textContent = eu.name;
+    document.getElementById("pontuacao").textContent = eu.score;
+
+    // adversarios (direita)
+    adversarios.forEach(player => {
+        const div = document.createElement("div");
+        div.classList.add("adversario");
+        div.setAttribute("data-player-id", player.id);
+
+        div.innerHTML = `
+            <div class="mensagem-box"></div>
+            <div class="player-info">
+                <img src="/Images/icone-pessoa.png">
+                <span>${player.name}</span>
+                <span>${player.score} pts</span>
+            </div>
+        `;
+
+        container.appendChild(div);
+    });
 }
