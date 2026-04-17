@@ -1074,7 +1074,7 @@ h1 {
 /*fim - elementos do ecrã de jogo singleplayer*/
 
 
-/* Inicio - posicionamento icon user e texto alterar imagem na pagina do perfil 
+/* Inicio - posicionamento icon user e texto alterar imagem na pagina do perfil */
 .perfil-header {
     position: absolute;
     top: 330px;
@@ -1089,8 +1089,6 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* margin-top: 180px;
-    /* margin-left: 248px;
 }
 
 .user-icon2-perfil-container img {
@@ -1112,7 +1110,7 @@ h1 {
 
 
 
-/* Inicio - botao sair pagina de perfil
+/* Inicio - botao sair pagina de perfil*/
 
 .botao-sair-container {
     position: absolute;
@@ -1121,7 +1119,7 @@ h1 {
     width: 100px;
     height: auto;
     overflow: hidden;
-    z-index: 60; /*garantir que nao fica escondido por outros elementos
+    z-index: 60; /*garantir que nao fica escondido por outros elementos*/
 }
 
 .botao-sair-container img {
@@ -1133,7 +1131,7 @@ h1 {
 }
 
 .botao-sair-container:hover img{
-    filter: brightness(0.6); /*mais escuro
+    filter: brightness(0.6); /*mais escuro*/
 }
 
 .overlay-text-perfil {
@@ -1144,7 +1142,7 @@ h1 {
    color: white;
    text-align: center;
    font-size: 16px;
-   transition: color 0.3s ease; /*mudanca de cor suave do texto
+   transition: color 0.3s ease; /*mudanca de cor suave do texto*/
 }
 
 .botao-sair-container:hover .overlay-text-perfil {
@@ -1161,10 +1159,10 @@ h1 {
     display: block;
 }
 
-/* Inicio - botao sair pagina de perfil*/
+/* Fim - botao sair pagina de perfil*/
 
 
-/* Inicio - caixas de dados (como nickname, username, password) e caixas de texto usando imagem pagina do perfil 
+/* Inicio - caixas de dados (como nickname, username, password) e caixas de texto usando imagem pagina do perfil */
 
 .coluna-caixas {
     display: flex;
@@ -1189,11 +1187,11 @@ h1 {
     text-align: left;
     padding-left: 5px; }    /*recuo do texto para alinhar com o texto dentro da caixa */
 
-/*
+
 .caixa-texto-imagem {
     width: 220px;
     height: 45px;
-    /*background-image: url("../../public/images/barra-insere-texto-perfil.png");
+    /*background-image: url("../../public/images/barra-insere-texto-perfil.png");*/
     background-image: url("/images/barra-insere-texto-perfil.png");
     background-repeat: no-repeat;
     background-position: center;
@@ -1210,18 +1208,18 @@ h1 {
     height: 22px;
     padding: 4px 8px;
     line-height: 1.4;
-    background: transparent ;    /* !important  
-    border: none ;               /* !important 
+    background: transparent ;    /* !important */
+    border: none ;               /* !important */
     outline: none;                       
     border-radius: 0;                   
     font-size: 18px;
     color: #ffffff ;
-    z-index: 8888;                           /* !important  
+    z-index: 8888;                           /* !important */ 
 }
 
 /* Fim - caixas de dados (como nickname, username, password) e caixas de texto usando imagem pagina do perfil */
 
-/* Inicio - texto para ir para pagina de alterar palavra passe atraves do click 
+/* Inicio - texto para ir para pagina de alterar palavra passe atraves do click */
 
 .texto-alterar-password {
     display: flex;
@@ -1236,12 +1234,11 @@ h1 {
 .texto-alterar-password:hover {
     text-decoration: underline;
 }
-*/
 
 
 /* Fim - texto para ir para pagina de alterar palavra passe atraves do click */
 
-/* Inicio - quadro estatisticas na pagina do perfil 
+/* Inicio - quadro estatisticas na pagina do perfil */
 
 .quadro-estatistico-container {
     position: relative;
@@ -1279,7 +1276,7 @@ h1 {
     display: block;
 }
 
-/* Inicio - dados estatisticos quadro da pagina do perfil 
+/* Inicio - dados estatisticos quadro da pagina do perfil */
 
 .stats-overlay {
     position: absolute;
@@ -1328,7 +1325,7 @@ h1 {
 
 /* Fim - quadro estatisticas na pagina do perfil */
 
-/* Inicio - botao terminar sessao pagina do perfil 
+/* Inicio - botao terminar sessao pagina do perfil */
 
 .zona-botao-termina {
     position: fixed;
@@ -1374,7 +1371,7 @@ h1 {
 
 /* Fim - botao terminar sessao pagina do perfil */
 
-/*Inicio - Barra pop-up para guardar as alteracoes feitas aquando da alteracao do nickname na pagina de perfil 
+/*Inicio - Barra pop-up para guardar as alteracoes feitas aquando da alteracao do nickname na pagina de perfil */
 
 #save-bar {
   position: fixed;
@@ -1397,7 +1394,7 @@ h1 {
 
 /*Fim - Barra pop-up para guardar as alteracoes feitas aquando da alteracao do nickname na pagina de perfil */
 
-/* Inicio - caixa para altera a palavra passe na pagina alteraPalavraPasse 
+/* Inicio - caixa para altera a palavra passe na pagina alteraPalavraPasse */
 
 .card {
   margin-top: 150px;
@@ -1437,9 +1434,9 @@ h1 {
   box-shadow: 0 0 0 0.2rem rgba(68, 248, 113, 0.25);
 }
 
- Fim - caixa para altera a palavra passe na pagina alteraPalavraPasse */
+/* Fim - caixa para altera a palavra passe na pagina alteraPalavraPasse */
 
-/* inicio - menu off-canvas
+/* inicio - menu off-canvas*/
 
 
 .offcanvas {
@@ -1468,10 +1465,10 @@ h1 {
     color: #eaeaea !important;
 }
 
- fim - menu off-canvas*/
+ /*fim - menu off-canvas*/
 
 /* Inicio - container da pagina do mode multiplayer 
-
+/*
 .container-mode-multiplayer {
     position: relative;
     width: 100%;
@@ -1495,18 +1492,14 @@ h1 {
 
  Fim - container da pagina do mode multiplayer */
 
-/* Inicio - caixa cria sala da pagina game mode multiplayer */
 
-/* Fim - caixa cria sala da pagina game mode multiplayer */
+/* Inicio - implementacao da caixa que vai fazer de botao para entrar/selecionar uma sala publica */
 
+.salas-publicas-conatiner {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
 
-/* Inicio - caixa sala privada da pagina game mode multiplayer */
-
-
-/* Fim - caixa sala privada da pagina game mode multiplayer */
-
-/* Inicio - caixa sala publica da pagina game mode multiplayer */
-
-
-/* Fim - caixa sala publica da pagina game mode multiplayer */
+/* Fim - implementacao da caixa que vai fazer de botao para entrar/selecionar uma sala publica */
 
