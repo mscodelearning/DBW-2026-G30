@@ -8,7 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const display = document.getElementById("timer-display");
     const challengeType = localStorage.getItem("challengeType");
     const challengeValue = localStorage.getItem("challengeValue");
-    const players = JSON.parse(localStorage.getItem("players")) || [];    const access = localStorage.getItem("access");
+    const players = JSON.parse(localStorage.getItem("players")) || [];
+    const access = localStorage.getItem("access");
     let tempoInicial = Date.now();
     let erros = 0;
 
@@ -100,7 +101,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (challengeType === "Objetivo: nº de palavras") {
             if (palavrasValidas < parseInt(challengeValue)) {
                 mostrarAlerta("Ainda não atingiu o número de palavras necessário!");
-                return;
             }
         }
 
@@ -118,13 +118,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         atualizarEstatisticasGlobais(estatisticasJogo);
 
-        console.log("SALVO:", estatisticasJogo); // DEBUG
-
-
-        /*window.location.href = "fimDeJogo.html";*/
         setTimeout(() => {
             window.location.href = "/fimJogo";
-        }, 50);
+        }, 2000);  
     }
 
     finalizarBtn.addEventListener("click", terminarJogo);
@@ -185,9 +181,6 @@ function atualizarEstatisticasGlobais(statsJogo) {
 
     localStorage.setItem("estatisticasGlobais", JSON.stringify(statsGlobais));
 }
-
-/*novo*/
-
 
 function renderPlayers(players, myId) {
     const container = document.getElementById("adversarios-container");

@@ -42,10 +42,8 @@ document.addEventListener("DOMContentLoaded", () => {
         erros++;
         mostrarAlerta("Palavra inválida para este desafio!");
     }
-    
-
         input.value = "";
-        }
+    }
     });
 
     function validarPalavra(palavra) {
@@ -101,7 +99,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (challengeType === "Objetivo: nº de palavras") {
             if (palavrasValidas < parseInt(challengeValue)) {
                 mostrarAlerta("Ainda não atingiu o número de palavras necessário!");
-                return;
             }
         }
 
@@ -119,13 +116,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         atualizarEstatisticasGlobais(estatisticasJogo);
 
-        console.log("SALVO:", estatisticasJogo); // DEBUG
-
-
-        /*window.location.href = "fimDeJogo.html";*/
         setTimeout(() => {
             window.location.href = "/fimJogo";
-        }, 50);
+        }, 2000);  
     }
 
     finalizarBtn.addEventListener("click", terminarJogo);
