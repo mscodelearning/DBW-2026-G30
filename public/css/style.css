@@ -1222,13 +1222,14 @@ h1 {
 /* Inicio - texto para ir para pagina de alterar palavra passe atraves do click */
 
 .texto-alterar-password {
-    display: flex;
+    display: inline-block;
+    width: fit-content;
     color: #ffffff;
     text-decoration: none;
     font-size: 16px;
     cursor: pointer;
-    padding-left: 32px;
-    z-index: 9999;
+    margin-left: 32px;
+    z-index: 900;
 }
 
 .texto-alterar-password:hover {
@@ -1239,11 +1240,11 @@ h1 {
 /* Fim - texto para ir para pagina de alterar palavra passe atraves do click */
 
 /* Inicio - quadro estatisticas na pagina do perfil */
-
+/*
 .quadro-estatistico-container {
     position: relative;
     top: 20%;
-    left: 50%;
+    left:60%;
     z-index: 1000;
     transform: translate(-50%, -50%);
     overflow: visible;
@@ -1274,10 +1275,50 @@ h1 {
     width: 100%;
     height: 100%;
     display: block;
+}*/
+
+.quadro-estatistico-container {
+    position: absolute;
+    /*top: 50%;
+    left: 70%;*/
+    inset: 0;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    height: 560px;
+    z-index: 1000;
 }
 
-/* Inicio - dados estatisticos quadro da pagina do perfil */
+.img-quadro {
+    position: absolute;
+    /*inset: 0;*/
+    top: 460px;
+    left: 1090px;
+    width: 95%;
+    height: 94%;
+    object-fit: contain;
+    z-index: 1;
+}
 
+.fundo-verde-quadro-estatistico {
+    position: absolute;
+    top: 502px;
+    left: 1142px;
+    width: 322px;
+    height: 448px;
+    z-index: 2;
+}
+
+.img-fundo-verde {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+
+
+
+/* Inicio - dados estatisticos quadro da pagina do perfil */
+/*
 .stats-overlay {
     position: absolute;
     top: -10px;
@@ -1291,7 +1332,22 @@ h1 {
     box-sizing: border-box;
     z-index: 1026;
     color: rgb(255, 255, 255);
+}*/
+
+.stats-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 18px 16px;
+    box-sizing: border-box;
+    z-index: 3;
+    color: white;
 }
+
+
+
 
 .stats-title {
     text-align: center;
