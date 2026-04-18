@@ -53,6 +53,7 @@ nav>a:active{
     transform: translateY(-50%);
     width: 65px;
     height: 65px;
+    z-index: 900;
 }
 
 .user-dropdown {
@@ -1289,7 +1290,7 @@ h1 {
     transform: translate(-50%, -50%);
     width: 450px;
     height: 560px;
-    z-index: 1000;
+    z-index: 10;
 }
 
 .img-quadro {
@@ -1391,7 +1392,7 @@ h1 {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    z-index: 99999;
+    z-index: 9000;
 }
 
 .botao-terminar-sessao {
