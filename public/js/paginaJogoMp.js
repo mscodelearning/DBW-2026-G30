@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
         atualizarEstatisticasGlobais(estatisticasJogo);
 
         setTimeout(() => {
-            window.location.href = "/fimJogoMp";
+            window.location.href = "/fimJogo";
         }, 2000);  
     }
 
