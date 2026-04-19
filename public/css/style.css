@@ -1584,18 +1584,105 @@ h2 {
     flex-wrap: wrap;
 }
 
-.caixa-filtro {
-    position: relative;
-    right: 98px;
-    width: 120px;
-    height: 60px;
+
+.caixa-filtro-dropdown {
+  position: relative;
+  right: 98px;
+  width: 120px;
+  height: 60px;
 }
 
-.caixa-filtro img {
+.btn-filtro {
+  position: relative;
+  width: 100%;
+  height: 60px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.bg-filtro {
   width: 100%;
   height: 100%;
-  object-fit: contain;
   display: block;
+  object-fit: contain;
+}
+
+.texto-filtro {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  color: #000;
+  font-size: 14px;
+  z-index: 2;
+}
+
+.seta-filtro-img {
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  z-index: 2;
+}
+
+.menu-filtro {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 6px;
+  width: 92%;
+  background: rgba(132, 199, 125, 0.973);
+  border-radius: 8px;
+  padding: 6px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+}
+
+.menu-filtro.show {
+  display: block;
+}
+
+.opcao-filtro {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.opcao-filtro:hover {
+  background: #3b9426;
+}
+
+.multiplayer-icon-filtro{
+  position: absolute;
+  top: 50%;
+  right: 74px;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  z-index: 2;
+}
+
+.relogio-icon-filtro{
+  position: absolute;
+  top: 50%;
+  right: 76px;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  z-index: 2;
+}
+
+.estrela-icon-filtro{
+  position: absolute;
+  top: 50%;
+  right: 70px;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  z-index: 2;
 }
 
 /* Fim - caixa filtros da pagina das salas publicas */
