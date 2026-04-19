@@ -55,11 +55,37 @@
                     </label>
                 </div>-->
 
-                <div class="caixa caixa-nome">
+
+
+
+
+
+
+                <!--<div class="caixa caixa-nome">
                     <img class="img-caixa" src="/images/icon-nome-sala.png" alt="">
                     <span class="texto-nome">Nome da Sala</span>
-                </div>
-                    
+                </div>-->
+                
+<div class="caixa caixa-nome">
+  <img class="img-caixa" src="/images/icon-nome-sala.png" alt="Caixa do nome da sala">
+  <input type="text" id="nomeSala" class="input-nome-sala" value="Nome da Sala">
+</div>
+
+<div id="save-bar" class="alert alert-success">
+  <span class="texto-alerta"><strong>Alterações detetadas!</strong></span>
+
+  <div class="acoes-alerta">
+    <button id="btn-save" type="button" class="btn btn-success btn-sm">Guardar</button>
+    <button id="btn-reset" type="button" class="btn btn-secondary btn-sm">Redefinir</button>
+  </div>
+</div>
+
+
+
+
+
+
+
                 <div class="caixa caixa-jogadores">
                     <img class="img-caixa" src="/images/numero-jogadores.png" alt="">
                     <span class="texto-caixa">3/4</span>
@@ -121,6 +147,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 <script src="/js/script.js" defer></script>
 <script src="/js/caixaTextoChat.js" defer></script>
+
+<script src="/js/editaNomeSala.js" defer></script>
 
 </body>
 </html>

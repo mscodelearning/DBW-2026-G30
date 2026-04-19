@@ -317,3 +317,61 @@
 /* Fim - icon dos jogadores da sala com o nome */
 
 
+/* Inicio  - css para a caixa com o nome da sala na pagina sala privada */
+
+.input-nome-sala {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  text-align: center;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.input-nome-sala::placeholder {
+  color: #cccccc;
+}
+
+#save-bar {
+  position: fixed;
+  top: 750px;
+  right: 20px;
+  z-index: 9999;
+  width: 420px;
+  height: 60px;
+  padding: 10px 14px;
+  display: none;
+
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+#save-bar.show {
+  display: flex;
+}
+
+.texto-alerta {
+  white-space: nowrap;
+}
+
+.acoes-alerta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: nowrap;
+}
+
+.acoes-alerta .btn {
+  white-space: nowrap;
+}
+
+/* Fim  - css para a caixa com o nome da sala na pagina sala privada */

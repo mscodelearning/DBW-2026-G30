@@ -1245,42 +1245,7 @@ h1 {
 /* Fim - texto para ir para pagina de alterar palavra passe atraves do click */
 
 /* Inicio - quadro estatisticas na pagina do perfil */
-/*
-.quadro-estatistico-container {
-    position: relative;
-    top: 20%;
-    left:60%;
-    z-index: 1000;
-    transform: translate(-50%, -50%);
-    overflow: visible;
-    width: 280px;
-    height: 350px;
-}
 
-.img-quadro {
-    position: absolute;
-    top: 10%;
-    left: 90%;
-    transform: translateY(-50%);
-    width: 160%;
-    height: 160%;
-    z-index: 1024;
-}
-
-.fundo-verde-quadro-estatistico {
-    position: absolute;
-    top: -200px;
-    left: 296px;
-    width: 128%;
-    height: 136%;
-    z-index: 1025;
-}
-
-.img-fundo-verde {
-    width: 100%;
-    height: 100%;
-    display: block;
-}*/
 
 .quadro-estatistico-container {
     position: absolute;
@@ -1323,21 +1288,7 @@ h1 {
 
 
 /* Inicio - dados estatisticos quadro da pagina do perfil */
-/*
-.stats-overlay {
-    position: absolute;
-    top: -10px;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    padding: 18px 16px;
-    box-sizing: border-box;
-    z-index: 1026;
-    color: rgb(255, 255, 255);
-}*/
+
 
 .stats-overlay {
     position: absolute;
@@ -1350,8 +1301,6 @@ h1 {
     z-index: 3;
     color: white;
 }
-
-
 
 
 .stats-title {
