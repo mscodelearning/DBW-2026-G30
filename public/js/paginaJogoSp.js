@@ -69,6 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
         p.textContent = palavra;
 
         lista.appendChild(p);
+        lista.scrollTop = lista.scrollHeight;
     }
 
     function adicionarPontos(valor) {
@@ -117,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
         atualizarEstatisticasGlobais(estatisticasJogo);
 
         setTimeout(() => {
-            window.location.href = "/fimJogo";
+            window.location.href = "/fimJogoSp";
         }, 2000);  
     }
 

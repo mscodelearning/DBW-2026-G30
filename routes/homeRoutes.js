@@ -42,8 +42,12 @@ router.get("/jogoSingleplayer", (req, res) => {
   res.render("jogoSingleplayer");
 });
 
-router.get("/fimJogo", (req, res) => {
-  res.render("fimDeJogo");
+router.get("/fimJogoSp", (req, res) => {
+  res.render("fimDeJogoSp");
+});
+
+router.get("/fimJogoMp", (req, res) => {
+  res.render("fimDeJogoMp");
 });
 
 router.get("/salasPrivadas", (req, res) => {

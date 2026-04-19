@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Merienda:wght@300..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/fimJogo.css">
+
+        <title>Skriven</title>
+    </head>
+<body>
+    <div>
+        <%- include("partials/header") %>
+        <!--<header>
+        <nav class="barra-navegacao">
+            <a href="index.html"></a>
+            <a href="perfil.html" class="perfil-link">
+                <img class="perfil" src="../public/images/botao-perfil.png" alt="perfil">
+                <img class="user-icon" src="../public/symbols/Union-user-icon.png" alt="user">
+            </a>
+            <img src="../public/images/logo-skriven.png" alt="Logo" class="nav-logo">
+            <img src="../public/images/botao-menu-perfil.png" alt="botao-menu" class="botao-menu">
+        </nav>
+    </header>-->
+    </div>
+    <div class="botao-voltar-container">
+        <img src="/images/botao-sair.png" alt="voltar">
+        <div class="overlay-text">Sair</div>
+        <a href="/selectMultiplayerPage"></a>
+    </div>
+
+<!--fim de jogo antigo, so para singleplayer
+
+    <div class="fim-jogo-body">
+        <div class="container h-100 d-flex justify-content-center align-items-center">
+            <div class="overlay-box p-4">
+                <div class="row text-center align-items-center">
+                    <h2>Estatísticas</h2>
+
+                    <div class="col-12 col-md-4 mb-3">
+                        <img src="/images/icone-pessoa.png" class="img-fluid mb-2" style="max-width: 80px;">
+                        <h5 id="nome-jogador">Jogador</h5>
+                    </div>
+
+                    <div class="col-6 col-md-4">
+                        <div class="stat-num" id="palavras"></div>
+                        <div class="stat-num" id="erros"></div>
+                        <div class="stat-num" id="pontos"></div>
+                        <div class="stat-num" id="tempo"></div>
+                    </div>
+
+                    <div class="col-6 col-md-4 text-start">
+                        <div class="stat-label">Palavras encontradas</div>
+                        <div class="stat-label">Palavras erradas</div>
+                        <div class="stat-label">Pontos</div>
+                        <div class="stat-label">Tempo</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+-->
+
+<!-- novo -->
+    <div class="fim-jogo-body">
+        <div class="container h-100 d-flex justify-content-center align-items-center">
+            <div class="overlay-box p-4 text-center">
+
+                <h2>Estatísticas</h2>
+
+                <!-- vencedor -->
+                <!--<h4 id="vencedor" class="mb-4"></h4>-->
+
+                <!-- conteudo dinamico -->
+                <div id="stats-container"></div>
+                <h4 id="vencedor" class="winner-text"></h4>
+            </div>
+        </div>
+    </div>
+<!-- novo -->
+
+<script src="/js/script.js" defer></script>
+<script src="/js/fimJogoMp.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

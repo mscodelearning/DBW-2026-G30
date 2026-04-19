@@ -95,6 +95,14 @@
     position: absolute;
     top: 20px;
     left: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 260px;
+    width: 85%;
+}
+
+#palavras-descobertas p {
+    width: 100%;
 }
 
 #caixa-texto {

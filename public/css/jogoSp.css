@@ -53,7 +53,6 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-
 }
 
 .caixa-palavras-descobertas img {
@@ -64,6 +63,14 @@
     position: absolute;
     top: 20px;
     left: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 260px;
+    width: 85%;
+}
+
+#palavras-descobertas p {
+    width: 100%;
 }
 
 #caixa-texto {

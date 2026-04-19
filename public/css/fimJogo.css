@@ -48,6 +48,10 @@ h2 {
 
 }
 
+.stats-titulo {
+    margin-bottom: 75px;
+}
+
 
 .mp-row {
     display: grid;
