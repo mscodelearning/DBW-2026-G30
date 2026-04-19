@@ -10,79 +10,38 @@
 <body>
     <div>
         <%- include("partials/header") %>
-        <!--<header>
-            <nav class="barra-navegacao">
-            <a href="index.html"></a>
-            <a href="perfil.html" class="perfil-link">
-                <img class="perfil" src="../public/images/botao-perfil.png" alt="perfil">
-                <img class="user-icon" src="../public/symbols/Union-user-icon.png" alt="user">
-            </a>
-            <img src="../public/images/logo-skriven.png" alt="Logo" class="nav-logo">
-            <img src="../public/images/botao-menu-perfil.png" alt="botao-menu" class="botao-menu">
-            </nav>
-        </header>-->
-    </div>
-    <div class="botao-voltar-container">
-        <!--<img src="../public/images/botao-sair.png" alt="voltar">-->
-        <img src="/images/botao-sair.png" alt="voltar">
-        <div class="overlay-text">Voltar</div>
-        <!--<a href="loginPage.html"></a>-->
-        <a href="/login"></a>
-    </div>
-    
-    <div class="caixa-fundo-container">
-        <h1>Registo</h1>
-
-       <div class="user-icon2-container">
-            <!--<img id="perfil-img" src="../public/symbols/user-icon-2.png" alt="user-icon"> --id novo-->
-            <img id="perfil-img" src="/symbols/user-icon-2.png" alt="user-icon"> <!--id novo-->
+        
+        <div class="botao-voltar-container">
+            <!--<img src="../public/images/botao-sair.png" alt="voltar">-->
+            <img src="/images/botao-sair.png" alt="voltar">
+            <div class="overlay-text">Voltar</div>
+            <!--<a href="loginPage.html"></a>-->
+            <a href="/login"></a>
         </div>
+        
+        <div class="caixa-fundo-container">
+            <h1>Registo</h1>
 
-        <!--
-        <div class="alteraImagem-container">
-           
+        <div class="user-icon2-container">
+                <!--<img id="perfil-img" src="../public/symbols/user-icon-2.png" alt="user-icon"> --id novo-->
+                <img id="perfil-img" src="/symbols/user-icon-2.png" alt="user-icon"> <!--id novo-->
+        </div>
+            <div id="form-area-signup">
 
-            <p id="texto-altera-imagem">Alterar Imagem</p>
-            <div id="pop-up" class="popup">
-                <div class="conteudo-popup">
-                   
-                    <label for="input-file" id="drop-area">
-                        <input type="file" accept="image/*" id="input-file" hidden>
-                        <div id="img-view">
-                            <div class="upload-text">
-                                <img src="../public/symbols/symbol_upload.png" alt="symbol-upload">
-                                <p>Drag and drop or click here<br> to upload image</p>
-                                <span> Upload any images from desktop</span>
-                            </div>
-                                
-
-                        </div>
-                    </label>
-                    <div class="botoes-popup">
-                        <button type="button" id="btn-remover">Remover</button>
-                        <button type="button" id="btn-aplicar">Aplicar</button>
-                    </div>
+            </div>
+            <a href="/login" id="signup-link">
+                <div class="fundo-verde-botao-signup">
+                    <div class="overlay-text-signup">SIGN UP</div>
+                        <!--<img src="../public/images/retangulo-verde-botao-login.png" alt="fundo-botao-signup">-->
+                        <img src="/images/retangulo-verde-botao-login.png" alt="fundo-botao-signup">
                 </div>
+            </a>
+            <div class="botao-signup-container">
+                <!--<img src="../public/images/botao-login.png" alt="botao-signup">-->
+                <img src="/images/botao-login.png" alt="botao-signup">
             </div>
-
-        </div>-->
-        <div id="form-area-signup">
-
-        </div>
-        <!--<a href="loginPage.html" id="signup-link"> -->
-        <a href="/login" id="signup-link">
-            <div class="fundo-verde-botao-signup">
-                <div class="overlay-text-signup">SIGN UP</div>
-                    <!--<img src="../public/images/retangulo-verde-botao-login.png" alt="fundo-botao-signup">-->
-                    <img src="/images/retangulo-verde-botao-login.png" alt="fundo-botao-signup">
-            </div>
-        </a>
-        <div class="botao-signup-container">
-            <!--<img src="../public/images/botao-login.png" alt="botao-signup">-->
-            <img src="/images/botao-login.png" alt="botao-signup">
         </div>
     </div>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 <!--<script src="../public/js/script.js" defer></script>-->
 <script src="/js/script.js" defer></script>

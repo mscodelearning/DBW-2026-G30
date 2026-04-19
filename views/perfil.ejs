@@ -12,186 +12,114 @@
 <body>
     <div>
         <%- include("partials/header") %>
-        <!--
-        <header>
-            <nav class="barra-navegacao">
-                <a href="index.html"></a>
-
-                <img src="../public/images/logo-skriven.png" alt="Logo" class="nav-logo">
-
-                <button class="botao-menu border-0 bg-transparent p-0" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#menuLateral" aria-controls="menuLateral">
-                    <img src="../public/images/botao-menu-perfil.png" alt="botao-menu" class="botao-menu">
-                </button>
-                <div class="dropdown user-dropdown">
-                    <a href="#"
-                    class="d-flex align-items-center text-decoration-none"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                        <img class="perfil" src="../public/images/botao-perfil.png" alt="perfil">
-                        <img class="user-icon" src="../public/symbols/Union-user-icon.png" alt="user">
-                    </a>
-
-                    <ul class="dropdown-menu dropdown-menu-end p-3 shadow">
-                        
-                        <li class="d-flex align-items-center mb-3">
-                            <img src="../public/symbols/Union-user-icon.png" alt="user" width="60" height="60" class="rounded-circle me-3">
-                            <h6 class="mb-0 ">Nome Apelido</h6>
-                        </li>
-
-                        <li><hr class="dropdown-divider"></li>
-
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center gap-2" href="perfil.html">
-                                <img src="../public/symbols/Union-user-icon.png" alt="" width="35" height="35" class="rounded-circle bg-light p-1">
-                                <span class="flex-grow-1">Edit Profile</span>
-                                <span>></span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center gap-2" href="tutorialPage.html">
-                                <img src="../public/symbols/simbolo-interrogacao.png" alt="" width="35" height="35" class="rounded-circle bg-light p-1">
-                                <span class="flex-grow-1">Tutorial</span>
-                                <span>></span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center gap-2" href="#">
-                                <img src="../public/symbols/simbolo-logout.png" alt="" width="35" height="35" class="rounded-circle bg-light p-1">
-                                <span class="flex-grow-1">Logout</span>
-                                <span>></span>
-                            </a>
-                        </li>
-                    </ul>
+        <div class="botao-sair-container">
+            <!--<img src="../public/images/botao-sair.png" alt="sair">-->
+            <img src="/images/botao-sair.png" alt="sair">
+            <div class="overlay-text-perfil">Sair</div>
+            <!--<a href="selectMultiplayerPage.html"></a>-->
+            <a href="/selectMultiplayerPage"></a>
+        </div>
+        <div class="container">
+            <div  class="perfil-header">
+                <div class="user-icon2-perfil-container">
+                    <!--<img id="perfil-img" src="../public/symbols/user-icon-2.png" alt="user-icon"> id novo-->
+                    <img id="perfil-img" src="/symbols/user-icon-2.png" alt="user-icon"> <!--id novo-->
                 </div>
-
-                <div class="offcanvas offcanvas-start" tabindex="-1" id="menuLateral" aria-labelledby="menuLateralLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="menuLateralLabel">Menu</h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
-                    </div>
-
-                    <div class="offcanvas-body">
-                        <a href="perfil.html" class="d-block text-white text-decoration-none mb-3">Perfil</a>
-                        <a href="paginaInicial.html" class="d-block text-white text-decoration-none mb-3">Página inicial</a>
-                        <a href="tutorialPage.html" class="d-block text-white text-decoration-none mb-3">Tutorial</a>
-                        <a href="selectMultiplayerPage.html" class="d-block text-white text-decoration-none mb-3">Multiplayer</a>
-                        <a href="#" class="d-block text-white text-decoration-none mb-3">Salas Privadas</a>
-                        <a href="#" class="d-block text-white text-decoration-none">Terminar Sessão</a>
-                    </div>
-                </div>
-            </nav>
-        </header>-->
-
-    <div class="botao-sair-container">
-        <!--<img src="../public/images/botao-sair.png" alt="sair">-->
-        <img src="/images/botao-sair.png" alt="sair">
-        <div class="overlay-text-perfil">Sair</div>
-        <!--<a href="selectMultiplayerPage.html"></a>-->
-        <a href="/selectMultiplayerPage"></a>
-    </div>
-    <div class="container">
-        <div  class="perfil-header">
-            <div class="user-icon2-perfil-container">
-                <!--<img id="perfil-img" src="../public/symbols/user-icon-2.png" alt="user-icon"> id novo-->
-                <img id="perfil-img" src="/symbols/user-icon-2.png" alt="user-icon"> <!--id novo-->
-            </div>
-            <div class="alteraImagem-perfil-container">
-                <!--<p>Alterar Imagem</p>-->
-                <p id="texto-altera-imagem">Alterar Imagem</p>
-                <div id="pop-up" class="popup">
-                    <div class="conteudo-popup">
-                        <!--<p>Este conteudo é do pop-up.</p>-->
-                        <label  id="drop-area">
-                            <input type="file" accept="image/*" id="input-file" hidden>
-                            <div id="img-view">
-                                <div class="upload-text">
-                                    <!--<img src="../public/symbols/symbol_upload.png" alt="symbol-upload">-->
-                                    <img src="/symbols/symbol_upload.png" alt="symbol-upload">
-                                    <p>Drag and drop or click here<br> to upload image</p>
-                                    <span> Upload any images from desktop</span>
+                <div class="alteraImagem-perfil-container">
+                    <!--<p>Alterar Imagem</p>-->
+                    <p id="texto-altera-imagem">Alterar Imagem</p>
+                    <div id="pop-up" class="popup">
+                        <div class="conteudo-popup">
+                            <!--<p>Este conteudo é do pop-up.</p>-->
+                            <label  id="drop-area">
+                                <input type="file" accept="image/*" id="input-file" hidden>
+                                <div id="img-view">
+                                    <div class="upload-text">
+                                        <!--<img src="../public/symbols/symbol_upload.png" alt="symbol-upload">-->
+                                        <img src="/symbols/symbol_upload.png" alt="symbol-upload">
+                                        <p>Drag and drop or click here<br> to upload image</p>
+                                        <span> Upload any images from desktop</span>
+                                    </div>
                                 </div>
+                            </label>
+                            <div class="botoes-popup">
+                                <button type="button" id="btn-remover">Remover</button>
+                                <button type="button" id="btn-aplicar">Aplicar</button>
                             </div>
-                        </label>
-                        <div class="botoes-popup">
-                            <button type="button" id="btn-remover">Remover</button>
-                            <button type="button" id="btn-aplicar">Aplicar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="coluna-caixas">
+                <div class="grupo-campo">
+                    <p class="label-campo">Nome exibido</p>
+                    <div class="caixa-texto-imagem">
+                        <input type="text" id="nickname" placeholder="escreva o texto aqui">
+                    </div>
+                </div>
+                <div id="save-bar" role="alert" aria-live="polite">
+                    <div class="alert alert-success d-flex align-items-center justify-content-between shadow mb-0 gap-3">
+                        <span>Tens alterações não guardadas.</span>
+                        <div class="d-flex gap-2">
+                        <button id="btn-reset" class="btn btn-secondary btn-sm" type="button">Redefinir</button>
+                        <button id="btn-save" class="btn btn-success btn-sm" type="button">Salvar alterações</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="grupo-campo">
+                    <p class="label-campo">Nome de Utilizador</p>
+                    <div class="caixa-texto-imagem">
+                        <input type="text" placeholder="escreva o texto aqui">
+                    </div>
+                </div>
+                <div class="grupo-campo">
+                    <p class="label-campo">Palavra-passe</p>
+                    <div class="caixa-texto-imagem">
+                        <input type="password" placeholder="escreva o texto aqui">
+                    </div>
+                </div>
+                <!--<a href="alteraPalavraPasse.html" class="texto-alterar-password">-->
+                <a href="/alterarPalavraPasse" class="texto-alterar-password">
+                    Alterar palavra-passe
+                </a>
+            </div>
+            <div class="quadro-estatistico-container">
+                <!--<img class="img-quadro" src="../public/images/quadro-estatisticas-perfil.png" alt="quadro-madeira">-->
+                <img class="img-quadro" src="/images/quadro-estatisticas-perfil.png" alt="quadro-madeira">
+                <div class="fundo-verde-quadro-estatistico">
+                    <!--<img class="img-fundo-verde" src="../public/images/fundo-quadro-estatisticas.png" alt="fundo-verde">-->
+                    <img class="img-fundo-verde" src="/images/fundo-quadro-estatisticas.png" alt="fundo-verde">
+                    <div class="stats-overlay">
+                        <h3 class="stats-title">Estatísticas</h3>
+                        <div class="stat-item">
+                            <span class="stat-label">Total pontos</span>
+                            <span class="stat-value" id="total-pontos">1250</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Respostas encontradas</span>
+                            <span class="stat-value" id="respostas-encontradas">34</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Respostas erradas</span>
+                            <span class="stat-value" id="respostas-erradas">12</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Tempo total de jogo</span>
+                            <span class="stat-value" id="tempo-total">04:32</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="coluna-caixas">
-            <div class="grupo-campo">
-                <p class="label-campo">Nome exibido</p>
-                <div class="caixa-texto-imagem">
-                    <input type="text" id="nickname" placeholder="escreva o texto aqui">
-                </div>
-            </div>
-            <div id="save-bar" role="alert" aria-live="polite">
-                <div class="alert alert-success d-flex align-items-center justify-content-between shadow mb-0 gap-3">
-                    <span>Tens alterações não guardadas.</span>
-                    <div class="d-flex gap-2">
-                    <button id="btn-reset" class="btn btn-secondary btn-sm" type="button">Redefinir</button>
-                    <button id="btn-save" class="btn btn-success btn-sm" type="button">Salvar alterações</button>
-                    </div>
-                </div>
-            </div>
-            <div class="grupo-campo">
-                <p class="label-campo">Nome de Utilizador</p>
-                <div class="caixa-texto-imagem">
-                    <input type="text" placeholder="escreva o texto aqui">
-                </div>
-            </div>
-            <div class="grupo-campo">
-                <p class="label-campo">Palavra-passe</p>
-                <div class="caixa-texto-imagem">
-                    <input type="password" placeholder="escreva o texto aqui">
-                </div>
-            </div>
-            <!--<a href="alteraPalavraPasse.html" class="texto-alterar-password">-->
-            <a href="/alterarPalavraPasse" class="texto-alterar-password">
-                Alterar palavra-passe
+        <div class="zona-botao-termina">
+            <!--<a href="paginaInicial.html" class="botao-terminar-sessao">-->
+            <a href="/" class="botao-terminar-sessao">
+                <!--<img src="../public/images/barra-insere-texto-perfil.png" alt="botao-termina-sessao">-->
+                <img src="/images/barra-insere-texto-perfil.png" alt="botao-termina-sessao">
+                <span class="overlay-text-termina-sessao">Terminar Sessão</span>
             </a>
         </div>
-        <div class="quadro-estatistico-container">
-            <!--<img class="img-quadro" src="../public/images/quadro-estatisticas-perfil.png" alt="quadro-madeira">-->
-            <img class="img-quadro" src="/images/quadro-estatisticas-perfil.png" alt="quadro-madeira">
-            <div class="fundo-verde-quadro-estatistico">
-                <!--<img class="img-fundo-verde" src="../public/images/fundo-quadro-estatisticas.png" alt="fundo-verde">-->
-                <img class="img-fundo-verde" src="/images/fundo-quadro-estatisticas.png" alt="fundo-verde">
-                <div class="stats-overlay">
-                    <h3 class="stats-title">Estatísticas</h3>
-                    <div class="stat-item">
-                        <span class="stat-label">Total pontos</span>
-                        <span class="stat-value" id="total-pontos">1250</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-label">Respostas encontradas</span>
-                        <span class="stat-value" id="respostas-encontradas">34</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-label">Respostas erradas</span>
-                        <span class="stat-value" id="respostas-erradas">12</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-label">Tempo total de jogo</span>
-                        <span class="stat-value" id="tempo-total">04:32</span>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
-    <div class="zona-botao-termina">
-        <!--<a href="paginaInicial.html" class="botao-terminar-sessao">-->
-        <a href="/paginaInicial" class="botao-terminar-sessao">
-            <!--<img src="../public/images/barra-insere-texto-perfil.png" alt="botao-termina-sessao">-->
-            <img src="/images/barra-insere-texto-perfil.png" alt="botao-termina-sessao">
-            <span class="overlay-text-termina-sessao">Terminar Sessão</span>
-        </a>
-    </div>
-</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 <!--<script src="../public/js/script.js" defer></script>-->
 <script src="/js/script.js" defer></script>
