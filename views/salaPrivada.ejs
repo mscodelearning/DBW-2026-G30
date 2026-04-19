@@ -12,126 +12,111 @@
 <body>
     <div>
         <%- include("partials/header") %>
-    </div>
 
+        <div class="botao-voltar-container">
+            <img src="/images/botao-sair.png" alt="voltar">
+            <div class="overlay-text">Sair</div>
+            <a href="/selectMultiplayerPage"></a>
+        </div>
 
-    <div class="botao-voltar-container">
-        <img src="/images/botao-sair.png" alt="voltar">
-        <div class="overlay-text">Sair</div>
-        <a href="/selectMultiplayerPage"></a>
-    </div>
+        <div class="container-sala-privada">
+            <div class="fundo-chat">
+                <img class="fundo-caixa" src="/images/fundo-chat.png" alt="">
+                <img class="fundo-bottom-chat" src="/images/fundo-caixa-chat.png" alt="">
+
+                <div class="input-area">
+                <img class="caixa-texto-chat" src="/images/caixa-texto-chat.png" alt="">
+                
+                <input type="text" id="mensagemInput" class="input-chat" placeholder="Escreve uma mensagem...">
+
+                <button id="sendBtn" class="btn-send" type="button" aria-label="Enviar mensagem">
+                    <img class="fundo-btn-send" src="/images/fundo-btn-send.png" alt="">
+                    <img class="icon-send" src="/symbols/aviao-send.png" alt="">
+                </button>
+                </div>
+
+                <div class="mensagens" id="mensagens"></div>
+            </div>
+
+            <div class="dados-sala-privada">
 
     <!--
-    <div class="container-sala-privada">
-
-        <div class="fundo-chat">
-            <img class="fundo-caixa" src="/images/fundo-chat.png">
-            <img class="fundo-bottom-chat" src="/images/fundo-caixa-chat.png">
-            <img class="caixa-texto-chat" src="/images/caixa-texto-chat.png">
-            <img class="fundo-btn-send" src="/images/fundo-btn-send.png">
-            <img class="icon-send" src="/symbols/aviao-send.png">
-        </div>
-
-    </div> -->
-
-    <div class="container-sala-privada">
-        <div class="fundo-chat">
-            <img class="fundo-caixa" src="/images/fundo-chat.png" alt="">
-            <img class="fundo-bottom-chat" src="/images/fundo-caixa-chat.png" alt="">
-
-            <div class="input-area">
-            <img class="caixa-texto-chat" src="/images/caixa-texto-chat.png" alt="">
-            
-            <input type="text" id="mensagemInput" class="input-chat" placeholder="Escreve uma mensagem...">
-
-            <button id="sendBtn" class="btn-send" type="button" aria-label="Enviar mensagem">
-                <img class="fundo-btn-send" src="/images/fundo-btn-send.png" alt="">
-                <img class="icon-send" src="/symbols/aviao-send.png" alt="">
-            </button>
-            </div>
-
-            <div class="mensagens" id="mensagens"></div>
-        </div>
-
-        <div class="dados-sala-privada">
-
-<!--
-            <div class="definicoes-icon-container">
-                <img class="fundo-caixa-definicoes" src="/images/icon-definicoes.png" alt="">
-                <img class="icon-definicoes" src="/symbols/engrenagem.png" alt="">
-                <label class="toggle-input" type="checkbox" id="myToggle">
-                    <div class="toggle-fill"></div>
-                </label>
-            </div>
-
-            <div class="toggle-switch-container" >
-                <label class="toggle-input" type="checkbox" id="myToggle">
-                    <div class="toggle-fill"></div>
-                </label>
-            </div>-->
-
-            <div class="caixa caixa-nome">
-                <img class="img-caixa" src="/images/icon-nome-sala.png" alt="">
-                <span class="texto-nome">Nome da Sala</span>
-            </div>
-                
-            <div class="caixa caixa-jogadores">
-                <img class="img-caixa" src="/images/numero-jogadores.png" alt="">
-                <span class="texto-caixa">3/4</span>
-
-                <img class="icon-multiplayer" src="/symbols/multiplayer-cinza.png" alt="">
-            </div>
-
-            <div class="caixa caixa-password">
-                <img class="img-caixa" src="/images/codigo-sala.png" alt="">
-                <span class="texto-caixa">1234</span>
-
-                <img class="icon-chave" src="/symbols/key-codigo-sala-cinza.png" alt="">
-            </div>
-            
-        </div>
-<!--
-        <div class="icon-user">
-                <img class="fundo-utilizador" src="/images/fundo-icon-user.png" alt="">
-                <img class="icon-square-utilizador" src="/symbols/icon-user-square.png" alt="">
-            </div>
-            -->
-
-        <div class="lista-jogadores">
-            <div class="jogador">
-                <img class="fundo-utilizador" src="/images/fundo-icon-user.png" alt="">
-                <img class="icon-square-utilizador" src="/symbols/icon-user-square.png" alt="">
-                <span class="nome-jogador">Jogador 1</span>
-            </div>
-
-            <div class="jogador">
-                <img class="fundo-utilizador" src="/images/fundo-icon-user.png" alt="">
-                <img class="icon-square-utilizador" src="/symbols/icon-user-square.png" alt="">
-                <span class="nome-jogador">Jogador 2</span>
-            </div>
-
-            <div class="jogador">
-                <img class="fundo-utilizador" src="/images/fundo-icon-user.png" alt="">
-                <img class="icon-square-utilizador" src="/symbols/icon-user-square.png" alt="">
-                <span class="nome-jogador">Jogador 3</span>
-            </div>
-        </div>
-
-
-    </div>
-
-    <div class="container-botao">
-        <a href="/paginaJogoMultiplayer" id="procura-link">
-                <div class="fundo-verde-botao-signup">
-                    <div class="overlay-text-signup">Iniciar Jogo</div>
-                        <img src="/images/retangulo-verde-botao-login.png" alt="fundo-botao-signup">
+                <div class="definicoes-icon-container">
+                    <img class="fundo-caixa-definicoes" src="/images/icon-definicoes.png" alt="">
+                    <img class="icon-definicoes" src="/symbols/engrenagem.png" alt="">
+                    <label class="toggle-input" type="checkbox" id="myToggle">
+                        <div class="toggle-fill"></div>
+                    </label>
                 </div>
-            </a>
-            <div class="botao-signup-container">
-                <img src="/images/botao-login.png" alt="botao-signup">
+
+                <div class="toggle-switch-container" >
+                    <label class="toggle-input" type="checkbox" id="myToggle">
+                        <div class="toggle-fill"></div>
+                    </label>
+                </div>-->
+
+                <div class="caixa caixa-nome">
+                    <img class="img-caixa" src="/images/icon-nome-sala.png" alt="">
+                    <span class="texto-nome">Nome da Sala</span>
+                </div>
+                    
+                <div class="caixa caixa-jogadores">
+                    <img class="img-caixa" src="/images/numero-jogadores.png" alt="">
+                    <span class="texto-caixa">3/4</span>
+
+                    <img class="icon-multiplayer" src="/symbols/multiplayer-cinza.png" alt="">
+                </div>
+
+                <div class="caixa caixa-password">
+                    <img class="img-caixa" src="/images/codigo-sala.png" alt="">
+                    <span class="texto-caixa">1234</span>
+
+                    <img class="icon-chave" src="/symbols/key-codigo-sala-cinza.png" alt="">
+                </div>
+                
             </div>
+    <!--
+            <div class="icon-user">
+                    <img class="fundo-utilizador" src="/images/fundo-icon-user.png" alt="">
+                    <img class="icon-square-utilizador" src="/symbols/icon-user-square.png" alt="">
+                </div>
+                -->
+
+            <div class="lista-jogadores">
+                <div class="jogador">
+                    <img class="fundo-utilizador" src="/images/fundo-icon-user.png" alt="">
+                    <img class="icon-square-utilizador" src="/symbols/icon-user-square.png" alt="">
+                    <span class="nome-jogador">Jogador 1</span>
+                </div>
+
+                <div class="jogador">
+                    <img class="fundo-utilizador" src="/images/fundo-icon-user.png" alt="">
+                    <img class="icon-square-utilizador" src="/symbols/icon-user-square.png" alt="">
+                    <span class="nome-jogador">Jogador 2</span>
+                </div>
+
+                <div class="jogador">
+                    <img class="fundo-utilizador" src="/images/fundo-icon-user.png" alt="">
+                    <img class="icon-square-utilizador" src="/symbols/icon-user-square.png" alt="">
+                    <span class="nome-jogador">Jogador 3</span>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="container-botao">
+            <a href="/paginaJogoMultiplayer" id="procura-link">
+                    <div class="fundo-verde-botao-signup">
+                        <div class="overlay-text-signup">Iniciar Jogo</div>
+                            <img src="/images/retangulo-verde-botao-login.png" alt="fundo-botao-signup">
+                    </div>
+                </a>
+                <div class="botao-signup-container">
+                    <img src="/images/botao-login.png" alt="botao-signup">
+                </div>
+        </div>
     </div>
-    
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 <script src="/js/script.js" defer></script>
