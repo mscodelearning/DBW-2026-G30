@@ -1502,6 +1502,10 @@ h1 {
 
  Fim - container da pagina do mode multiplayer */
 
+h2 {
+    margin-top: 70px;
+    margin-left: 100px;
+}
 
 /* Inicio - implementacao da caixa que vai fazer de botao para entrar/selecionar uma sala publica */
 
@@ -1511,5 +1515,87 @@ h1 {
     height: 100vh;
 }
 
+.caixa-sala-publica {
+    position: relative;
+    top: 20px;
+    left: 90px;
+    width: 300px; /* ajusta ao tamanho real da tua caixa */
+    
+}
+
+.fundo-btn-sp {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.conteudo-sala {
+    position: absolute;
+    inset: 0;
+    padding: 18px 25px 35px 25px;
+    color: white;
+}
+
+.conteudo-sala h3 {
+    text-align: center;
+    margin: 0 0 20px 0;
+    font-size: 16px;
+}
+
+.linha-info {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 80px;
+}
+
+.icons-coluna,
+.texto-coluna {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.icons-coluna img {
+    width: 24px;
+    height: 24px;
+}
+
+.texto-coluna p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.lista-salas {
+    display: flex;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
 /* Fim - implementacao da caixa que vai fazer de botao para entrar/selecionar uma sala publica */
 
+/* Inicio - caixa filtros da pagina das salas publicas */
+
+.lista-filtros{
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.caixa-filtro {
+    position: relative;
+    right: 98px;
+    width: 120px;
+    height: 60px;
+}
+
+.caixa-filtro img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Fim - caixa filtros da pagina das salas publicas */

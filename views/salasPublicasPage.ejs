@@ -11,33 +11,134 @@
 <body>
     <div>
         <%- include("partials/header") %>
-    
 
-        <div class="salas-publicas-container">
+        <div class="botao-voltar-container">
+            <!--<img src="../public/images/botao-sair.png" alt="voltar">-->
+            <img src="/images/botao-sair.png" alt="voltar">
+            <div class="overlay-text">Voltar</div>
+            <!--<a href="paginaInicial.html"></a>-->
+            <a href="/gameMultiplayerPlayer"></a>
+        </div>
+
+        <h2>Salas Publicas</h2>
+
+        <div class="lista-filtros">
+
+            <div class="caixa-filtro">
+                <img src="/images/caixa-filtro.png" alt="caixa-filtro">
+            </div>
+
+            <div class="caixa-filtro">
+                <img src="/images/caixa-filtro.png" alt="caixa-filtro">
+            </div>
+
+            <div class="caixa-filtro">
+                <img src="/images/caixa-filtro.png" alt="caixa-filtro">
+            </div>
+            
+        </div>
+
+      <!-- <div class="salas-publicas-container">
 
             <div class="caixa-sala-publica">
-                <img src="/images/fundo-btn-salas-publicas.png">
+                <img class="fundo-btn-sp" src="/images/fundo-btn-salas-publicas.png">
 
 
                 <img src="/symbols/multiplayer2.png">
                 <img src="/symbols/estrela-verde.png">
                 <img src="/symbols/relogio-verde.png">
 
-            </div>
+            </div>-->
 
-
-            <!--
+        <div class="lista-salas">
             <div class="caixa-sala-publica">
-                <img src="/images/fundo-btn-salas-publicas.png">
+                <img class="fundo-btn-sp" src="/images/fundo-btn-salas-publicas.png" alt="Fundo">
+                <div class="conteudo-sala">
+                    <h3>Nome da Sala</h3>
+                    <div class="linha-info">
+                        <div class="icons-coluna">
+                            <img src="/symbols/multiplayer2.png" alt="Jogadores">
+                            <img src="/symbols/relogio-verde.png" alt="Tempo">
+                            <img src="/symbols/estrela-verde.png" alt="Mínimo de letras">
+                        </div>
+                        <div class="texto-coluna">
+                            <p>3/4 Jogadores</p>
+                            <p>1 min</p>
+                            <p>Mín. letras: 4</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
+
             <div class="caixa-sala-publica">
-                <img src="/images/fundo-btn-salas-publicas.png">
+                <img class="fundo-btn-sp" src="/images/fundo-btn-salas-publicas.png" alt="Fundo">
+                <div class="conteudo-sala">
+                    <h3>Nome da Sala</h3>
+                    <div class="linha-info">
+                        <div class="icons-coluna">
+                            <img src="/symbols/multiplayer2.png" alt="Jogadores">
+                            <img src="/symbols/relogio-verde.png" alt="Tempo">
+                            <img src="/symbols/estrela-verde.png" alt="Mínimo de letras">
+                        </div>
+                        <div class="texto-coluna">
+                            <p>4/4 Jogadores</p>
+                            <p>1 min</p>
+                            <p>-</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        -->
+
+
+
+            <div class="caixa-sala-publica">
+                <img class="fundo-btn-sp" src="/images/fundo-btn-salas-publicas.png" alt="Fundo">
+                <div class="conteudo-sala">
+                    <h3>Nome da Sala</h3>
+                    <div class="linha-info">
+                        <div class="icons-coluna">
+                            <img src="/symbols/multiplayer2.png" alt="Jogadores">
+                            <img src="/symbols/relogio-verde.png" alt="Tempo">
+                            <img src="/symbols/estrela-verde.png" alt="Mínimo de letras">
+                        </div>
+                        <div class="texto-coluna">
+                            <p>2/4 Jogadores</p>
+                            <p>2 min</p>
+                            <p>Mín. letras: 3</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="caixa-sala-publica">
+                <img class="fundo-btn-sp" src="/images/fundo-btn-salas-publicas.png" alt="Fundo">
+                <div class="conteudo-sala">
+                    <h3>Nome da Sala</h3>
+                    <div class="linha-info">
+                        <div class="icons-coluna">
+                            <img src="/symbols/multiplayer2.png" alt="Jogadores">
+                            <img src="/symbols/relogio-verde.png" alt="Tempo">
+                            <img src="/symbols/estrela-verde.png" alt="Mínimo de letras">
+                        </div>
+                        <div class="texto-coluna">
+                            <p>1/4 Jogadores</p>
+                            <p>-</p>
+                            <p>Mín. letras: 5</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
+
+
+
+
     </div>
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
