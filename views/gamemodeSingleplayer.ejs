@@ -13,81 +13,81 @@
     <div>
         <%- include("partials/header") %>
     
-    </div>
+    
 
-    <div class="geral-modos-sp">
-        <div class="botao-voltar-container">
-            <!--<img src="../public/images/botao-sair.png" alt="voltar">-->
-            <img src="/images/botao-sair.png" alt="voltar">
-            <div class="overlay-text">Voltar</div>
-            <!--<a href="selectMultiplayerPage.html"></a>-->
-            <a href="/selectMultiplayerPage"></a>
-        </div>
-        <div class="modos-singleplayer-container">
+        <div class="geral-modos-sp">
+            <div class="botao-voltar-container">
+                <!--<img src="../public/images/botao-sair.png" alt="voltar">-->
+                <img src="/images/botao-sair.png" alt="voltar">
+                <div class="overlay-text">Voltar</div>
+                <!--<a href="selectMultiplayerPage.html"></a>-->
+                <a href="/selectMultiplayerPage"></a>
+            </div>
+            <div class="modos-singleplayer-container">
 
-    <!-- contra-relógio -->
-            <div class="coluna">
-                <div class="titulo-container">
-                    <!--<img src="../public/images/nome-modo.png" class="bg-titulo">-->
-                    <img src="/images/nome-modo.png" class="bg-titulo">
+        <!-- contra-relógio -->
+                <div class="coluna">
+                    <div class="titulo-container">
+                        <!--<img src="../public/images/nome-modo.png" class="bg-titulo">-->
+                        <img src="/images/nome-modo.png" class="bg-titulo">
 
 
-                    <div class="titulo-conteudo">
-                        <!--<img src="../public/symbols/contra-relogio.png" class="icon-titulo-cr">-->
-                        <img src="/symbols/contra-relogio.png" class="icon-titulo-cr">
-                        <h5>Contra-relógio</h5>
+                        <div class="titulo-conteudo">
+                            <!--<img src="../public/symbols/contra-relogio.png" class="icon-titulo-cr">-->
+                            <img src="/symbols/contra-relogio.png" class="icon-titulo-cr">
+                            <h5>Contra-relógio</h5>
+                        </div>
+                    </div>
+
+                    <div class="lista" id="timer-options">
+                        <!--<img src="../public/images/fundo-opcoes.webp" class="bg-opcoes">-->
+                        <img src="/images/fundo-opcoes.webp" class="bg-opcoes">
+                        <div class="lista-opcoes">
+                            <div class="item">Não</div>
+                            <div class="item">30s</div>
+                            <div class="item">60s</div>
+                            <div class="item">Personalizado</div>
+                        </div>
+                    <input type="number" id="custom-timer" placeholder="segundos" min="1" style="display: none;">
                     </div>
                 </div>
 
-                <div class="lista" id="timer-options">
-                    <!--<img src="../public/images/fundo-opcoes.webp" class="bg-opcoes">-->
-                    <img src="/images/fundo-opcoes.webp" class="bg-opcoes">
-                    <div class="lista-opcoes">
-                        <div class="item">Não</div>
-                        <div class="item">30s</div>
-                        <div class="item">60s</div>
-                        <div class="item">Personalizado</div>
+        <!-- desafio -->
+                <div class="coluna">
+                    <div class="titulo-container">
+                        <!--<img src="../public/images/nome-modo.png" class="bg-titulo">-->
+                        <img src="/images/nome-modo.png" class="bg-titulo">
+
+
+                        <div class="titulo-conteudo">
+                            <!--<img src="../public/symbols/estrela.png" class="icon-titulo-desafio">-->
+                            <img src="/symbols/estrela.png" class="icon-titulo-desafio">
+                            <h5>Desafio</h5>
+                        </div>
                     </div>
-                <input type="number" id="custom-timer" placeholder="segundos" min="1" style="display: none;">
+
+                    <div class="lista" id="challenge-options">
+                        <!--<img src="../public/images/fundo-opcoes.webp" class="bg-opcoes">-->
+                        <img src="/images/fundo-opcoes.webp" class="bg-opcoes">
+                        <div class="lista-opcoes">
+                            <div class="item">Não</div>
+                            <div class="item">Objetivo: nº de palavras</div>
+                            <div class="item">Mín. letras</div>
+                            <div class="item">Máx. letras</div>
+                        </div>
+                    <input type="number" id="custom-num" placeholder="palavras" min="1" style="display: none;">
+                    <input type="number" id="custom-min" placeholder="letras" min="2" style="display: none;">
+                    <input type="number" id="custom-max" placeholder="letras" min="2" style="display: none;">
+                    </div>
                 </div>
             </div>
-
-    <!-- desafio -->
-            <div class="coluna">
-                <div class="titulo-container">
-                    <!--<img src="../public/images/nome-modo.png" class="bg-titulo">-->
-                    <img src="/images/nome-modo.png" class="bg-titulo">
-
-
-                    <div class="titulo-conteudo">
-                        <!--<img src="../public/symbols/estrela.png" class="icon-titulo-desafio">-->
-                        <img src="/symbols/estrela.png" class="icon-titulo-desafio">
-                        <h5>Desafio</h5>
-                    </div>
-                </div>
-
-                <div class="lista" id="challenge-options">
-                    <!--<img src="../public/images/fundo-opcoes.webp" class="bg-opcoes">-->
-                    <img src="/images/fundo-opcoes.webp" class="bg-opcoes">
-                    <div class="lista-opcoes">
-                        <div class="item">Não</div>
-                        <div class="item">Objetivo: nº de palavras</div>
-                        <div class="item">Mín. letras</div>
-                        <div class="item">Máx. letras</div>
-                    </div>
-                <input type="number" id="custom-num" placeholder="palavras" min="1" style="display: none;">
-                <input type="number" id="custom-min" placeholder="letras" min="2" style="display: none;">
-                <input type="number" id="custom-max" placeholder="letras" min="2" style="display: none;">
-                </div>
-            </div>
+            <button id="start-game" class="image-button" disabled>
+                <!--<img src="../public/images/retangulo-verde-botao-login.png" alt="botao-jogar">-->
+                <img src="/images/retangulo-verde-botao-login.png" alt="botao-jogar">
+                <span>Jogar</span>
+            </button>
         </div>
-        <button id="start-game" class="image-button" disabled>
-            <!--<img src="../public/images/retangulo-verde-botao-login.png" alt="botao-jogar">-->
-            <img src="/images/retangulo-verde-botao-login.png" alt="botao-jogar">
-            <span>Jogar</span>
-        </button>
     </div>
-
     
 <!--<script src="../public/js/modoJogoSp.js" defer></script>-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>

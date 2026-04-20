@@ -15,40 +15,41 @@
     <div>
         <%- include("partials/header") %>
        
-    </div>
-    <!--<a href="selectMultiplayerPage.html" class="botao-voltar-container">-->
-    <a href="/selectMultiplayerPage" class="botao-voltar-container">
-        <!--<img src="../public/images/botao-sair.png" alt="sair">-->
-        <img src="/images/botao-sair.png" alt="sair">
-        <div class="overlay-text">Sair</div>
-    </a>
-    <div class="jogo-singleplayer-container">
-        <div class="container">
-            <div class="row">
-                <div class="col-6 coluna-sp">
-                    <div class="quadro-palavra-mestra">
-                        <!--<img src="../public/Images/quadro-palavras.png" alt="quadro-palavras">-->
-                        <img src="/Images/quadro-palavras.png" alt="quadro-palavras">
-                        <h1 id="palavra-mestra">SOLIDARIEDADE</h1>
+    
+        <!--<a href="selectMultiplayerPage.html" class="botao-voltar-container">-->
+        <a href="/selectMultiplayerPage" class="botao-voltar-container">
+            <!--<img src="../public/images/botao-sair.png" alt="sair">-->
+            <img src="/images/botao-sair.png" alt="sair">
+            <div class="overlay-text">Sair</div>
+        </a>
+        <div class="jogo-singleplayer-container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6 coluna-sp">
+                        <div class="quadro-palavra-mestra">
+                            <!--<img src="../public/Images/quadro-palavras.png" alt="quadro-palavras">-->
+                            <img src="/Images/quadro-palavras.png" alt="quadro-palavras">
+                            <h1 id="palavra-mestra">SOLIDARIEDADE</h1>
+                        </div>
+                            <h2 id="timer-display"></h2>
+                            <button id="finalizar-jogo">Finalizar Jogo</button>
                     </div>
-                        <h2 id="timer-display"></h2>
-                        <button id="finalizar-jogo">Finalizar Jogo</button>
-                </div>
-                <div class="col-6 coluna-sp">
-                    <div id="alerta-container" class="mt-3"></div>
-                    <input type="text" id="caixa-texto" placeholder="Insira uma palavra">                    
-                    <div class="caixa-palavras-descobertas">
-                        <!--<img src="../public/Images/palavras-descobertas.png">-->
-                        <img src="/Images/palavras-descobertas.png">
-                        <div id="palavras-descobertas"></div>
-                    </div>
-                    <div class="caixa-pessoa">
-                        <!--<img src="../public/Images/icone-pessoa.png">-->
-                        <img src="/Images/icone-pessoa.png">
-                        <h5>
-                            <span id="nome-jogador"></span>
-                            <span id="pontuacao"></span>
-                        </h5>
+                    <div class="col-6 coluna-sp">
+                        <div id="alerta-container" class="mt-3"></div>
+                        <input type="text" id="caixa-texto" placeholder="Insira uma palavra">                    
+                        <div class="caixa-palavras-descobertas">
+                            <!--<img src="../public/Images/palavras-descobertas.png">-->
+                            <img src="/Images/palavras-descobertas.png">
+                            <div id="palavras-descobertas"></div>
+                        </div>
+                        <div class="caixa-pessoa">
+                            <!--<img src="../public/Images/icone-pessoa.png">-->
+                            <img src="/Images/icone-pessoa.png">
+                            <h5>
+                                <span id="nome-jogador"></span>
+                                <span id="pontuacao"></span>
+                            </h5>
+                        </div>
                     </div>
                 </div>
             </div>

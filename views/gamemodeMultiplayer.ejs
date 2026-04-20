@@ -12,82 +12,83 @@
     <div>
         <%- include("partials/header") %>
         
-    </div>
-    <div class="botao-voltar-container">
-        <img src="/images/botao-sair.png" alt="voltar">
-        <div class="overlay-text">Voltar</div>
-        <a href="/selectMultiplayerPage"></a>
-    </div>
+    
+        <div class="botao-voltar-container">
+            <img src="/images/botao-sair.png" alt="voltar">
+            <div class="overlay-text">Voltar</div>
+            <a href="/selectMultiplayerPage"></a>
+        </div>
 
-    <div class="container-mode-multiplayer">
-        <!--
-        <img class="btn-cria-sala" src="/images/fundo-contorno.png">
-        <img class="btn-sala-privada" src="/images/fundo-contorno.png">
-        <img class="btn-sala-publica" src="/images/fundo-contorno.png">
-        -->
+        <div class="container-mode-multiplayer">
+            <!--
+            <img class="btn-cria-sala" src="/images/fundo-contorno.png">
+            <img class="btn-sala-privada" src="/images/fundo-contorno.png">
+            <img class="btn-sala-publica" src="/images/fundo-contorno.png">
+            -->
 
-        <div class="caixas-btn-mp">
-            <img class="fundo-caixa" src="/images/fundo-contorno.png">
-            <span class="titulo-caixa">Cria Sala</span>
-            <img class="simbolo-mais" src="/symbols/sinal-mais.png">
+            <div class="caixas-btn-mp">
+                <img class="fundo-caixa" src="/images/fundo-contorno.png">
+                <span class="titulo-caixa">Cria Sala</span>
+                <img class="simbolo-mais" src="/symbols/sinal-mais.png">
 
-            <a href="/paginaCriaSala" id="cria-link">
-                <div class="fundo-verde-botao-signup">
-                    <div class="overlay-text-signup">Criar</div>
-                        <img src="/images/retangulo-verde-botao-login.png" alt="fundo-botao-signup">
+                <a href="/paginaCriaSala" id="cria-link">
+                    <div class="fundo-verde-botao-signup">
+                        <div class="overlay-text-signup">Criar</div>
+                            <img src="/images/retangulo-verde-botao-login.png" alt="fundo-botao-signup">
+                    </div>
+                </a>
+                <div class="botao-signup-container">
+                    <img src="/images/botao-login.png" alt="botao-signup">
                 </div>
-            </a>
-            <div class="botao-signup-container">
-                <img src="/images/botao-login.png" alt="botao-signup">
+
+            </div>
+
+
+
+
+            <div class="caixas-btn-mp">
+                <img class="fundo-caixa" src="/images/fundo-contorno.png">
+                <span class="titulo-caixa">Sala Privada</span>
+                <img class="simbolo-sala-privada" src="/symbols/sala-privada-icon.png">
+
+                <div class="area-codigo">
+                    <input type="text" class="form-control input-codigo" id="codigoSala" placeholder="Código">
+                </div>
+
+                <a href="/salasPrivadas" id="entrar-link">
+                    <div class="fundo-verde-botao-signup">
+                        <div class="overlay-text-signup">Entrar</div>
+                            <img src="/images/retangulo-verde-botao-login.png" alt="fundo-botao-signup">
+                    </div>
+                </a>
+                <div class="botao-signup-container">
+                    <img src="/images/botao-login.png" alt="botao-signup">
+                </div>
+            </div>
+
+
+
+
+
+            <div class="caixas-btn-mp">
+                <img class="fundo-caixa" src="/images/fundo-contorno.png">
+                <span class="titulo-caixa">Salas Publicas</span>
+                <img class="simbolo-mundo" src="/symbols/mundo-online.webp">
+                
+
+                <a href="/paginaSalasPublicas" id="procura-link">
+                    <div class="fundo-verde-botao-signup">
+                        <div class="overlay-text-signup">Procurar</div>
+                            <img src="/images/retangulo-verde-botao-login.png" alt="fundo-botao-signup">
+                    </div>
+                </a>
+                <div class="botao-signup-container">
+                    <img src="/images/botao-login.png" alt="botao-signup">
+                </div>
+
             </div>
 
         </div>
-
-
-
-
-        <div class="caixas-btn-mp">
-            <img class="fundo-caixa" src="/images/fundo-contorno.png">
-            <span class="titulo-caixa">Sala Privada</span>
-            <img class="simbolo-sala-privada" src="/symbols/sala-privada-icon.png">
-
-            <div class="area-codigo">
-                <input type="text" class="form-control input-codigo" id="codigoSala" placeholder="Código">
-            </div>
-
-            <a href="/salasPrivadas" id="entrar-link">
-                <div class="fundo-verde-botao-signup">
-                    <div class="overlay-text-signup">Entrar</div>
-                        <img src="/images/retangulo-verde-botao-login.png" alt="fundo-botao-signup">
-                </div>
-            </a>
-            <div class="botao-signup-container">
-                <img src="/images/botao-login.png" alt="botao-signup">
-            </div>
-        </div>
-
-
-
-
-
-        <div class="caixas-btn-mp">
-            <img class="fundo-caixa" src="/images/fundo-contorno.png">
-            <span class="titulo-caixa">Salas Publicas</span>
-            <img class="simbolo-mundo" src="/symbols/mundo-online.webp">
-            
-
-            <a href="/paginaSalasPublicas" id="procura-link">
-                <div class="fundo-verde-botao-signup">
-                    <div class="overlay-text-signup">Procurar</div>
-                        <img src="/images/retangulo-verde-botao-login.png" alt="fundo-botao-signup">
-                </div>
-            </a>
-            <div class="botao-signup-container">
-                <img src="/images/botao-login.png" alt="botao-signup">
-            </div>
-
-        </div>
-
     </div>
 
 <script src="js/script.js" defer></script>
