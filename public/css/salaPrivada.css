@@ -375,3 +375,67 @@
 }
 
 /* Fim  - css para a caixa com o nome da sala na pagina sala privada */
+
+/* Inicio - implementacao popup de confirmacao de saida da sala privada */
+
+.popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0;
+    z-index: 9999;
+}
+
+.popup.hidden {
+    display: none;
+}
+
+
+.popup-conteudo {
+    background: rgb(71, 133, 76);
+    padding: 15px 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+.popup-conteudo h2 {
+    text-align: center;
+    margin: 10px auto 30px auto;
+    transform: none;
+    left: 0;
+    position: static;
+    
+}
+
+
+.popup-botoes {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.popup-botoes button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#confirmarSair {
+    background: #105317;
+    color: white;
+}
+
+#cancelarSair {
+    background: #565656;
+    color: #ffffff;
+}
+
+/* Fim - implementacao popup de confirmacao de saida da sala privada */
+
