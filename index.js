@@ -2,6 +2,8 @@ import express from "express"; // Framework HTTP usado para criar a aplicação 
 import path from "path"; // Ajuda a construir caminhos de ficheiros de forma segura.
 import { fileURLToPath } from "url"; // Converte a URL do módulo ES num caminho real do sistema.
 
+import http from 'http';
+import { Server } from 'socket.io';
 
 import mongoose from "mongoose";
 import methodOverride from "method-override";
@@ -20,8 +22,82 @@ app.use(express.urlencoded({ extended: true })); // Converte dados enviados por 
 
 app.use(methodOverride("_method")); // Permite usar métodos HTTP diferentes dos padrões (como PUT e DELETE).
 
+// passport variables
+const passport = require("passport");
+const localStrategy = require("passport-local");
+const session = require("express-session");
+const user = require("./models/userModel.js");
+
+const server = http.createServer(app);
+const io = new Server(server);
+
+
 /** definir o app.use das rotas aqui */
 app.use("/", homeRoutes);
+
+
+app.use(
+    session({
+        secret: "your-secret-key", //usado para encriptacao de dados
+        resave: false,
+        saveUnitialized: false,
+        })
+);
+
+app.use(passport.initialize()); // inicializa passport
+app.use(passport.session()); // usado para restaurar uma sesao de utilizador
+
+passport.use(new localStrategy(user.authenticate()));
+
+passport.serializeUser(user.serializeUser()); // guarda utilizador na sessao
+passport.deserializeUseer(user.deserializeUser()); // retira um utilizador na sessao
+
+io.on("connection", function (socket) {
+    console.log(`Utilizador ligado: ${socket.id}`);
+
+    socket.on("joinRoom", function (roomName) {
+        const normalizedRoom = roomName?.trim();
+
+        if (!normalizedRoom) {
+            return;
+        }
+
+        // Se o utilizador já estava noutra sala, sai primeiro dessa sala.
+        if (socket.data.currentRoom) {
+            socket.leave(socket.data.currentRoom);
+        }
+
+        socket.join(normalizedRoom);
+        socket.data.currentRoom = normalizedRoom;
+
+        socket.emit("roomJoined", {
+            sala: normalizedRoom,
+            socketID: socket.id,
+        });
+    });
+
+    socket.on("chat", function (msgData) {
+        const normalizedMessage = msgData?.mensagem?.trim();
+        const normalizedRoom = msgData?.sala?.trim();
+
+        if (!normalizedMessage || !normalizedRoom) {
+            return;
+        }
+
+        const paraCliente = {
+            socketID: socket.id,
+            mensagem: normalizedMessage,
+            sala: normalizedRoom,
+        };
+
+        // Emitimos apenas para a sala escolhida, para que cada chat fique isolado.
+        io.to(normalizedRoom).emit("clientChat", paraCliente);
+    });
+
+    socket.on("disconnect", function () {
+        console.log(`Utilizador desligado: ${socket.id}`);
+    });
+});
 
 
 mongoose 
@@ -36,7 +112,8 @@ console.log(err);
 });
 
 
-app.listen(3000, (err) => { 
+//app.listen(3000, (err) => {
+server.listen(3000, (err) => { 
 if (err) 
 console.error(err); 
 else 
