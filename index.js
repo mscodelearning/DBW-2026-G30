@@ -9,6 +9,10 @@ import mongoose from "mongoose";
 import methodOverride from "method-override";
 import homeRoutes from "./routes/homeRoutes.js";
 
+import { loadDictionary } from "./services/wordService.js";
+
+loadDictionary();
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename); // Equivalente moderno do __dirname em projetos com ES Modules.
 
