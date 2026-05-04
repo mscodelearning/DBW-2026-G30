@@ -19,7 +19,6 @@ const __dirname = path.dirname(__filename); // Equivalente moderno do __dirname 
 const app = express();
 
 
-
 app.set("view engine", "ejs"); // Diz ao Express que as views serão renderizadas com EJS.
 app.use(express.static(path.join(__dirname, "public"))); // Expõe CSS, JS e imagens da pasta public.
 app.use(express.urlencoded({ extended: true })); // Converte dados enviados por formulários em req.body.
@@ -27,10 +26,13 @@ app.use(express.urlencoded({ extended: true })); // Converte dados enviados por 
 app.use(methodOverride("_method")); // Permite usar métodos HTTP diferentes dos padrões (como PUT e DELETE).
 
 // passport variables
-const passport = require("passport");
-const localStrategy = require("passport-local");
-const session = require("express-session");
-const user = require("./models/userModel.js");
+import passport from "passport";
+import localStrategy from "passport-local";
+import session from "express-session";
+
+import user from "./models/userModel.js";
+
+const LocalStrategy = localStrategy.Strategy;
 
 const server = http.createServer(app);
 const io = new Server(server);
@@ -44,7 +46,7 @@ app.use(
     session({
         secret: "your-secret-key", //usado para encriptacao de dados
         resave: false,
-        saveUnitialized: false,
+        saveUninitialized: false,
         })
 );
 
@@ -54,7 +56,7 @@ app.use(passport.session()); // usado para restaurar uma sesao de utilizador
 passport.use(new localStrategy(user.authenticate()));
 
 passport.serializeUser(user.serializeUser()); // guarda utilizador na sessao
-passport.deserializeUseer(user.deserializeUser()); // retira um utilizador na sessao
+passport.deserializeUser(user.deserializeUser()); // retira um utilizador na sessao
 
 io.on("connection", function (socket) {
     console.log(`Utilizador ligado: ${socket.id}`);

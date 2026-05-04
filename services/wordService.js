@@ -23,6 +23,8 @@ function loadDictionary() {
 
         if (word !== word.toLowerCase()) continue;
 
+        if (word.length < 2) continue;
+
         if (word.includes("-")) continue;
 
         const normalizado = normalizarPalavra(word);
@@ -32,6 +34,9 @@ function loadDictionary() {
 
     console.log(`Dicionário carregado: ${dictionary.size} palavras`);
 }
+
+
+
 
 function wordExists(word) {
     const normalizado = normalizarPalavra(word);
@@ -44,3 +49,12 @@ export {
     dictionary,
     wordExists
 };
+
+loadDictionary();
+
+console.log("com hifen:", wordExists("guarda-chuva"));
+console.log("acronimo:", wordExists("GNR"));
+console.log("acentos:", wordExists("rápido"));
+console.log("acentos:", wordExists("rapido"));
+console.log("random:", wordExists("a"));
+
