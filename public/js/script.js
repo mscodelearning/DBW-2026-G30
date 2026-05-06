@@ -3,6 +3,7 @@
 
 /* Inicio - introducao dos dados nas caixas de texto para a pagina do login e do signin com pop-up na web*/
 
+/*
 document.addEventListener("DOMContentLoaded", () => {
 
 const validateUserPassword = (usernameInput, passwordInput) => {
@@ -22,8 +23,9 @@ const validateUserPassword = (usernameInput, passwordInput) => {
   }
 
   return true;
-};
+};*/
 
+/*
 
 const validateSignupInputs = (nicknameInput, usernameInput, passwordInput) => {
   const nickname = nicknameInput.value.trim();
@@ -37,9 +39,25 @@ const validateSignupInputs = (nicknameInput, usernameInput, passwordInput) => {
   return validateUserPassword(usernameInput, passwordInput);
 };
 
-
+*/
 /* LOGIN (página que tem #form-area-login) */
 
+
+const formAreaLogin = document.getElementById("form-area-login");
+
+if (formAreaLogin) {
+  const form = formAreaLogin.querySelector("form");
+  const usernameInputLogin = form.querySelector('input[name="username"]');
+  const passwordInputLogin = form.querySelector('input[name="password"]');
+
+  form.addEventListener("submit", (event) => {
+    if (!validateUserPassword(usernameInputLogin, passwordInputLogin)) {
+      event.preventDefault();
+    }
+  });
+}
+
+/*
 const formAreaLogin = document.getElementById('form-area-login');
 
 if (formAreaLogin) {
@@ -68,9 +86,10 @@ if (formAreaLogin) {
     });
   }
 }
-
+*/
 /* SIGNUP (página que tem #form-area-signup) */
 
+/*
   const formAreaSignup = document.getElementById('form-area-signup');
 
   if (!formAreaSignup) return;
@@ -106,7 +125,7 @@ if (formAreaLogin) {
     });
   }
 });
-
+*/
 /* Fim - introducao dos dados nas caixas de texto para a pagina do login e do signin com pop-up na web*/
 
 /*

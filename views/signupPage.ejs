@@ -27,24 +27,37 @@
                 <img id="perfil-img" src="/symbols/user-icon-2.png" alt="user-icon"> <!--id novo-->
         </div>
             <div id="form-area-signup">
+              <form action="/signup" method="POST">
+                <input type="text" name="username" placeholder="Username" required class="caixa-texto">
+                <input type="text" name="nickname" placeholder="Nickname" required class="caixa-texto">
+                <input type="password" name="password" placeholder="Password" required class="caixa-texto">
 
-            </div>
-            <a href="/login" id="signup-link">
-                <div class="fundo-verde-botao-signup">
-                    <div class="overlay-text-signup">SIGN UP</div>
-                        <!--<img src="../public/images/retangulo-verde-botao-login.png" alt="fundo-botao-signup">-->
-                        <img src="/images/retangulo-verde-botao-login.png" alt="fundo-botao-signup">
+                <% if (typeof error !== "undefined" && error) { %>
+                  <!--<p class="text-danger mt-3"><!%= error %></p>-->
+                  <p class="signup-erro"><%= error %></p>
+                <% } %>
+
+                <div class="botao-signup-container">
+                    <!--<img src="../public/images/botao-login.png" alt="botao-signup">-->
+                    <img src="/images/botao-login.png" alt="botao-signup">
+
+                    <button type="submit" id="signup-link" style="background: none; border: none; padding: 0;">
+                        <div class="fundo-verde-botao-signup">
+                            <div class="overlay-text-signup">SIGN UP</div>
+                            <img src="/images/retangulo-verde-botao-login.png" alt="fundo-botao-signup">
+                        </div>
+                    </button>
+
                 </div>
-            </a>
-            <div class="botao-signup-container">
-                <!--<img src="../public/images/botao-login.png" alt="botao-signup">-->
-                <img src="/images/botao-login.png" alt="botao-signup">
+              </form>
             </div>
+            
         </div>
     </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 <!--<script src="../public/js/script.js" defer></script>-->
 <script src="/js/script.js" defer></script>
+<script src="/js/formSignupPg.js" defer></script>
 
 </body>
 

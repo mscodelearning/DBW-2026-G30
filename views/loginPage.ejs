@@ -26,19 +26,27 @@
                 <!--<img src="../public/symbols/user-icon-2.png" alt="user-icon" class="user-icon-img">-->
                 <img src="/symbols/user-icon-2.png" alt="user-icon" class="user-icon-img">
             </div>     
-            <div id="form-area-login"></div>
-                <div class="botao-login-container">
-                    <!--<img src="../public/images/botao-login.png" alt="botao-login" class="botao-login">-->
-                    <img src="/images/botao-login.png" alt="botao-login" class="botao-login">
-                    <!--<a href="selectMultiplayerPage.html" id="login-link">--> <!--adicionei o id login-link para testar a validacao-->
-                    <a href="/selectMultiplayerPage" id="login-link"> <!--adicionei o id login-link para testar a validacao-->
-                        <div class ="botao-login-verde">
-                            <!--<img src="../public/images/retangulo-verde-botao-login.png" alt="botao-login-verde" class="botao-login-verde">-->
-                            <img src="/images/retangulo-verde-botao-login.png" alt="botao-login-verde" class="botao-login-verde">
-                        </div>
-                        <div class="overlay-text-login">Login</div>
-                    </a>
-                </div>
+             <div id="form-area-login">
+                <form action="/login" method="POST">
+                    <input type="text" name="username" placeholder="Username" required class="login-input">
+                    <input type="password" name="password" placeholder="Password" required class="login-input">
+
+                    <% if (typeof error !== "undefined" && error) { %>
+                      <p class="login-error"><%= error %></p>
+                    <% } %>
+
+                    <div class="botao-login-container">
+                        <img src="/images/botao-login.png" alt="botao-login" class="botao-login">
+
+                        <button type="submit" id="login-link" style="background: none; border: none; padding: 0;">
+                            <div class="botao-login-verde">
+                                <img src="/images/retangulo-verde-botao-login.png" alt="botao-login-verde" class="botao-login-verde">
+                            </div>
+                            <div class="overlay-text-login">Login</div>
+                        </button>
+                    </div>
+                </form>
+            </div>
             <div class="login-signup">
                 <!--<a href="signupPage.html">Sign Up</a>-->
                 <a href="/signup">Sign Up</a>

@@ -1,15 +1,35 @@
-const router = require("express").Router();
-const userCont = require("../controllers/userController");
-const passport = require("passport");
+import express from "express";
+import passport from "passport";
+import {
+  getSignup,
+  postSignup,
+  getLogin,
+} from "../controllers/userController.js";
 
-router.get("/", userCont.userGet);
+const router = express.Router();
+
+router.get("/signup", getSignup);
+router.post("/signup", postSignup);
+
+router.get("/login", getLogin);
 
 router.post(
-    "/login",
-    passport.authenticate("local", { failureRedirect: "/login"}), // comentario temporario: aqui acho que é se falhar volta de novo para o login
-    function (req, res) {
-        res.redirect("/"); //comentario temporario: caso contrario vai para a pagina inicial
-    }
+  "/login",
+  passport.authenticate("local", {
+    failureRedirect: "/login",
+  }),
+  (req, res) => {
+    res.redirect("/");
+  }
 );
 
-module.exports = router;
+router.get("/logout", (req, res, next) => {
+  req.logout((err) => {
+    if (err) return next(err);
+    res.redirect("/login");
+  });
+});
+
+
+
+export default router;

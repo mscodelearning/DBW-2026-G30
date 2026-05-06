@@ -26,8 +26,13 @@ router.get("/login", (req, res) => {
   res.render("loginPage");
 });
 
+/*
 router.get("/signup", (req, res) => {
   res.render("signupPage");
+});*/
+
+router.get("/signup", (req, res) => {
+  res.render("signupPage", { error: null });
 });
 
 router.get("/gameSinglePlayer", (req, res) => {

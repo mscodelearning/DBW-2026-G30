@@ -9,6 +9,8 @@ import mongoose from "mongoose";
 import methodOverride from "method-override";
 import homeRoutes from "./routes/homeRoutes.js";
 
+import userRoutes from "./routes/userRoute.js";
+
 import { loadDictionary } from "./services/wordService.js";
 
 loadDictionary();
@@ -29,18 +31,12 @@ app.use(methodOverride("_method")); // Permite usar métodos HTTP diferentes dos
 import passport from "passport";
 import localStrategy from "passport-local";
 import session from "express-session";
-
 import user from "./models/userModel.js";
 
 const LocalStrategy = localStrategy.Strategy;
 
 const server = http.createServer(app);
 const io = new Server(server);
-
-
-/** definir o app.use das rotas aqui */
-app.use("/", homeRoutes);
-
 
 app.use(
     session({
@@ -54,9 +50,16 @@ app.use(passport.initialize()); // inicializa passport
 app.use(passport.session()); // usado para restaurar uma sesao de utilizador
 
 passport.use(new localStrategy(user.authenticate()));
-
 passport.serializeUser(user.serializeUser()); // guarda utilizador na sessao
 passport.deserializeUser(user.deserializeUser()); // retira um utilizador na sessao
+
+
+
+/** definir o app.use das rotas aqui */
+app.use("/", homeRoutes);
+app.use("/", userRoutes);
+
+
 
 io.on("connection", function (socket) {
     console.log(`Utilizador ligado: ${socket.id}`);

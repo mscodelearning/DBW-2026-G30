@@ -1,16 +1,27 @@
+// models/userModel.js
 import mongoose from "mongoose";
-import passportLocalMongoose from "passport-local-mongoose";
+import passportLocalMongooseImport from "passport-local-mongoose";
 
-const userSchema = new mongoose.Schema({
+const passportLocalMongoose =
+  passportLocalMongooseImport.default || passportLocalMongooseImport;
+
+const userSchema = new mongoose.Schema(
+  {
     username: {
-        type: String,
-        required: true,
-        unique: true
-    }
-});
+      type: String,
+      required: true,
+      unique: true,
+      trim: true,
+    },
+    nickname: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+  },
+  { timestamps: true }
+);
 
-userSchema.plugin(passportLocalMongoose.default);
+userSchema.plugin(passportLocalMongoose);
 
 export default mongoose.model("User", userSchema);
-
-
