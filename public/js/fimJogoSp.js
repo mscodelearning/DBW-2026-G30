@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!stats) return;
 
-    document.getElementById("palavras").textContent = stats.palavrasValidas;
+    document.getElementById("palavras").textContent = stats.palavrasDescobertas;
     document.getElementById("erros").textContent = stats.erros;
     document.getElementById("pontos").textContent = stats.pontos;
     document.getElementById("tempo").textContent = stats.tempoJogado + "s";

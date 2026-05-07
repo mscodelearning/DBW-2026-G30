@@ -43,9 +43,10 @@ router.get("/gameMultiplayerPlayer", (req, res) => {
   res.render("gamemodeMultiplayer");
 });
 
+/*
 router.get("/jogoSingleplayer", (req, res) => {
   res.render("jogoSingleplayer");
-});
+});*/
 
 router.get("/fimJogoSp", (req, res) => {
   res.render("fimDeJogoSp");

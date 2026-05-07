@@ -8,12 +8,13 @@ import { Server } from 'socket.io';
 import mongoose from "mongoose";
 import methodOverride from "method-override";
 import homeRoutes from "./routes/homeRoutes.js";
+import gameRoutes from "./routes/gameRoutes.js";
 
 import userRoutes from "./routes/userRoute.js";
 
-import { loadDictionary } from "./services/wordService.js";
+import { carregarDicionario } from "./services/wordService.js";
 
-loadDictionary();
+carregarDicionario();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename); // Equivalente moderno do __dirname em projetos com ES Modules.
@@ -24,7 +25,7 @@ const app = express();
 app.set("view engine", "ejs"); // Diz ao Express que as views serão renderizadas com EJS.
 app.use(express.static(path.join(__dirname, "public"))); // Expõe CSS, JS e imagens da pasta public.
 app.use(express.urlencoded({ extended: true })); // Converte dados enviados por formulários em req.body.
-
+app.use(express.json());
 app.use(methodOverride("_method")); // Permite usar métodos HTTP diferentes dos padrões (como PUT e DELETE).
 
 // passport variables
@@ -58,6 +59,7 @@ passport.deserializeUser(user.deserializeUser()); // retira um utilizador na ses
 /** definir o app.use das rotas aqui */
 app.use("/", homeRoutes);
 app.use("/", userRoutes);
+app.use("/", gameRoutes);
 
 
 

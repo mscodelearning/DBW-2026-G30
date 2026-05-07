@@ -7,54 +7,54 @@ import normalizarPalavra from "../utils/normalizarPalavras.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const dictionary = new Set();
+const dicionario = new Set();
 
-function loadDictionary() {
+function carregarDicionario() {
     const filePath = path.join(__dirname, "../dados/wordsList.txt");
 
     const content = fs.readFileSync(filePath, "utf-8");
 
-    const words = content.split("\n");
+    const palavras = content.split("\n");
 
-    for (let word of words) {
-        word = word.trim();
+    for (let palavra of palavras) {
+        palavra = palavra.trim();
 
-        if (!word) continue;
+        if (!palavra) continue;
 
-        if (word !== word.toLowerCase()) continue;
+        if (palavra !== palavra.toLowerCase()) continue;
 
-        if (word.length < 2) continue;
+        if (palavra.length < 2) continue;
 
-        if (word.includes("-")) continue;
+        if (palavra.includes("-")) continue;
 
-        const normalizado = normalizarPalavra(word);
+        const normalizado = normalizarPalavra(palavra);
 
-        dictionary.add(normalizado);
+        dicionario.add(normalizado);
     }
 
-    console.log(`Dicionário carregado: ${dictionary.size} palavras`);
+    console.log(`Dicionário carregado: ${dicionario.size} palavras`);
 }
 
 
 
 
-function wordExists(word) {
-    const normalizado = normalizarPalavra(word);
+function palavraExiste(palavra) {
+    const normalizado = normalizarPalavra(palavra);
 
-    return dictionary.has(normalizado);
+    return dicionario.has(normalizado);
 }
 
 export {
-    loadDictionary,
-    dictionary,
-    wordExists
+    carregarDicionario,
+    dicionario,
+    palavraExiste
 };
 
-loadDictionary();
+carregarDicionario();
 
-console.log("com hifen:", wordExists("guarda-chuva"));
-console.log("acronimo:", wordExists("GNR"));
-console.log("acentos:", wordExists("rápido"));
-console.log("acentos:", wordExists("rapido"));
-console.log("random:", wordExists("a"));
+console.log("com hifen:", palavraExiste("guarda-chuva"));
+console.log("acronimo:", palavraExiste("GNR"));
+console.log("acentos:", palavraExiste("rápido"));
+console.log("acentos:", palavraExiste("rapido"));
+console.log("random:", palavraExiste("ines"));
 

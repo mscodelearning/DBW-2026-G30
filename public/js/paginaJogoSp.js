@@ -9,10 +9,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const challengeType = localStorage.getItem("challengeType");
     const challengeValue = localStorage.getItem("challengeValue");
     let tempoInicial = Date.now();
+    let pontos = 0;
     let erros = 0;
-
-    let palavrasValidas = 0;
-
+    let palavrasDescobertas = 0;
+    
     if (timer === "none") {
         finalizarBtn.style.display = "block";
         display.style.display = "none";
@@ -22,12 +22,67 @@ document.addEventListener("DOMContentLoaded", () => {
         iniciarTimer(parseInt(timer));
     }
 
-    let nome = "Pessoa";
-    let pontos = 0;
 
-    document.getElementById("nome-jogador").textContent = nome;
+    document.getElementById("nome-jogador").textContent = "Pessoa";
     document.getElementById("pontuacao").textContent = pontos;
 
+
+//novo
+    const input = document.getElementById("caixa-texto");
+
+    input.addEventListener("keydown", async (event) => {
+
+        if (event.key !== "Enter") return;
+
+            const palavra = input.value.trim();
+
+            if (!palavra) return;
+
+            // validar desafios (mín/max letras)
+            if (!validarPalavra(palavra)) {
+
+                erros++;
+
+                mostrarAlerta("Palavra inválida para este desafio!");
+
+                input.value = "";
+
+                return;
+            }
+
+            console.log("before fetch");
+
+            const response = await fetch("/guess", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ palavra })
+            
+        });
+        console.log("after json");
+        const data = await response.json();
+
+        if (data.success) {
+
+            adicionarPalavra(data.palavra);
+            pontos = data.pontos;
+            document.getElementById("pontuacao").textContent = pontos;
+            palavrasDescobertas = data.totalDescobertas;
+
+        
+        } else {
+
+            erros++;
+            mostrarAlerta(data.message);
+        }
+        console.log("before reset");
+        input.value = "";
+
+    });
+//novo
+
+/*antigo input
     let input = document.getElementById("caixa-texto");
 
     input.addEventListener("keydown", function(event) {
@@ -37,14 +92,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (validarPalavra(palavra)) {
         adicionarPalavra(palavra);
         adicionarPontos(20);
-        palavrasValidas++;
+        palavrasDescobertas++;
     } else {
         erros++;
         mostrarAlerta("Palavra inválida para este desafio!");
     }
         input.value = "";
     }
-    });
+    }); 
+antigo input*/
 
     function validarPalavra(palavra) {
         if (challengeType === "Não") return true;
@@ -71,34 +127,36 @@ document.addEventListener("DOMContentLoaded", () => {
         lista.appendChild(p);
         lista.scrollTop = lista.scrollHeight;
     }
-
+    
+/*
     function adicionarPontos(valor) {
         pontos += valor;
         document.getElementById("pontuacao").textContent = pontos;
-    }
+    }*/
 
-        function iniciarTimer(tempo) {
-            let tempoRestante = tempo;
-            const display = document.getElementById("timer-display");
+    function iniciarTimer(tempo) {
+        let tempoRestante = tempo;
+        const display = document.getElementById("timer-display");
+
+        display.textContent = tempoRestante + "s";
+
+        let intervalo = setInterval(() => {
+            tempoRestante--;
 
             display.textContent = tempoRestante + "s";
 
-            let intervalo = setInterval(() => {
-                tempoRestante--;
+            if (tempoRestante <= 0) {
+                clearInterval(intervalo);
+                terminarJogo();
+            }
+        }, 1000);
+    }
 
-                display.textContent = tempoRestante + "s";
-
-                if (tempoRestante <= 0) {
-                    clearInterval(intervalo);
-                    terminarJogo();
-                }
-            }, 1000);
-        }
 
     function terminarJogo() {
 
         if (challengeType === "Objetivo: nº de palavras") {
-            if (palavrasValidas < parseInt(challengeValue)) {
+            if (palavrasDescobertas < parseInt(challengeValue)) {
                 mostrarAlerta("Ainda não atingiu o número de palavras necessário!");
             }
         }
@@ -108,7 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const estatisticasJogo = {
             tempoJogado: tempoJogado,
-            palavrasValidas: palavrasValidas,
+            palavrasDescobertas: palavrasDescobertas,
             pontos: pontos,
             erros: erros
         };
@@ -158,7 +216,7 @@ function atualizarEstatisticasGlobais(statsJogo) {
 
     statsGlobais.tempoTotal += statsJogo.tempoJogado;
     statsGlobais.pontosTotal += statsJogo.pontos;
-    statsGlobais.palavrasTotal += statsJogo.palavrasValidas;
+    statsGlobais.palavrasTotal += statsJogo.palavrasDescobertas;
     statsGlobais.errosTotal += statsJogo.erros;
     statsGlobais.jogosJogados += 1;
 
