@@ -111,14 +111,26 @@
                 </div>
             </div>
         </div>
-        <div class="zona-botao-termina">
-            <!--<a href="paginaInicial.html" class="botao-terminar-sessao">-->
+        <!--<div class="zona-botao-termina">
+    
             <a href="/" class="botao-terminar-sessao">
-                <!--<img src="../public/images/barra-insere-texto-perfil.png" alt="botao-termina-sessao">-->
+                
                 <img src="/images/barra-insere-texto-perfil.png" alt="botao-termina-sessao">
                 <span class="overlay-text-termina-sessao">Terminar Sessão</span>
             </a>
+        </div>-->
+
+
+
+        <div class="zona-botao-termina">
+            <form action="/logout" method="POST" class="logout-form-perfil">
+                <button type="submit" class="botao-terminar-sessao">
+                <img src="/images/barra-insere-texto-perfil.png" alt="botao-termina-sessao">
+                <span class="overlay-text-termina-sessao">Terminar Sessão</span>
+                </button>
+            </form>
         </div>
+
     </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 <!--<script src="../public/js/script.js" defer></script>-->

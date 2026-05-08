@@ -1807,3 +1807,72 @@ h2 {
 }
 */
 /* Fim - caixa filtros da pagina das salas publicas */
+
+
+/* Inicio - style do logout no dropdown */
+
+.logout-form {
+  margin: 0;
+}
+
+.logout-btn {
+  background: none;
+  border: none;
+  color: white;
+  font: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 180px; /* adjust to match the other items */
+  padding: 0;
+}
+
+.seta {
+  margin-left: 10px;
+}
+
+/* Fim - style do logout no dropdown */
+
+
+/* Inicio - link para o logout no off canvas menu */
+
+.logout-form {
+  margin: 0;
+}
+
+.logout-link {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+}
+
+.logout-link:hover {
+    color: #eaeaea !important;
+}
+
+/* Fim - link para o logout no off canvas menu */
+
+/* Inicio - link botao da pagina de perfil para terminar sessao */
+
+.logout-form-perfil {
+  margin: 0;
+}
+
+.botao-terminar-sessao {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+}
+
+/* Fim - link botao da pagina de perfil para terminar sessao */
