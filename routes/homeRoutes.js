@@ -21,9 +21,10 @@ router.get("/selectMultiplayerPage", isLoggedIn, (req, res) => {
   res.render("selectMultiplayerPage");
 });
 
+/*
 router.get("/alterarPalavraPasse", (req, res) => {
   res.render("alteraPalavraPasse");
-});
+});*/
 
 /*/paginaInicial*/
 router.get("/", (req, res) => {

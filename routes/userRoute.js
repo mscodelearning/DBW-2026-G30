@@ -60,4 +60,38 @@ router.post("/perfilPage", isLoggedIn, async (req, res) => {
   }
 });
 
+
+router.get("/alterarPalavraPasse", isLoggedIn, (req, res) => {
+  res.render("alteraPalavraPasse", { error: null });
+});
+
+router.post("/alterarPassword", isLoggedIn, async (req, res) => {
+    console.log("POST /alterarPassword reached");
+  console.log("BODY:", req.body);
+  try {
+    const { atual, nova, confirmar } = req.body;
+
+    if (!atual || !nova || !confirmar) {
+      return res.render("alteraPalavraPasse", {
+        error: "Preenche todos os campos."
+      });
+    }
+
+    if (nova !== confirmar) {
+      return res.render("alteraPalavraPasse", {
+        error: "A nova palavra-passe e a confirmação não coincidem."
+      });
+    }
+
+    await req.user.changePassword(atual, nova);
+
+    res.redirect("/perfilPage");
+  } catch (err) {
+    console.log(err);
+    res.render("alteraPalavraPasse", {
+      error: "A palavra-passe atual está incorreta."
+    });
+  }
+});
+
 export default router;

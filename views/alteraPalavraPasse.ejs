@@ -18,7 +18,12 @@
                     <div class="card shadow-sm">
                         <div class="card-body">
                             <h3 class="mb-4">Alterar palavra-passe</h3>
-                            <form id="formAlterarPassword" action="/alterarPassword" method="post">
+
+                            <% if (error) { %>
+                                <div class="alert alert-danger"><%= error %></div>
+                            <% } %>
+
+                            <form id="formAlterarPassword" action="/alterarPassword" method="POST">
                                 <div class="mb-3">
                                     <label for="atual" class="form-label">Palavra-passe atual</label>
                                     <input type="password" class="form-control" id="atual" name="atual" required>
