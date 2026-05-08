@@ -63,8 +63,14 @@
                             <a class="dropdown-item d-flex align-items-center gap-2" href="#">
                                 <!--<img src="../public/symbols/simbolo-logout.png" alt="" width="35" height="35" class="rounded-circle bg-light p-1">-->
                                 <img src="/symbols/simbolo-logout.png" alt="" width="35" height="35" class="rounded-circle bg-light p-1">
-                                <span class="flex-grow-1">Logout</span>
-                                <span>></span>
+                                <!--<span class="flex-grow-1">Logout</span>-->
+                                <form action="/logout" method="POST">
+                                    <button type="submit" class="dropdown-item logout-btn">
+                                        <span>Logout</span>
+                                        <span class="seta">></span>
+                                    </button>
+                                </form>
+                                <!--<span>      ></span>-->
                             </a>
                             <% } else { %>
                                 <a href="#"></a>
@@ -76,7 +82,7 @@
                 <div class="offcanvas offcanvas-start" tabindex="-1" id="menuLateral" aria-labelledby="menuLateralLabel">
                     <div class="offcanvas-header">
                         <h5 class="offcanvas-title" id="menuLateralLabel">Menu</h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
                     </div>
 
                     <div class="offcanvas-body">
@@ -90,7 +96,10 @@
                         <!--<a href="selectMultiplayerPage.html" class="d-block text-white text-decoration-none mb-3">Multiplayer</a>-->
                         <a href="/selectMultiplayerPage" class="d-block text-white text-decoration-none mb-3">Multiplayer</a>
                         <a href="/paginaSalasPublicas" class="d-block text-white text-decoration-none mb-3">Salas Publicas</a>
-                        <a href="/" class="d-block text-white text-decoration-none">Terminar Sessão</a>
+                        <!--<a href="/" class="d-block text-white text-decoration-none">Terminar Sessão</a>-->
+                        <form action="/logout" method="POST" class="logout-form">
+                            <button type="submit" class="logout-link">Logout</button>
+                        </form>
                         <% } else { %>
                             <a href="/login">Login</a>
                             <a href="/signup">Sign Up</a>
