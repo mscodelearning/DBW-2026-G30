@@ -71,7 +71,28 @@ document.addEventListener("DOMContentLoaded", () => {
         updateButton();
     }
 
-        customNum.addEventListener("input", () => {
+        if (customNum) {
+            customNum.addEventListener("input", () => {
+                challengeValue = customNum.value || null;
+                updateButton();
+            });
+        }
+
+        if (customMin) {
+            customMin.addEventListener("input", () => {
+                challengeValue = customMin.value || null;
+                updateButton();
+            });
+        }
+
+        if (customMax) {
+            customMax.addEventListener("input", () => {
+                challengeValue = customMax.value || null;
+                updateButton();
+            });
+        }
+                
+        /*customNum.addEventListener("input", () => {
         challengeValue = customNum.value || null;
         updateButton();
         });
@@ -84,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
         customMax.addEventListener("input", () => {
         challengeValue = customMax.value || null;
         updateButton();
-        });
+        });*/
 
     timerOptions.forEach(item => {
         item.addEventListener("click", () => selectOne(timerOptions, item, "timer"));

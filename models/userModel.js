@@ -1,4 +1,3 @@
-// models/userModel.js
 import mongoose from "mongoose";
 import passportLocalMongooseImport from "passport-local-mongoose";
 
@@ -13,12 +12,38 @@ const userSchema = new mongoose.Schema(
       unique: true,
       trim: true,
     },
+
     nickname: {
       type: String,
       required: true,
       trim: true,
     },
+
+    estatisticas: {
+
+      totalPontos: {
+        type: Number,
+        default: 0
+      },
+
+      respostasEncontradas: {
+        type: Number,
+        default: 0
+      },
+
+      respostasErradas: {
+        type: Number,
+        default: 0
+      },
+
+      tempoTotal: {
+        type: Number,
+        default: 0
+      },
+
+    }
   },
+
   { timestamps: true }
 );
 
