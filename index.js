@@ -34,6 +34,7 @@ import localStrategy from "passport-local";
 import session from "express-session";
 import user from "./models/userModel.js";
 
+
 const LocalStrategy = localStrategy.Strategy;
 
 const server = http.createServer(app);
@@ -47,12 +48,25 @@ app.use(
         })
 );
 
+
 app.use(passport.initialize()); // inicializa passport
 app.use(passport.session()); // usado para restaurar uma sesao de utilizador
+
+
 
 passport.use(new localStrategy(user.authenticate()));
 passport.serializeUser(user.serializeUser()); // guarda utilizador na sessao
 passport.deserializeUser(user.deserializeUser()); // retira um utilizador na sessao
+
+
+/////////////////////////
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
+  res.locals.isAuthenticated = req.isAuthenticated ? req.isAuthenticated() : false;
+  next();
+});
+////////////////////
+
 
 
 
