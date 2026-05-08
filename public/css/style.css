@@ -1370,39 +1370,39 @@ h1 {
 
 .quadro-estatistico-container {
     position: absolute;
-    /*top: 50%;
-    left: 70%;*/
-    inset: 0;
-    transform: translate(-50%, -50%);
-    width: 450px;
-    height: 560px;
+    top: 20%;
+    left: 64%;
+    /*inset: 0;*/
+    /*transform: translate(-50%, -50%);*/
+    width: 420px;
+    height: 520px;
+    padding: 30px;
     z-index: 10;
 }
 
 .img-quadro {
     position: absolute;
-    /*inset: 0;*/
-    top: 460px;
-    left: 1090px;
-    width: 95%;
-    height: 94%;
+    inset: 0;
+    width: 115%;
+    height: 115%;
+    padding: 40px;
     object-fit: contain;
     z-index: 1;
 }
 
 .fundo-verde-quadro-estatistico {
     position: absolute;
-    top: 502px;
-    left: 1142px;
+    top: 82px;
+    left: 82px;
     width: 322px;
     height: 448px;
     z-index: 2;
 }
 
 .img-fundo-verde {
-    width: 100%;
-    height: 100%;
-    display: block;
+    width: 98%;
+    height: 98%;
+    /*display: block;*/
 }
 
 

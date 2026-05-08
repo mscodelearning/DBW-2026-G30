@@ -64,7 +64,7 @@
 .botao-signup-container {
     position: absolute;
     top: 380px;
-    right: 92px;
+    right: 120px;
     z-index: 2;
 }
 
@@ -78,7 +78,7 @@
 .fundo-verde-botao-signup {
     position: absolute;
     top: 397px;
-    right: 95px;
+    right: 93px;
     /*display: flex;*/
     z-index: 3;
 }
