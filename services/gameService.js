@@ -40,8 +40,13 @@ function podeConstruirPalavra(word, palavraMestra) {
     word = normalizarPalavra(word);
     palavraMestra = normalizarPalavra(palavraMestra);
 
+    if (word === palavraMestra) {
+        return false;
+    }
+
     let wordIndex = 0;
     let mestraIndex = 0;
+
 
     while (
         wordIndex < word.length &&
