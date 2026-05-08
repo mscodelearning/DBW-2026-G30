@@ -50,39 +50,48 @@
                     </div>
                 </div>
             </div>
-            <div class="coluna-caixas">
-                <div class="grupo-campo">
-                    <p class="label-campo">Nome exibido</p>
-                    <div class="caixa-texto-imagem">
-                        <input type="text" id="nickname" placeholder="escreva o texto aqui">
-                    </div>
-                </div>
-                <div id="save-bar" role="alert" aria-live="polite">
-                    <div class="alert alert-success d-flex align-items-center justify-content-between shadow mb-0 gap-3">
-                        <span>Tens alterações não guardadas.</span>
-                        <div class="d-flex gap-2">
-                        <button id="btn-reset" class="btn btn-secondary btn-sm" type="button">Redefinir</button>
-                        <button id="btn-save" class="btn btn-success btn-sm" type="button">Salvar alterações</button>
+
+            <form action="/perfilPage" method="POST">
+
+                <div class="coluna-caixas">
+                    <div class="grupo-campo">
+                        <p class="label-campo">Nome exibido</p>
+                        <div class="caixa-texto-imagem">
+                            <!--<input type="text" id="nickname" placeholder="escreva o texto aqui">-->
+                            <input type="text" id="nickname" name="nickname" value="<%= user.nickname %>">
                         </div>
                     </div>
-                </div>
-                <div class="grupo-campo">
-                    <p class="label-campo">Nome de Utilizador</p>
-                    <div class="caixa-texto-imagem">
-                        <input type="text" placeholder="escreva o texto aqui">
+                    <div id="save-bar" role="alert" aria-live="polite">
+                        <div class="alert alert-success d-flex align-items-center justify-content-between shadow mb-0 gap-3">
+                            <span>Tens alterações não guardadas.</span>
+                            <div class="d-flex gap-2">
+                            <button id="btn-reset" class="btn btn-secondary btn-sm" type="button">Redefinir</button>
+                            <button id="btn-save" class="btn btn-success btn-sm" type="submit">Salvar alterações</button>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="grupo-campo">
-                    <p class="label-campo">Palavra-passe</p>
-                    <div class="caixa-texto-imagem">
-                        <input type="password" placeholder="escreva o texto aqui">
+                    <div class="grupo-campo">
+                        <p class="label-campo">Nome de Utilizador</p>
+                        <div class="caixa-texto-imagem">
+                            <!--<input type="text" placeholder="escreva o texto aqui">-->
+                            <input type="text" name="username" value="<%= user.username %>" readonly>
+                        </div>
                     </div>
+                    <div class="grupo-campo">
+                        <p class="label-campo">Palavra-passe</p>
+                        <div class="caixa-texto-imagem">
+                            <!--<input type="password" placeholder="escreva o texto aqui">-->
+                            <input type="password" value="********" disabled>
+                        </div>
+                    </div>
+                    <!--<a href="alteraPalavraPasse.html" class="texto-alterar-password">-->
+                    <a href="/alterarPalavraPasse" class="texto-alterar-password">
+                        Alterar palavra-passe
+                    </a>
                 </div>
-                <!--<a href="alteraPalavraPasse.html" class="texto-alterar-password">-->
-                <a href="/alterarPalavraPasse" class="texto-alterar-password">
-                    Alterar palavra-passe
-                </a>
-            </div>
+
+            </form>
+
             <div class="quadro-estatistico-container">
                 <!--<img class="img-quadro" src="../public/images/quadro-estatisticas-perfil.png" alt="quadro-madeira">-->
                 <img class="img-quadro" src="/images/quadro-estatisticas-perfil.png" alt="quadro-madeira">

@@ -60,15 +60,11 @@ passport.serializeUser(user.serializeUser()); // guarda utilizador na sessao
 passport.deserializeUser(user.deserializeUser()); // retira um utilizador na sessao
 
 
-/////////////////////////
 app.use((req, res, next) => {
   res.locals.currentUser = req.user;
   res.locals.isAuthenticated = req.isAuthenticated ? req.isAuthenticated() : false;
   next();
 });
-////////////////////
-
-
 
 
 /** definir o app.use das rotas aqui */
