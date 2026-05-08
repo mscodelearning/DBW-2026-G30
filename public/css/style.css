@@ -1697,7 +1697,7 @@ h2 {
 /* Fim - implementacao da caixa que vai fazer de botao para entrar/selecionar uma sala publica */
 
 /* Inicio - caixa filtros da pagina das salas publicas */
-
+/*
 .lista-filtros{
     display: flex;
     justify-content: flex-end;
@@ -1805,5 +1805,5 @@ h2 {
   height: 40px;
   z-index: 2;
 }
-
+*/
 /* Fim - caixa filtros da pagina das salas publicas */
