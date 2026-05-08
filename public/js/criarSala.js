@@ -29,7 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
         let playersValid = selectedPlayers !== null;
 
         startButton.disabled = !(timerValid && challengeValid && accessValid && playersValid);
-
     }
 
     function selectOne(group, clicked, type) {
@@ -86,9 +85,9 @@ document.addEventListener("DOMContentLoaded", () => {
             selectedPlayers = parseInt(value);
         }
 
-        }
-
         updateButton();
+    }
+
 
         customNum.addEventListener("input", () => {
             challengeValue = customNum.value || null;
