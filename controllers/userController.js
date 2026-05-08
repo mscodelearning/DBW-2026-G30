@@ -29,3 +29,9 @@ export const getLogin = (req, res) => {
   res.render("loginPage", { error: null });
 };
 
+export function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect("/login");
+}

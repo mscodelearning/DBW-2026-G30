@@ -1,10 +1,6 @@
 import express from "express";
 import passport from "passport";
-import {
-  getSignup,
-  postSignup,
-  getLogin,
-} from "../controllers/userController.js";
+import { getSignup, postSignup, getLogin, isLoggedIn } from "../controllers/userController.js";
 
 const router = express.Router();
 

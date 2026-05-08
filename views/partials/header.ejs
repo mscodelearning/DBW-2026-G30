@@ -31,6 +31,7 @@
                         <li><hr class="dropdown-divider"></li>
 
                         <li>
+                            <% if (isAuthenticated) { %>
                             <!--<a class="dropdown-item d-flex align-items-center gap-2" href="perfil.html">-->
                             <a class="dropdown-item d-flex align-items-center gap-2" href="/perfilPage">
                                 <!--<img src="../public/symbols/Union-user-icon.png" alt="" width="35" height="35" class="rounded-circle bg-light p-1">-->
@@ -38,9 +39,13 @@
                                 <span class="flex-grow-1">Editar Perfil</span>
                                 <span>></span>
                             </a>
+                            <% } else { %>
+                                <a href="#"></a>
+                            <% } %>
                         </li>
 
                         <li>
+                            <% if (isAuthenticated) { %>
                             <!--<a class="dropdown-item d-flex align-items-center gap-2" href="tutorialPage.html">-->
                             <a class="dropdown-item d-flex align-items-center gap-2" href="/tutorial">
                                 <!--<img src="../public/symbols/simbolo-interrogacao.png" alt="" width="35" height="35" class="rounded-circle bg-light p-1">-->
@@ -48,15 +53,22 @@
                                 <span class="flex-grow-1">Tutorial</span>
                                 <span>></span>
                             </a>
+                            <% } else { %>
+                                <a href="#"></a>
+                            <% } %>
                         </li>
 
                         <li>
+                            <% if (isAuthenticated) { %>
                             <a class="dropdown-item d-flex align-items-center gap-2" href="#">
                                 <!--<img src="../public/symbols/simbolo-logout.png" alt="" width="35" height="35" class="rounded-circle bg-light p-1">-->
                                 <img src="/symbols/simbolo-logout.png" alt="" width="35" height="35" class="rounded-circle bg-light p-1">
                                 <span class="flex-grow-1">Logout</span>
                                 <span>></span>
                             </a>
+                            <% } else { %>
+                                <a href="#"></a>
+                            <% } %>
                         </li>
                     </ul>
                 </div>
@@ -68,6 +80,7 @@
                     </div>
 
                     <div class="offcanvas-body">
+                        <% if (isAuthenticated) { %>
                         <!--<a href="perfil.html" class="d-block text-white text-decoration-none mb-3">Perfil</a>-->
                         <a href="/perfilPage" class="d-block text-white text-decoration-none mb-3">Perfil</a>
                         <!--<a href="paginaInicial.html" class="d-block text-white text-decoration-none mb-3">Página inicial</a>-->
@@ -78,6 +91,10 @@
                         <a href="/selectMultiplayerPage" class="d-block text-white text-decoration-none mb-3">Multiplayer</a>
                         <a href="/paginaSalasPublicas" class="d-block text-white text-decoration-none mb-3">Salas Publicas</a>
                         <a href="/" class="d-block text-white text-decoration-none">Terminar Sessão</a>
+                        <% } else { %>
+                            <a href="/login">Login</a>
+                            <a href="/signup">Sign Up</a>
+                        <% } %>
                     </div>
                 </div>
             </nav>

@@ -1,11 +1,22 @@
 import express from "express";
+import { isLoggedIn } from "../controllers/userController.js";
 const router = express.Router();
 
+/*
 router.get("/perfilPage", (req, res) => {
   res.render("perfil");
 });
 
 router.get("/selectMultiplayerPage", (req, res) => {
+  res.render("selectMultiplayerPage");
+});
+*/
+
+router.get("/perfilPage", isLoggedIn, (req, res) => {
+  res.render("perfil", { user: req.user });
+});
+
+router.get("/selectMultiplayerPage", isLoggedIn, (req, res) => {
   res.render("selectMultiplayerPage");
 });
 
@@ -64,7 +75,12 @@ router.get("/paginaCriaSala", (req, res) => {
   res.render("criaSalaPage");
 });
 
+/*
 router.get("/paginaSalasPublicas", (req, res) => {
+  res.render("salasPublicasPage");
+});*/
+
+router.get("/paginaSalasPublicas", isLoggedIn, (req, res) => {
   res.render("salasPublicasPage");
 });
 
