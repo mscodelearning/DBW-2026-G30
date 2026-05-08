@@ -6,7 +6,7 @@ import {
 import normalizarPalavra from "../utils/normalizarPalavras.js";
 
 
-let currentGame = null;
+//let currentGame = null;
 
 function iniciarJogoSp(req, res) {
 
@@ -14,7 +14,7 @@ function iniciarJogoSp(req, res) {
 
     const palavrasValidas = gerarPalavrasValidas(palavraMestra);
 
-    currentGame = {
+    req.session.currentGame = {
         palavraMestra,
         palavrasValidas,
         palavrasDescobertas: [],
@@ -24,11 +24,11 @@ function iniciarJogoSp(req, res) {
     res.render("jogoSingleplayer", {
         palavraMestra
     });
-    console.log(currentGame.palavrasValidas);
+    console.log(req.session.currentGame.palavrasValidas);
 }
 
 function submeterResposta(req, res) {
-
+    const currentGame = req.session.currentGame;
     const palavra = normalizarPalavra(req.body.palavra.toLowerCase());
 
     // ja descobertas
