@@ -11,6 +11,7 @@ import homeRoutes from "./routes/homeRoutes.js";
 import gameRoutes from "./routes/gameRoutes.js";
 
 import userRoutes from "./routes/userRoute.js";
+import estatisticasRoutes from "./routes/estatisticasRoutes.js";
 
 import { carregarDicionario } from "./services/wordService.js";
 
@@ -75,6 +76,7 @@ app.use("/", homeRoutes);
 app.use("/", userRoutes);
 app.use("/", gameRoutes);
 
+app.use("/api/estatisticas", estatisticasRoutes);
 
 
 io.on("connection", function (socket) {

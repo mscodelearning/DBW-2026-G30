@@ -153,7 +153,7 @@ antigo input*/
     }
 
 
-    function terminarJogo() {
+    async function terminarJogo() {
 
         if (challengeType === "Objetivo: nº de palavras") {
             if (palavrasDescobertas < parseInt(challengeValue)) {
@@ -173,7 +173,15 @@ antigo input*/
 
         localStorage.setItem("estatisticasJogo", JSON.stringify(estatisticasJogo));
 
-        atualizarEstatisticasGlobais(estatisticasJogo);
+        await fetch("/api/estatisticas", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(estatisticasJogo)
+        });
+
+        //atualizarEstatisticasGlobais(estatisticasJogo);
 
         setTimeout(() => {
             window.location.href = "/fimJogoSp";
@@ -195,10 +203,11 @@ antigo input*/
             container.innerHTML = "";
         }, 2000);
     }
+    
 });
 
 
-/*estatísticas globais de jogo para colocar no perfil*/
+/*estatísticas globais de jogo para colocar no perfil
 
 function atualizarEstatisticasGlobais(statsJogo) {
 
@@ -221,4 +230,4 @@ function atualizarEstatisticasGlobais(statsJogo) {
     statsGlobais.jogosJogados += 1;
 
     localStorage.setItem("estatisticasGlobais", JSON.stringify(statsGlobais));
-}
+}*/

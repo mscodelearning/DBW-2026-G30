@@ -52,9 +52,9 @@ export {
 
 carregarDicionario();
 
-console.log("com hifen:", palavraExiste("guarda-chuva"));
+/*console.log("com hifen:", palavraExiste("guarda-chuva"));
 console.log("acronimo:", palavraExiste("GNR"));
 console.log("acentos:", palavraExiste("rápido"));
 console.log("acentos:", palavraExiste("rapido"));
-console.log("random:", palavraExiste("ines"));
+console.log("random:", palavraExiste("ines"));*/
 

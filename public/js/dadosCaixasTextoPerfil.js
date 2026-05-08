@@ -5,7 +5,7 @@
 
 document.addEventListener("DOMContentLoaded", async () => {
     try {
-        const resposta = await fetch("/profile", {
+        const resposta = await fetch("/api/estatisticas/perfil", {
             method: "GET",
             credentials: "include"
         });
