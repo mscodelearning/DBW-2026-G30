@@ -12,6 +12,7 @@ import gameRoutes from "./routes/gameRoutes.js";
 
 import userRoutes from "./routes/userRoute.js";
 import estatisticasRoutes from "./routes/estatisticasRoutes.js";
+import multiplayerRoutes from "./routes/multiplayerRoutes.js";
 
 import { carregarDicionario } from "./services/wordService.js";
 
@@ -71,6 +72,7 @@ app.use((req, res, next) => {
 app.use("/", homeRoutes);
 app.use("/", userRoutes);
 app.use("/", gameRoutes);
+app.use("/multiplayer", multiplayerRoutes);
 
 app.use("/api/estatisticas", estatisticasRoutes);
 

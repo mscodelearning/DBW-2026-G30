@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 customInput.style.display = "none";
 
                 if (value === "Não") {
-                    selectedTimer = "none";
+                    selectedTimer = 0;
                 } else {
                     selectedTimer = parseInt(value);
                 }
@@ -90,17 +90,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         customNum.addEventListener("input", () => {
-            challengeValue = customNum.value || null;
+            challengeValue = customNum.value ? parseInt(customNum.value) : null;
             updateButton();
         });
 
         customMin.addEventListener("input", () => {
-            challengeValue = customMin.value || null;
+            challengeValue = customMin.value ? parseInt(customMin.value) : null;
             updateButton();
         });
 
         customMax.addEventListener("input", () => {
-            challengeValue = customMax.value || null;
+            challengeValue = customMax.value ? parseInt(customMax.value) : null;
             updateButton();
         });
 
@@ -126,14 +126,43 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
 
-    startButton.addEventListener("click", () => {
-        if (!startButton.disabled) {
-            localStorage.setItem("timer", selectedTimer);
-            localStorage.setItem("challengeType", challengeType);
-            localStorage.setItem("challengeValue", challengeValue);
-            localStorage.setItem("access", selectedAccess);
-            localStorage.setItem("players", selectedPlayers);
-            window.location.href = "/salasPrivadas";
+    startButton.addEventListener("click", async () => {
+        if (startButton.disabled) return;
+
+        try {
+            const dadosSala = {
+                access: selectedAccess,
+                players: selectedPlayers,
+                timer: selectedTimer,
+                challengeType,
+                challengeValue
+            };
+
+            const resposta = await fetch(
+                "/multiplayer/criarSala",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(dadosSala)
+                }
+            );
+
+            const dados = await resposta.json();
+
+            console.log(dados);
+
+            if (dados.sucesso) {
+                window.location.href =
+                    `/multiplayer/sala/${dados.codigo}`;
+            } else {
+                alert(dados.erro);
+            }
+
+        } catch (err) {
+            console.error(err);
+            alert("Erro ao criar sala");
         }
     });
 });
