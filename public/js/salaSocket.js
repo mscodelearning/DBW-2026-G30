@@ -7,12 +7,11 @@ const pathParts = window.location.pathname.split("/");
 const codigoSala = pathParts[pathParts.length - 1];
 
 //socket.emit("joinRoom", codigoSala);
-socket.emit("joinRoom", {
+socket.emit("joinMultiplayerRoom", {
 
     codigoSala: window.dadosSala.codigo,
 
     userId: window.dadosSala.userId
-    
 
 });
 

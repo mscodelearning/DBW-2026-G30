@@ -11,7 +11,7 @@ export default function multiplayerSocket(io) {
 
         /* jogador entra numa sala socket*/
         /*socket.on("joinRoom", async (codigoSala) => {*/
-        socket.on("joinRoom", async ({ codigoSala, userId }) => {
+        socket.on("joinMultiplayerRoom", async ({ codigoSala, userId }) => {
             try {
                 socket.join(codigoSala);
                 socketsSalas.set(socket.id, { codigoSala, userId});
