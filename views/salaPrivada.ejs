@@ -84,8 +84,9 @@
 
                 <div class="caixa caixa-jogadores">
                     <img class="img-caixa" src="/images/numero-jogadores.png" alt="">
-                    <span class="texto-caixa"><%= sala.jogadores.length %>/<%= sala.configuracoes.players %></span>
-
+                    <span class="texto-caixa" id="contadorJogadores" data-max="<%= sala.configuracoes.players %>">
+                        <%= sala.jogadores.length %>/<%= sala.configuracoes.players %>
+                    </span>
                     <img class="icon-multiplayer" src="/symbols/multiplayer-cinza.png" alt="">
                 </div>
 
@@ -131,11 +132,18 @@
         </div>
     </div>
 
+<script>
+    window.dadosSala = {
+        codigo: "<%= sala.codigo %>",
+        userId: "<%= user._id %>"
+    };
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 <script src="/js/script.js" defer></script>
 <script src="/js/caixaTextoChat.js" defer></script>
 <script src="/js/editaNomeSala.js" defer></script>
 <script src="/js/popupConfirmaSaidaSP.js" defer></script>
-
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/salaSocket.js"></script>
 </body>
 </html>

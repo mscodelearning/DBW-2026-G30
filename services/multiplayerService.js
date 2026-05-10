@@ -96,42 +96,73 @@ export async function criarNovaSala(dadosSala, user) {
 
 export async function entrarNaSala(codigo, user) {
 
-        const sala = await Sala.findOne({
-            codigo: codigo.toUpperCase()
-        });
+    const sala = await Sala.findOne({
+        codigo: codigo.toUpperCase()
+    });
 
-        // sala nao existe
-        if (!sala) {
-            throw new Error("Sala não encontrada");
-        }
+    // sala nao existe
+    if (!sala) {
+        throw new Error("Sala não encontrada");
+    }
 
-        // jogo ja começou
-        if (sala.estado !== "waiting") {
-            throw new Error("A sala já começou");
-        }
+    // jogo ja começou
+    if (sala.estado !== "waiting") {
+        throw new Error("A sala já começou");
+    }
 
-        // verificar se jogador ja esta na sala
-        const jogadorJaExiste = sala.jogadores.some(
-            jogador => jogador.id.toString() === user._id.toString()
-        );
+    // verificar se jogador ja esta na sala
+    const jogadorJaExiste = sala.jogadores.some(
+        jogador => jogador.id.toString() === user._id.toString()
+    );
 
-        // evita duplicados
-        if (jogadorJaExiste) {
-            return sala;
-        }
-
-        // verificar limite jogadores
-        if (sala.jogadores.length >= sala.configuracoes.players) {
-            throw new Error("Sala cheia");
-        }
-
-        // adicionar jogador
-        sala.jogadores.push({
-            id: user._id,
-            username: user.username
-        });
-
-        await sala.save();
-
+    // evita duplicados
+    if (jogadorJaExiste) {
         return sala;
     }
+
+    // verificar limite jogadores
+    if (sala.jogadores.length >= sala.configuracoes.players) {
+        throw new Error("Sala cheia");
+    }
+
+    // adicionar jogador
+    sala.jogadores.push({
+        id: user._id,
+        username: user.username
+    });
+
+    await sala.save();
+
+    return sala;
+}
+
+export async function sairDaSala(codigo, userId) {
+
+    const sala = await Sala.findOne({
+        codigo
+    });
+
+    if (!sala) {
+        throw new Error("Sala não encontrada");
+    }
+
+    sala.jogadores =
+        sala.jogadores.filter(
+            jogador =>
+                jogador.id.toString() !== userId.toString()
+        );
+
+    /* se host sair e sala ficar vazia apagar sala*/
+    if (sala.jogadores.length === 0) {
+
+        await Sala.deleteOne({
+            _id: sala._id
+        });
+
+        return null;
+    }
+
+    await sala.save();
+
+    return sala;
+}

@@ -3,7 +3,8 @@ import express from "express";
 import {
     criarSala,
     carregarSala,
-    entrarSala
+    entrarSala,
+    sairSala
 } from "../controllers/multiplayerController.js";
 
 const router = express.Router();
@@ -16,6 +17,11 @@ router.post(
 router.post(
     "/sala/:codigo/entrar",
     entrarSala
+);
+
+router.post(
+    "/sala/:codigo/sair",
+    sairSala
 );
 
 router.get("/sala/:codigo", carregarSala);

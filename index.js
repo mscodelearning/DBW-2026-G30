@@ -16,6 +16,8 @@ import multiplayerRoutes from "./routes/multiplayerRoutes.js";
 
 import { carregarDicionario } from "./services/wordService.js";
 
+import multiplayerSocket from "./socket/multiplayerSocket.js";
+
 carregarDicionario();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -41,6 +43,9 @@ const LocalStrategy = localStrategy.Strategy;
 
 const server = http.createServer(app);
 const io = new Server(server);
+
+multiplayerSocket(io);
+
 
 app.use(
     session({
@@ -80,7 +85,7 @@ app.use("/api/estatisticas", estatisticasRoutes);
 io.on("connection", function (socket) {
     console.log(`Utilizador ligado: ${socket.id}`);
 
-    socket.on("joinRoom", function (roomName) {
+    /*socket.on("joinRoom", function (roomName) {
         const normalizedRoom = roomName?.trim();
 
         if (!normalizedRoom) {
@@ -99,7 +104,12 @@ io.on("connection", function (socket) {
             sala: normalizedRoom,
             socketID: socket.id,
         });
-    });
+    });*/
+
+    /*socket.on("joinRoom", ({ codigoSala, userId }) => {
+        const normalizedRoom =
+            codigoSala?.trim();
+    });*/
 
     socket.on("chat", function (msgData) {
         const normalizedMessage = msgData?.mensagem?.trim();

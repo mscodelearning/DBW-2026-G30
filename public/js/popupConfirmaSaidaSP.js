@@ -14,9 +14,51 @@ const btnSair = document.getElementById('btnSair');
         popupSair.classList.add('hidden');
     });
 
-    confirmarSair.addEventListener('click', function () {
-        window.location.href = '/selectMultiplayerPage';
+    confirmarSair.addEventListener("click", async () => {
+
+        try {
+
+            const pathParts =
+                window.location.pathname.split("/");
+
+            const codigoSala =
+                pathParts[pathParts.length - 1];
+
+            const resposta = await fetch(
+                `/multiplayer/sala/${codigoSala}/sair`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                }
+            );
+
+            const dados = await resposta.json();
+
+            if (dados.sucesso) {
+                /*novo para sair da sala*/
+                socket.emit("leaveRoom", codigoSala);
+                window.location.href =
+                    "/selectMultiplayerPage";
+
+            } else {
+
+                alert(dados.erro);
+
+            }
+
+        } catch (err) {
+
+            console.error(err);
+
+            alert("Erro ao sair da sala");
+
+        }
+
     });
+
+    
 
 
 popupSair.addEventListener('click', function(e) {

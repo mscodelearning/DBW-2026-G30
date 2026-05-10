@@ -1,4 +1,4 @@
-import { criarNovaSala, entrarNaSala } from "../services/multiplayerService.js";
+import { criarNovaSala, entrarNaSala, sairDaSala } from "../services/multiplayerService.js";
 import Sala from "../models/sala.js";
 
 
@@ -41,7 +41,11 @@ export async function carregarSala(req, res) {
             return res.status(404).send("Sala não encontrada ou código inválido.");
         }
 
-        res.render("salaPrivada", { sala: sala });
+        /*res.render("salaPrivada", { sala: sala });*/
+        res.render("salaPrivada", {
+            sala,
+            user: req.user
+        });
 
     } catch (err) {
         console.error(err);
@@ -69,5 +73,31 @@ export async function entrarSala(req, res) {
             sucesso: false,
             erro: err.message
         });
+    }
+}
+
+export async function sairSala(req, res) {
+
+    try {
+
+        const codigo = req.params.codigo;
+
+        const sala = await sairDaSala(
+            codigo,
+            req.user._id
+        );
+
+        res.status(200).json({
+            sucesso: true,
+            sala
+        });
+
+    } catch (err) {
+
+        res.status(400).json({
+            sucesso: false,
+            erro: err.message
+        });
+
     }
 }
