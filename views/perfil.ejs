@@ -23,7 +23,8 @@
             <div  class="perfil-header">
                 <div class="user-icon2-perfil-container">
                     <!--<img id="perfil-img" src="../public/symbols/user-icon-2.png" alt="user-icon"> id novo-->
-                    <img id="perfil-img" src="/symbols/user-icon-2.png" alt="user-icon"> <!--id novo-->
+                    <!--<img id="perfil-img" src="/symbols/user-icon-2.png" alt="user-icon"> -->
+                    <img id="perfil-img" src="<%= user.avatar || '/symbols/user-icon-2.png' %>" alt="user-icon">
                 </div>
                 <div class="alteraImagem-perfil-container">
                     <!--<p>Alterar Imagem</p>-->
@@ -31,21 +32,23 @@
                     <div id="pop-up" class="popup">
                         <div class="conteudo-popup">
                             <!--<p>Este conteudo é do pop-up.</p>-->
-                            <label  id="drop-area">
-                                <input type="file" accept="image/*" id="input-file" hidden>
-                                <div id="img-view">
-                                    <div class="upload-text">
-                                        <!--<img src="../public/symbols/symbol_upload.png" alt="symbol-upload">-->
-                                        <img src="/symbols/symbol_upload.png" alt="symbol-upload">
-                                        <p>Drag and drop or click here<br> to upload image</p>
-                                        <span> Upload any images from desktop</span>
+                            <form action="/uploadAvatar" method="POST" enctype="multipart/form-data">
+                                <label  id="drop-area">
+                                    <input type="file" accept="image/*" id="input-file" name="avatar" hidden>
+                                    <div id="img-view">
+                                        <div class="upload-text">
+                                            <!--<img src="../public/symbols/symbol_upload.png" alt="symbol-upload">-->
+                                            <img src="/symbols/symbol_upload.png" alt="symbol-upload">
+                                            <p>Drag and drop or click here<br> to upload image</p>
+                                            <span> Upload any images from desktop</span>
+                                        </div>
                                     </div>
+                                </label>
+                                <div class="botoes-popup">
+                                    <button type="button" id="btn-remover">Remover</button>
+                                    <button type="submit" id="btn-aplicar">Aplicar</button>
                                 </div>
-                            </label>
-                            <div class="botoes-popup">
-                                <button type="button" id="btn-remover">Remover</button>
-                                <button type="button" id="btn-aplicar">Aplicar</button>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>

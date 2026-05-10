@@ -17,11 +17,13 @@
        
     
         <!--<a href="selectMultiplayerPage.html" class="botao-voltar-container">-->
-        <a href="/selectMultiplayerPage" class="botao-voltar-container">
-            <!--<img src="../public/images/botao-sair.png" alt="sair">-->
+        <a href="/selectMultiplayerPage" class="botao-voltar-container" >
+        
             <img src="/images/botao-sair.png" alt="sair">
             <div class="overlay-text">Sair</div>
         </a>
+
+
         <div class="jogo-singleplayer-container">
             <div class="container">
                 <div class="row">
@@ -43,8 +45,11 @@
                             <div id="palavras-descobertas"></div>
                         </div>
                         <div class="caixa-pessoa">
-                            <!--<img src="../public/Images/icone-pessoa.png">-->
-                            <img src="/Images/icone-pessoa.png">
+                           
+                            <div class="avatar-wrapper">
+                                <img class="avatar-frame" src="/Images/fundo-icon-user.png" alt="moldura madeira">
+                                <img class="avatar-photo" src="<%= currentUser ? (currentUser.avatar || '/symbols/Union-user-icon.png') : '/symbols/Union-user-icon.png' %>" alt="avatar jogador">
+                            </div>
                             <h5>
                                 <span id="nome-jogador"></span>
                                 <span id="pontuacao"></span>
@@ -61,7 +66,5 @@
 <script src="/js/paginaJogoSp.js" defer></script>
 <script src="/js/script.js" defer></script>
 <script src="/js/modoJogoSp.js" defer></script>
-
-
 </body>
 </html>

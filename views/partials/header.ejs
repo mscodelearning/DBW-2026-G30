@@ -17,14 +17,20 @@
                         <!--<img class="perfil" src="../public/images/botao-perfil.png" alt="perfil">-->
                         <img class="perfil" src="/images/botao-perfil.png" alt="perfil">
                         <!--<img class="user-icon" src="../public/symbols/Union-user-icon.png" alt="user">-->
-                        <img class="user-icon" src="/symbols/Union-user-icon.png" alt="user">
+                        <!--<img class="user-icon" src="/symbols/Union-user-icon.png" alt="user">-->
+                        <img class="user-icon" src="<%= currentUser ? (currentUser.avatar || '/symbols/Union-user-icon.png') : '/symbols/Union-user-icon.png' %>" alt="user">
                     </a>
 
                     <ul class="dropdown-menu dropdown-menu-end p-3 shadow">
                         
                         <li class="d-flex align-items-center mb-3">
                             <!--<img src="../public/symbols/Union-user-icon.png" alt="user" width="60" height="60" class="rounded-circle me-3">-->
-                            <img src="/symbols/Union-user-icon.png" alt="user" width="60" height="60" class="rounded-circle me-3">
+                            
+                            
+                            <!--<img src="/symbols/Union-user-icon.png" alt="user" width="60" height="60" class="rounded-circle me-3">-->
+
+                            <img src="<%= currentUser ? (currentUser.avatar || '/symbols/Union-user-icon.png') : '/symbols/Union-user-icon.png' %>" alt="user" width="60" height="60" class="rounded-circle me-3">
+
                             <!--<h6 class="mb-0 ">Nome Apelido</h6>-->
                             <h6 class="mb-0 "><%= currentUser ? currentUser.nickname : "Utilizador" %></h6>
                         </li>
