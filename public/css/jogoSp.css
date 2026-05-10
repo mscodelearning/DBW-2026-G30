@@ -83,13 +83,45 @@
 .caixa-pessoa {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 }
 
+/*
 .caixa-pessoa img {
     width: 50px;
     height: auto;
+}*/
+
+/* Inicio - moldura icon user durante o jogo */
+
+.avatar-wrapper {
+  position: relative;
+  width: 70px;   /* make this bigger/smaller as needed */
+  height: 70px;
+  flex-shrink: 0;
 }
+
+/* Frame fills the wrapper */
+.avatar-frame {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  align-items: center;
+  z-index: 1;
+}
+
+/* Photo sits inside frame */
+.avatar-photo {
+  position: absolute;
+  top: 12px;     /* adjust to center in frame */
+  left: 10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 4px;
+  z-index: 2;
+}
+
+/* Fim - moldura icon user durante o jogo */
 
 
 #finalizar-jogo {
@@ -119,3 +151,5 @@
 }
 
 /*fim - elementos do ecrã de jogo singleplayer*/
+
+

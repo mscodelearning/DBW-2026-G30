@@ -41,11 +41,18 @@ const userSchema = new mongoose.Schema(
         default: 0
       },
 
+    },
+
+    avatar: {
+      type: String,
+      default: "/symbols/user-icon-2.png"
     }
   },
 
   { timestamps: true }
 );
+
+
 
 userSchema.plugin(passportLocalMongoose);
 

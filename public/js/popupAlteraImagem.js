@@ -92,12 +92,13 @@ btnRemover.addEventListener("click", () => {
 
 // Botao Aplicar imagem
 
-btnAplicar.addEventListener("click", () => {
-  if (!currentImageUrl) return;
-  perfilImg.src = currentImageUrl;
-  document.getElementById("pop-up").style.display = "none";
-})
-
+btnAplicar.addEventListener("click", (e) => {
+  if (!inputFile.files[0]) {
+    e.preventDefault();
+    alert("Escolhe uma imagem primeiro.");
+    return;
+  }
+});
 });
 
 /* Fim - codigo do drag and drop imagem */

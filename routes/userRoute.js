@@ -1,11 +1,17 @@
 import express from "express";
 import passport from "passport";
+import multer from "multer";
+import path from "path";
 import { getSignup, postSignup, getLogin, isLoggedIn } from "../controllers/userController.js";
 import User from "../models/userModel.js";
+import { fileURLToPath } from "url";
 
 console.log("userRoute file loaded");
 
 const router = express.Router();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 router.get("/signup", getSignup);
 router.post("/signup", postSignup);
@@ -18,7 +24,7 @@ router.post(
     failureRedirect: "/login",
   }),
   (req, res) => {
-    res.redirect("/");
+    res.redirect("/selectMultiplayerPage");
   }
 );
 
@@ -93,5 +99,46 @@ router.post("/alterarPassword", isLoggedIn, async (req, res) => {
     });
   }
 });
+
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, path.join(__dirname, "../public/uploads/avatars"));
+  },
+  filename: function (req, file, cb) {
+    const ext = path.extname(file.originalname);
+    cb(null, `user-${req.user._id}-${Date.now()}${ext}`);
+  }
+});
+
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype.startsWith("image/")) {
+    cb(null, true);
+  } else {
+    cb(new Error("Only image files are allowed"), false);
+  }
+};
+
+const upload = multer({ storage, fileFilter });
+
+router.post("/uploadAvatar", isLoggedIn, upload.single("avatar"), async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.redirect("/perfilPage");
+    }
+
+    const avatarPath = `/uploads/avatars/${req.file.filename}`;
+
+    await User.findByIdAndUpdate(req.user._id, {
+      avatar: avatarPath
+    });
+
+    res.redirect("/perfilPage");
+  } catch (err) {
+    console.log("Erro upload avatar:", err);
+    res.redirect("/perfilPage");
+  }
+});
+
 
 export default router;
