@@ -13,6 +13,8 @@ import gameRoutes from "./routes/gameRoutes.js";
 import userRoutes from "./routes/userRoute.js";
 import estatisticasRoutes from "./routes/estatisticasRoutes.js";
 import multiplayerRoutes from "./routes/multiplayerRoutes.js";
+import ChatMessage from "./models/chatMessageModel.js";
+
 
 import { carregarDicionario } from "./services/wordService.js";
 
@@ -80,48 +82,68 @@ app.use("/api/estatisticas", estatisticasRoutes);
 io.on("connection", function (socket) {
     console.log(`Utilizador ligado: ${socket.id}`);
 
-    socket.on("joinRoom", function (roomName) {
-        const normalizedRoom = roomName?.trim();
+    socket.on("joinRoom", async function (roomName) {
+    try {
+      const normalizedRoom = roomName?.trim();
 
-        if (!normalizedRoom) {
-            return;
-        }
+      if (!normalizedRoom) return;
 
-        // Se o utilizador já estava noutra sala, sai primeiro dessa sala.
-        if (socket.data.currentRoom) {
-            socket.leave(socket.data.currentRoom);
-        }
+      if (socket.data.currentRoom) {
+        socket.leave(socket.data.currentRoom);
+      }
 
-        socket.join(normalizedRoom);
-        socket.data.currentRoom = normalizedRoom;
+      socket.join(normalizedRoom);
+      socket.data.currentRoom = normalizedRoom;
 
-        socket.emit("roomJoined", {
-            sala: normalizedRoom,
-            socketID: socket.id,
-        });
-    });
+      socket.emit("roomJoined", {
+        sala: normalizedRoom,
+        socketID: socket.id,
+      });
 
-    socket.on("chat", function (msgData) {
-        const normalizedMessage = msgData?.mensagem?.trim();
-        const normalizedRoom = msgData?.sala?.trim();
+      const historico = await ChatMessage.find({ salaCodigo: normalizedRoom })
+        .sort({ createdAt: 1 })
+        .limit(100);
 
-        if (!normalizedMessage || !normalizedRoom) {
-            return;
-        }
+      socket.emit("chatHistory", historico);
+    } catch (err) {
+      console.log("Erro ao entrar na sala / carregar histórico:", err);
+    }
+  });
 
-        const paraCliente = {
-            socketID: socket.id,
-            mensagem: normalizedMessage,
-            sala: normalizedRoom,
-        };
+  socket.on("chat", async function (msgData) {
+    try {
+      const normalizedMessage = msgData?.mensagem?.trim();
+      const normalizedRoom = msgData?.sala?.trim();
 
-        // Emitimos apenas para a sala escolhida, para que cada chat fique isolado.
-        io.to(normalizedRoom).emit("clientChat", paraCliente);
-    });
+      if (!normalizedMessage || !normalizedRoom) return;
 
-    socket.on("disconnect", function () {
-        console.log(`Utilizador desligado: ${socket.id}`);
-    });
+      const novaMensagem = await ChatMessage.create({
+        salaCodigo: normalizedRoom,
+        senderId: msgData.senderId,
+        senderName: msgData.senderName || "Utilizador",
+        senderAvatar: msgData.senderAvatar || "/symbols/Union-user-icon.png",
+        mensagem: normalizedMessage,
+      });
+
+      const paraCliente = {
+        _id: novaMensagem._id,
+        senderId: String(novaMensagem.senderId),
+        senderName: novaMensagem.senderName,
+        senderAvatar: novaMensagem.senderAvatar,
+        mensagem: novaMensagem.mensagem,
+        sala: normalizedRoom,
+        createdAt: novaMensagem.createdAt,
+      };
+
+      io.to(normalizedRoom).emit("clientChat", paraCliente);
+    } catch (err) {
+      console.log("Erro ao guardar/enviar mensagem:", err);
+    }
+  });
+
+  socket.on("disconnect", function () {
+    console.log(`Utilizador desligado: ${socket.id}`);
+  });
 });
 
 
