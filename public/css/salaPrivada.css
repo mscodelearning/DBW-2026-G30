@@ -43,6 +43,7 @@
   gap: 10px;
 }
 
+/*
 .mensagem {
   align-self: flex-end;
   background: #265c2f;
@@ -52,7 +53,7 @@
   max-width: 70%;
   font-size: 14px;
 }
-
+*/
 .input-area {
   position: absolute;
   top: 498px;
@@ -439,3 +440,67 @@
 
 /* Fim - implementacao popup de confirmacao de saida da sala privada */
 
+/* Inicio - layout do chat com user avatar e nome */
+
+.mensagens {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  right: 40px;
+  bottom: 120px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 2;
+  padding-right: 8px;
+}
+
+.msg {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  max-width: 78%;
+}
+
+.msg-outra {
+  align-self: flex-start;
+}
+
+.msg-minha {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.msg-avatar {
+  width: 34px;
+  height: 34px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.msg-bolha {
+  background: #f0f0f0;
+  border-radius: 12px;
+  padding: 8px 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.msg-minha .msg-bolha {
+  background: #d2efc8;
+}
+
+.msg-nome {
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: #2e2e2e;
+}
+
+.msg-texto {
+  font-size: 0.95rem;
+  color: #1f1f1f;
+  word-break: break-word;
+}
+
+/* Fim - layout do chat com user avatar e nome */

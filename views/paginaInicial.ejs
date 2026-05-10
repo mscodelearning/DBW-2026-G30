@@ -13,7 +13,12 @@
     <%- include("partials/header") %>
 
     <!--<a href="loginPage.html"><img class="login" src="../public/images/botao-login-text.png" alt="login"></a>-->
-    <a href="/login"><img class="login" src="/images/botao-login-text.png" alt="login"></a>
+    <!--<a href="/login"><img class="login" src="/images/botao-login-text.png" alt="login"></a>-->
+    <% if (!currentUser) { %>
+        <a href="/login">
+            <img class="login" src="/images/botao-login-text.png" alt="login">
+        </a>
+    <% } %>
     <div class="container">
         <h1>Skriven</h1>
         <p> ipsum dolor sit amet, consectetur adipisicing elit. Iure id, rerum aliquid eveniet a nulla quas nesciunt doloribus accusamus, nisi nostrum, quo esse. Corrupti harum ut distinctio at aliquid sequi?
