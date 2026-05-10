@@ -49,6 +49,7 @@ export async function criarNovaSala(dadosSala, user) {
         throw new Error("Desafio inválido: é necessário definir um valor");
     }
 
+
     let codigo;
 
     let codigoExiste = true;
@@ -92,3 +93,45 @@ export async function criarNovaSala(dadosSala, user) {
 
     return novaSala;
 }
+
+export async function entrarNaSala(codigo, user) {
+
+        const sala = await Sala.findOne({
+            codigo: codigo.toUpperCase()
+        });
+
+        // sala nao existe
+        if (!sala) {
+            throw new Error("Sala não encontrada");
+        }
+
+        // jogo ja começou
+        if (sala.estado !== "waiting") {
+            throw new Error("A sala já começou");
+        }
+
+        // verificar se jogador ja esta na sala
+        const jogadorJaExiste = sala.jogadores.some(
+            jogador => jogador.id.toString() === user._id.toString()
+        );
+
+        // evita duplicados
+        if (jogadorJaExiste) {
+            return sala;
+        }
+
+        // verificar limite jogadores
+        if (sala.jogadores.length >= sala.configuracoes.players) {
+            throw new Error("Sala cheia");
+        }
+
+        // adicionar jogador
+        sala.jogadores.push({
+            id: user._id,
+            username: user.username
+        });
+
+        await sala.save();
+
+        return sala;
+    }

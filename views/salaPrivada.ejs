@@ -105,24 +105,15 @@
                 -->
 
             <div class="lista-jogadores">
+            <% sala.jogadores.forEach(jogador => { %>
                 <div class="jogador">
                     <img class="fundo-utilizador" src="/images/fundo-icon-user.png" alt="">
                     <img class="icon-square-utilizador" src="/symbols/icon-user-square.png" alt="">
-                    <span class="nome-jogador">Jogador 1</span>
+                    <span class="nome-jogador"><%= jogador.username %></span>
                 </div>
+            <% }) %>
 
-                <div class="jogador">
-                    <img class="fundo-utilizador" src="/images/fundo-icon-user.png" alt="">
-                    <img class="icon-square-utilizador" src="/symbols/icon-user-square.png" alt="">
-                    <span class="nome-jogador">Jogador 2</span>
-                </div>
-
-                <div class="jogador">
-                    <img class="fundo-utilizador" src="/images/fundo-icon-user.png" alt="">
-                    <img class="icon-square-utilizador" src="/symbols/icon-user-square.png" alt="">
-                    <span class="nome-jogador">Jogador 3</span>
-                </div>
-            </div>
+        </div>
 
 
         </div>

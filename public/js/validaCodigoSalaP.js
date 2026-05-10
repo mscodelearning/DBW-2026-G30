@@ -1,18 +1,51 @@
 'use strict';
 
 const entrarLink = document.getElementById("entrar-link");
-  const inputCodigo = document.getElementById("codigoSala");
+const inputCodigo = document.getElementById("codigoSala");
 
-  entrarLink.addEventListener("click", function (event) {
-    event.preventDefault(); // impede o link de ir para "#"
+entrarLink.addEventListener("click", async function (event) {
 
-    const codigo = inputCodigo.value.trim();
+    event.preventDefault();
+
+    const codigo = inputCodigo.value
+        .trim()
+        .toUpperCase();
 
     if (!codigo) {
-      alert("Introduz um código de sala.");
-      return;
+        alert("Introduz um código de sala.");
+        return;
     }
 
-    // Exemplo: redirecionar para sala-privada.html com o código na query
-    window.location.href = "/salasPrivadas?codigo=" + encodeURIComponent(codigo);
-  });
+    try {
+
+        const resposta = await fetch(
+            `/multiplayer/sala/${codigo}/entrar`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }
+        );
+
+        const dados = await resposta.json();
+
+        if (dados.sucesso) {
+
+            window.location.href =
+                `/multiplayer/sala/${codigo}`;
+
+        } else {
+
+            alert(dados.erro);
+
+        }
+
+    } catch (err) {
+
+        console.error(err);
+        alert("Erro ao entrar na sala.");
+
+    }
+
+});

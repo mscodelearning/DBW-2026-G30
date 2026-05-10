@@ -1,4 +1,4 @@
-import { criarNovaSala } from "../services/multiplayerService.js";
+import { criarNovaSala, entrarNaSala } from "../services/multiplayerService.js";
 import Sala from "../models/sala.js";
 
 
@@ -46,5 +46,28 @@ export async function carregarSala(req, res) {
     } catch (err) {
         console.error(err);
         res.status(500).send("Erro no servidor ao carregar a sala.");
+    }
+}
+
+export async function entrarSala(req, res) {
+    
+    try {
+        const codigo = req.params.codigo;
+        const sala = await entrarNaSala(
+            codigo,
+            req.user
+        );
+
+        res.status(200).json({
+            sucesso: true,
+            codigo: sala.codigo,
+            sala
+        });
+
+    } catch (err) {
+        res.status(400).json({
+            sucesso: false,
+            erro: err.message
+        });
     }
 }
