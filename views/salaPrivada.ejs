@@ -84,14 +84,14 @@
 
                 <div class="caixa caixa-jogadores">
                     <img class="img-caixa" src="/images/numero-jogadores.png" alt="">
-                    <span class="texto-caixa">3/4</span>
+                    <span class="texto-caixa"><%= sala.jogadores.length %>/<%= sala.configuracoes.players %></span>
 
                     <img class="icon-multiplayer" src="/symbols/multiplayer-cinza.png" alt="">
                 </div>
 
                 <div class="caixa caixa-password">
                     <img class="img-caixa" src="/images/codigo-sala.png" alt="">
-                    <span class="texto-caixa">1234</span>
+                    <span class="texto-caixa"><%= sala.codigo %></span>
 
                     <img class="icon-chave" src="/symbols/key-codigo-sala-cinza.png" alt="">
                 </div>
