@@ -33,8 +33,8 @@ socket.on("playersUpdated", (jogadores) => {
                     alt="">
 
                 <img class="icon-square-utilizador"
-                    src="/symbols/icon-user-square.png"
-                    alt="">
+                    src="${jogador.avatar || '/symbols/Union-user-icon.png'}"
+                    alt="avatar">
 
                 <span class="nome-jogador">
                     ${jogador.nickname}

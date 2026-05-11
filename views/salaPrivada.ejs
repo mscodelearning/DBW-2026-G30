@@ -119,7 +119,8 @@
             <% sala.jogadores.forEach(jogador => { %>
                 <div class="jogador">
                     <img class="fundo-utilizador" src="/images/fundo-icon-user.png" alt="">
-                    <img class="icon-square-utilizador" src="/symbols/icon-user-square.png" alt="">
+                    <!--<img class="icon-square-utilizador" src="/symbols/icon-user-square.png" alt="">-->
+                    <img class="icon-square-utilizador" src="<%= jogador.avatar || '/symbols/Union-user-icon.png' %>" alt="avatar do jogador">
                     <span class="nome-jogador"><%= jogador.nickname %></span>
                 </div>
             <% }) %>

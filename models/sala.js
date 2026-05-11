@@ -52,7 +52,10 @@ const salaSchema = new mongoose.Schema({
 
             username: String,
 
-            nickname: String
+            nickname: String,
+
+            avatar: String
+            
         }
     ],
 

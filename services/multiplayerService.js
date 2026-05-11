@@ -84,7 +84,8 @@ export async function criarNovaSala(dadosSala, user) {
             {
                 id: user._id,
                 username: user.username,
-                nickname: user.nickname || user.username
+                nickname: user.nickname || user.username,
+                avatar: user.avatar
             }
         ]
 
