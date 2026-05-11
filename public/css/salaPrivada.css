@@ -186,7 +186,7 @@
 .texto-caixa {
   position: absolute;
   top: 50%;
-  left: 65%;
+  left: 62%;
   transform: translate(-50%, -50%);
   color: white;
   font-size: 20px;
@@ -235,9 +235,9 @@
 
 .icon-chave {
   position: absolute;
-  top: 8px;
-  left: 14px;
-  width: 40px;
+  top: 14px;
+  left: 8px;
+  width: 30px;
   height: auto;
 }
 
