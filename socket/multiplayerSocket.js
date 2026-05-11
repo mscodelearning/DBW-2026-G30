@@ -7,7 +7,7 @@ export default function multiplayerSocket(io) {
 
     io.on("connection", (socket) => {
 
-        console.log("Novo socket:", socket.id);
+        /*console.log("Novo socket:", socket.id);*/
 
         /* jogador entra numa sala socket*/
         /*socket.on("joinRoom", async (codigoSala) => {*/

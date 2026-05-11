@@ -100,6 +100,8 @@ io.on("connection", function (socket) {
       socket.join(normalizedRoom);
       socket.data.currentRoom = normalizedRoom;
 
+      console.log(`Socket ${socket.id} entrou no chat da sala ${normalizedRoom}`);
+
       socket.emit("roomJoined", {
         sala: normalizedRoom,
         socketID: socket.id,
@@ -139,6 +141,8 @@ io.on("connection", function (socket) {
         sala: normalizedRoom,
         createdAt: novaMensagem.createdAt,
       };
+
+      console.log(`Mensagem emitida para sala ${normalizedRoom}`);
 
       io.to(normalizedRoom).emit("clientChat", paraCliente);
     } catch (err) {
