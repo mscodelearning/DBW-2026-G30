@@ -83,7 +83,8 @@ export async function criarNovaSala(dadosSala, user) {
         jogadores: [
             {
                 id: user._id,
-                username: user.username
+                username: user.username,
+                nickname: user.nickname || user.username
             }
         ]
 
@@ -128,7 +129,8 @@ export async function entrarNaSala(codigo, user) {
     // adicionar jogador
     sala.jogadores.push({
         id: user._id,
-        username: user.username
+        username: user.username,
+        nickname: user.nickname || user.username
     });
 
     await sala.save();

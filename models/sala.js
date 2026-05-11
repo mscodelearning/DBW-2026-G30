@@ -50,7 +50,9 @@ const salaSchema = new mongoose.Schema({
         {
             id: mongoose.Schema.Types.ObjectId,
 
-            username: String
+            username: String,
+
+            nickname: String
         }
     ],
 

@@ -274,7 +274,7 @@
 
 .lista-jogadores {
   position: absolute;     
-  top: 200px;            
+  top: 160px;            
   right: 160px;
   display: flex;
   flex-direction: column;
