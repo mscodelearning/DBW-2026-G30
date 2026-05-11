@@ -37,7 +37,7 @@ socket.on("playersUpdated", (jogadores) => {
                     alt="">
 
                 <span class="nome-jogador">
-                    ${jogador.username}
+                    ${jogador.nickname}
                 </span>
 
             </div>
