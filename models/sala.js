@@ -57,6 +57,12 @@ const salaSchema = new mongoose.Schema({
     estado: {
         type: String,
         default: "waiting"
+    },
+
+    nome: {
+        type: String,
+        trim: true,
+        default: 'Nome da Sala'
     }
 
 }, {

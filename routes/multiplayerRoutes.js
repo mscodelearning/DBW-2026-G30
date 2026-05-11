@@ -7,6 +7,8 @@ import {
     sairSala
 } from "../controllers/multiplayerController.js";
 
+import { updateNomeSala } from "../controllers/salaController.js";
+
 const router = express.Router();
 
 router.post(
@@ -25,5 +27,7 @@ router.post(
 );
 
 router.get("/sala/:codigo", carregarSala);
+
+router.put('/sala/:codigo/nome', updateNomeSala);
 
 export default router;
