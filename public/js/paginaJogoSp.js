@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    document.getElementById("nome-jogador").textContent = "Pessoa";
+   // document.getElementById("nome-jogador").textContent = "Pessoa";
     document.getElementById("pontuacao").textContent = pontos;
 
 

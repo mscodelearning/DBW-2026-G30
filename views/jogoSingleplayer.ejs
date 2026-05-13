@@ -51,7 +51,8 @@
                                 <img class="avatar-photo" src="<%= currentUser ? (currentUser.avatar || '/symbols/Union-user-icon.png') : '/symbols/Union-user-icon.png' %>" alt="avatar jogador">
                             </div>
                             <h5>
-                                <span id="nome-jogador"></span>
+                                <!--<span id="nome-jogador"></span>-->
+                                 <span id="nome-jogador"><%= currentUser ? (currentUser.nickname || currentUser.username) : "Jogador" %></span>
                                 <span id="pontuacao"></span>
                             </h5>
                         </div>
