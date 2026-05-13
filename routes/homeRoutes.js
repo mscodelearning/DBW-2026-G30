@@ -112,4 +112,8 @@ router.get("/paginaSalasPublicas", isLoggedIn, async (req, res) => {
   }
 });
 
+router.get("/AboutPg", (req, res) => {
+  res.render("AboutPage");
+});
+
 export default router;
