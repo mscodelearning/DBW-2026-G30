@@ -13,7 +13,7 @@ import gameRoutes from "./routes/gameRoutes.js";
 import userRoutes from "./routes/userRoute.js";
 import estatisticasRoutes from "./routes/estatisticasRoutes.js";
 import multiplayerRoutes from "./routes/multiplayerRoutes.js";
-import ChatMessage from "./models/chatMessageModel.js";
+//import ChatMessage from "./models/chatMessageModel.js";
 
 
 import { carregarDicionario } from "./services/wordService.js";
@@ -22,7 +22,9 @@ import multiplayerSocket from "./socket/multiplayerSocket.js";
 
 import { garantirSalasPublicasDefault } from "./services/defaultRoomService.js";
 
-import { refreshRoomExpiry, novaDataExpiracao } from "./services/roomExpiryService.js";
+//import { refreshRoomExpiry, novaDataExpiracao } from "./services/roomExpiryService.js";
+
+import Sala from "./models/sala.js";
 
 carregarDicionario();
 
@@ -87,6 +89,7 @@ app.use("/multiplayer", multiplayerRoutes);
 
 app.use("/api/estatisticas", estatisticasRoutes);
 
+/*
 
 io.on("connection", function (socket) {
     console.log(`Utilizador ligado: ${socket.id}`);
@@ -164,7 +167,7 @@ io.on("connection", function (socket) {
     console.log(`Utilizador desligado: ${socket.id}`);
   });
 });
-
+*/
 
 mongoose 
 .connect( 
@@ -174,6 +177,10 @@ mongoose
 console.log("Connected to MongoDB"); 
 await garantirSalasPublicasDefault();
 console.log("Salas públicas default carregadas com sucesso");
+////////////////////////////////////////////////////
+const salas = await Sala.find({}, "codigo nome isDefault").lean();
+console.log("Salas na BD:", salas);
+////////////////////////////////////////////////////
 }) 
 .catch((err) => { 
 console.log(err); 

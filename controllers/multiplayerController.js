@@ -28,7 +28,7 @@ export async function criarSala(req, res) {
 
 }
 
-
+/*
 export async function carregarSala(req, res) {
     try {
 
@@ -41,7 +41,7 @@ export async function carregarSala(req, res) {
             return res.status(404).send("Sala não encontrada ou código inválido.");
         }
 
-        /*res.render("salaPrivada", { sala: sala });*/
+        /*res.render("salaPrivada", { sala: sala });
         res.render("salaPrivada", {
             sala,
             user: req.user
@@ -51,7 +51,36 @@ export async function carregarSala(req, res) {
         console.error(err);
         res.status(500).send("Erro no servidor ao carregar a sala.");
     }
+}*/
+
+//////////////////////////////////////////
+export async function carregarSala(req, res) {
+  try {
+    const codigoSala = req.params.codigo.toUpperCase();
+
+    if (!req.user) {
+      return res.status(401).send("É necessário iniciar sessão.");
+    }
+
+    const sala = await entrarNaSala(codigoSala, req.user);
+
+    if (!sala) {
+      return res.status(404).send("Sala não encontrada ou código inválido.");
+    }
+
+    res.render("salaPrivada", {
+      sala,
+      user: req.user
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send(err.message || "Erro no servidor ao carregar a sala.");
+  }
 }
+
+////////////////////////////////////
+
+
 
 export async function entrarSala(req, res) {
     

@@ -65,10 +65,27 @@ export async function garantirSalasPublicasDefault() {
     }
   ];
 
+  /*
   for (const salaData of defaults) {
     const existe = await Sala.findOne({ codigo: salaData.codigo });
     if (!existe) {
       await Sala.create(salaData);
     }
+  }*/
+
+  /////////////////////////////////////////////
+  for (const salaData of defaults) {
+  const existe = await Sala.findOne({ codigo: salaData.codigo });
+  if (!existe) {
+    await Sala.create(salaData);
+    console.log(`Sala default criada: ${salaData.codigo}`);
+  } else {
+    console.log(`Sala default já existe: ${salaData.codigo}`);
   }
+}
+
+  //////////////////////////////////////////////
+
+
+
 }
