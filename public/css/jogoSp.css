@@ -153,3 +153,30 @@
 /*fim - elementos do ecrã de jogo singleplayer*/
 
 
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.spinner-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  background: rgba(20, 40, 20, 0.95);
+  padding: 24px 32px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.loading-text {
+  color: white;
+  margin: 0;
+  font-weight: 600;
+  font-size: 18px;
+}

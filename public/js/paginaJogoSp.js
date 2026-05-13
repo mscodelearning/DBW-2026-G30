@@ -1,10 +1,16 @@
 'use strict';
 
+
+
 document.addEventListener("DOMContentLoaded", () => {
 
+    
 
     const timer = localStorage.getItem("timer");
     const finalizarBtn = document.getElementById("finalizar-jogo");
+
+    const loadingOverlay = document.getElementById("loading-overlay");///////////////
+
     const display = document.getElementById("timer-display");
     const challengeType = localStorage.getItem("challengeType");
     const challengeValue = localStorage.getItem("challengeValue");
@@ -153,6 +159,7 @@ antigo input*/
     }
 
 
+/*
     async function terminarJogo() {
 
         if (challengeType === "Objetivo: nº de palavras") {
@@ -194,7 +201,63 @@ antigo input*/
         setTimeout(() => {
             window.location.href = "/fimJogoSp";
         }, 2000);  
+    }*/
+
+    async function terminarJogo() {
+    if (challengeType === "Objetivo: nº de palavras") {
+        if (palavrasDescobertas < parseInt(challengeValue)) {
+            mostrarAlerta("Ainda não atingiu o número de palavras necessário!");
+            return;
+        }
     }
+
+    let tempoFinal = Date.now();
+    let tempoJogado = Math.floor((tempoFinal - tempoInicial) / 1000);
+
+    const estatisticasJogo = {
+        tempoJogado: tempoJogado,
+        palavrasDescobertas: palavrasDescobertas,
+        pontos: pontos,
+        erros: erros,
+        username: localStorage.getItem("username") || "Jogador",
+        nickname: localStorage.getItem("nickname") || localStorage.getItem("username") || "Jogador",
+        avatar: localStorage.getItem("avatar") || "/images/icone-pessoa.png"
+    };
+
+    localStorage.setItem("estatisticasJogo", JSON.stringify(estatisticasJogo));
+
+    loadingOverlay.classList.remove("d-none");
+    finalizarBtn.disabled = true;
+
+    try {
+        const response = await fetch("/api/estatisticas", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(estatisticasJogo)
+        });
+
+        if (!response.ok) {
+            throw new Error("Erro ao guardar estatísticas");
+        }
+
+        await new Promise(resolve => setTimeout(resolve, 2000));
+
+        window.location.href = "/fimJogoSp";
+    } catch (err) {
+        console.error(err);
+        mostrarAlerta("Erro ao carregar estatísticas.");
+    } finally {
+        loadingOverlay.classList.add("d-none");
+        finalizarBtn.disabled = false;
+    }
+}
+
+
+
+
+
 
     finalizarBtn.addEventListener("click", terminarJogo);
 
@@ -207,9 +270,10 @@ antigo input*/
             </div>
         `;
 
+        /*
         setTimeout(() => {
             container.innerHTML = "";
-        }, 2000);
+        }, 2000);*/
     }
     
 });
@@ -239,3 +303,4 @@ function atualizarEstatisticasGlobais(statsJogo) {
 
     localStorage.setItem("estatisticasGlobais", JSON.stringify(statsGlobais));
 }*/
+
