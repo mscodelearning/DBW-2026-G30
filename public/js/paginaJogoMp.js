@@ -2,13 +2,20 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
+    const dadosJogo = JSON.parse(
+        localStorage.getItem("multiplayerGameData")
+    );
 
-    const timer = localStorage.getItem("timer");
+    const timer = dadosJogo.configuracoes.timer;
+    const challengeType = dadosJogo.configuracoes.challengeType;
+    const challengeValue = dadosJogo.configuracoes.challengeValue;
+    const players = dadosJogo.jogadores;
+    //const timer = localStorage.getItem("timer");
     const finalizarBtn = document.getElementById("finalizar-jogo");
     const display = document.getElementById("timer-display");
-    const challengeType = localStorage.getItem("challengeType");
-    const challengeValue = localStorage.getItem("challengeValue");
-    const players = JSON.parse(localStorage.getItem("players")) || [];
+    //const challengeType = localStorage.getItem("challengeType");
+    //const challengeValue = localStorage.getItem("challengeValue");
+    //const players = JSON.parse(localStorage.getItem("players")) || [];
     const access = localStorage.getItem("access");
     let tempoInicial = Date.now();
     let erros = 0;
@@ -26,6 +33,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let nome = "Pessoa";
     let pontos = 0;
+
+//novo
+    const socket = io();
+    socket.emit("joinMultiplayerRoom", {
+        codigoSala: dadosJogo.codigoSala,
+        userId: currentUserId
+    });
+//novo
+    socket.on("scoreUpdated", ({ userId, pontos }) => {
+
+        if (userId === currentUserId) {
+            return;
+        }
+
+        const playerDiv =
+            document.querySelector(
+                `[data-player-id="${userId}"]`
+            );
+
+        if (!playerDiv) {
+            return;
+        }
+
+        const spans = playerDiv.querySelectorAll("span");
+
+        spans[1].textContent = `${pontos} pts`;
+    });
+
 
     document.getElementById("nome-jogador").textContent = nome;
     document.getElementById("pontuacao").textContent = pontos;
@@ -77,25 +112,30 @@ document.addEventListener("DOMContentLoaded", () => {
     function adicionarPontos(valor) {
         pontos += valor;
         document.getElementById("pontuacao").textContent = pontos;
+        socket.emit("updateScore", {
+            codigoSala: dadosJogo.codigoSala,
+            userId: currentUserId,
+            pontos
+        });
     }
 
-        function iniciarTimer(tempo) {
-            let tempoRestante = tempo;
-            const display = document.getElementById("timer-display");
+    function iniciarTimer(tempo) {
+        let tempoRestante = tempo;
+        const display = document.getElementById("timer-display");
+
+        display.textContent = tempoRestante + "s";
+
+        let intervalo = setInterval(() => {
+            tempoRestante--;
 
             display.textContent = tempoRestante + "s";
 
-            let intervalo = setInterval(() => {
-                tempoRestante--;
-
-                display.textContent = tempoRestante + "s";
-
-                if (tempoRestante <= 0) {
-                    clearInterval(intervalo);
-                    terminarJogo();
-                }
-            }, 1000);
-        }
+            if (tempoRestante <= 0) {
+                clearInterval(intervalo);
+                terminarJogo();
+            }
+        }, 1000);
+    }
 
     function terminarJogo() {
 
@@ -140,21 +180,28 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 2000);
     }
 
-    // dados para testar multiplayer
+    /* dados para testar multiplayer
     const fakePlayers = [
         { id: "1", name: "Maria", score: 0 },
         { id: "2", name: "João", score: 0 },
         { id: "3", name: "Mário", score: 0 },
         { id: "4", name: "Joana", score: 0 }
-];
-
+    ];*/
 // simular "eu"
-    const myId = "1";
+    //const myId = "1";
+    const myId = currentUserId;
+
+
+    //debug
+    console.log("players data:", players);
+    console.log("myId:", myId);
+    console.log("found player:", players.find(p => p.id == myId));
+
 
     // testar diferentes numeros de jogadores
     //renderPlayers(fakePlayers.slice(0, 2), myId); // 2 players
      //renderPlayers(fakePlayers.slice(0, 3), myId); // 3 players
-     renderPlayers(fakePlayers, myId); // 4 players
+     renderPlayers(players, myId); // 4 players
 });
 
 
@@ -187,12 +234,13 @@ function renderPlayers(players, myId) {
     const container = document.getElementById("adversarios-container");
     container.innerHTML = "";
 
-    const eu = players.find(p => p.id === myId);
-    const adversarios = players.filter(p => p.id !== myId);
-
+    const eu = players.find(p => p.id == myId);
+    const adversarios = players.filter(
+        p => p.id.toString() !== myId.toString()
+    );
     // eu (esquerda)
-    document.getElementById("nome-jogador").textContent = eu.name;
-    document.getElementById("pontuacao").textContent = eu.score;
+    document.getElementById("nome-jogador").textContent = eu.nickname;
+    document.getElementById("pontuacao").textContent = 0;
 
     // adversarios (direita)
     adversarios.forEach(player => {
@@ -204,11 +252,12 @@ function renderPlayers(players, myId) {
             <div class="mensagem-box"></div>
             <div class="player-info">
                 <img src="/Images/icone-pessoa.png">
-                <span>${player.name}</span>
-                <span>${player.score} pts</span>
+                <span>${player.nickname}</span>
+                <span>0 pts</span>
             </div>
         `;
 
         container.appendChild(div);
     });
+
 }

@@ -64,6 +64,30 @@ const salaSchema = new mongoose.Schema({
         default: "waiting"
     },
 
+    jogo: {
+
+        iniciado: {
+            type: Boolean,
+            default: false
+        },
+
+        palavraMestra: {
+            type: String,
+            default: null
+        },
+
+        palavrasValidas: {
+            type: [String],
+            default: []
+        },
+
+        inicio: {
+            type: Date,
+            default: null
+        }
+
+    },
+
     nome: {
         type: String,
         trim: true,

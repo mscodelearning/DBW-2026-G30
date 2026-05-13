@@ -1,59 +1,88 @@
 'use strict';
 
-window.socket = io();
+document.addEventListener("DOMContentLoaded", () => {
 
-const pathParts = window.location.pathname.split("/");
+    window.socket = io();
 
-const codigoSala = pathParts[pathParts.length - 1];
+    const pathParts = window.location.pathname.split("/");
+    const codigoSala = pathParts[pathParts.length - 1];
+    const userId = window.dadosSala.userId;
 
-//socket.emit("joinRoom", codigoSala);
-socket.emit("joinMultiplayerRoom", {
+    //socket.emit("joinRoom", codigoSala);
+    socket.emit("joinMultiplayerRoom", {
 
-    codigoSala: window.dadosSala.codigo,
+        codigoSala: window.dadosSala.codigo,
 
-    userId: window.dadosSala.userId
+        userId: window.dadosSala.userId
 
-});
+    });
 
-socket.on("playersUpdated", (jogadores) => {
+    socket.on("playersUpdated", (jogadores) => {
 
-    const listaJogadores =
-        document.querySelector(".lista-jogadores");
+        const listaJogadores = document.querySelector(".lista-jogadores");
 
-    listaJogadores.innerHTML = "";
+        listaJogadores.innerHTML = "";
 
-    jogadores.forEach(jogador => {
+        jogadores.forEach(jogador => {
 
-        listaJogadores.innerHTML += `
+            listaJogadores.innerHTML += `
 
-            <div class="jogador">
+                <div class="jogador">
 
-                <img class="fundo-utilizador"
-                    src="/images/fundo-icon-user.png"
-                    alt="">
+                    <img class="fundo-utilizador"
+                        src="/images/fundo-icon-user.png"
+                        alt="">
 
-                <img class="icon-square-utilizador"
-                    src="${jogador.avatar || '/symbols/Union-user-icon.png'}"
-                    alt="avatar">
+                    <img class="icon-square-utilizador"
+                        src="${jogador.avatar || '/symbols/Union-user-icon.png'}"
+                        alt="avatar">
 
-                <span class="nome-jogador">
-                    ${jogador.nickname}
-                </span>
+                    <span class="nome-jogador">
+                        ${jogador.nickname}
+                    </span>
 
-            </div>
+                </div>
 
-        `;
+            `;
+
+        });
+
+
+        const contador =
+            document.getElementById("contadorJogadores");
+
+        const maxPlayers =
+            contador.dataset.max;
+
+        contador.textContent =
+            `${jogadores.length}/${maxPlayers}`;
 
     });
 
 
-    const contador =
-        document.getElementById("contadorJogadores");
+    const startButton = document.getElementById("start-button");
 
-    const maxPlayers =
-        contador.dataset.max;
+    if (startButton) {
 
-    contador.textContent =
-        `${jogadores.length}/${maxPlayers}`;
+        startButton.addEventListener("click", () => {
 
+            socket.emit("startGame", {
+                codigoSala,
+                userId
+            });
+
+        });
+
+    }
+
+    socket.on("gameStarted", (dadosJogo) => {
+
+        localStorage.setItem(
+            "multiplayerGameData",
+            JSON.stringify(dadosJogo)
+        );
+
+        window.location.href = "/paginaJogoMultiplayer";
+
+    });
 });

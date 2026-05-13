@@ -116,6 +116,9 @@
 
 /* Fim - chat da sala privada */
 
+#start-button :hover{
+  cursor: pointer;
+}
 
 .botao-signup-container {
     position: absolute;

@@ -3,6 +3,11 @@ import Sala from "../models/sala.js";
 const socketsSalas = new Map();
 const disconnectTimers = new Map();
 
+
+function isHost(sala, userId) {
+    return sala.host.toString() === userId.toString();
+}
+
 export default function multiplayerSocket(io) {
 
     io.on("connection", (socket) => {
@@ -11,6 +16,7 @@ export default function multiplayerSocket(io) {
 
         /* jogador entra numa sala socket*/
         /*socket.on("joinRoom", async (codigoSala) => {*/
+
         socket.on("joinMultiplayerRoom", async ({ codigoSala, userId }) => {
             try {
                 socket.join(codigoSala);
@@ -106,5 +112,71 @@ export default function multiplayerSocket(io) {
                 console.error(err);
             }
         });
+
+        socket.on(
+            "startGame",
+            async ({ codigoSala, userId }) => {
+
+                try {
+
+                    const sala = await Sala.findOne({ codigo: codigoSala });
+
+                    if (!sala) { return; }
+
+                    if (sala.estado === "playing") {
+
+                        console.log(
+                            `Jogo em andamento. Não remover ${userId}`
+                        );
+
+                        disconnectTimers.delete(pendingKey);
+
+                        return;
+                    }
+
+                    // only host
+                    if (!isHost(sala, userId)) {
+
+                        socket.emit(
+                            "roomError",
+                            "Apenas o host pode iniciar o jogo"
+                        );
+
+                        return;
+                    }
+
+                    sala.estado = "playing";
+
+                    sala.jogo.iniciado = true;
+
+                    sala.jogo.inicio = new Date();
+
+                    await sala.save();
+
+                    io.to(codigoSala).emit(
+                        "gameStarted",
+                        {
+                            codigoSala,
+                            configuracoes: sala.configuracoes,
+                            jogadores: sala.jogadores
+                        }
+                    );
+
+                } catch (err) {
+                    console.error(err);
+                }
+            }
+        );
+
+        socket.on("updateScore", ({ codigoSala, userId, pontos }) => {
+            io.to(codigoSala).emit(
+                "scoreUpdated",
+                {
+                    userId,
+                    pontos
+                }
+            );
+        });
+
     });
 }
