@@ -92,6 +92,18 @@ const salaSchema = new mongoose.Schema({
         type: String,
         trim: true,
         default: 'Nome da Sala'
+    },
+
+    isDefault: {
+        type: Boolean,
+        default: false
+    },
+
+    expireAt: {
+        type: Date,
+        expires: 0 ,
+        /*default: () => new Date(Date.now() + 2 * 60 * 60 * 1000)*/
+        //default: () => new Date(Date.now() + 1 * 60 * 1000)
     }
 
 }, {

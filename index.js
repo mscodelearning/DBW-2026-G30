@@ -13,12 +13,18 @@ import gameRoutes from "./routes/gameRoutes.js";
 import userRoutes from "./routes/userRoute.js";
 import estatisticasRoutes from "./routes/estatisticasRoutes.js";
 import multiplayerRoutes from "./routes/multiplayerRoutes.js";
-import ChatMessage from "./models/chatMessageModel.js";
+//import ChatMessage from "./models/chatMessageModel.js";
 
 
 import { carregarDicionario } from "./services/wordService.js";
 
 import multiplayerSocket from "./socket/multiplayerSocket.js";
+
+import { garantirSalasPublicasDefault } from "./services/defaultRoomService.js";
+
+//import { refreshRoomExpiry, novaDataExpiracao } from "./services/roomExpiryService.js";
+
+import Sala from "./models/sala.js";
 
 carregarDicionario();
 
@@ -83,6 +89,7 @@ app.use("/multiplayer", multiplayerRoutes);
 
 app.use("/api/estatisticas", estatisticasRoutes);
 
+/*
 
 io.on("connection", function (socket) {
     console.log(`Utilizador ligado: ${socket.id}`);
@@ -92,6 +99,9 @@ io.on("connection", function (socket) {
       const normalizedRoom = roomName?.trim();
 
       if (!normalizedRoom) return;
+
+      await refreshRoomExpiry(normalizedRoom);// temporizador para eliminar sala da refresh ao timer
+
 
       if (socket.data.currentRoom) {
         socket.leave(socket.data.currentRoom);
@@ -124,6 +134,9 @@ io.on("connection", function (socket) {
 
       if (!normalizedMessage || !normalizedRoom) return;
 
+      await refreshRoomExpiry(normalizedRoom);// temporizador para eliminar sala da refresh ao timer
+
+
       const novaMensagem = await ChatMessage.create({
         salaCodigo: normalizedRoom,
         senderId: msgData.senderId,
@@ -154,14 +167,20 @@ io.on("connection", function (socket) {
     console.log(`Utilizador desligado: ${socket.id}`);
   });
 });
-
+*/
 
 mongoose 
 .connect( 
 "mongodb+srv://2003marianas_db_user:mlRRh9PBxq49pWDY@dbw2526.zmknrl1.mongodb.net/?appName=DBW2526&retryWrites=true&w=majority " 
 ) 
-.then(() => { 
+.then(async () => { 
 console.log("Connected to MongoDB"); 
+await garantirSalasPublicasDefault();
+console.log("Salas públicas default carregadas com sucesso");
+////////////////////////////////////////////////////
+const salas = await Sala.find({}, "codigo nome isDefault").lean();
+console.log("Salas na BD:", salas);
+////////////////////////////////////////////////////
 }) 
 .catch((err) => { 
 console.log(err); 

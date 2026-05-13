@@ -1,5 +1,6 @@
 import express from "express";
 import { isLoggedIn } from "../controllers/userController.js";
+import Sala from "../models/sala.js";
 const router = express.Router();
 
 /*
@@ -82,15 +83,33 @@ router.get("/paginaSalasPublicas", (req, res) => {
   res.render("salasPublicasPage");
 });*/
 
+/*
 router.get("/paginaSalasPublicas", isLoggedIn, (req, res) => {
   res.render("salasPublicasPage");
 });
+*/
+
 
 router.get("/paginaJogoMultiplayer", (req, res) => {
   res.render("jogoMultiplayer");
 });
 
+router.get("/paginaSalasPublicas", isLoggedIn, async (req, res) => {
+  try {
+    const salasPublicas = await Sala.find({
+      "configuracoes.access": "Público"
+    })
+      .sort({ isDefault: -1, createdAt: -1 })
+      .lean();
 
-
+    res.render("salasPublicasPage", {
+      salasPublicas,
+      user: req.user
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Erro ao carregar salas públicas.");
+  }
+});
 
 export default router;
