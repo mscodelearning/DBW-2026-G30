@@ -168,8 +168,16 @@ antigo input*/
             tempoJogado: tempoJogado,
             palavrasDescobertas: palavrasDescobertas,
             pontos: pontos,
-            erros: erros
+            erros: erros,
+            username: localStorage.getItem("username") || "Jogador",
+            nickname: localStorage.getItem("nickname") || localStorage.getItem("username") || "Jogador",
+            avatar: localStorage.getItem("avatar") || "/images/icone-pessoa.png"
         };
+
+        console.log("username LS:", localStorage.getItem("username"));
+        console.log("nickname LS:", localStorage.getItem("nickname"));
+        console.log("avatar LS:", localStorage.getItem("avatar"));
+        console.log("estatisticasJogo:", estatisticasJogo);
 
         localStorage.setItem("estatisticasJogo", JSON.stringify(estatisticasJogo));
 

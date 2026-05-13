@@ -61,6 +61,14 @@
         </div>
     </div>
 
+<% if (currentUser) { %>
+<script>
+  localStorage.setItem("username", "<%= currentUser.username %>");
+  localStorage.setItem("nickname", "<%= currentUser.nickname || currentUser.username %>");
+  localStorage.setItem("avatar", "<%= currentUser.avatar || '/images/icone-pessoa.png' %>");
+</script>
+<% } %>
+
 <!--<script src="../public/js/paginaJogoSp.js" defer></script>-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 <script src="/js/paginaJogoSp.js" defer></script>
