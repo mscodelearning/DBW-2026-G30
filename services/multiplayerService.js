@@ -1,4 +1,12 @@
 import Sala from "../models/sala.js";
+import { refreshRoomExpiry, novaDataExpiracao } from "../services/roomExpiryService.js";
+
+////////////////////////////////////
+function salaDeveSerApagada(sala) {
+  return !sala.isDefault && sala.jogadores.length === 0;
+}
+////////////////////////////////////
+
 
 function gerarCodigoSala() {
 
@@ -16,6 +24,7 @@ function gerarCodigoSala() {
 
     return codigo;
 }
+
 
 export async function criarNovaSala(dadosSala, user) {
 
@@ -72,6 +81,8 @@ export async function criarNovaSala(dadosSala, user) {
 
         host: user._id,
 
+        expireAt: novaDataExpiracao(10), ////////////////////////////
+
         configuracoes: {
             access,
             players,
@@ -96,6 +107,7 @@ export async function criarNovaSala(dadosSala, user) {
     return novaSala;
 }
 
+/*
 export async function entrarNaSala(codigo, user) {
 
     const sala = await Sala.findOne({
@@ -119,6 +131,8 @@ export async function entrarNaSala(codigo, user) {
 
     // evita duplicados
     if (jogadorJaExiste) {
+        sala.expireAt = novaDataExpiracao(10);//////////////////////
+        await sala.save(); ///////////////////
         return sala;
     }
 
@@ -134,10 +148,14 @@ export async function entrarNaSala(codigo, user) {
         nickname: user.nickname || user.username
     });
 
+
+    sala.expireAt = novaDataExpiracao(10); /////////////////////
+
     await sala.save();
 
     return sala;
 }
+
 
 export async function sairDaSala(codigo, userId) {
 
@@ -155,9 +173,17 @@ export async function sairDaSala(codigo, userId) {
                 jogador.id.toString() !== userId.toString()
         );
 
-    /* se host sair e sala ficar vazia apagar sala*/
+    se host sair e sala ficar vazia apagar sala
     if (sala.jogadores.length === 0) {
-
+        
+        ///////////////////////////////
+        if (sala.isDefault) {
+            sala.estado = "waiting";
+            sala.expireAt = null;
+            await sala.save();
+            return sala;
+        }
+        /////////////////////////////
         await Sala.deleteOne({
             _id: sala._id
         });
@@ -165,7 +191,68 @@ export async function sairDaSala(codigo, userId) {
         return null;
     }
 
+    sala.expireAt = novaDataExpiracao(5); /////////////////////
+
     await sala.save();
 
     return sala;
+}*/
+
+
+export async function entrarNaSala(codigo, user) {
+  const sala = await Sala.findOne({ codigo: codigo.toUpperCase() });
+  if (!sala) throw new Error("Sala não encontrada");
+  if (sala.estado !== "waiting") throw new Error("A sala já começou");
+
+  const jogadorJaExiste = sala.jogadores.some(j => j.id.toString() === user._id.toString());
+  if (jogadorJaExiste) {
+    // atualiza expiryDate/timer apenas para salas que nao sao defaults 
+    if (!sala.isDefault) sala.expireAt = novaDataExpiracao(10);
+    else sala.expireAt = null;
+    await sala.save();
+    return sala;
+  }
+
+  if (sala.jogadores.length >= sala.configuracoes.players) {
+    throw new Error("Sala cheia");
+  }
+
+  sala.jogadores.push({
+    id: user._id,
+    username: user.username,
+    nickname: user.nickname || user.username,
+    avatar: user.avatar
+  });
+
+  if (!sala.isDefault) {
+    sala.expireAt = novaDataExpiracao(10);
+  } else {
+    sala.expireAt = null;
+  }
+
+  await sala.save();
+  return sala;
+}
+
+export async function sairDaSala(codigo, userId) {
+  const sala = await Sala.findOne({ codigo });
+  if (!sala) throw new Error("Sala não encontrada");
+
+  sala.jogadores = sala.jogadores.filter(j => j.id.toString() !== userId.toString());
+
+  if (sala.jogadores.length === 0) {
+    if (sala.isDefault) {
+      sala.estado = "waiting";
+      sala.expireAt = null;
+      await sala.save();
+      return sala;
+    }
+    await Sala.deleteOne({ _id: sala._id });
+    return null;
+  }
+
+  //mantem a expiryDate/timer apenas para salas que nao sao default
+  sala.expireAt = sala.isDefault ? null : novaDataExpiracao(5);
+  await sala.save();
+  return sala;
 }

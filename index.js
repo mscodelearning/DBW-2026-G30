@@ -20,6 +20,10 @@ import { carregarDicionario } from "./services/wordService.js";
 
 import multiplayerSocket from "./socket/multiplayerSocket.js";
 
+import { garantirSalasPublicasDefault } from "./services/defaultRoomService.js";
+
+import { refreshRoomExpiry, novaDataExpiracao } from "./services/roomExpiryService.js";
+
 carregarDicionario();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -93,6 +97,9 @@ io.on("connection", function (socket) {
 
       if (!normalizedRoom) return;
 
+      await refreshRoomExpiry(normalizedRoom);// temporizador para eliminar sala da refresh ao timer
+
+
       if (socket.data.currentRoom) {
         socket.leave(socket.data.currentRoom);
       }
@@ -123,6 +130,9 @@ io.on("connection", function (socket) {
       const normalizedRoom = msgData?.sala?.trim();
 
       if (!normalizedMessage || !normalizedRoom) return;
+
+      await refreshRoomExpiry(normalizedRoom);// temporizador para eliminar sala da refresh ao timer
+
 
       const novaMensagem = await ChatMessage.create({
         salaCodigo: normalizedRoom,
@@ -160,8 +170,10 @@ mongoose
 .connect( 
 "mongodb+srv://2003marianas_db_user:mlRRh9PBxq49pWDY@dbw2526.zmknrl1.mongodb.net/?appName=DBW2526&retryWrites=true&w=majority " 
 ) 
-.then(() => { 
+.then(async () => { 
 console.log("Connected to MongoDB"); 
+await garantirSalasPublicasDefault();
+console.log("Salas públicas default carregadas com sucesso");
 }) 
 .catch((err) => { 
 console.log(err); 

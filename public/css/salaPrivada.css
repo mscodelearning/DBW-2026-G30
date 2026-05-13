@@ -505,3 +505,15 @@
 }
 
 /* Fim - layout do chat com user avatar e nome */
+
+.link-sala-publica {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.link-sala-publica:hover .caixa-sala-publica {
+    transform: scale(1.02);
+    transition: 0.2s ease;
+    cursor: pointer;
+}

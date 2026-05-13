@@ -32,7 +32,7 @@ export async function criarSala(req, res) {
 export async function carregarSala(req, res) {
     try {
 
-        const codigoSala = req.params.codigo;
+        const codigoSala = req.params.codigo.toUpperCase();
 
         const sala = await Sala.findOne({ codigo: codigoSala });
 

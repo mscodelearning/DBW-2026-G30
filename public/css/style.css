@@ -1630,6 +1630,7 @@ h2 {
 
 /* Inicio - implementacao da caixa que vai fazer de botao para entrar/selecionar uma sala publica */
 
+/*
 .salas-publicas-conatiner {
     position: relative;
     width: 100%;
@@ -1640,7 +1641,7 @@ h2 {
     position: relative;
     top: 20px;
     left: 90px;
-    width: 300px; /* ajusta ao tamanho real da tua caixa */
+    width: 300px; /* ajusta ao tamanho real da tua caixa 
     
 }
 
@@ -1692,7 +1693,70 @@ h2 {
     display: flex;
     gap: 50px;
     flex-wrap: wrap;
+}*/
+.salas-publicas-container {
+    width: 100%;
+    min-height: 100vh;
+    padding: 30px 80px;
+    box-sizing: border-box;
 }
+
+.lista-salas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.caixa-sala-publica {
+    position: relative;
+    width: 300px;
+    flex: 0 0 300px;
+}
+
+.fundo-btn-sp {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.conteudo-sala {
+    position: absolute;
+    inset: 0;
+    padding: 18px 25px 35px 25px;
+    color: white;
+}
+
+.conteudo-sala h3 {
+    text-align: center;
+    margin: 0 0 20px 0;
+    font-size: 16px;
+}
+
+.linha-info {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.icons-coluna,
+.texto-coluna {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.icons-coluna img {
+    width: 24px;
+    height: 24px;
+}
+
+.texto-coluna p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
 
 /* Fim - implementacao da caixa que vai fazer de botao para entrar/selecionar uma sala publica */
 

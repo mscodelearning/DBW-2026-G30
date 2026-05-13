@@ -5,6 +5,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
         <!--<link rel="stylesheet" href="../public/css/style.css">-->
         <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/salaPublica.css">
 
         <title>Skriven</title>
     </head>
@@ -20,6 +21,7 @@
             <a href="/gameMultiplayerPlayer"></a>
         </div>
 
+       <!--<h2>Salas Publicas</h2>-->
         <h2>Salas Publicas</h2>
 
        <!--<div class="lista-filtros">
@@ -36,7 +38,7 @@
 
 
         
-
+<!--
         <div class="lista-salas">
             <div class="caixa-sala-publica">
                 <img class="fundo-btn-sp" src="/images/fundo-btn-salas-publicas.png" alt="Fundo">
@@ -55,9 +57,108 @@
                         </div>
                     </div>
                 </div>
+            </div>-->
+
+<!--
+            <div class="lista-salas">
+                <salasPublicas.forEach(sala => { %>
+                    <div class="caixa-sala-publica">
+                    <img class="fundo-btn-sp" src="/images/fundo-btn-salas-publicas.png" alt="Fundo">
+                    <div class="conteudo-sala">
+                        <h3><= sala.nome || "Nome da Sala" %></h3>
+
+                        <div class="linha-info">
+                        <div class="icons-coluna">
+                            <img src="/symbols/multiplayer2.png" alt="Jogadores">
+                            <img src="/symbols/relogio-verde.png" alt="Tempo">
+                            <img src="/symbols/estrela-verde.png" alt="Desafio">
+                        </div>
+
+                        <div class="texto-coluna">
+                            <p>= <sala.jogadoresAtuais %>/<= sala.configuracoes.players %> Jogadores</p>
+                            <p><= sala.configuracoes.timer ? sala.configuracoes.timer + " min" : "-" %></p>
+                            <p>
+                            <= sala.configuracoes.challengeType !== "Não"
+                                ? sala.configuracoes.challengeType + ": " + sala.configuracoes.challengeValue
+                                : "-" %>
+                            </p>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                < }) %>
+            </div>
+        -->
+
+        <div class="salas-publicas-container">
+   
+<!--
+    <div class="lista-salas">
+        < salasPublicas.forEach(sala => { %>
+            <div class="caixa-sala-publica">
+                <img class="fundo-btn-sp" src="/images/fundo-btn-salas-publicas.png" alt="Fundo">
+                <div class="conteudo-sala">
+                    <h3><= sala.nome || "Nome da Sala" %></h3>
+
+                    <div class="linha-info">
+                        <div class="icons-coluna">
+                            <img src="/symbols/multiplayer2.png" alt="Jogadores">
+                            <img src="/symbols/relogio-verde.png" alt="Tempo">
+                            <img src="/symbols/estrela-verde.png" alt="Desafio">
+                        </div>
+
+                        <div class="texto-coluna">
+                            <p><= sala.jogadoresAtuais %>/<= sala.configuracoes.players %> Jogadores</p>
+                            <p><= sala.configuracoes.timer ? sala.configuracoes.timer + " min" : "-" %></p>
+                            <p>
+                                <= sala.configuracoes.challengeType !== "Não"
+                                    ? sala.configuracoes.challengeType + ": " + sala.configuracoes.challengeValue
+                                    : "-" %>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        < }) %>
+    </div>-->
+
+
+
+    <div class="lista-salas">
+  <% salasPublicas.forEach(sala => { %>
+    <a href="/multiplayer/sala/<%= sala.codigo %>" class="link-sala-publica">
+      <div class="caixa-sala-publica">
+        <img class="fundo-btn-sp" src="/images/fundo-btn-salas-publicas.png" alt="Fundo">
+        <div class="conteudo-sala">
+          <h3><%= sala.nome || "Nome da Sala" %></h3>
+
+          <div class="linha-info">
+            <div class="icons-coluna">
+              <img src="/symbols/multiplayer2.png" alt="Jogadores">
+              <img src="/symbols/relogio-verde.png" alt="Tempo">
+              <img src="/symbols/estrela-verde.png" alt="Desafio">
             </div>
 
+            <div class="texto-coluna">
+              <p><%= sala.jogadoresAtuais %>/<%= sala.configuracoes.players %> Jogadores</p>
+              <p><%= sala.configuracoes.timer ? sala.configuracoes.timer + " min" : "-" %></p>
+              <p>
+                <%= sala.configuracoes.challengeType !== "Não"
+                  ? sala.configuracoes.challengeType + ": " + sala.configuracoes.challengeValue
+                  : "-" %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+  <% }) %>
+</div>
 
+
+</div>
+
+<!--
             <div class="caixa-sala-publica">
                 <img class="fundo-btn-sp" src="/images/fundo-btn-salas-publicas.png" alt="Fundo">
                 <div class="conteudo-sala">
@@ -121,13 +222,11 @@
 
         </div>
 
-    </div>
+    </div>-->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 <script src="/js/script.js" defer></script>
 <script src="/js/caixaFiltro.js" defer></script>
-
-
 
 </body>
 </html>
