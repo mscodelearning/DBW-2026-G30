@@ -20,7 +20,7 @@ export const postSignup = async (req, res) => {
     res.redirect("/login");
   } catch (err) {
     res.render("signupPage", {
-      error: "Username ja existe! \n Tente novamente.",
+      error: "Username já existe! \n Tente novamente.",
     });
   }
 };

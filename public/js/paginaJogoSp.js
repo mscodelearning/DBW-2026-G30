@@ -207,7 +207,6 @@ antigo input*/
     if (challengeType === "Objetivo: nº de palavras") {
         if (palavrasDescobertas < parseInt(challengeValue)) {
             mostrarAlerta("Ainda não atingiu o número de palavras necessário!");
-            return;
         }
     }
 
@@ -269,11 +268,9 @@ antigo input*/
                 ${mensagem}
             </div>
         `;
-
-        /*
         setTimeout(() => {
             container.innerHTML = "";
-        }, 2000);*/
+        }, 2000);
     }
     
 });
