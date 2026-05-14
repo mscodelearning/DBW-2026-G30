@@ -2,17 +2,21 @@
 .container-mode-multiplayer {
     position: relative;
     width: 100%;
-    padding-left: 120px;
-    padding-right: 125px;
-    box-sizing: border-box;
-    margin-top: 140px;
-    transform: translate(-50%, -50%);
+    height: auto;
+    /*padding-left: 120px;*/
+    /*padding-right: 125px;*/
+    /*box-sizing: border-box;*/
+    /*margin-top: 140px;*/
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
-    gap: 100px;
-    transform: none;
+    /*flex-direction: row;*/
+    gap: 30px;
+    /*transform: none;*/
+    flex-wrap: wrap;
+    min-height: calc(100vh - 62px);
+    gap: 80px;
+    flex-wrap: wrap;
 }
 
 /*
@@ -22,9 +26,15 @@
 }*/
 
 .caixas-btn-mp {
-    position:relative;
-    width: 360px;
-    height: 500px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    /*width: 360px;
+    height: 500px;*/
+    width: min(360px, 90vw);
+    height: auto;
 }
 
 /*
@@ -35,8 +45,11 @@
 }*/
 
 .fundo-caixa {
-    width: 360px;
+    /*width: 360px;
     height: 500px;
+    display: block;*/
+    width: 100%;
+    height: auto;
     display: block;
 }
 
@@ -54,7 +67,8 @@
 .simbolo-mais, .simbolo-mundo{
     position: absolute;
     top: 120px;
-    left: 80px;
+    left: 50%;
+    transform: translateX(-50%);
     width: 200px;
     justify-content: center;
     height: auto;
@@ -112,7 +126,8 @@
 .simbolo-sala-privada {
     position: absolute;
     top: 184px;
-    left: 98px;
+    left: 50%;
+    transform: translateX(-50%);
     width: 160px;
     justify-content: center;
     height: auto;
