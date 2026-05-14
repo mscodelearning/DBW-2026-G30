@@ -5,22 +5,66 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <!--<link rel="stylesheet" href="../public/css/style.css">-->
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/salaPublica.css">
+    <link rel="stylesheet" href="/css/AboutPg.css">
     <title>Skriven</title>
 </head>
 <body>
 <div>
     <%- include("partials/header") %>
-    <div class="container">
+    <div class="container about-container">
         <h1>Tutorial</h1>
 
         <h3>Objetivo do jogo</h3>
 
-        <p></p>
+        <p>Descobre o maior número possível de palavras que possam ser 
+            criadas a partir das letras da palavra mestra apresentada.</p>
 
-        
+        <h3>Regra de Ouro</h3>
 
-        <p> ipsum dolor sit amet, consectetur adipisicing elit. Iure id, rerum aliquid eveniet a nulla quas nesciunt doloribus accusamus, nisi nostrum, quo esse. Corrupti harum ut distinctio at aliquid sequi?
-        </p>
+        <p>As letras devem ser usadas em sequência direta ou indireta.</p>
+
+        <h3>Regras</h3>
+
+        <ul class="topicos">
+            <li>Não é permitida a repetição de palavras.</li>
+            <li>A ordem das letras nas palavras criadas não precisa de ser consecutiva.</li>
+            <li>Só é possível criar palavras com as letras da palavra mestra, da esquerda para a direita.</li>
+        </ul>
+
+        <h3>Como jogar</h3>
+            <ol class="tutorial-lista">
+                <li>
+                    <p class="conteudo-regras">Observa a palavra mestra apresentada no ecrã.</p>
+                    <img class="quadro-palavra-Mestra" src="/ImgTutorial/palavra-mestra.png">
+                </li>
+
+                <li>
+                    <p class="conteudo-regras">Na caixa de texto, insere uma palavra que consigas formar.</p>
+                    <img class="insere-palavra-caixa" src="/ImgTutorial/insere-palavra.png">
+                </li>
+
+                <li>
+                    <p class="conteudo-regras">Depois, prime a tecla Enter para adicionar a palavra à caixa de palavras do jogador.</p>
+                    <img class="guarda-palavra-caixa" src="/ImgTutorial/palavra-guardada-caixa.png">
+                </li>
+
+                <li>
+                    <p class="conteudo-regras">A pontuação aparece ao lado do nickname do jogador, por baixo da caixa de palavras 
+                    criadas.</p>
+                    <img class="nickname-pontuacao-left" src="/ImgTutorial/icon-nickname-pontuacao.png">
+                </li>
+                
+            </ol>
+            
+        <h3>Fim do jogo</h3>
+
+        <ul class="regra-fim-jogo">
+            <li>Se escolheres a opção contra-relógio, o jogo termina quando o tempo chegar ao fim.</li>
+            <li>Se não escolheres contra-relógio, o jogo termina apenas quando premires o botão Finalizar Jogo.</li>
+            <img class="img-btn-finaliza-jogo" src="/ImgTutorial/btn-finaliza-jogo.png">
+        </ul>
+
     </div>
 </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
