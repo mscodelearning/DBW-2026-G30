@@ -1944,9 +1944,77 @@ h2 {
 
 
 .topicos {
-  list-style-type: disc;
-  color: rgb(236, 236, 236);
-  font-size: 20px;
-  margin-left: 60px;
+    list-style-type: disc;
+    color: rgb(236, 236, 236);
+    font-size: 20px;
+    margin-left: 60px;
 }
 
+
+.tutorial-lista {
+    list-style-type: decimal;
+    padding-left: 20px;
+    font-size: 20px;
+}
+
+.tutorial-lista li {
+    display: list-item;
+    margin-left: 20px;
+}
+
+.conteudo-regras {
+    text-indent: 0;
+    margin: 0;
+}
+
+.quadro-palavra-Mestra {
+    margin-left: 200px;
+    margin-bottom: 30px;
+    width: 300px;
+    height: auto;
+    border-radius: 12px;
+}
+
+.insere-palavra-caixa {
+    margin-left: 250px;
+    margin-bottom: 30px;
+    width: 200px;
+    height: auto;
+    border-radius: 12px;
+}
+
+.guarda-palavra-caixa {
+    margin-left: 230px;
+    margin-bottom: 30px;
+    width: 250px;
+    height: auto;
+    border-radius: 12px;
+}
+
+.nickname-pontuacao-left{
+    margin-left: 300px;
+    width: 120px;
+    height: auto;
+    border-radius: 12px;
+}
+
+.regra-fim-jogo {
+    margin-top: 25px;
+    list-style-type: disc;
+    color: rgb(236, 236, 236);
+    font-size: 20px;
+    margin-left: 60px;
+}
+
+.regra-fim-jogo li {
+    margin-bottom: 12px;
+}
+
+.img-btn-finaliza-jogo {
+    margin-top: 25px;
+    margin-left: 220px;
+    margin-bottom: 20px;
+    width: 200px;
+    height: auto;
+    border-radius: 12px;
+}
