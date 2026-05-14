@@ -1205,7 +1205,7 @@ h1 {
 /* Inicio - posicionamento icon user e texto alterar imagem na pagina do perfil */
 
 
-.container {
+.container-perfil-global {
     display: flex;
     justify-content: center;
     align-items: center;
