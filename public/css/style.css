@@ -1203,11 +1203,33 @@ h1 {
 
 
 /* Inicio - posicionamento icon user e texto alterar imagem na pagina do perfil */
-.perfil-header {
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 100px);
+    padding: 20px;
+}
+
+.container-perfil {
+    position: relative;
+    width: 1000px;   
+    max-width: 95%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 40px;
+    margin: 0 auto;
+}
+
+
+/*.perfil-header {
     position: absolute;
     top: 330px;
     margin-left: 160px;
-}
+}*/
 
 .user-icon2-perfil-container {
     width: 200px;
@@ -1292,12 +1314,29 @@ h1 {
 
 /* Inicio - caixas de dados (como nickname, username, password) e caixas de texto usando imagem pagina do perfil */
 
-.coluna-caixas {
+/*.coluna-caixas {
     display: flex;
     flex-direction: column;
     gap: 10px;
     margin-top: 278px;
     margin-left: 440px;
+}*/
+
+/*NOVO*/
+.perfil-header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+}
+
+.coluna-caixas {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-left: 60px;
+    margin-top: 60px;
 }
 
 .grupo-campo {
@@ -1374,35 +1413,69 @@ h1 {
 /* Inicio - quadro estatisticas na pagina do perfil */
 
 
-.quadro-estatistico-container {
+/*.quadro-estatistico-container {
     position: absolute;
     top: 20%;
     left: 64%;
     /*inset: 0;*/
-    /*transform: translate(-50%, -50%);*/
+    /*transform: translate(-50%, -50%);
     width: 420px;
     height: 520px;
     padding: 30px;
     z-index: 10;
+}*/
+
+
+/*NOVO*/
+
+.quadro-estatistico-container {
+    position: relative;
+    width: 420px;
+    height: 520px;
 }
 
-.img-quadro {
+
+/*.img-quadro {
     position: absolute;
     inset: 0;
-    width: 115%;
-    height: 115%;
+    width: 130%;
+    height: 130%;
+    padding: 40px;
+    object-fit: contain;
+    z-index: 1;
+}*/
+
+/*NOVO*/
+.img-quadro {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    width: 130%;
+    height: 130%;
     padding: 40px;
     object-fit: contain;
     z-index: 1;
 }
 
-.fundo-verde-quadro-estatistico {
+/*.fundo-verde-quadro-estatistico {
     position: absolute;
     top: 82px;
     left: 82px;
     width: 322px;
     height: 448px;
     z-index: 2;
+}*/
+
+.fundo-verde-quadro-estatistico {
+    position: absolute;
+    top: 73px;
+    left: 21px;
+    width: 322px;
+    height: 445px;
+    z-index: 2;
+    
 }
 
 .img-fundo-verde {
@@ -1417,7 +1490,7 @@ h1 {
 /* Inicio - dados estatisticos quadro da pagina do perfil */
 
 
-.stats-overlay {
+/*.stats-overlay {
     position: absolute;
     inset: 0;
     display: flex;
@@ -1427,8 +1500,20 @@ h1 {
     box-sizing: border-box;
     z-index: 3;
     color: white;
-}
+}*/
 
+.stats-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 18px 16px;
+    z-index: 3;
+}
 
 .stats-title {
     text-align: center;
