@@ -1940,3 +1940,13 @@ h2 {
 }
 
 /* Fim - link botao da pagina de perfil para terminar sessao */
+
+
+
+.topicos {
+  list-style-type: disc;
+  color: rgb(236, 236, 236);
+  font-size: 20px;
+  margin-left: 60px;
+}
+
