@@ -1,0 +1,28 @@
+.about-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    border-radius: 12px;
+    margin-bottom: 80px;
+}
+
+/*
+.about-container h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+*/  
+
+.about-container h3 {
+    color: rgb(120, 219, 133);
+    margin-top: 60px;
+    margin-bottom: 10px;
+}
+
+.about-container p {
+    text-align: justify;
+    line-height: 1.8;
+    margin-bottom: 18px;
+    color: rgb(211, 211, 211);
+    text-indent: 2em;
+}
