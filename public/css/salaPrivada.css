@@ -349,16 +349,17 @@
   color: #cccccc;
 }
 
+
+
 #save-bar {
   position: fixed;
-  top: 750px;
-  right: 20px;
+  top: 262px;
+  left: 85%;
   z-index: 9999;
   width: 420px;
   height: 60px;
   padding: 10px 14px;
   display: none;
-
   align-items: center;
   justify-content: space-between;
   gap: 12px;
