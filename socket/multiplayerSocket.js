@@ -2,6 +2,11 @@ import Sala from "../models/sala.js";
 import { refreshRoomExpiry, novaDataExpiracao } from "../services/roomExpiryService.js";
 import ChatMessage from "../models/chatMessageModel.js"; //////////////////////////////////
 
+import {
+    getRandomPalavraMestra,
+    gerarPalavrasValidas
+} from "../services/gameService.js";
+
 const socketsSalas = new Map();
 const disconnectTimers = new Map();
 
@@ -475,9 +480,48 @@ export default function multiplayerSocket(io) {
       }
     });
 
+/*NOVO
+socket.on("startGame", async ({ codigoSala, userId }) => {
+
+    const sala = await Sala.findOne({
+        codigo: codigoSala
+    });
+
+    if (!sala) {
+        return;
+    }
+
+    const palavraMestra =
+        getRandomPalavraMestra();
+
+    const palavrasValidas =
+        gerarPalavrasValidas(palavraMestra);
+
+    sala.jogo = {
+        palavraMestra,
+        palavrasValidas,
+        palavrasDescobertas: [],
+        pontuacoes: {}
+    };
+
+    await sala.save();
+
+    io.to(codigoSala).emit("gameStarted", {
+        codigoSala,
+        palavraMestra,
+        configuracoes: sala.configuracoes,
+        jogadores: sala.jogadores
+    });
+});*/
+
+
+
     socket.on("startGame", async ({ codigoSala, userId }) => {
         try {
             const sala = await Sala.findOne({ codigo: codigoSala });
+            const palavraMestra = getRandomPalavraMestra();
+            const palavrasValidas = gerarPalavrasValidas(palavraMestra);
+
             if (!sala) { return; }
 
             // so o host
@@ -487,22 +531,203 @@ export default function multiplayerSocket(io) {
                 return;
             }
 
+            sala.jogo = {
+                palavraMestra,
+                palavrasValidas,
+                palavrasDescobertas: {},
+                pontuacoes: {}
+            };
             sala.estado = "playing";
             sala.jogo.iniciado = true;
             sala.jogo.inicio = new Date();
             await sala.save();
 
-            io.to(codigoSala).emit("gameStarted", {
+            /*io.to(codigoSala).emit("gameStarted", {
                     codigoSala,
                     configuracoes: sala.configuracoes,
                     jogadores: sala.jogadores
                 }
-            );
+            );*/
+            io.to(codigoSala).emit("gameStarted", {
+                codigoSala,
+                palavraMestra,
+                configuracoes: sala.configuracoes,
+                jogadores: sala.jogadores
+            });
 
         } catch (err) {
             console.error(err);
         }
     });
+
+    //NOVO
+    /*socket.on("submitWord", async ({ codigoSala, userId, palavra }) => {
+
+      try {
+
+          const codigoNormalizado =
+              codigoSala.trim().toUpperCase();
+
+          const sala = await Sala.findOne({
+              codigo: codigoNormalizado
+          });
+
+          if (!sala || !sala.jogo.iniciado) {
+              return;
+          }
+
+          const palavraNormalizada =
+              palavra.trim().toLowerCase();
+
+          // já descoberta
+          if (
+              sala.jogo.palavrasDescobertas.includes(
+                  palavraNormalizada
+              )
+          ) {
+
+              socket.emit("wordResult", {
+                  success: false,
+                  message: "Palavra já descoberta"
+              });
+
+              return;
+          }
+
+          // palavra válida
+          if (
+              sala.jogo.palavrasValidas.includes(
+                  palavraNormalizada
+              )
+          ) {
+
+              sala.jogo.palavrasDescobertas.push(
+                  palavraNormalizada
+              );
+
+              // descobrir jogador
+              const dadosSocket =
+                  socketsSalas.get(socket.id);
+
+              const userId =
+                  dadosSocket.userId.toString();
+
+              // iniciar score se necessário
+              if (!sala.jogo.pontuacoes[userId]) {
+                  sala.jogo.pontuacoes[userId] = 0;
+              }
+
+              sala.jogo.pontuacoes[userId] +=
+                  palavraNormalizada.length;
+
+              await sala.save();
+
+              socket.emit("wordResult", {
+                  success: true,
+                  palavra: palavraNormalizada,
+                  pontos: sala.jogo.pontuacoes[userId],
+                  totalDescobertas:
+                      sala.jogo.palavrasDescobertas.length
+              });
+
+              return;
+          }
+
+          // inválida
+          socket.emit("wordResult", {
+              success: false,
+              message: "Palavra inválida"
+          });
+
+      } catch (err) {
+
+          console.error(err);
+      }
+  });*/
+
+    socket.on("submitWord", async ({ codigoSala, userId, palavra }) => {
+
+        try {
+
+            const codigoNormalizado =
+                codigoSala.trim().toUpperCase();
+
+            const sala = await Sala.findOne({
+                codigo: codigoNormalizado
+            });
+
+            if (!sala || !sala.jogo.iniciado) {
+                return;
+            }
+
+            const palavraNormalizada =
+                palavra.trim().toLowerCase();
+
+            // criar lista do jogador se ainda nao existir
+            if (!sala.jogo.palavrasDescobertas[userId]) {
+                sala.jogo.palavrasDescobertas[userId] = [];
+            }
+
+            // ja descoberta este jogador
+            if (
+                sala.jogo.palavrasDescobertas[userId].includes(palavraNormalizada)) {
+
+                socket.emit("wordResult", {
+                    success: false,
+                    message: "Palavra já descoberta"
+                });
+
+                return;
+            }
+
+            // palavra válida
+            if (
+                sala.jogo.palavrasValidas.includes(
+                    palavraNormalizada
+                )
+            ) {
+
+                sala.jogo.palavrasDescobertas[userId]
+                    .push(palavraNormalizada);
+
+                // iniciar score
+                if (!sala.jogo.pontuacoes[userId]) {
+                    sala.jogo.pontuacoes[userId] = 0;
+                }
+
+                // somar pontos
+                sala.jogo.pontuacoes[userId] +=
+                    palavraNormalizada.length;
+
+                await sala.save();
+
+                socket.emit("wordResult", {
+                    success: true,
+                    palavra: palavraNormalizada,
+
+                    // pontos totais
+                    pontos: sala.jogo.pontuacoes[userId],
+
+                    // palavras descobertas do jogador
+                    totalDescobertas:
+                        sala.jogo.palavrasDescobertas[userId].length
+                });
+
+                return;
+            }
+
+            // inválida
+            socket.emit("wordResult", {
+                success: false,
+                message: "Palavra inválida"
+            });
+
+        } catch (err) {
+
+            console.error(err);
+        }
+    });//NOVO
+
 
 
     socket.on("updateScore", ({ codigoSala, userId, pontos }) => {

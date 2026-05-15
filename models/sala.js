@@ -30,7 +30,7 @@ const salaSchema = new mongoose.Schema({
 
         timer: {
             type: Number,
-            default: 0
+            default: null
         },
 
         challengeType: {
@@ -84,8 +84,16 @@ const salaSchema = new mongoose.Schema({
         inicio: {
             type: Date,
             default: null
-        }
+        },
 
+        palavrasDescobertas: {
+            type: Object,
+            default: {}
+        },
+
+        pontuacoes: {
+            default: {}
+        }
     },
 
     nome: {
