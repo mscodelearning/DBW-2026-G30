@@ -122,7 +122,7 @@
 
 .botao-signup-container {
     position: absolute;
-    top: 703px;
+    top: 653px;
     right: 122px;
     z-index: 2;
 }
@@ -136,7 +136,7 @@
 
 .fundo-verde-botao-signup {
     position: absolute;
-    top: 720px;
+    top: 670px;
     right: 95px;
     /*display: flex;*/
     z-index: 3;
@@ -171,9 +171,12 @@
 /* Inicio - caixas com os dados da sala privada como o nome a password e o numero de jogadores */
 
 .dados-sala-privada {
-  position: relative;
   width: 300px;
   height: 100vh;
+  position: absolute;
+  top: 46%;
+  transform: translateY(-50%);
+  
 }
 
 .caixa {
@@ -277,7 +280,7 @@
 
 .lista-jogadores {
   position: absolute;     
-  top: 160px;            
+  top: 130px;            
   right: 160px;
   display: flex;
   flex-direction: column;
