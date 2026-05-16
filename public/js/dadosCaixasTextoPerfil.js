@@ -1,8 +1,5 @@
 'use strict';
 
-
-/* Inicio - atualizacao dos dados do utilizador dentro das respetovas caixas de texto na pagina de perfil */
-
 document.addEventListener("DOMContentLoaded", async () => {
     try {
         const resposta = await fetch("/api/estatisticas/perfil", {
@@ -25,11 +22,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         console.error("Erro:", erro);
     }
 });
-
-/* Fim - atualizacao dos dados do utilizador dentro das respetovas caixas de texto na pagina de perfil */
-
-
-/* Inicio - Barra pop-up para guardar as alteracoes feitas aquando o utilizador comeca a escrver na barra do nickname na pagina de perfil */
 
 const nicknameInput = document.getElementById('nickname');
 const saveBar = document.getElementById('save-bar');
@@ -54,5 +46,3 @@ btnSave.addEventListener('click', () => {
   originalValue = nicknameInput.value;
   saveBar.classList.remove('show');
 });
-
-/* Fim - Barra pop-up para guardar as alteracoes feitas aquando o utilizador comeca a escrver na barra do nickname na pagina de perfil */

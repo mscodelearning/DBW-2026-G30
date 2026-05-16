@@ -92,21 +92,6 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
                 
-        /*customNum.addEventListener("input", () => {
-        challengeValue = customNum.value || null;
-        updateButton();
-        });
-
-        customMin.addEventListener("input", () => {
-        challengeValue = customMin.value || null;
-        updateButton();
-        });
-
-        customMax.addEventListener("input", () => {
-        challengeValue = customMax.value || null;
-        updateButton();
-        });*/
-
     timerOptions.forEach(item => {
         item.addEventListener("click", () => selectOne(timerOptions, item, "timer"));
     });
@@ -125,7 +110,6 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.setItem("timer", selectedTimer);
             localStorage.setItem("challengeType", challengeType);
             localStorage.setItem("challengeValue", challengeValue);
-            /*window.location.href = "jogoSingleplayer.html";*/
             window.location.href = "/jogoSingleplayer";
         }
     });

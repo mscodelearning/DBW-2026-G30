@@ -37,7 +37,6 @@ const btnSair = document.getElementById('btnSair');
             const dados = await resposta.json();
 
             if (dados.sucesso) {
-                /*novo para sair da sala*/
                 socket.emit("leaveRoom", codigoSala);
                 window.location.href =
                     "/selectMultiplayerPage";

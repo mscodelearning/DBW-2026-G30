@@ -12,12 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const challengeType = dadosJogo.configuracoes.challengeType;
     const challengeValue = dadosJogo.configuracoes.challengeValue;
     const players = dadosJogo.jogadores;
-    //const timer = localStorage.getItem("timer");
     const finalizarBtn = document.getElementById("finalizar-jogo");
     const display = document.getElementById("timer-display");
-    //const challengeType = localStorage.getItem("challengeType");
-    //const challengeValue = localStorage.getItem("challengeValue");
-    //const players = JSON.parse(localStorage.getItem("players")) || [];
     const access = localStorage.getItem("access");
     let tempoInicial = Date.now();
     let erros = 0;
@@ -37,14 +33,11 @@ document.addEventListener("DOMContentLoaded", () => {
     let nome = "Pessoa";
     let pontos = 0;
 
-//novo
     const socket = io();
     socket.emit("joinMultiplayerRoom", {
         codigoSala: dadosJogo.codigoSala,
         userId: currentUserId
     });
-
-//novo
 
     socket.on("gameFinished", (resultados) => {
         localStorage.setItem("gameResults",JSON.stringify(resultados));
@@ -76,17 +69,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 palavras: palavrasDescobertas,
                 player: currentUserId
             });
-            /*socket.emit("updateWords", {
-                codigoSala: dadosJogo.codigoSala,
-                userId: currentUserId,
-                palavras: palavrasDescobertas
-            });*/
-
-           /* socket.emit("updateScore", {
-                codigoSala: dadosJogo.codigoSala,
-                userId: currentUserId,
-                pontos
-            });*/
 
         } else {
 
@@ -126,26 +108,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("nome-jogador").textContent = nome;
     document.getElementById("pontuacao").textContent = pontos;
 
-
-    /*INPUT ANTIGO
-    let input = document.getElementById("caixa-texto");
-
-    input.addEventListener("keydown", function(event) {
-        if (event.key === "Enter" && input.value !== "") {
-        let palavra = input.value;
-
-    if (validarPalavra(palavra)) {
-        adicionarPalavra(palavra);
-        adicionarPontos(20);
-        palavrasValidas++;
-    } else {
-        erros++;
-        mostrarAlerta("Palavra inválida para este desafio!");
-    }
-        input.value = "";
-    }
-    });*/
-//NOVO
     const input = document.getElementById("caixa-texto");
 
     input.addEventListener("keydown", async (event) => {
@@ -156,7 +118,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!palavra) return;
 
-        // validar desafios
         if (!validarPalavra(palavra)) {
 
             erros++;
@@ -182,9 +143,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         input.value = "";
     });
-//NOVO
-
-
 
     function validarPalavra(palavra) {
         if (challengeType === "Não") return true;
@@ -212,16 +170,6 @@ document.addEventListener("DOMContentLoaded", () => {
         lista.scrollTop = lista.scrollHeight;
     }
 
-    /*function adicionarPontos(valor) {
-        pontos += valor;
-        document.getElementById("pontuacao").textContent = pontos;
-        socket.emit("updateScore", {
-            codigoSala: dadosJogo.codigoSala,
-            userId: currentUserId,
-            pontos
-        });
-    }*/
-
     function iniciarTimer(tempo) {
 
         let tempoRestante = tempo;
@@ -245,85 +193,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 1000);
     }
 
-
-/*ANTIGA
-    function terminarJogo() {
-
-        if (challengeType === "Objetivo: nº palavras") {
-            if (palavrasValidas < parseInt(challengeValue)) {
-                mostrarAlerta("Ainda não atingiu o número de palavras necessário!");
-            }
-        }
-
-        let tempoFinal = Date.now();
-        let tempoJogado = Math.floor((tempoFinal - tempoInicial) / 1000);
-
-        const estatisticasJogo = {
-            tempoJogado: tempoJogado,
-            palavrasValidas: palavrasValidas,
-            pontos: pontos,
-            erros: erros
-        };
-
-        localStorage.setItem("estatisticasJogo", JSON.stringify(estatisticasJogo));
-
-        atualizarEstatisticasGlobais(estatisticasJogo);
-
-        setTimeout(() => {
-            window.location.href = "/fimJogoMp";
-        }, 2000);  
-    }*/
-   //NOVA
-      /* async function terminarJogo() {
-        if (challengeType === "Objetivo: nº palavras") {
-            if (palavrasDescobertas < parseInt(challengeValue)) {
-                mostrarAlerta("Ainda não atingiu o número de palavras necessário!");
-            }
-        }
-
-        let tempoFinal = Date.now();
-        let tempoJogado = Math.floor((tempoFinal - tempoInicial) / 1000);
-
-        const estatisticasJogo = {
-            tempoJogado: tempoJogado,
-            palavrasDescobertas: palavrasDescobertas,
-            pontos: pontos,
-            erros: erros,
-            username: localStorage.getItem("username") || "Jogador",
-            nickname: localStorage.getItem("nickname") || localStorage.getItem("username") || "Jogador",
-            avatar: localStorage.getItem("avatar") || "/images/icone-pessoa.png"
-        };
-
-        localStorage.setItem("estatisticasJogo", JSON.stringify(estatisticasJogo));
-
-        loadingOverlay.classList.remove("d-none");
-        finalizarBtn.disabled = true;
-
-        try {
-            /*const response = await fetch("/api/estatisticas", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(estatisticasJogo)
-            });
-
-            if (!response.ok) {
-                throw new Error("Erro ao guardar estatísticas");
-            }
-
-            await new Promise(resolve => setTimeout(resolve, 2000));*/
-/*
-            window.location.href = "/fimJogoSp";
-        } catch (err) {
-            console.error(err);
-            mostrarAlerta("Erro ao carregar estatísticas.");
-        } finally {
-            loadingOverlay.classList.add("d-none");
-            finalizarBtn.disabled = false;
-        }
-    }*/
-//NOVA
 
 async function terminarJogo() {
     if (challengeType === "Objetivo: nº palavras") {
@@ -350,23 +219,13 @@ async function terminarJogo() {
         console.log("estatisticasJogo:", estatisticasJogo);
 
         localStorage.setItem("estatisticasJogo", JSON.stringify(estatisticasJogo));
-        localStorage.setItem("fimJogoCodigoSala", dadosJogo.codigoSala);/////////////////////
-
-        /*await fetch("/api/estatisticas", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(estatisticasJogo)
-        });*/
+        localStorage.setItem("fimJogoCodigoSala", dadosJogo.codigoSala);
 
         socket.emit("finishGame", {
             codigoSala: dadosJogo.codigoSala,
             userId: currentUserId,
             tempo: tempoJogado
         });
-
-        //atualizarEstatisticasGlobais(estatisticasJogo);
 
         setTimeout(() => {
             window.location.href = "/fimJogoMp";
@@ -389,7 +248,7 @@ async function terminarJogo() {
     localStorage.setItem("estatisticasJogo", JSON.stringify(estatisticasJogo));
     localStorage.setItem("ultimoCodigoSala", dadosJogo.codigoSala);
     localStorage.setItem("ultimoTipoSala", dadosJogo.configuracoes.access);
-    localStorage.setItem("fimJogoCodigoSala", dadosJogo.codigoSala);//////////////////
+    localStorage.setItem("fimJogoCodigoSala", dadosJogo.codigoSala);
 
     await fetch("/api/estatisticas", {
         method: "POST",
@@ -425,55 +284,15 @@ async function terminarJogo() {
         }, 2000);
     }
 
-    /* dados para testar multiplayer
-    const fakePlayers = [
-        { id: "1", name: "Maria", score: 0 },
-        { id: "2", name: "João", score: 0 },
-        { id: "3", name: "Mário", score: 0 },
-        { id: "4", name: "Joana", score: 0 }
-    ];*/
-// simular "eu"
-    //const myId = "1";
     const myId = currentUserId;
 
-
-    //debug
     console.log("players data:", players);
     console.log("myId:", myId);
     console.log("found player:", players.find(p => p.id == myId));
 
-
-    // testar diferentes numeros de jogadores
-    //renderPlayers(fakePlayers.slice(0, 2), myId); // 2 players
-     //renderPlayers(fakePlayers.slice(0, 3), myId); // 3 players
-     renderPlayers(players, myId); // 4 players
+     renderPlayers(players, myId);
 });
 
-
-/*estatísticas globais de jogo para colocar no perfil*/
-/*ANTIGO
-function atualizarEstatisticasGlobais(statsJogo) {
-
-    let statsGlobais = JSON.parse(localStorage.getItem("estatisticasGlobais"));
-
-    if (!statsGlobais) {
-        statsGlobais = {
-            tempoTotal: 0,
-            pontosTotal: 0,
-            palavrasTotal: 0,
-            errosTotal: 0,
-            jogosJogados: 0
-        };
-    }
-
-    statsGlobais.tempoTotal += statsJogo.tempoJogado;
-    statsGlobais.pontosTotal += statsJogo.pontos;
-    statsGlobais.palavrasTotal += statsJogo.palavrasValidas;
-    statsGlobais.errosTotal += statsJogo.erros;
-    statsGlobais.jogosJogados += 1;
-
-    localStorage.setItem("estatisticasGlobais", JSON.stringify(statsGlobais));
-}*/
 
 function renderPlayers(players, myId) {
     const container = document.getElementById("adversarios-container");
@@ -483,11 +302,10 @@ function renderPlayers(players, myId) {
     const adversarios = players.filter(
         p => p.id.toString() !== myId.toString()
     );
-    // eu (esquerda)
+    
     document.getElementById("nome-jogador").textContent = eu.nickname;
     document.getElementById("pontuacao").textContent = 0;
 
-    // adversarios (direita)
     adversarios.forEach(player => {
         const div = document.createElement("div");
         div.classList.add("adversario");

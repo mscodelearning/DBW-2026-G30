@@ -1,6 +1,6 @@
 import express from "express";
 
-import Sala from "../models/sala.js"; ////////
+import Sala from "../models/sala.js";
  
 
 import {

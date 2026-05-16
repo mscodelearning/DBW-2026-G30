@@ -5,9 +5,6 @@ import {
 
 import normalizarPalavra from "../utils/normalizarPalavras.js";
 
-
-//let currentGame = null;
-
 function iniciarJogoSp(req, res) {
 
     const palavraMestra = getRandomPalavraMestra();
@@ -31,7 +28,6 @@ function submeterResposta(req, res) {
     const currentGame = req.session.currentGame;
     const palavra = normalizarPalavra(req.body.palavra.toLowerCase());
 
-    // ja descobertas
     if (currentGame.palavrasDescobertas.includes(palavra)) {
 
         return res.json({
@@ -40,7 +36,6 @@ function submeterResposta(req, res) {
         });
     }
 
-    // palavra valida
     if (currentGame.palavrasValidas.includes(palavra)) {
 
         currentGame.palavrasDescobertas.push(palavra);
@@ -55,7 +50,6 @@ function submeterResposta(req, res) {
         });
     }
 
-    // invalida
     return res.json({
         success: false,
         message: "Palavra inválida"

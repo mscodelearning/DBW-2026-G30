@@ -5,12 +5,11 @@ document.querySelectorAll('.caixa-filtro-dropdown').forEach((dropdown) => {
     const menu = dropdown.querySelector('.menu-filtro');
 
     btn.addEventListener('click', (event) => {
-      event.stopPropagation(); // evita conflito com clique fora
+      event.stopPropagation();
       menu.classList.toggle('show');
     });
   });
 
-  // fechar todos os dropdowns ao clicar fora
   document.addEventListener('click', () => {
     document.querySelectorAll('.menu-filtro.show').forEach((menu) => {
       menu.classList.remove('show');

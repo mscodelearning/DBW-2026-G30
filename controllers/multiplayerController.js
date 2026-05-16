@@ -28,37 +28,11 @@ export async function criarSala(req, res) {
 
 }
 
-/*
-export async function carregarSala(req, res) {
-    try {
-
-        const codigoSala = req.params.codigo.toUpperCase();
-
-        const sala = await Sala.findOne({ codigo: codigoSala });
-
-        // se a sala nao existir da erro
-        if (!sala) {
-            return res.status(404).send("Sala não encontrada ou código inválido.");
-        }
-
-        /*res.render("salaPrivada", { sala: sala });
-        res.render("salaPrivada", {
-            sala,
-            user: req.user
-        });
-
-    } catch (err) {
-        console.error(err);
-        res.status(500).send("Erro no servidor ao carregar a sala.");
-    }
-}*/
-
-//////////////////////////////////////////
 export async function carregarSala(req, res) {
   try {
     const codigoSala = req.params.codigo.toUpperCase();
 
-    console.log("carregarSala params:", req.params.codigo);////////////////
+    console.log("carregarSala params:", req.params.codigo);
 
     if (!req.user) {
       return res.status(401).send("É necessário iniciar sessão.");
@@ -79,10 +53,6 @@ export async function carregarSala(req, res) {
     res.status(500).send(err.message || "Erro no servidor ao carregar a sala.");
   }
 }
-
-////////////////////////////////////
-
-
 
 export async function entrarSala(req, res) {
     
