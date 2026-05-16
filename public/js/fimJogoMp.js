@@ -35,9 +35,24 @@ if (botaoSair && codigoSala) {
         title.style.marginTop = "-12px";
     }
 
+    /*LOGICA DE VENCEDOR ANTIGA, APENAS TEM EM CONTA O NUMERO DE PONTOS MAIOR E NAO VERIFICA SE TEM O MESMO NUMERO DE PONTOS
     const vencedor = gameResults.reduce((best, p) =>
         p.stats.pontos > best.stats.pontos ? p : best
-    );
+    );*/
+
+    const vencedor = gameResults.reduce((best, p) => {
+
+        if (p.stats.pontos > best.stats.pontos) {
+            return p;
+        }
+
+        if (p.stats.pontos === best.stats.pontos && p.stats.erros < best.stats.erros) {
+            return p;
+        }
+
+        return best;
+    });
+
 
     document.getElementById("vencedor").textContent = `Vencedor: ${vencedor.name}`;
 
