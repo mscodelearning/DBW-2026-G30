@@ -54,11 +54,15 @@ document.addEventListener("DOMContentLoaded", () => {
             pontos += data.pontos;
             
 
-            document.getElementById("pontuacao")
-                .textContent = pontos;
+            document.getElementById("pontuacao").textContent = pontos;
 
-            palavrasDescobertas =
-                data.totalDescobertas;
+            palavrasDescobertas = data.totalDescobertas;
+
+            socket.emit("updateWords", {
+                codigoSala: dadosJogo.codigoSala,
+                userId: currentUserId,
+                palavras: palavrasDescobertas
+            });
 
             socket.emit("updateScore", {
                 codigoSala: dadosJogo.codigoSala,
@@ -69,6 +73,12 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
 
             erros++;
+
+            socket.emit("updateErrors", {
+                codigoSala: dadosJogo.codigoSala,
+                userId: currentUserId,
+                erros
+            });
 
             mostrarAlerta(data.message);
         }
@@ -132,6 +142,12 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!validarPalavra(palavra)) {
 
             erros++;
+
+            socket.emit("updateErrors", {
+                codigoSala: dadosJogo.codigoSala,
+                userId: currentUserId,
+                erros
+            });
 
             mostrarAlerta("Palavra inválida para este desafio!");
 
@@ -291,6 +307,51 @@ async function terminarJogo() {
         if (palavrasDescobertas < parseInt(challengeValue)) {
             mostrarAlerta("Ainda não atingiu o número de palavras necessário!");
         }
+
+        let tempoFinal = Date.now();
+        let tempoJogado = Math.floor((tempoFinal - tempoInicial) / 1000);
+
+        const estatisticasJogo = {
+            tempoJogado: tempoJogado,
+            palavrasDescobertas: palavrasDescobertas,
+            pontos: pontos,
+            erros: erros,
+            username: localStorage.getItem("username") || "Jogador",
+            nickname: localStorage.getItem("nickname") || localStorage.getItem("username") || "Jogador",
+            avatar: localStorage.getItem("avatar") || "/images/icone-pessoa.png"
+        };
+
+        console.log("username LS:", localStorage.getItem("username"));
+        console.log("nickname LS:", localStorage.getItem("nickname"));
+        console.log("avatar LS:", localStorage.getItem("avatar"));
+        console.log("estatisticasJogo:", estatisticasJogo);
+
+        localStorage.setItem("estatisticasJogo", JSON.stringify(estatisticasJogo));
+
+        /*await fetch("/api/estatisticas", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(estatisticasJogo)
+        });*/
+        
+        socket.emit("finishGame", {
+            codigoSala: dadosJogo.codigoSala,
+            userId: currentUserId,
+            tempo: tempoJogado
+        });
+
+        socket.on("gameFinished", (resultados) => {
+            localStorage.setItem("gameResults",JSON.stringify(resultados));
+            window.location.href = "/fimJogoMp";
+        });
+
+        //atualizarEstatisticasGlobais(estatisticasJogo);
+
+        setTimeout(() => {
+            window.location.href = "/fimJogoMp";
+        }, 2000);  
     }
 
     let tempoFinal = Date.now();

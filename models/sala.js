@@ -54,8 +54,23 @@ const salaSchema = new mongoose.Schema({
 
             nickname: String,
 
-            avatar: String
-            
+            avatar: String,
+
+            pontos: {
+                type: Number,
+                default: 0
+            },
+
+            palavras: {
+                type: Number,
+                default: 0
+            },
+
+            erros: {
+                type: Number,
+                default: 0
+            }
+
         }
     ],
 

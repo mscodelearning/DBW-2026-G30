@@ -26,28 +26,8 @@ ANTIGO SÓ PARA SINGLEPLAYER
 
 
     //testar o número de jogadores que aparece no ecra de fim de jogo (comentar alguns dos jogadores)
-    const gameResults = JSON.parse(localStorage.getItem("gameResults")) || [
-        {
-            id: "1",
-            name: "Maria",
-            stats: { pontos: 120, palavras: 6, erros: 2, tempo: 10 }
-        },
-        {
-            id: "2",
-            name: "João",
-            stats: { pontos: 80, palavras: 4, erros: 3, tempo: 10 }
-        },
-        {
-            id: "3",
-            name: "Mário",
-            stats: { pontos: 100, palavras: 5, erros: 1, tempo: 10 }
-        },
-        {
-            id: "4",
-            name: "Joana",
-            stats: { pontos: 60, palavras: 3, erros: 4, tempo: 10 }
-        }
-    ];
+    const gameResults = JSON.parse(localStorage.getItem("gameResults"));
+    if (!gameResults) return;
 
     const playerCount = gameResults.length;
     const title = document.querySelector("h2");
