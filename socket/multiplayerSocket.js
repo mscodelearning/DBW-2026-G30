@@ -400,8 +400,7 @@ export default function multiplayerSocket(io) {
           return;
         }
 
-        const { codigoSala, userId } = dadosSocket;
-        socketsSalas.delete(socket.id);
+        const { codigoSala, userId } = dadosSocket; socketsSalas.delete(socket.id);
 
         const pendingKey = `${codigoSala}-${userId}`;
 
@@ -730,9 +729,27 @@ socket.on("startGame", async ({ codigoSala, userId }) => {
 
 
 
-    socket.on("updateScore", ({ codigoSala, userId, pontos }) => {
-        const codigoNormalizado =
-            codigoSala?.trim().toUpperCase();
+    socket.on("updateScore", async ({ codigoSala, userId, pontos }) => {
+        
+      const sala = await Sala.findOne({ codigo: codigoSala });
+
+      if (!sala) return;
+
+      const jogador = sala.jogadores.find(j => j.id.toString() === userId.toString());
+
+      if (!jogador) return;
+
+      jogador.pontos = pontos;
+
+      await sala.save();
+
+      io.to(codigoSala).emit("scoreUpdated", {
+          userId,
+          pontos
+      });
+
+      /*const codigoNormalizado = codigoSala?.trim().toUpperCase();
+
 
         io.to(codigoNormalizado).emit(
             "scoreUpdated",
@@ -740,8 +757,64 @@ socket.on("startGame", async ({ codigoSala, userId }) => {
                 userId,
                 pontos
             }
-        );
+        );*/
     });
 
+    socket.on("updateWords", async ({ codigoSala, userId, palavras }) => {
+
+        const sala = await Sala.findOne({ codigo: codigoSala });
+
+        if (!sala) return;
+
+        const jogador = sala.jogadores.find(j => j.id.toString() === userId.toString());
+
+        if (!jogador) return;
+
+        jogador.palavras = palavras;
+
+        await sala.save();
+    });
+
+    socket.on("updateErrors", async ({ codigoSala, userId, erros }) => {
+
+        const sala = await Sala.findOne({ codigo: codigoSala });
+
+        if (!sala) return;
+
+        const jogador = sala.jogadores.find(
+            j => j.id.toString() === userId.toString()
+        );
+
+        if (!jogador) return;
+
+        jogador.erros = erros;
+
+        await sala.save();
+    });
+
+    socket.on("finishGame", async ({ codigoSala, tempo }) => {
+
+        const sala = await Sala.findOne({ codigo: codigoSala });
+
+        if (!sala) return;
+
+        const resultados = sala.jogadores.map(jogador => ({
+            id: jogador.id,
+
+            name: jogador.nickname,
+
+            stats: {
+                pontos: jogador.pontos || 0,
+                palavras: jogador.palavras || 0,
+                erros: jogador.erros || 0,
+                tempo
+            }
+        }));
+
+        io.to(codigoSala).emit(
+            "gameFinished",
+            resultados
+        );
+    });
   });
 }

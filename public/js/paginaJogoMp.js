@@ -52,11 +52,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
             pontos += data.pontos;
 
-            document.getElementById("pontuacao")
-                .textContent = pontos;
+            document.getElementById("pontuacao").textContent = pontos;
 
-            palavrasDescobertas =
-                data.totalDescobertas;
+            palavrasDescobertas = data.totalDescobertas;
+
+            socket.emit("updateWords", {
+                codigoSala: dadosJogo.codigoSala,
+                userId: currentUserId,
+                palavras: palavrasDescobertas
+            });
 
             socket.emit("updateScore", {
                 codigoSala: dadosJogo.codigoSala,
@@ -67,6 +71,12 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
 
             erros++;
+
+            socket.emit("updateErrors", {
+                codigoSala: dadosJogo.codigoSala,
+                userId: currentUserId,
+                erros
+            });
 
             mostrarAlerta(data.message);
         }
@@ -130,6 +140,12 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!validarPalavra(palavra)) {
 
             erros++;
+
+            socket.emit("updateErrors", {
+                codigoSala: dadosJogo.codigoSala,
+                userId: currentUserId,
+                erros
+            });
 
             mostrarAlerta("Palavra inválida para este desafio!");
 
@@ -313,12 +329,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
         localStorage.setItem("estatisticasJogo", JSON.stringify(estatisticasJogo));
 
-        await fetch("/api/estatisticas", {
+        /*await fetch("/api/estatisticas", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(estatisticasJogo)
+        });*/
+        
+        socket.emit("finishGame", {
+            codigoSala: dadosJogo.codigoSala,
+            userId: currentUserId,
+            tempo: tempoJogado
+        });
+
+        socket.on("gameFinished", (resultados) => {
+            localStorage.setItem("gameResults",JSON.stringify(resultados));
+            window.location.href = "/fimJogoMp";
         });
 
         //atualizarEstatisticasGlobais(estatisticasJogo);
