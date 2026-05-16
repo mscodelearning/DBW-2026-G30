@@ -288,7 +288,7 @@ export default function multiplayerSocket(io) {
 
         socket.join(codigoNormalizado);
         socketsSalas.set(socket.id, { codigoSala: codigoNormalizado, userId });
-
+/*
         const pendingKey = `${codigoNormalizado}-${userId}`;
 
         if (disconnectTimers.has(pendingKey)) {
@@ -296,6 +296,16 @@ export default function multiplayerSocket(io) {
           disconnectTimers.delete(pendingKey);
           console.log(`Reconexão detectada para ${userId}`);
         }
+*/
+
+        for (const [key, timer] of disconnectTimers.entries()) {
+  if (key.endsWith(`-${userId}`)) {
+    clearTimeout(timer);
+    disconnectTimers.delete(key);
+    console.log(`Reconexão detectada para ${userId} no timer ${key}`);
+  }
+}
+
 
         console.log("Tentando procurar sala com código:", JSON.stringify(codigoNormalizado));
 
@@ -405,87 +415,76 @@ export default function multiplayerSocket(io) {
         const pendingKey = `${codigoSala}-${userId}`;
 
         const timer = setTimeout(async () => {
-          try {
-            console.log(`Removendo jogador ${userId}`);
+  try {
+    console.log(`Removendo jogador ${userId}`);
 
-            const sala = await Sala.findOne({ codigo: codigoSala });
-            if (!sala) {
-              disconnectTimers.delete(pendingKey);
-              return;
-            }
+    const salaAtual = await Sala.findOne({ codigo: codigoSala });
+    if (!salaAtual) {
+      disconnectTimers.delete(pendingKey);
+      return;
+    }
 
-            /*
-            if (sala.estado === "playing") {
-              console.log(`Jogo em andamento. Não remover ${userId}`);
-              disconnectTimers.delete(pendingKey);
-              return;
-            }*////////////////////////////
+    console.log("CHECK BEFORE REMOVE", {
+  socketId: socket.id,
+  codigoSala,
+  userId: userId.toString(),
+  activeSockets: [...socketsSalas.entries()].map(([id, dados]) => ({
+    socketId: id,
+    codigoSala: dados.codigoSala,
+    userId: dados.userId?.toString()
+  }))
+});
 
-            const stillConnected = [...socketsSalas.values()].some(
-              dados =>
-                dados.codigoSala === codigoSala &&
-                dados.userId.toString() === userId.toString()
-            );
+    const stillConnected = [...socketsSalas.values()].some(
+      dados =>
+        dados.codigoSala === codigoSala &&
+        dados.userId?.toString() === userId.toString()
+    );
 
-            if (stillConnected) {
-              console.log(`Jogador ${userId} reconectou`);
-              disconnectTimers.delete(pendingKey);
-              return;
-            }
+    if (stillConnected) {
+      console.log(`Jogador ${userId} reconectou`);
+      disconnectTimers.delete(pendingKey);
+      return;
+    }
 
-            sala.jogadores = sala.jogadores.filter(
-              jogador => jogador.id.toString() !== userId.toString()
-            );
+    const jogadoresAtualizados = salaAtual.jogadores.filter(
+      jogador => jogador.id.toString() !== userId.toString()
+    );
 
-            /*
-            if (sala.jogadores.length === 0) {
-              if (sala.isDefault) {
-                sala.estado = "waiting";
-                sala.expireAt = null;
-                await sala.save();
-                console.log(`Sala default ${codigoSala} preservada`);
-              } else {
-                await Sala.deleteOne({ _id: sala._id });
-                console.log(`Sala ${codigoSala} apagada`);
-              }
-            } else {
-              sala.expireAt = sala.isDefault ? null : novaDataExpiracao(10);
-              await sala.save();
-              io.to(codigoSala).emit("playersUpdated", sala.jogadores);
-            }*/
-///////////////////////////////////////////////////
-            if (sala.jogadores.length === 0) {
-  if (sala.isDefault) {
-    sala.estado = "waiting";
-    sala.jogo = {
-      iniciado: false,
-      palavraMestra: null,
-      palavrasValidas: [],
-      inicio: null,
-      palavrasDescobertas: {},
-      pontuacoes: {}
+    const update = {
+      jogadores: jogadoresAtualizados,
+      expireAt: salaAtual.isDefault ? null : novaDataExpiracao(10)
     };
-    sala.expireAt = null;
-    await sala.save();
-    console.log(`Sala default ${codigoSala} preservada e reiniciada`);
-  } else {
-    await Sala.deleteOne({ _id: sala._id });
-    console.log(`Sala ${codigoSala} apagada`);
-  }
-} else {
-  sala.expireAt = sala.isDefault ? null : novaDataExpiracao(10);
-  await sala.save();
-  io.to(codigoSala).emit("playersUpdated", sala.jogadores);
-  console.log(`Jogador ${userId} removido da sala ${codigoSala}`);
-}
-////////////////////////////////////////////////////
-            
 
-            disconnectTimers.delete(pendingKey);
-          } catch (err) {
-            console.error(err);
-          }
-        }, 5000);
+    if (jogadoresAtualizados.length === 0) {
+      update.estado = "waiting";
+      update.jogo = {
+        iniciado: false,
+        palavraMestra: null,
+        palavrasValidas: [],
+        inicio: null,
+        palavrasDescobertas: {},
+        pontuacoes: {}
+      };
+    }
+
+    await Sala.updateOne(
+      { _id: salaAtual._id },
+      { $set: update }
+    );
+
+    if (jogadoresAtualizados.length > 0) {
+      io.to(codigoSala).emit("playersUpdated", jogadoresAtualizados);
+    }
+
+    disconnectTimers.delete(pendingKey);
+  } catch (err) {
+    console.error(err);
+    disconnectTimers.delete(pendingKey);
+  }
+}, 5000);
+          
+
 
         disconnectTimers.set(pendingKey, timer);
         console.log(`Utilizador desligado: ${socket.id}`);

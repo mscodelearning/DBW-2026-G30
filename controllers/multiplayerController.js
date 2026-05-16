@@ -58,6 +58,8 @@ export async function carregarSala(req, res) {
   try {
     const codigoSala = req.params.codigo.toUpperCase();
 
+    console.log("carregarSala params:", req.params.codigo);////////////////
+
     if (!req.user) {
       return res.status(401).send("É necessário iniciar sessão.");
     }

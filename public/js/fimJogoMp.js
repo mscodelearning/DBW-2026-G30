@@ -5,11 +5,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     ///////////////////////////////
     const botaoSair = document.getElementById("botao-sair-estatisticas");
-    const codigoSala = localStorage.getItem("ultimoCodigoSala");
+const codigoSala =
+    localStorage.getItem("fimJogoCodigoSala") ||
+    multiplayerGameData?.codigoSala;
 
-    if (botaoSair && codigoSala) {
-        botaoSair.href = `/multiplayer/sala/${codigoSala}`;
-    }
+console.log("DEBUG fimJogoMp codigoSala:", {
+    fimJogoCodigoSala: localStorage.getItem("fimJogoCodigoSala"),
+    multiplayerGameDataCodigo: JSON.parse(localStorage.getItem("multiplayerGameData"))?.codigoSala,
+    ultimoCodigoSala: localStorage.getItem("ultimoCodigoSala"),
+    codigoUsado: codigoSala
+});
+
+if (botaoSair && codigoSala) {
+    botaoSair.href = `/multiplayer/sala/${codigoSala}`;
+}
     ///////////////////////////////
 
 

@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     socket.on("gameFinished", (resultados) => {
         localStorage.setItem("gameResults",JSON.stringify(resultados));
+        localStorage.setItem("fimJogoCodigoSala", dadosJogo.codigoSala);
         window.location.href = "/fimJogoMp";
     });
 
@@ -349,6 +350,7 @@ async function terminarJogo() {
         console.log("estatisticasJogo:", estatisticasJogo);
 
         localStorage.setItem("estatisticasJogo", JSON.stringify(estatisticasJogo));
+        localStorage.setItem("fimJogoCodigoSala", dadosJogo.codigoSala);/////////////////////
 
         /*await fetch("/api/estatisticas", {
             method: "POST",
@@ -387,6 +389,7 @@ async function terminarJogo() {
     localStorage.setItem("estatisticasJogo", JSON.stringify(estatisticasJogo));
     localStorage.setItem("ultimoCodigoSala", dadosJogo.codigoSala);
     localStorage.setItem("ultimoTipoSala", dadosJogo.configuracoes.access);
+    localStorage.setItem("fimJogoCodigoSala", dadosJogo.codigoSala);//////////////////
 
     await fetch("/api/estatisticas", {
         method: "POST",
