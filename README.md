@@ -16,13 +16,36 @@ De seguida abrir um browser e pesquisar o seguinte url
     'http://localhost:3000/'
 esta acao abrirá a pagiana web da aplicacao desenvolvida e agora esta tudo pronto para comecar a explorar a aplicacao
 
+
 # outras informacoes
-o timer/tempo é contado em segundos
+o timer/tempo é contado em segundos durante os jogos
+
+salas privadas: so o host/administrador pode comecar o jogo
+
+salas publicas: qualquer jogador pode comecar o jogo desde que a sala tenha no minimo 2 users
+
+REGRAS DE JOGO:
+a criacao de palavras so pode ser feita da esquerda para a direita e de ordem de letras da palavra mestra de forma direta ou indireta
+
+TIPOS DE CHALLENGE:
+sem desafio de palavras
+numero minimo de palavras a ser atingidas 
+criacao de palavras de acordo com minimo ou maximo de letras
+
+TIPOS DE CONTRA-RELOGIO:
+sem contra-relogio
+timers de 30 e 60 segundos
+personalizado - onde o valor colocado/definido tem de ser em segundos
+
+é possivel alterar o nickname e a palavra-passe
+
+o username é unico pois é o que distingue os users registados 
 
 
 
 # Aparte
-se for criada uma sala publica com um user num browser e noutro browser outro user2 for a pagina das salas publicas, se o nome foi alterado depois do user2 ja la estar é necessario dar refresh na pagina para o novo nome aparecer 
+se for criada uma sala publica com um user num browser e noutro browser outro user2 for a pagina das salas publicas, se o nome foi alterado depois do user2 ja la estar é necessario dar refresh na pagina para o novo nome aparecer.
 
+as vezes quando entramos na aplicao web ou ate mesmo quando vamos para uma das paginas pode acontecer descofiguracao do css, basta fazer refresh e ele volta ao normal.
 
 
