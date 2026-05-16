@@ -9,7 +9,7 @@ export async function garantirSalasPublicasDefault() {
       configuracoes: {
         access: "Público",
         players: 4,
-        timer: 120,
+        timer: 0,
         challengeType: "Mín. letras",
         challengeValue: 4
       },
@@ -56,7 +56,7 @@ export async function garantirSalasPublicasDefault() {
         access: "Público",
         players: 4,
         timer: 0,
-        challengeType: "Mín. letras",
+        challengeType: "Objetivo: nº palavras",
         challengeValue: 5
       },
       jogadores: [],

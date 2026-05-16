@@ -226,7 +226,7 @@ document.addEventListener("DOMContentLoaded", () => {
 /*ANTIGA
     function terminarJogo() {
 
-        if (challengeType === "Objetivo: nº de palavras") {
+        if (challengeType === "Objetivo: nº palavras") {
             if (palavrasValidas < parseInt(challengeValue)) {
                 mostrarAlerta("Ainda não atingiu o número de palavras necessário!");
             }
@@ -252,7 +252,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }*/
    //NOVA
       /* async function terminarJogo() {
-        if (challengeType === "Objetivo: nº de palavras") {
+        if (challengeType === "Objetivo: nº palavras") {
             if (palavrasDescobertas < parseInt(challengeValue)) {
                 mostrarAlerta("Ainda não atingiu o número de palavras necessário!");
             }
@@ -303,7 +303,7 @@ document.addEventListener("DOMContentLoaded", () => {
 //NOVA
 
 async function terminarJogo() {
-    if (challengeType === "Objetivo: nº de palavras") {
+    if (challengeType === "Objetivo: nº palavras") {
         if (palavrasDescobertas < parseInt(challengeValue)) {
             mostrarAlerta("Ainda não atingiu o número de palavras necessário!");
         }

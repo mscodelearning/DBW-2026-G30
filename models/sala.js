@@ -35,7 +35,7 @@ const salaSchema = new mongoose.Schema({
 
         challengeType: {
             type: String,
-            enum: ["Não", "Objetivo: nº de palavras", "Mín. letras", "Máx. letras"],
+            enum: ["Não", "Objetivo: nº palavras", "Mín. letras", "Máx. letras"],
             default: "Não"
         },
 
