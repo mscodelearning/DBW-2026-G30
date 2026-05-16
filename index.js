@@ -89,7 +89,6 @@ app.use("/", userRoutes);
 app.use("/", gameRoutes);
 app.use("/multiplayer", multiplayerRoutes);
 
-app.use("/", temp);////////////////////////temp
 
 app.use("/api/estatisticas", estatisticasRoutes);
 
