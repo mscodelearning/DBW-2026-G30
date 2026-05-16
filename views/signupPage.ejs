@@ -3,7 +3,6 @@
 <html lang="pt-PT">
     <head>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-        <!--<link rel="stylesheet" href="../public/css/style.css">-->
         <link rel="stylesheet" href="/css/style.css">
         <title>Skriven</title>
     </head>
@@ -12,10 +11,8 @@
         <%- include("partials/header") %>
         
         <div class="botao-voltar-container">
-            <!--<img src="../public/images/botao-sair.png" alt="voltar">-->
             <img src="/images/botao-sair.png" alt="voltar">
             <div class="overlay-text">Voltar</div>
-            <!--<a href="loginPage.html"></a>-->
             <a href="/login"></a>
         </div>
         
@@ -23,8 +20,7 @@
             <h1>Registo</h1>
 
         <div class="user-icon2-container">
-                <!--<img id="perfil-img" src="../public/symbols/user-icon-2.png" alt="user-icon"> --id novo-->
-                <img id="perfil-img" src="/symbols/user-icon-2.png" alt="user-icon"> <!--id novo-->
+                <img id="perfil-img" src="/symbols/user-icon-2.png" alt="user-icon"> 
         </div>
             <div id="form-area-signup">
               <form action="/signup" method="POST">
@@ -33,12 +29,10 @@
                 <input type="password" name="password" placeholder="Password" required class="caixa-texto">
 
                 <% if (typeof error !== "undefined" && error) { %>
-                  <!--<p class="text-danger mt-3"><!%= error %></p>-->
                   <p class="signup-erro"><%= error %></p>
                 <% } %>
 
                 <div class="botao-signup-container">
-                    <!--<img src="../public/images/botao-login.png" alt="botao-signup">-->
                     <img src="/images/botao-login.png" alt="botao-signup">
 
                     <button type="submit" id="signup-link" style="background: none; border: none; padding: 0;">
@@ -55,7 +49,6 @@
         </div>
     </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-<!--<script src="../public/js/script.js" defer></script>-->
 <script src="/js/script.js" defer></script>
 <script src="/js/formSignupPg.js" defer></script>
 

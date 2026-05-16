@@ -1,7 +1,5 @@
 /*início - elementos do ecrã de jogo singleplayer*/
 
-
-
 .jogo-singleplayer-container {
     min-height: calc(100vh - 62px);
     display: flex;
@@ -86,22 +84,16 @@
     gap: 12px;
 }
 
-/*
-.caixa-pessoa img {
-    width: 50px;
-    height: auto;
-}*/
 
 /* Inicio - moldura icon user durante o jogo */
 
 .avatar-wrapper {
   position: relative;
-  width: 70px;   /* make this bigger/smaller as needed */
+  width: 70px;   
   height: 70px;
   flex-shrink: 0;
 }
 
-/* Frame fills the wrapper */
 .avatar-frame {
   position: absolute;
   width: 70px;
@@ -110,7 +102,6 @@
   z-index: 1;
 }
 
-/* Photo sits inside frame */
 .avatar-photo {
   position: absolute;
   top: 12px;     /* adjust to center in frame */

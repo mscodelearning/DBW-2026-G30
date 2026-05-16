@@ -3,27 +3,16 @@
     position: relative;
     width: 100%;
     height: auto;
-    /*padding-left: 120px;*/
-    /*padding-right: 125px;*/
-    /*box-sizing: border-box;*/
-    /*margin-top: 140px;*/
     display: flex;
     justify-content: center;
     align-items: center;
-    /*flex-direction: row;*/
     gap: 30px;
-    /*transform: none;*/
     flex-wrap: wrap;
     min-height: calc(100vh - 62px);
     gap: 80px;
     flex-wrap: wrap;
 }
 
-/*
-.btn-cria-sala, .btn-sala-privada, .btn-sala-publica{
-    width: 360px;
-    height: auto;
-}*/
 
 .caixas-btn-mp {
     position: relative;
@@ -31,23 +20,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    /*width: 360px;
-    height: 500px;*/
     width: min(360px, 90vw);
     height: auto;
 }
 
-/*
-.caixas-btn-mp img {
-    width: 360px;
-    height: auto;
-    display: block;
-}*/
-
 .fundo-caixa {
-    /*width: 360px;
-    height: 500px;
-    display: block;*/
     width: 100%;
     height: auto;
     display: block;

@@ -1,7 +1,5 @@
 /*inicio - elementos do ecra de selecao de modo de jogo singleplayer*/
 
-
-
 .geral-modos-sp {
     display: flex;
     flex-direction: column;
@@ -133,7 +131,6 @@
 .image-button {
     position: relative;
     display: block;
-    /*margin: 170px auto 0;*/
     margin: 0 auto;
     border: none;
     background: transparent;

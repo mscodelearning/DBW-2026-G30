@@ -65,15 +65,6 @@ export async function garantirSalasPublicasDefault() {
     }
   ];
 
-  /*
-  for (const salaData of defaults) {
-    const existe = await Sala.findOne({ codigo: salaData.codigo });
-    if (!existe) {
-      await Sala.create(salaData);
-    }
-  }*/
-
-  /////////////////////////////////////////////
   for (const salaData of defaults) {
   const existe = await Sala.findOne({ codigo: salaData.codigo });
   if (!existe) {
@@ -83,9 +74,5 @@ export async function garantirSalasPublicasDefault() {
     console.log(`Sala default já existe: ${salaData.codigo}`);
   }
 }
-
-  //////////////////////////////////////////////
-
-
 
 }

@@ -13,7 +13,6 @@ import gameRoutes from "./routes/gameRoutes.js";
 import userRoutes from "./routes/userRoute.js";
 import estatisticasRoutes from "./routes/estatisticasRoutes.js";
 import multiplayerRoutes from "./routes/multiplayerRoutes.js";
-//import ChatMessage from "./models/chatMessageModel.js";
 
 
 import { carregarDicionario } from "./services/wordService.js";
@@ -22,11 +21,7 @@ import multiplayerSocket from "./socket/multiplayerSocket.js";
 
 import { garantirSalasPublicasDefault } from "./services/defaultRoomService.js";
 
-//import { refreshRoomExpiry, novaDataExpiracao } from "./services/roomExpiryService.js";
-
 import Sala from "./models/sala.js";
-
-import temp from "./routes/temp.js"; /////////////////////////////// temp
 
 carregarDicionario();
 
@@ -92,85 +87,6 @@ app.use("/multiplayer", multiplayerRoutes);
 
 app.use("/api/estatisticas", estatisticasRoutes);
 
-/*
-
-io.on("connection", function (socket) {
-    console.log(`Utilizador ligado: ${socket.id}`);
-
-    socket.on("joinRoom", async function (roomName) {
-    try {
-      const normalizedRoom = roomName?.trim();
-
-      if (!normalizedRoom) return;
-
-      await refreshRoomExpiry(normalizedRoom);// temporizador para eliminar sala da refresh ao timer
-
-
-      if (socket.data.currentRoom) {
-        socket.leave(socket.data.currentRoom);
-      }
-
-      socket.join(normalizedRoom);
-      socket.data.currentRoom = normalizedRoom;
-
-      console.log(`Socket ${socket.id} entrou no chat da sala ${normalizedRoom}`);
-
-      socket.emit("roomJoined", {
-        sala: normalizedRoom,
-        socketID: socket.id,
-      });
-
-      const historico = await ChatMessage.find({ salaCodigo: normalizedRoom })
-        .sort({ createdAt: 1 })
-        .limit(100);
-
-      socket.emit("chatHistory", historico);
-    } catch (err) {
-      console.log("Erro ao entrar na sala / carregar histórico:", err);
-    }
-  });
-
-  socket.on("chat", async function (msgData) {
-    try {
-      const normalizedMessage = msgData?.mensagem?.trim();
-      const normalizedRoom = msgData?.sala?.trim();
-
-      if (!normalizedMessage || !normalizedRoom) return;
-
-      await refreshRoomExpiry(normalizedRoom);// temporizador para eliminar sala da refresh ao timer
-
-
-      const novaMensagem = await ChatMessage.create({
-        salaCodigo: normalizedRoom,
-        senderId: msgData.senderId,
-        senderName: msgData.senderName || "Utilizador",
-        senderAvatar: msgData.senderAvatar || "/symbols/Union-user-icon.png",
-        mensagem: normalizedMessage,
-      });
-
-      const paraCliente = {
-        _id: novaMensagem._id,
-        senderId: String(novaMensagem.senderId),
-        senderName: novaMensagem.senderName,
-        senderAvatar: novaMensagem.senderAvatar,
-        mensagem: novaMensagem.mensagem,
-        sala: normalizedRoom,
-        createdAt: novaMensagem.createdAt,
-      };
-
-      console.log(`Mensagem emitida para sala ${normalizedRoom}`);
-
-      io.to(normalizedRoom).emit("clientChat", paraCliente);
-    } catch (err) {
-      console.log("Erro ao guardar/enviar mensagem:", err);
-    }
-  });
-
-  socket.on("disconnect", function () {
-    console.log(`Utilizador desligado: ${socket.id}`);
-  });
-});
-*/
 
 mongoose 
 .connect( 
@@ -180,17 +96,13 @@ mongoose
 console.log("Connected to MongoDB"); 
 await garantirSalasPublicasDefault();
 console.log("Salas públicas default carregadas com sucesso");
-////////////////////////////////////////////////////
 const salas = await Sala.find({}, "codigo nome isDefault").lean();
 console.log("Salas na BD:", salas);
-////////////////////////////////////////////////////
 }) 
 .catch((err) => { 
 console.log(err); 
 });
 
-
-//app.listen(3000, (err) => {
 server.listen(3000, (err) => { 
 if (err) 
 console.error(err); 

@@ -43,17 +43,6 @@
   gap: 10px;
 }
 
-/*
-.mensagem {
-  align-self: flex-end;
-  background: #265c2f;
-  color: #ffffff;
-  padding: 10px 14px;
-  border-radius: 14px;
-  max-width: 70%;
-  font-size: 14px;
-}
-*/
 .input-area {
   position: absolute;
   top: 498px;
@@ -159,7 +148,6 @@
     width: 180px;          /* aumenta a largura da caixa */
    font-size: 16px;
    font-weight: bold;
-   /*pointer-events: none; /*texto nao atrapalha o clique*/
    transition: color 0.3s ease; /*mudanca de cor suave do texto*/
    z-index: 10;
 }

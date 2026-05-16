@@ -3,7 +3,6 @@
 <html lang="pt-PT">
     <head>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-        <!--<link rel="stylesheet" href="../public/css/style.css">-->
         <link rel="stylesheet" href="/css/style.css">
 
 
@@ -13,32 +12,25 @@
     <div>
         <%- include("partials/header") %>
         <div class="botao-sair-container">
-            <!--<img src="../public/images/botao-sair.png" alt="sair">-->
             <img src="/images/botao-sair.png" alt="sair">
             <div class="overlay-text-perfil">Sair</div>
-            <!--<a href="selectMultiplayerPage.html"></a>-->
             <a href="/selectMultiplayerPage"></a>
         </div>
         <div class="container-perfil-global">
             <div class="container-perfil">
                 <div class="perfil-header">
                     <div class="user-icon2-perfil-container">
-                        <!--<img id="perfil-img" src="../public/symbols/user-icon-2.png" alt="user-icon"> id novo-->
-                        <!--<img id="perfil-img" src="/symbols/user-icon-2.png" alt="user-icon"> -->
                         <img id="perfil-img" src="<%= user.avatar || '/symbols/user-icon-2.png' %>" alt="user-icon">
                     </div>
                     <div class="alteraImagem-perfil-container">
-                        <!--<p>Alterar Imagem</p>-->
                         <p id="texto-altera-imagem">Alterar Imagem</p>
                         <div id="pop-up" class="popup">
                             <div class="conteudo-popup">
-                                <!--<p>Este conteudo é do pop-up.</p>-->
                                 <form action="/uploadAvatar" method="POST" enctype="multipart/form-data">
                                     <label  id="drop-area">
                                         <input type="file" accept="image/*" id="input-file" name="avatar" hidden>
                                         <div id="img-view">
                                             <div class="upload-text">
-                                                <!--<img src="../public/symbols/symbol_upload.png" alt="symbol-upload">-->
                                                 <img src="/symbols/symbol_upload.png" alt="symbol-upload">
                                                 <p>Drag and drop or click here<br> to upload image</p>
                                                 <span> Upload any images from desktop</span>
@@ -61,7 +53,6 @@
                         <div class="grupo-campo">
                             <p class="label-campo">Nome exibido</p>
                             <div class="caixa-texto-imagem">
-                                <!--<input type="text" id="nickname" placeholder="escreva o texto aqui">-->
                                 <input type="text" id="nickname" name="nickname" value="<%= user.nickname %>">
                             </div>
                         </div>
@@ -77,18 +68,15 @@
                         <div class="grupo-campo">
                             <p class="label-campo">Nome de Utilizador</p>
                             <div class="caixa-texto-imagem">
-                                <!--<input type="text" placeholder="escreva o texto aqui">-->
                                 <input type="text" name="username" value="<%= user.username %>" readonly>
                             </div>
                         </div>
                         <div class="grupo-campo">
                             <p class="label-campo">Palavra-passe</p>
                             <div class="caixa-texto-imagem">
-                                <!--<input type="password" placeholder="escreva o texto aqui">-->
                                 <input type="password" value="********" disabled>
                             </div>
                         </div>
-                        <!--<a href="alteraPalavraPasse.html" class="texto-alterar-password">-->
                         <a href="/alterarPalavraPasse" class="texto-alterar-password">
                             Alterar palavra-passe
                         </a>
@@ -97,10 +85,8 @@
                 </form>
 
                 <div class="quadro-estatistico-container">
-                    <!--<img class="img-quadro" src="../public/images/quadro-estatisticas-perfil.png" alt="quadro-madeira">-->
                     <img class="img-quadro" src="/images/quadro-estatisticas-perfil.png" alt="quadro-madeira">
                     <div class="fundo-verde-quadro-estatistico">
-                        <!--<img class="img-fundo-verde" src="../public/images/fundo-quadro-estatisticas.png" alt="fundo-verde">-->
                         <img class="img-fundo-verde" src="/images/fundo-quadro-estatisticas.png" alt="fundo-verde">
                         <div class="stats-overlay">
                             <h3 class="stats-title">Estatísticas</h3>
@@ -125,16 +111,6 @@
                 </div>
             </div>
         </div>
-        <!--<div class="zona-botao-termina">
-    
-            <a href="/" class="botao-terminar-sessao">
-                
-                <img src="/images/barra-insere-texto-perfil.png" alt="botao-termina-sessao">
-                <span class="overlay-text-termina-sessao">Terminar Sessão</span>
-            </a>
-        </div>-->
-
-
 
         <div class="zona-botao-termina">
             <form action="/logout" method="POST" class="logout-form-perfil">
@@ -147,7 +123,6 @@
 
     </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-<!--<script src="../public/js/script.js" defer></script>-->
 <script src="/js/script.js" defer></script>
 <script src="/js/popupAlteraImagem.js" defer></script>
 <script src="/js/atualizaEstatisticasPerfilPg.js" defer></script>

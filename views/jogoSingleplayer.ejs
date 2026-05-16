@@ -6,7 +6,6 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap" rel="stylesheet">
-        <!--<link rel="stylesheet" href="../public/css/style.css">-->
         <link rel="stylesheet" href="/css/jogoSp.css">
         <link rel="stylesheet" href="/css/style.css">
         <title>Skriven</title>
@@ -14,22 +13,12 @@
 <body>
     <div>
         <%- include("partials/header") %>
-       
-    
-        <!--<a href="selectMultiplayerPage.html" class="botao-voltar-container">-->
-        <!--<a href="/selectMultiplayerPage" class="botao-voltar-container" >
-        
-            <img src="/images/botao-sair.png" alt="sair">
-            <div class="overlay-text">Sair</div>
-        </a>-->
-
 
         <div class="jogo-singleplayer-container">
             <div class="container">
                 <div class="row">
                     <div class="col-6 coluna-sp">
                         <div class="quadro-palavra-mestra">
-                            <!--<img src="../public/Images/quadro-palavras.png" alt="quadro-palavras">-->
                             <img src="/Images/quadro-palavras.png" alt="quadro-palavras">
                             <h1 id="palavra-mestra"><%= palavraMestra %></h1>
                         </div>
@@ -40,7 +29,6 @@
                         <div id="alerta-container" class="mt-3"></div>
                         <input type="text" id="caixa-texto" placeholder="Insira uma palavra">                    
                         <div class="caixa-palavras-descobertas">
-                            <!--<img src="../public/Images/palavras-descobertas.png">-->
                             <img src="/Images/palavras-descobertas.png">
                             <div id="palavras-descobertas"></div>
                         </div>
@@ -51,7 +39,6 @@
                                 <img class="avatar-photo" src="<%= currentUser ? (currentUser.avatar || '/symbols/Union-user-icon.png') : '/symbols/Union-user-icon.png' %>" alt="avatar jogador">
                             </div>
                             <h5>
-                                <!--<span id="nome-jogador"></span>-->
                                  <span id="nome-jogador"><%= currentUser ? (currentUser.nickname || currentUser.username) : "Jogador" %></span>
                                 <span id="pontuacao"></span>
                             </h5>
@@ -60,7 +47,7 @@
                 </div>
             </div>
         </div>
-    </div>´
+    </div>
 
     <div id="loading-overlay" class="loading-overlay d-none">
   <div class="spinner-box">
@@ -77,10 +64,8 @@
 </script>
 <% } %>
 
-<!--<script src="../public/js/paginaJogoSp.js" defer></script>-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 <script src="/js/paginaJogoSp.js" defer></script>
 <script src="/js/script.js" defer></script>
-<!--<script src="/js/modoJogoSp.js" defer></script>-->
 </body>
 </html>
