@@ -45,7 +45,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 //novo
+
+    socket.on("gameFinished", (resultados) => {
+        localStorage.setItem("gameResults",JSON.stringify(resultados));
+        window.location.href = "/fimJogoMp";
+    });
+
     socket.on("wordResult", (data) => {
+        console.log("WORD RESULT RECEIVED");
+        console.log("player:", currentUserId);
+        console.log("word:", data.palavra);
+        console.log("totalDescobertas:", data.totalDescobertas);
 
         if (data.success) {
 
@@ -57,18 +67,25 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("pontuacao").textContent = pontos;
 
             palavrasDescobertas = data.totalDescobertas;
+            console.log("palavrasDescobertas FRONTEND:", palavrasDescobertas);
 
-            socket.emit("updateWords", {
+
+            console.log("SENDING updateWords");
+            console.log({
+                palavras: palavrasDescobertas,
+                player: currentUserId
+            });
+            /*socket.emit("updateWords", {
                 codigoSala: dadosJogo.codigoSala,
                 userId: currentUserId,
                 palavras: palavrasDescobertas
-            });
+            });*/
 
-            socket.emit("updateScore", {
+           /* socket.emit("updateScore", {
                 codigoSala: dadosJogo.codigoSala,
                 userId: currentUserId,
                 pontos
-            });
+            });*/
 
         } else {
 
@@ -205,20 +222,25 @@ document.addEventListener("DOMContentLoaded", () => {
     }*/
 
     function iniciarTimer(tempo) {
+
         let tempoRestante = tempo;
+
         const display = document.getElementById("timer-display");
 
         display.textContent = tempoRestante + "s";
 
-        let intervalo = setInterval(() => {
+        const intervalo = setInterval(() => {
+
             tempoRestante--;
 
             display.textContent = tempoRestante + "s";
 
             if (tempoRestante <= 0) {
                 clearInterval(intervalo);
+                display.textContent = "0s";
                 terminarJogo();
             }
+
         }, 1000);
     }
 
@@ -335,16 +357,11 @@ async function terminarJogo() {
             },
             body: JSON.stringify(estatisticasJogo)
         });*/
-        
+
         socket.emit("finishGame", {
             codigoSala: dadosJogo.codigoSala,
             userId: currentUserId,
             tempo: tempoJogado
-        });
-
-        socket.on("gameFinished", (resultados) => {
-            localStorage.setItem("gameResults",JSON.stringify(resultados));
-            window.location.href = "/fimJogoMp";
         });
 
         //atualizarEstatisticasGlobais(estatisticasJogo);
