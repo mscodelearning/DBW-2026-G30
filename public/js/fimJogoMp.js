@@ -3,11 +3,8 @@
 document.addEventListener("DOMContentLoaded", () => {
 
 
-    ///////////////////////////////
     const botaoSair = document.getElementById("botao-sair-estatisticas");
-const codigoSala =
-    localStorage.getItem("fimJogoCodigoSala") ||
-    multiplayerGameData?.codigoSala;
+    const codigoSala = localStorage.getItem("fimJogoCodigoSala") || multiplayerGameData?.codigoSala;
 
 console.log("DEBUG fimJogoMp codigoSala:", {
     fimJogoCodigoSala: localStorage.getItem("fimJogoCodigoSala"),
@@ -19,22 +16,7 @@ console.log("DEBUG fimJogoMp codigoSala:", {
 if (botaoSair && codigoSala) {
     botaoSair.href = `/multiplayer/sala/${codigoSala}`;
 }
-    ///////////////////////////////
 
-
-/*
-ANTIGO SÓ PARA SINGLEPLAYER
-    const stats = JSON.parse(localStorage.getItem("estatisticasJogo"));
-
-    if (!stats) return;
-
-    document.getElementById("palavras").textContent = stats.palavrasDescobertas;
-    document.getElementById("erros").textContent = stats.erros;
-    document.getElementById("pontos").textContent = stats.pontos;
-    document.getElementById("tempo").textContent = stats.tempoJogado + "s";*/
-
-
-    //testar o número de jogadores que aparece no ecra de fim de jogo (comentar alguns dos jogadores)
     const gameResults = JSON.parse(localStorage.getItem("gameResults"));
     if (!gameResults) return;
 

@@ -2,8 +2,6 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-/*Inicio - codigo do pop up para colocar/alterar imagem*/
-
 const texto = document.getElementById("texto-altera-imagem");
 const popup = document.getElementById("pop-up");
 
@@ -16,10 +14,6 @@ if (texto && popup) {
         });
 }
 
-/*Fim - codigo do pop up para colocar/alterar imagem*/
-
-
-/* Inicio - codigo do drag and drop imagem */
 
 const dropArea = document.getElementById("drop-area");
 const inputFile = document.getElementById("input-file");
@@ -70,10 +64,9 @@ dropArea.addEventListener("drop", function(e) {
   uploadImage();
 });
 
-// Botao remover
 btnRemover.addEventListener("click", () => {
-  inputFile.value = ""; // limpa o input
-  imageView.style.backgroundImage = "none"; // limpa o background
+  inputFile.value = "";
+  imageView.style.backgroundImage = "none";
   imageView.style.border = "2px dashed #81C96D";
 
   if (uploadText) {
@@ -90,8 +83,6 @@ btnRemover.addEventListener("click", () => {
 });
 
 
-// Botao Aplicar imagem
-
 btnAplicar.addEventListener("click", (e) => {
   if (!inputFile.files[0]) {
     e.preventDefault();
@@ -101,4 +92,3 @@ btnAplicar.addEventListener("click", (e) => {
 });
 });
 
-/* Fim - codigo do drag and drop imagem */

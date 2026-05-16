@@ -1,6 +1,5 @@
 'use strict';
 
-/* Inicio - atualizacao dos dados estatisticos no quadro da pagina do perfil */
 document.addEventListener("DOMContentLoaded", async () => {
     try {
         const response = await fetch("/api/estatisticas/perfil");
@@ -26,4 +25,3 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
 });
-/* Fim - atualizacao dos dados estatisticos no quadro da pagina do perfil */

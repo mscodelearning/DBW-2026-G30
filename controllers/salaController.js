@@ -21,23 +21,19 @@ export async function updateNomeSala(req, res) {
     }
 
     sala.nome = nomeLimpo;
-    //sala.expireAt = new Date(Date.now() + 2 * 60 * 60 * 1000);
-    //sala.expireAt = new Date(Date.now() + 1 * 60 * 1000);
-    //sala.expireAt = novaDataExpiracao(10);
-//////////////////////////////
+
     if (!sala.isDefault) {
       sala.expireAt = novaDataExpiracao(10);
     } else {
       sala.expireAt = null;
     }
-/////////////////////////////
     await sala.save();
-
 
     return res.json({
       message: 'Nome da sala atualizado com sucesso.',
       sala
     });
+
   } catch (err) {
     console.error('Erro ao atualizar nome da sala:', err);
     return res.status(500).json({ message: 'Erro interno do servidor.' });

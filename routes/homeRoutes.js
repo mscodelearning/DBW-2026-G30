@@ -3,31 +3,11 @@ import { isLoggedIn } from "../controllers/userController.js";
 import Sala from "../models/sala.js";
 const router = express.Router();
 
-/*
-router.get("/perfilPage", (req, res) => {
-  res.render("perfil");
-});
-
-router.get("/selectMultiplayerPage", (req, res) => {
-  res.render("selectMultiplayerPage");
-});
-*/
-/*
-router.get("/perfilPage", isLoggedIn, (req, res) => {
-  res.render("perfil", { user: req.user });
-});
-*/
 
 router.get("/selectMultiplayerPage", isLoggedIn, (req, res) => {
   res.render("selectMultiplayerPage");
 });
 
-/*
-router.get("/alterarPalavraPasse", (req, res) => {
-  res.render("alteraPalavraPasse");
-});*/
-
-/*/paginaInicial*/
 router.get("/", (req, res) => {
   res.render("paginaInicial");
 });
@@ -40,11 +20,6 @@ router.get("/login", (req, res) => {
   res.render("loginPage");
 });
 
-/*
-router.get("/signup", (req, res) => {
-  res.render("signupPage");
-});*/
-
 router.get("/signup", (req, res) => {
   res.render("signupPage", { error: null });
 });
@@ -56,11 +31,6 @@ router.get("/gameSinglePlayer", (req, res) => {
 router.get("/gameMultiplayerPlayer", (req, res) => {
   res.render("gamemodeMultiplayer");
 });
-
-/*
-router.get("/jogoSingleplayer", (req, res) => {
-  res.render("jogoSingleplayer");
-});*/
 
 router.get("/fimJogoSp", (req, res) => {
   res.render("fimDeJogoSp");
@@ -77,18 +47,6 @@ router.get("/salasPrivadas", (req, res) => {
 router.get("/paginaCriaSala", (req, res) => {
   res.render("criaSalaPage");
 });
-
-/*
-router.get("/paginaSalasPublicas", (req, res) => {
-  res.render("salasPublicasPage");
-});*/
-
-/*
-router.get("/paginaSalasPublicas", isLoggedIn, (req, res) => {
-  res.render("salasPublicasPage");
-});
-*/
-
 
 router.get("/paginaJogoMultiplayer", (req, res) => {
   res.render("jogoMultiplayer");
