@@ -43,6 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
         codigoSala: dadosJogo.codigoSala,
         userId: currentUserId
     });
+
 //novo
 
     socket.on("gameFinished", (resultados) => {
@@ -61,6 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
             adicionarPalavra(data.palavra);
 
             pontos += data.pontos;
+            
 
             document.getElementById("pontuacao").textContent = pontos;
 
@@ -246,7 +248,7 @@ document.addEventListener("DOMContentLoaded", () => {
 /*ANTIGA
     function terminarJogo() {
 
-        if (challengeType === "Objetivo: nº de palavras") {
+        if (challengeType === "Objetivo: nº palavras") {
             if (palavrasValidas < parseInt(challengeValue)) {
                 mostrarAlerta("Ainda não atingiu o número de palavras necessário!");
             }
@@ -272,7 +274,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }*/
    //NOVA
       /* async function terminarJogo() {
-        if (challengeType === "Objetivo: nº de palavras") {
+        if (challengeType === "Objetivo: nº palavras") {
             if (palavrasDescobertas < parseInt(challengeValue)) {
                 mostrarAlerta("Ainda não atingiu o número de palavras necessário!");
             }
@@ -322,13 +324,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }*/
 //NOVA
 
-
-    async function terminarJogo() {
-
-        if (challengeType === "Objetivo: nº de palavras") {
-            if (palavrasDescobertas < parseInt(challengeValue)) {
-                mostrarAlerta("Ainda não atingiu o número de palavras necessário!");
-            }
+async function terminarJogo() {
+    if (challengeType === "Objetivo: nº palavras") {
+        if (palavrasDescobertas < parseInt(challengeValue)) {
+            mostrarAlerta("Ainda não atingiu o número de palavras necessário!");
         }
 
         let tempoFinal = Date.now();
@@ -371,6 +370,40 @@ document.addEventListener("DOMContentLoaded", () => {
             window.location.href = "/fimJogoMp";
         }, 2000);  
     }
+
+    let tempoFinal = Date.now();
+    let tempoJogado = Math.floor((tempoFinal - tempoInicial) / 1000);
+
+    const estatisticasJogo = {
+        tempoJogado: tempoJogado,
+        palavrasDescobertas: palavrasDescobertas,
+        pontos: pontos,
+        erros: erros,
+        username: localStorage.getItem("username") || "Jogador",
+        nickname: localStorage.getItem("nickname") || localStorage.getItem("username") || "Jogador",
+        avatar: localStorage.getItem("avatar") || "/images/icone-pessoa.png"
+    };
+
+    localStorage.setItem("estatisticasJogo", JSON.stringify(estatisticasJogo));
+    localStorage.setItem("ultimoCodigoSala", dadosJogo.codigoSala);
+    localStorage.setItem("ultimoTipoSala", dadosJogo.configuracoes.access);
+
+    await fetch("/api/estatisticas", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(estatisticasJogo)
+    });
+
+    socket.emit("endGame", {
+        codigoSala: dadosJogo.codigoSala
+    });
+
+    setTimeout(() => {
+        window.location.href = "/fimJogoMp";
+    }, 2000);
+}
 
 
     finalizarBtn.addEventListener("click", terminarJogo);

@@ -4,16 +4,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.socket = io();
 
-    const pathParts = window.location.pathname.split("/");
-    const codigoSala = pathParts[pathParts.length - 1];
+    ///const pathParts = window.location.pathname.split("/");
+    ///const codigoSala = pathParts[pathParts.length - 1];
+    const codigoSala = window.dadosSala.codigo;////////////////////
     const userId = window.dadosSala.userId;
 
     //socket.emit("joinRoom", codigoSala);
     socket.emit("joinMultiplayerRoom", {
 
-        codigoSala: window.dadosSala.codigo,
+        //codigoSala: window.dadosSala.codigo,
 
-        userId: window.dadosSala.userId
+        //userId: window.dadosSala.userId
+
+        codigoSala, ////////////
+        userId  /////////////
 
     });
 
@@ -85,4 +89,12 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = "/paginaJogoMultiplayer";
 
     });
+
+    ///////////////////////////////
+    socket.on("erroSala", ({ mensagem }) => {
+        alert(mensagem);
+    });
+    /////////////////////////////
+
+
 });

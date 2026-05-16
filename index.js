@@ -26,6 +26,8 @@ import { garantirSalasPublicasDefault } from "./services/defaultRoomService.js";
 
 import Sala from "./models/sala.js";
 
+import temp from "./routes/temp.js"; /////////////////////////////// temp
+
 carregarDicionario();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -86,6 +88,8 @@ app.use("/", homeRoutes);
 app.use("/", userRoutes);
 app.use("/", gameRoutes);
 app.use("/multiplayer", multiplayerRoutes);
+
+app.use("/", temp);////////////////////////temp
 
 app.use("/api/estatisticas", estatisticasRoutes);
 

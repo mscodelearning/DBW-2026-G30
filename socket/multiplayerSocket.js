@@ -414,11 +414,12 @@ export default function multiplayerSocket(io) {
               return;
             }
 
+            /*
             if (sala.estado === "playing") {
               console.log(`Jogo em andamento. Não remover ${userId}`);
               disconnectTimers.delete(pendingKey);
               return;
-            }
+            }*////////////////////////////
 
             const stillConnected = [...socketsSalas.values()].some(
               dados =>
@@ -436,6 +437,7 @@ export default function multiplayerSocket(io) {
               jogador => jogador.id.toString() !== userId.toString()
             );
 
+            /*
             if (sala.jogadores.length === 0) {
               if (sala.isDefault) {
                 sala.estado = "waiting";
@@ -450,7 +452,34 @@ export default function multiplayerSocket(io) {
               sala.expireAt = sala.isDefault ? null : novaDataExpiracao(10);
               await sala.save();
               io.to(codigoSala).emit("playersUpdated", sala.jogadores);
-            }
+            }*/
+///////////////////////////////////////////////////
+            if (sala.jogadores.length === 0) {
+  if (sala.isDefault) {
+    sala.estado = "waiting";
+    sala.jogo = {
+      iniciado: false,
+      palavraMestra: null,
+      palavrasValidas: [],
+      inicio: null,
+      palavrasDescobertas: {},
+      pontuacoes: {}
+    };
+    sala.expireAt = null;
+    await sala.save();
+    console.log(`Sala default ${codigoSala} preservada e reiniciada`);
+  } else {
+    await Sala.deleteOne({ _id: sala._id });
+    console.log(`Sala ${codigoSala} apagada`);
+  }
+} else {
+  sala.expireAt = sala.isDefault ? null : novaDataExpiracao(10);
+  await sala.save();
+  io.to(codigoSala).emit("playersUpdated", sala.jogadores);
+  console.log(`Jogador ${userId} removido da sala ${codigoSala}`);
+}
+////////////////////////////////////////////////////
+            
 
             disconnectTimers.delete(pendingKey);
           } catch (err) {
@@ -514,7 +543,8 @@ socket.on("startGame", async ({ codigoSala, userId }) => {
 });*/
 
 
-
+/*
+antigo
    /* socket.on("startGame", async ({ codigoSala, userId }) => {
 
 //NOVO
@@ -564,6 +594,10 @@ socket.on("startGame", async ({ codigoSala, userId }) => {
                     jogadores: sala.jogadores
                 }
             );*/
+
+
+
+            /*
             /*io.to(codigoSala).emit("gameStarted", {
                 codigoSala,
                 palavraMestra,
@@ -688,7 +722,105 @@ socket.on("startGame", async ({ codigoSala, userId }) => {
 
             console.error(err);
         }
+    });*/
+
+  //NOVO COM A LOGICA TAMBEM PARA A SALA PUBLICA
+  socket.on("startGame", async ({ codigoSala, userId }) => {
+    try {
+        const codigoNormalizado = codigoSala?.trim().toUpperCase();
+        const sala = await Sala.findOne({ codigo: codigoNormalizado });
+
+        if (!sala) {
+            return socket.emit("erroSala", {
+                mensagem: "Sala não encontrada."
+            });
+        }
+
+        const isPublicRoom = sala.configuracoes.access === "Público";
+
+        if (!isPublicRoom && !isHost(sala, userId)) {
+            return socket.emit("erroSala", {
+                mensagem: "Só o administrador pode iniciar uma sala privada."
+            });
+        }
+
+        if (sala.jogo?.iniciado || sala.estado === "playing") {
+            return socket.emit("erroSala", {
+                mensagem: "O jogo já foi iniciado."
+            });
+        }
+
+        if (sala.jogadores.length < 2) {
+            return socket.emit("erroSala", {
+                mensagem: "São necessários pelo menos 2 jogadores para iniciar."
+            });
+        }
+
+        const palavraMestra = getRandomPalavraMestra();
+        const palavrasValidas = gerarPalavrasValidas(palavraMestra);
+
+        sala.jogo = {
+            iniciado: true,
+            palavraMestra,
+            palavrasValidas,
+            inicio: new Date(),
+            palavrasDescobertas: {},
+            pontuacoes: {}
+        };
+
+        sala.estado = "playing";
+        await sala.save();
+
+        io.to(codigoNormalizado).emit("gameStarted", {
+            codigoSala: codigoNormalizado,
+            palavraMestra,
+            configuracoes: sala.configuracoes,
+            jogadores: sala.jogadores
+        });
+
+    } catch (err) {
+        console.error("Erro ao iniciar jogo:", err);
+        socket.emit("erroSala", {
+            mensagem: "Erro ao iniciar o jogo."
+        });
+    }
+});
+
+//novo codigo 
+socket.on("endGame", async ({ codigoSala }) => {
+  try {
+    const codigoNormalizado = codigoSala?.trim().toUpperCase();
+    const sala = await Sala.findOne({ codigo: codigoNormalizado });
+
+    if (!sala) return;
+
+    sala.estado = "waiting";
+    sala.jogo = {
+      iniciado: false,
+      palavraMestra: null,
+      palavrasValidas: [],
+      inicio: null,
+      palavrasDescobertas: {},
+      pontuacoes: {}
+    };
+
+    await sala.save();
+
+    io.to(codigoNormalizado).emit("gameEnded", {
+      codigoSala: codigoNormalizado,
+      jogadores: sala.jogadores
     });
+
+    console.log(`Jogo terminado na sala ${codigoNormalizado}`);
+  } catch (err) {
+    console.error("Erro ao terminar jogo:", err);
+  }
+});
+
+
+
+
+
 
 
     //NOVO

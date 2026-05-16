@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
             customMin.style.display = "none";
             customMax.style.display = "none";
 
-            if (value === "Objetivo: nº de palavras") {
+            if (value === "Objetivo: nº palavras") {
                 customNum.style.display = "block";
             }
 

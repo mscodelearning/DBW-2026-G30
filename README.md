@@ -16,6 +16,10 @@ De seguida abrir um browser e pesquisar o seguinte url
     'http://localhost:3000/'
 esta acao abrirá a pagiana web da aplicacao desenvolvida e agora esta tudo pronto para comecar a explorar a aplicacao
 
+# outras informacoes
+o timer/tempo é contado em segundos
+
+
 
 # Aparte
 se for criada uma sala publica com um user num browser e noutro browser outro user2 for a pagina das salas publicas, se o nome foi alterado depois do user2 ja la estar é necessario dar refresh na pagina para o novo nome aparecer 
