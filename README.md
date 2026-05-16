@@ -41,6 +41,8 @@ personalizado - onde o valor colocado/definido tem de ser em segundos
 
 o username é unico pois é o que distingue os users registados 
 
+é possivel adicionar uma imagem ao avatar do jogador
+
 
 
 # Aparte
