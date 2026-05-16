@@ -9,7 +9,7 @@ export async function garantirSalasPublicasDefault() {
       configuracoes: {
         access: "Público",
         players: 4,
-        timer: 1,
+        timer: 120,
         challengeType: "Mín. letras",
         challengeValue: 4
       },
@@ -25,7 +25,7 @@ export async function garantirSalasPublicasDefault() {
       configuracoes: {
         access: "Público",
         players: 4,
-        timer: 1,
+        timer: 60,
         challengeType: "Não",
         challengeValue: 0
       },
@@ -40,7 +40,7 @@ export async function garantirSalasPublicasDefault() {
       configuracoes: {
         access: "Público",
         players: 4,
-        timer: 2,
+        timer: 120,
         challengeType: "Mín. letras",
         challengeValue: 3
       },

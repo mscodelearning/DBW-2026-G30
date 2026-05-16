@@ -1,6 +1,18 @@
 'use strict';
 
 document.addEventListener("DOMContentLoaded", () => {
+
+
+    ///////////////////////////////
+    const botaoSair = document.getElementById("botao-sair-estatisticas");
+    const codigoSala = localStorage.getItem("ultimoCodigoSala");
+
+    if (botaoSair && codigoSala) {
+        botaoSair.href = `/multiplayer/sala/${codigoSala}`;
+    }
+    ///////////////////////////////
+
+
 /*
 ANTIGO SÓ PARA SINGLEPLAYER
     const stats = JSON.parse(localStorage.getItem("estatisticasJogo"));

@@ -26,6 +26,20 @@ function gerarCodigoSala() {
 }
 
 
+///////////////////////////////////////
+function resetEstadoJogo(sala) {
+  sala.estado = "waiting";
+  sala.jogo = {
+    iniciado: false,
+    palavraMestra: null,
+    palavrasValidas: [],
+    inicio: null,
+    palavrasDescobertas: {},
+    pontuacoes: {}
+  };
+}
+///////////////////////////////////////
+
 export async function criarNovaSala(dadosSala, user) {
 
     const {
@@ -202,6 +216,16 @@ export async function sairDaSala(codigo, userId) {
 export async function entrarNaSala(codigo, user) {
   const sala = await Sala.findOne({ codigo: codigo.toUpperCase() });
   if (!sala) throw new Error("Sala não encontrada");
+
+    console.log("DEBUG entrarNaSala:", {
+    codigo: sala.codigo,
+    estado: sala.estado,
+    iniciado: sala.jogo?.iniciado,
+    jogadores: sala.jogadores.length,
+    isDefault: sala.isDefault
+  });
+
+
   if (sala.estado !== "waiting") throw new Error("A sala já começou");
 
   const jogadorJaExiste = sala.jogadores.some(j => j.id.toString() === user._id.toString());
@@ -234,12 +258,14 @@ export async function entrarNaSala(codigo, user) {
   return sala;
 }
 
+/*
 export async function sairDaSala(codigo, userId) {
   const sala = await Sala.findOne({ codigo });
   if (!sala) throw new Error("Sala não encontrada");
 
   sala.jogadores = sala.jogadores.filter(j => j.id.toString() !== userId.toString());
 
+  
   if (sala.jogadores.length === 0) {
     if (sala.isDefault) {
       sala.estado = "waiting";
@@ -249,9 +275,41 @@ export async function sairDaSala(codigo, userId) {
     }
     await Sala.deleteOne({ _id: sala._id });
     return null;
+  
   }
 
   //mantem a expiryDate/timer apenas para salas que nao sao default
+  sala.expireAt = sala.isDefault ? null : novaDataExpiracao(5);
+  await sala.save();
+  return sala;
+}*/
+
+
+//novo
+
+export async function sairDaSala(codigo, userId) {
+  const sala = await Sala.findOne({ codigo });
+
+  if (!sala) {
+    throw new Error("Sala não encontrada");
+  }
+
+  sala.jogadores = sala.jogadores.filter(
+    j => j.id.toString() !== userId.toString()
+  );
+
+  if (sala.jogadores.length === 0) {
+    if (sala.isDefault) {
+      resetEstadoJogo(sala);
+      sala.expireAt = null;
+      await sala.save();
+      return sala;
+    }
+
+    await Sala.deleteOne({ _id: sala._id });
+    return null;
+  }
+
   sala.expireAt = sala.isDefault ? null : novaDataExpiracao(5);
   await sala.save();
   return sala;
