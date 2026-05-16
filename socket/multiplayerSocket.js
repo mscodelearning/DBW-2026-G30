@@ -515,7 +515,24 @@ socket.on("startGame", async ({ codigoSala, userId }) => {
 
 
 
-    socket.on("startGame", async ({ codigoSala, userId }) => {
+   /* socket.on("startGame", async ({ codigoSala, userId }) => {
+
+//NOVO
+        const fimJogo = Date.now() + (timer * 1000);
+        sala.jogo.fimJogo = fimJogo;
+        setTimeout(async () => {
+
+            // lock game
+            sala.jogo.terminado = true;
+
+            await sala.save();
+
+            // build results
+            // emit gameFinished
+
+        }, timer * 1000);
+//NOVO
+
         try {
             const sala = await Sala.findOne({ codigo: codigoSala });
             const palavraMestra = getRandomPalavraMestra();
@@ -539,7 +556,7 @@ socket.on("startGame", async ({ codigoSala, userId }) => {
             sala.estado = "playing";
             sala.jogo.iniciado = true;
             sala.jogo.inicio = new Date();
-            await sala.save();
+            await sala.save();*/
 
             /*io.to(codigoSala).emit("gameStarted", {
                     codigoSala,
@@ -547,7 +564,7 @@ socket.on("startGame", async ({ codigoSala, userId }) => {
                     jogadores: sala.jogadores
                 }
             );*/
-            io.to(codigoSala).emit("gameStarted", {
+            /*io.to(codigoSala).emit("gameStarted", {
                 codigoSala,
                 palavraMestra,
                 configuracoes: sala.configuracoes,
@@ -557,7 +574,122 @@ socket.on("startGame", async ({ codigoSala, userId }) => {
         } catch (err) {
             console.error(err);
         }
+    });*/
+
+
+    socket.on("startGame", async ({ codigoSala, userId }) => {
+
+        try {
+
+            const sala = await Sala.findOne({ codigo: codigoSala });
+
+            if (!sala) {
+                return;
+            }
+
+            // só o host pode iniciar
+            if (!isHost(sala, userId)) {
+
+                socket.emit("roomError", "Apenas o host pode iniciar o jogo");
+
+                return;
+            }
+
+            const palavraMestra = getRandomPalavraMestra();
+
+            const palavrasValidas =
+                gerarPalavrasValidas(palavraMestra);
+
+            const timer =
+                sala.configuracoes.timer || 0;
+
+            sala.jogo = {
+                palavraMestra,
+                palavrasValidas,
+                palavrasDescobertas: {},
+                pontuacoes: {},
+                terminado: false,
+                iniciado: true,
+                inicio: new Date(),
+                fimJogo:
+                    timer > 0
+                        ? Date.now() + (timer * 1000)
+                        : null
+            };
+
+            sala.estado = "playing";
+
+            await sala.save();
+
+            io.to(codigoSala).emit("gameStarted", {
+                codigoSala,
+                palavraMestra,
+                configuracoes: sala.configuracoes,
+                jogadores: sala.jogadores
+            });
+
+            // jogo com timer
+            if (timer > 0) {
+
+                setTimeout(async () => {
+
+                    try {
+
+                        const salaAtual =
+                            await Sala.findOne({
+                                codigo: codigoSala
+                            });
+
+                        if (!salaAtual) return;
+
+                        // impedir finish duplicado
+                        if (salaAtual.jogo.terminado) {
+                            return;
+                        }
+
+                        salaAtual.jogo.terminado = true;
+
+                        await salaAtual.save();
+
+                        console.log("FINAL ROOM PLAYERS");
+                        console.log(salaAtual.jogadores);
+
+                        const resultados =
+                            salaAtual.jogadores.map(jogador => ({
+                                id: jogador.id,
+
+                                name: jogador.nickname,
+
+                                stats: {
+                                    pontos: jogador.pontos || 0,
+                                    palavras: jogador.palavras || 0,
+                                    erros: jogador.erros || 0,
+                                    tempo: timer
+                                }
+                            }));
+
+                        console.log("RESULTADOS");
+                        console.log(resultados);
+
+                        io.to(codigoSala).emit(
+                            "gameFinished",
+                            resultados
+                        );
+
+                    } catch (err) {
+
+                        console.error(err);
+                    }
+
+                }, timer * 1000);
+            }
+
+        } catch (err) {
+
+            console.error(err);
+        }
     });
+
 
     //NOVO
     /*socket.on("submitWord", async ({ codigoSala, userId, palavra }) => {
@@ -648,23 +780,24 @@ socket.on("startGame", async ({ codigoSala, userId }) => {
 
         try {
 
-            const codigoNormalizado =
-                codigoSala.trim().toUpperCase();
+            const codigoNormalizado = codigoSala.trim().toUpperCase();
 
-            const sala = await Sala.findOne({
-                codigo: codigoNormalizado
-            });
+            const sala = await Sala.findOne({codigo: codigoNormalizado});
 
             if (!sala || !sala.jogo.iniciado) {
                 return;
             }
 
-            const palavraNormalizada =
-                palavra.trim().toLowerCase();
+            //impede que sejam submetidas palavras caso o jogo ja tenha terminado
+            if (sala.jogo.terminado) {
+                return;
+            }
+
+            const palavraNormalizada = palavra.trim().toLowerCase();
 
             // criar lista do jogador se ainda nao existir
-            if (!sala.jogo.palavrasDescobertas[userId]) {
-                sala.jogo.palavrasDescobertas[userId] = [];
+            if (sala.jogo.palavrasDescobertas[userId] === undefined) {
+                  sala.jogo.palavrasDescobertas[userId] = [];
             }
 
             // ja descoberta este jogador
@@ -686,19 +819,42 @@ socket.on("startGame", async ({ codigoSala, userId }) => {
                 )
             ) {
 
-                sala.jogo.palavrasDescobertas[userId]
-                    .push(palavraNormalizada);
+                sala.jogo.palavrasDescobertas[userId].push(palavraNormalizada);
 
                 // iniciar score
-                if (!sala.jogo.pontuacoes[userId]) {
+                if (sala.jogo.pontuacoes[userId] === undefined) {
                     sala.jogo.pontuacoes[userId] = 0;
                 }
 
+
+                console.log("ANTES:");
+                console.log(sala.jogo.pontuacoes[userId]);
+                console.log("word length:", palavraNormalizada.length);
+
+
                 // somar pontos
-                sala.jogo.pontuacoes[userId] +=
-                    palavraNormalizada.length;
+                sala.jogo.pontuacoes[userId] += palavraNormalizada.length;
+
+                console.log("DEPOIS:");
+                console.log(sala.jogo.pontuacoes[userId]);
+
+
+        /*novo*/const jogador = sala.jogadores.find(j => j.id.toString() === userId.toString());
+
+                jogador.pontos = sala.jogo.pontuacoes[userId];
+
+                jogador.palavras = sala.jogo.palavrasDescobertas[userId].length;//novo
+
+
+                sala.markModified("jogo.pontuacoes");
+                sala.markModified("jogo.palavrasDescobertas");
 
                 await sala.save();
+
+                io.to(codigoNormalizado).emit("scoreUpdated", {
+                    userId,
+                    pontos: jogador.pontos
+                });
 
                 socket.emit("wordResult", {
                     success: true,
@@ -708,17 +864,18 @@ socket.on("startGame", async ({ codigoSala, userId }) => {
                     pontos: sala.jogo.pontuacoes[userId],
 
                     // palavras descobertas do jogador
-                    totalDescobertas:
-                        sala.jogo.palavrasDescobertas[userId].length
+                    totalDescobertas:sala.jogo.palavrasDescobertas[userId].length
                 });
-
                 return;
             }
 
             // inválida
             socket.emit("wordResult", {
                 success: false,
-                message: "Palavra inválida"
+                message: "Palavra inválida"/*,
+                palavra,
+                pontos,
+                totalDescobertas*/
             });
 
         } catch (err) {
@@ -728,7 +885,7 @@ socket.on("startGame", async ({ codigoSala, userId }) => {
     });//NOVO
 
 
-
+/*
     socket.on("updateScore", async ({ codigoSala, userId, pontos }) => {
         
       const sala = await Sala.findOne({ codigo: codigoSala });
@@ -748,7 +905,7 @@ socket.on("startGame", async ({ codigoSala, userId }) => {
           pontos
       });
 
-      /*const codigoNormalizado = codigoSala?.trim().toUpperCase();
+      const codigoNormalizado = codigoSala?.trim().toUpperCase();
 
 
         io.to(codigoNormalizado).emit(
@@ -757,10 +914,17 @@ socket.on("startGame", async ({ codigoSala, userId }) => {
                 userId,
                 pontos
             }
-        );*/
-    });
+        );
+    });*/
 
-    socket.on("updateWords", async ({ codigoSala, userId, palavras }) => {
+    /*socket.on("updateWords", async ({ codigoSala, userId, palavras }) => {
+        console.log("UPDATE WORDS EVENT");
+
+        console.log({
+            codigoSala,
+            userId,
+            palavras
+        });
 
         const sala = await Sala.findOne({ codigo: codigoSala });
 
@@ -773,7 +937,10 @@ socket.on("startGame", async ({ codigoSala, userId }) => {
         jogador.palavras = palavras;
 
         await sala.save();
-    });
+
+        console.log("PLAYER AFTER UPDATE");
+        console.log(jogador);
+    });*/
 
     socket.on("updateErrors", async ({ codigoSala, userId, erros }) => {
 
@@ -798,6 +965,9 @@ socket.on("startGame", async ({ codigoSala, userId }) => {
 
         if (!sala) return;
 
+        console.log("FINAL ROOM PLAYERS");
+        console.log(sala.jogadores);
+
         const resultados = sala.jogadores.map(jogador => ({
             id: jogador.id,
 
@@ -815,6 +985,14 @@ socket.on("startGame", async ({ codigoSala, userId }) => {
             "gameFinished",
             resultados
         );
+
+        if (sala.jogo.terminado) return;
+
+        sala.jogo.terminado = true;
+        await sala.save();
+
+        console.log("RESULTADOS");
+        console.log(resultados);
     });
   });
 }
