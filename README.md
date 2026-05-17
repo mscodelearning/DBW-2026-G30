@@ -37,23 +37,16 @@ Sem contra-relógio
 Timers de 30 e 60 segundos
 Personalizado - onde o valor colocado/definido tem de ser em segundos
 
-é possivel alterar o nickname e a palavra-passe.
-
-o username é unico pois é o que distingue os users registados.
-
-é possivel adicionar uma imagem ao avatar do jogador.
-
-a data de expiracao da sala publica é reiniciada sempre que é realizada uma accao na sala. como por exemplo a entrada de um user numa sala, alteracao do nome da sala, enviar mensagem no chat.
-foi definido um tempo limite de 20 min e apos esse tempo a sala publica é apagada da pagina das salas publicas. 
-
-é possivel visualizar a soma das estatisticas de todos os jogos na pagina do perfil.
-
-
 É possível alterar o nickname e a palavra-passe
 
 O username é único pois é o que distingue os users registados 
 
 É possível adicionar uma imagem ao avatar do jogador
+
+a data de expiracao da sala publica é reiniciada sempre que é realizada uma accao na sala. como por exemplo a entrada de um user numa sala, alteracao do nome da sala, enviar mensagem no chat.
+foi definido um tempo limite de 20 min e apos esse tempo a sala publica é apagada da pagina das salas publicas. 
+
+é possivel visualizar a soma das estatisticas de todos os jogos na pagina do perfil.
 
 
 
