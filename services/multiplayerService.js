@@ -141,7 +141,7 @@ export async function entrarNaSala(codigo, user) {
   if (jogadorJaExiste) {
     await Sala.updateOne(
       { _id: sala._id },
-      { $set: { expireAt: sala.isDefault ? null : novaDataExpiracao(10) } }
+      { $set: { expireAt: sala.isDefault ? null : novaDataExpiracao(20) } }
     );
     return await Sala.findById(sala._id);
   }
@@ -162,7 +162,7 @@ export async function entrarNaSala(codigo, user) {
         }
       },
       $set: {
-        expireAt: sala.isDefault ? null : novaDataExpiracao(10)
+        expireAt: sala.isDefault ? null : novaDataExpiracao(20)
       }
     }
   );
@@ -187,14 +187,14 @@ export async function sairDaSala(codigo, userId) {
     if (sala.isDefault) {
       sala.expireAt = null;
     } else {
-      sala.expireAt = novaDataExpiracao(10);
+      sala.expireAt = novaDataExpiracao(20);
     }
 
     await sala.save();
     return sala;
   }
 
-  sala.expireAt = sala.isDefault ? null : novaDataExpiracao(10);
+  sala.expireAt = sala.isDefault ? null : novaDataExpiracao(20);
   await sala.save();
   return sala;
 }

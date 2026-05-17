@@ -187,7 +187,7 @@ export default function multiplayerSocket(io) {
 
     const update = {
       jogadores: jogadoresAtualizados,
-      expireAt: salaAtual.isDefault ? null : novaDataExpiracao(10)
+      expireAt: salaAtual.isDefault ? null : novaDataExpiracao(20)
     };
 
     if (jogadoresAtualizados.length === 0) {

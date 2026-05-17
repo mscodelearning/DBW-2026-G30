@@ -23,7 +23,7 @@ export async function updateNomeSala(req, res) {
     sala.nome = nomeLimpo;
 
     if (!sala.isDefault) {
-      sala.expireAt = novaDataExpiracao(10);
+      sala.expireAt = novaDataExpiracao(20);
     } else {
       sala.expireAt = null;
     }
