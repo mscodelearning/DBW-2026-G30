@@ -1,6 +1,6 @@
 # DBW-2026-G30-Skriven
 
-# Projeto Matrioska de palavras
+# Projeto Matrioska de Palavras
 
 # Link para o Protótipo
 https://www.figma.com/design/V4CnCRUhqRlRt3aMpqBMty/Prototipo---DBW?node-id=0-1&p=f&t=uCUClVGZkR1T5unp-0
@@ -13,40 +13,40 @@ Após descarregar o projeto, abrir o terminal/consola e executar o comando
     'node index.js'  +  enter 
 
 De seguida abrir um browser e pesquisar o seguinte url
-    'http://localhost:3000/'
+    'http://localhost:3000/'.
 Esta ação abrirá a página web da aplicação desenvolvida e agora está tudo pronto para comecar a explorar a aplicação.
 
 
-# outras informações
-O timer/tempo é contado em segundos durante os jogos
+# Outras informações
+O timer/tempo é contado em segundos durante os jogos.
 
-Salas privadas: só o host/administrador pode começar o jogo
+Salas privadas: só o host/administrador pode começar o jogo.
 
-Salas públicas: qualquer jogador pode comecar o jogo desde que a sala tenha no mínimo 2 users
+Salas públicas: qualquer jogador pode comecar o jogo desde que a sala tenha no mínimo 2 users.
 
 REGRAS DE JOGO:
-A criação de palavras só pode ser feita da esquerda para a direita e de ordem de letras da palavra mestra de forma direta ou indireta
+A criação de palavras só pode ser feita da esquerda para a direita e de ordem de letras da palavra mestra de forma direta ou indireta.
 
 TIPOS DE CHALLENGE:
-Sem desafio de palavras
-Número mínimo de palavras a ser atingidas 
-Criação de palavras de acordo com mínimo ou máximo de letras
+Sem desafio de palavras;
+Número mínimo de palavras a ser atingidas;
+Criação de palavras de acordo com mínimo ou máximo de letras.
 
 TIPOS DE CONTRA-RELÓGIO:
-Sem contra-relógio
-Timers de 30 e 60 segundos
-Personalizado - onde o valor colocado/definido tem de ser em segundos
+Sem contra-relógio;
+Timers de 30 e 60 segundos;
+Personalizado - onde o valor colocado/definido tem de ser em segundos.
 
-É possível alterar o nickname e a palavra-passe
+É possível alterar o nickname e a palavra-passe.
 
-O username é único pois é o que distingue os users registados 
+O username é único pois é o que distingue os users registados.
 
-É possível adicionar uma imagem ao avatar do jogador
+É possível adicionar uma imagem ao avatar do jogador.
 
-a data de expiracao da sala publica é reiniciada sempre que é realizada uma accao na sala. como por exemplo a entrada de um user numa sala, alteracao do nome da sala, enviar mensagem no chat.
-foi definido um tempo limite de 20 min e apos esse tempo a sala publica é apagada da pagina das salas publicas. 
+A data de expiração da sala pública é reiniciada sempre que é realizada uma ação na sala, como por exemplo a entrada de um user numa sala, alteração do nome da sala, enviar mensagem no chat.
+Foi definido um tempo limite de 20 min e após esse tempo a sala pública é apagada da página das salas públicas. 
 
-é possivel visualizar a soma das estatisticas de todos os jogos na pagina do perfil.
+É possível visualizar a soma das estatísticas de todos os jogos na página do perfil.
 
 
 
