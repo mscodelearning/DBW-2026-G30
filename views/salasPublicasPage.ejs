@@ -40,7 +40,7 @@
 
                 <div class="texto-coluna">
                 <p><%= sala.jogadoresAtuais %>/<%= sala.configuracoes.players %> Jogadores</p>
-                <p><%= sala.configuracoes.timer ? sala.configuracoes.timer + " min" : "-" %></p>
+                <p><%= sala.configuracoes.timer ? sala.configuracoes.timer + " s" : "-" %></p>
                 <p>
                     <%= sala.configuracoes.challengeType !== "Não"
                     ? sala.configuracoes.challengeType + ": " + sala.configuracoes.challengeValue
