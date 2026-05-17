@@ -66,3 +66,12 @@ Se for criada uma sala pública com um user num browser e noutro browser outro u
 # Referências
 
 https://github.com/jfoclpf/words-pt
+https://www.youtube.com/watch?v=CYlNJpltjMM
+https://www.youtube.com/watch?v=5Fws9daTtIs
+https://www.w3schools.com/bootstrap5/index.php: - site inicial generico introdutorio
+https://www.w3schools.com/bootstrap5/bootstrap_alerts.php - popup salvar alteracoes
+https://www.w3schools.com/bootstrap5/bootstrap_forms.php
+https://www.youtube.com/watch?v=ybXulmeilFM
+https://www.w3schools.com/bootstrap5/bootstrap_dropdowns.php
+https://www.youtube.com/watch?v=fbYExfeFsI0&t=57s
+
