@@ -2,11 +2,19 @@ import Sala from '../models/sala.js';
 import { refreshRoomExpiry, novaDataExpiracao } from "../services/roomExpiryService.js";
 
 
-
+/**
+ * atualiza o nome de uma sala multiplayer através do código da sala.
+ * também redefine quando a sala deve expirar caso esta não seja uma sala default.
+ * @param {Object} req pedido http contendo os dados da sala
+ * @param {Object} res resposta http enviada ao cliente
+ * @returns {Promise<void>}
+ */
 export async function updateNomeSala(req, res) {
   try {
-    const { codigo } = req.params;
-    const { nome } = req.body;
+    //req.params - parâmetros da rota
+    //req.body - dados enviados pelo frontend
+    const { codigo } = req.params;  //código identificador da sala
+    const { nome } = req.body;      // novo nome da sala
 
     const nomeLimpo = nome?.trim();
 
@@ -28,7 +36,8 @@ export async function updateNomeSala(req, res) {
       sala.expireAt = null;
     }
     await sala.save();
-
+    
+    // retorna a sala atualizada ou uma mensagem de erro.
     return res.json({
       message: 'Nome da sala atualizado com sucesso.',
       sala

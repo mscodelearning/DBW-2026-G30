@@ -1,5 +1,10 @@
 'use strict';
 
+
+/**
+ * gere o chat da sala privada utilizando sockets, incluindo a ligação à sala,
+ * histórico de mensagens e envio/receção de mensagens em tempo real.
+ */
 document.addEventListener('DOMContentLoaded', () => {
   console.log("chatSalaPrivada.js carregado");
 
@@ -59,6 +64,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+
+  /**
+   * envia uma mensagem para o chat da sala privada através do socket ativo
+   * @returns {void}
+   */
   function enviarMensagem() {
     const texto = mensagemInput.value.trim();
     console.log("enviarMensagem chamada", texto);
@@ -81,6 +91,11 @@ document.addEventListener('DOMContentLoaded', () => {
     mensagemInput.focus();
   }
 
+
+  /**
+   * renderiza visualmente uma mensagem no chat, aplicando estilos diferentes para as mensagens próprias e para as externas.
+   * @param {Object} msg - dados da mensagem recebida
+   */
   function renderMensagem(msg) {
     const minhaMensagem = String(msg.senderId) === String(userId);
 
@@ -98,10 +113,21 @@ document.addEventListener('DOMContentLoaded', () => {
     mensagensContainer.appendChild(wrapper);
   }
 
+
+  /**
+   * move automaticamente o scroll do chat para a mensagem mais recente
+   * @returns {void}
+   */
   function scrollToBottom() {
     mensagensContainer.scrollTop = mensagensContainer.scrollHeight;
   }
 
+
+  /**
+   * escapa caracteres html para evitar a inserção de conteúdo html malicioso no chat
+   * @param {string} text - texto a ser tratado
+   * @returns {string} texto convertido em formato seguro
+   */
   function escapeHtml(text) {
     const div = document.createElement('div');
     div.textContent = text;
