@@ -4,8 +4,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    
-
+    // carrega as configuracoes e referencias inicais do jogo
     const timer = localStorage.getItem("timer");
     const finalizarBtn = document.getElementById("finalizar-jogo");
 
@@ -19,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let erros = 0;
     let palavrasDescobertas = 0;
     
+    // decide se o jogo termina manualmente ou com temporizador
     if (timer === "none") {
         finalizarBtn.style.display = "block";
         display.style.display = "none";
@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const input = document.getElementById("caixa-texto");
 
+    // processa a palavra submetida pelo jogador ao premir enter
     input.addEventListener("keydown", async (event) => {
 
         if (event.key !== "Enter") return;
@@ -40,6 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (!palavra) return;
 
+            // valida a palavra de acordo com as regaras do desafio atual
             if (!validarPalavra(palavra)) {
 
                 erros++;
@@ -82,6 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
+    // valida a palavra com base no tipo  de desafio configurado
     function validarPalavra(palavra) {
         if (challengeType === "Não") return true;
 
@@ -98,6 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return true;
     }
 
+    // adiciona uma nova palavra valida a lista apresentada ao jogador
     function adicionarPalavra(palavra) {
         let lista = document.getElementById("palavras-descobertas");
 
@@ -108,6 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
         lista.scrollTop = lista.scrollHeight;
     }
 
+    // inicia a contagem descrescente do jogo
     function iniciarTimer(tempo) {
         let tempoRestante = tempo;
         const display = document.getElementById("timer-display");
@@ -126,6 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 1000);
     }
 
+    // calcula as estatisticas finais e guarda os dados e termina o jogo
     async function terminarJogo() {
     if (challengeType === "Objetivo: nº palavras") {
         if (palavrasDescobertas < parseInt(challengeValue)) {
@@ -176,13 +182,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 }
 
-
-
-
-
-
+    // permite terminar o jogo manualmente quando nao existe temporizador
     finalizarBtn.addEventListener("click", terminarJogo);
 
+    // mostra mensagens temporarias ao jogador
     function mostrarAlerta(mensagem) {
         const container = document.getElementById("alerta-container");
 

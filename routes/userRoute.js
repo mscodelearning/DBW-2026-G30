@@ -13,9 +13,11 @@ const router = express.Router();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// rotas do registo
 router.get("/signup", getSignup);
 router.post("/signup", postSignup);
 
+// rotas de autenticacao
 router.get("/login", getLogin);
 
 router.post(
@@ -28,6 +30,7 @@ router.post(
   }
 );
 
+// termina a sessao do utilizador autenticado
 router.post("/logout", (req, res, next) => {
   req.logout((err) => {
     if (err) return next(err);
@@ -40,11 +43,12 @@ router.post("/logout", (req, res, next) => {
   });
 });
 
+// mostra a pagina do perfil do utilizador autenticado
 router.get("/perfilPage", isLoggedIn, (req, res) => {
   res.render("perfil", { user: req.user });
 });
 
-
+// atualiza o nickname do utilizador autenticado
 router.post("/perfilPage", isLoggedIn, async (req, res) => {
   console.log("POST /perfilPage in userRoute reached");
 
@@ -66,11 +70,12 @@ router.post("/perfilPage", isLoggedIn, async (req, res) => {
   }
 });
 
-
+// mostra o formulario de alteracao da palavra-passe
 router.get("/alterarPalavraPasse", isLoggedIn, (req, res) => {
   res.render("alteraPalavraPasse", { error: null });
 });
 
+// atualiza a palavra-passe do utilizador autenticado
 router.post("/alterarPassword", isLoggedIn, async (req, res) => {
     console.log("POST /alterarPassword reached");
   console.log("BODY:", req.body);
@@ -100,7 +105,10 @@ router.post("/alterarPassword", isLoggedIn, async (req, res) => {
   }
 });
 
-
+/**
+ * configuracao de armazenamento dos avatares enviados pelos utilizadores e
+ * define a pasta de destino e gera o nome unico para cada ficheiro
+ */
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, path.join(__dirname, "../public/uploads/avatars"));
@@ -111,6 +119,12 @@ const storage = multer.diskStorage({
   }
 });
 
+/**
+ * filtra os ficheiros enviados , permitindo apenas imagens
+ * @param {} req pedido http
+ * @param {*} file ficheiro enviado
+ * @param {*} cb callback do multer 
+ */
 const fileFilter = (req, file, cb) => {
   if (file.mimetype.startsWith("image/")) {
     cb(null, true);
@@ -119,8 +133,10 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
+// middleware de upload para um unico ficheiro de avatar
 const upload = multer({ storage, fileFilter });
 
+// faz upload do avatar e atualiza o caminho da imagem no perfil do utilizador
 router.post("/uploadAvatar", isLoggedIn, upload.single("avatar"), async (req, res) => {
   try {
     if (!req.file) {

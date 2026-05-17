@@ -8,6 +8,7 @@ if (formAreaLogin) {
   const usernameInputLogin = form.querySelector('input[name="username"]');
   const passwordInputLogin = form.querySelector('input[name="password"]');
 
+  // valida os campos de login antes de permitir o envio do formulario
   form.addEventListener("submit", (event) => {
     if (!validateUserPassword(usernameInputLogin, passwordInputLogin)) {
       event.preventDefault();
@@ -18,6 +19,7 @@ if (formAreaLogin) {
 
 let subMenu = document.getElementById("subMenu");
 
+// mostra ou esconde o submenu
 function toggleMenu(){
   subMenu.classList.toggle("open-menu");
 }

@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
 const texto = document.getElementById("texto-altera-imagem");
 const popup = document.getElementById("pop-up");
 
-
+// abre o popup de alteracao de imagem e fecha ao clicar fora do conteudo
 if (texto && popup) {
         texto.addEventListener("click", () => 
           popup.style.display = "flex");
@@ -24,6 +24,7 @@ const btnRemover = document.getElementById("btn-remover");
 const btnAplicar = document.getElementById("btn-aplicar");
 const perfilImg = document.getElementById("perfil-img");
 
+// garante que os eleemntos principais existem antes de ativar o upload
 if (!inputFile || !imageView || !perfilImg) {
         console.error("Elementos obrigatórios em falta!");
         return;
@@ -33,7 +34,8 @@ if (!inputFile || !imageView || !perfilImg) {
 const defaultPerfilSrc = perfilImg.src;
 let currentImageUrl = null; // guarda o url do preview
 
-inputFile.addEventListener("change", uploadImage); /* IMPORTANTE */
+// atualiza o preview quando o utilizador escolhe uma nova imagem
+inputFile.addEventListener("change", uploadImage); 
 
 function uploadImage(){
 
@@ -54,16 +56,19 @@ function uploadImage(){
 
 }
 
+// permite arrastar ficheiros para a area de upload
 dropArea.addEventListener("dragover", function(e) {
   e.preventDefault();
 });
 
+// processa o ficheiro largado na area do upload
 dropArea.addEventListener("drop", function(e) {
   e.preventDefault();
   inputFile.files = e.dataTransfer.files;
   uploadImage();
 });
 
+// remove a imagem selecionada e repoe o estado inicial do preview
 btnRemover.addEventListener("click", () => {
   inputFile.value = "";
   imageView.style.backgroundImage = "none";
@@ -82,7 +87,7 @@ btnRemover.addEventListener("click", () => {
     currentImageUrl = null;
 });
 
-
+// impede a submissao se nenhuma imagem tiver sido selecionada
 btnAplicar.addEventListener("click", (e) => {
   if (!inputFile.files[0]) {
     e.preventDefault();

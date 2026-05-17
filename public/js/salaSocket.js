@@ -1,17 +1,19 @@
 'use strict';
 
 document.addEventListener("DOMContentLoaded", () => {
-
+    // inicializa a liagacao socket.io no cliente
     window.socket = io();
 
     const codigoSala = window.dadosSala.codigo;
     const userId = window.dadosSala.userId;
 
+    // informa o servidor de que o utilizador entrou na sala multiplayer
     socket.emit("joinMultiplayerRoom", {
         codigoSala,
         userId
     });
 
+    // atualiza a lista de jogadores mostrada na interface
     socket.on("playersUpdated", (jogadores) => {
 
         const listaJogadores = document.querySelector(".lista-jogadores");
@@ -42,12 +44,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         });
 
-
-        const contador =
-            document.getElementById("contadorJogadores");
-
-        const maxPlayers =
-            contador.dataset.max;
+        // atualiza o contador de jogadores na sala
+        const contador = document.getElementById("contadorJogadores");
+        const maxPlayers = contador.dataset.max;
 
         contador.textContent =
             `${jogadores.length}/${maxPlayers}`;
@@ -58,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const startButton = document.getElementById("start-button");
 
     if (startButton) {
-
+        // permite ao user iniciar o jogo
         startButton.addEventListener("click", () => {
 
             socket.emit("startGame", {
@@ -70,6 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
+    // guarda os dados do jogo e redireciona para a pagina de jogo
     socket.on("gameStarted", (dadosJogo) => {
 
         localStorage.setItem(
@@ -81,6 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
+    // mostra mensagens de erro enviadas pelo servidor
     socket.on("erroSala", ({ mensagem }) => {
         alert(mensagem);
     });

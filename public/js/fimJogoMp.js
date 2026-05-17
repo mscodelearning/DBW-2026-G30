@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const botaoSair = document.getElementById("botao-sair-estatisticas");
     const codigoSala = localStorage.getItem("fimJogoCodigoSala") || multiplayerGameData?.codigoSala;
 
+    // mostra informacao sobre o codigo da sala usado no fim do jogo
 console.log("DEBUG fimJogoMp codigoSala:", {
     fimJogoCodigoSala: localStorage.getItem("fimJogoCodigoSala"),
     multiplayerGameDataCodigo: JSON.parse(localStorage.getItem("multiplayerGameData"))?.codigoSala,
@@ -13,16 +14,19 @@ console.log("DEBUG fimJogoMp codigoSala:", {
     codigoUsado: codigoSala
 });
 
+// atualiza o botao de sair para regressar a sala correspondente
 if (botaoSair && codigoSala) {
     botaoSair.href = `/multiplayer/sala/${codigoSala}`;
 }
 
+    // carrega os resultados finaais do jogo
     const gameResults = JSON.parse(localStorage.getItem("gameResults"));
     if (!gameResults) return;
 
     const playerCount = gameResults.length;
     const title = document.querySelector("h2");
 
+    // ajusta o espacamento do titulo conforme o numero de jogadores
     if (playerCount === 3) {
         title.style.marginBottom = "40px";
     } 
@@ -35,11 +39,7 @@ if (botaoSair && codigoSala) {
         title.style.marginTop = "-12px";
     }
 
-    /*LOGICA DE VENCEDOR ANTIGA, APENAS TEM EM CONTA O NUMERO DE PONTOS MAIOR E NAO VERIFICA SE TEM O MESMO NUMERO DE PONTOS
-    const vencedor = gameResults.reduce((best, p) =>
-        p.stats.pontos > best.stats.pontos ? p : best
-    );*/
-
+    // determina o vencedor com base na pontuacao e em caso de empate no menor de erros
     const vencedor = gameResults.reduce((best, p) => {
 
         if (p.stats.pontos > best.stats.pontos) {
@@ -56,12 +56,14 @@ if (botaoSair && codigoSala) {
 
     document.getElementById("vencedor").textContent = `Vencedor: ${vencedor.name}`;
 
+    // escolhe o tipo de apresentacao dos resultados
     if (gameResults.length === 2) {
         render1v1(gameResults);
     } else {
         renderTable(gameResults);
     }
 
+    // mostra os resultados em formato frente a frente para jogos com 2 joagdores
     function render1v1(players) {
         const container = document.getElementById("stats-container");
         container.innerHTML = "";
@@ -102,6 +104,7 @@ if (botaoSair && codigoSala) {
         });
     }
 
+    // mostra os resultados em formato de tabela para jogos com mais de 2 joagdores
     function renderTable(players) {
         const container = document.getElementById("stats-container");
         container.innerHTML = "";

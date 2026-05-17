@@ -2,6 +2,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
+    // carrega os dados do jogo guardados no navegador
     const dadosJogo = JSON.parse(
         localStorage.getItem("multiplayerGameData")
     );
@@ -21,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let palavrasValidas = 0;
     let palavrasDescobertas = 0;
 
+    // define se o jogo usa temporizador ou finalizacao manual
     if (!timer || timer === 0) {
         finalizarBtn.style.display = "block";
         display.style.display = "none";
@@ -33,18 +35,21 @@ document.addEventListener("DOMContentLoaded", () => {
     let nome = "Pessoa";
     let pontos = 0;
 
+    // liga o cliente ao socket.io e associa o a sala atual
     const socket = io();
     socket.emit("joinMultiplayerRoom", {
         codigoSala: dadosJogo.codigoSala,
         userId: currentUserId
     });
 
+    // recebe os resultados finais do jogo e redireciona para a pagina final
     socket.on("gameFinished", (resultados) => {
         localStorage.setItem("gameResults",JSON.stringify(resultados));
         localStorage.setItem("fimJogoCodigoSala", dadosJogo.codigoSala);
         window.location.href = "/fimJogoMp";
     });
 
+    // trata a resposta do servidor apos a submissao de uma palavra
     socket.on("wordResult", (data) => {
         console.log("WORD RESULT RECEIVED");
         console.log("player:", currentUserId);
@@ -84,6 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    // atualiza a pontuacao visivel dos outros jogadores
     socket.on("scoreUpdated", ({ userId, pontos }) => {
 
         if (userId === currentUserId) {
@@ -110,6 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const input = document.getElementById("caixa-texto");
 
+    // envia uma nova palavra para a validacao quando o utilizador prime enter
     input.addEventListener("keydown", async (event) => {
 
         if (event.key !== "Enter") return;
@@ -118,6 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!palavra) return;
 
+        // valida a palavra com base nas regras do desafio final
         if (!validarPalavra(palavra)) {
 
             erros++;
@@ -144,6 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
         input.value = "";
     });
 
+    // verifica se a palavra respeita o tipo de desafio definido para o jogo
     function validarPalavra(palavra) {
         if (challengeType === "Não") return true;
 
@@ -160,6 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return true;
     }
 
+    // adiciona uma palavra valida a lista apresentada no ecra
     function adicionarPalavra(palavra) {
         let lista = document.getElementById("palavras-descobertas");
 
@@ -170,6 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
         lista.scrollTop = lista.scrollHeight;
     }
 
+    // inicia a contagem descrescente do jogo
     function iniciarTimer(tempo) {
 
         let tempoRestante = tempo;
@@ -193,7 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 1000);
     }
 
-
+// guarda estatisticas e informa o servidor e termina a partida
 async function terminarJogo() {
     if (challengeType === "Objetivo: nº palavras") {
         if (palavrasDescobertas < parseInt(challengeValue)) {
@@ -267,9 +278,10 @@ async function terminarJogo() {
     }, 2000);
 }
 
-
+    // permite terminar manualmente o jogo quando aplicavel
     finalizarBtn.addEventListener("click", terminarJogo);
 
+    // mostra mensagens temporarias ao utilizador
     function mostrarAlerta(mensagem) {
         const container = document.getElementById("alerta-container");
 
@@ -290,10 +302,11 @@ async function terminarJogo() {
     console.log("myId:", myId);
     console.log("found player:", players.find(p => p.id == myId));
 
+    // faz render ao jogador atual da sala e identifica o jogador atual
      renderPlayers(players, myId);
 });
 
-
+// mostra os adversarios da sala e identifica o jogador atual
 function renderPlayers(players, myId) {
     const container = document.getElementById("adversarios-container");
     container.innerHTML = "";

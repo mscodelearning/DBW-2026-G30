@@ -7,19 +7,32 @@ import {
     gerarPalavrasValidas
 } from "../services/gameService.js";
 
-const socketsSalas = new Map();
-const disconnectTimers = new Map();
+const socketsSalas = new Map(); // associa cada socket ligadp à sala e ao respetivo utilizador
+const disconnectTimers = new Map(); // guarda timers de desconexao pendentes para permitir reconexao antes de remover jogador
 
+/**
+ * funcao que verifica se o utilizador é o host(anfitriao) da sala
+ * @param {Object} sala 
+ * @param {String} userId 
+ * @returns {boolean} retorna true se o utilizador for o host da sala, caso contrario se nao forem iguais retorna false
+ */
 
 function isHost(sala, userId) {
     return sala.host.toString() === userId.toString();
 }
 
+/**
+ * funcao responsavel por configurar os eventos Socket.io.IO do modo multiplayer
+ * e ira gerir a entrada e saida dos jogadores, chat, inicio e fim de jogo, 
+ * submissao de palavras, atualizacao de de pontuacoes e desconexao 
+ */
 
 export default function multiplayerSocket(io) {
   io.on("connection", (socket) => {
     console.log(`Utilizador ligado: ${socket.id}`);
 
+    // adiciona um utilizador a uma sala, associa ao socket a sala depois cancela os 
+    // timers de desconexao em caso de reconexao e atualiza a validade da sala quando ocorrer uma acao
     socket.on("joinMultiplayerRoom", async ({ codigoSala, userId }) => {
       try {
         const codigoNormalizado = codigoSala?.trim().toUpperCase();
@@ -39,8 +52,6 @@ export default function multiplayerSocket(io) {
     console.log(`Reconexão detectada para ${userId} no timer ${key}`);
   }
 }
-
-
         console.log("Tentando procurar sala com código:", JSON.stringify(codigoNormalizado));
 
         const sala = await Sala.findOne({ codigo: codigoNormalizado });
@@ -64,6 +75,8 @@ export default function multiplayerSocket(io) {
       }
     });
 
+
+    //junta o socket ao canal de chat da sala e envia o historico recente de mensagens
     socket.on("joinRoom", async (roomName) => {
       try {
         const normalizedRoom = roomName?.trim().toUpperCase();
@@ -98,6 +111,7 @@ export default function multiplayerSocket(io) {
       }
     });
 
+    // guarda uma nova mensagem de chat na base de dadso e envia-a para todos os utilizadores ligados à sala
     socket.on("chat", async (msgData) => {
       try {
         const normalizedMessage = msgData?.mensagem?.trim();
@@ -111,10 +125,10 @@ export default function multiplayerSocket(io) {
         }
 
         const novaMensagem = await ChatMessage.create({
-          salaCodigo: normalizedRoom,
-          senderId: msgData.senderId,
-          senderName: msgData.senderName || "Utilizador",
-          senderAvatar: msgData.senderAvatar || "/symbols/Union-user-icon.png",
+          salaCodigo: normalizedRoom, // codigo da sala 
+          senderId: msgData.senderId, // id do jogador que envia
+          senderName: msgData.senderName || "Utilizador", // nome do jogador que envia 
+          senderAvatar: msgData.senderAvatar || "/symbols/Union-user-icon.png", // avatar do jogador que envia
           mensagem: normalizedMessage,
         });
 
@@ -123,7 +137,7 @@ export default function multiplayerSocket(io) {
           senderId: String(novaMensagem.senderId),
           senderName: novaMensagem.senderName,
           senderAvatar: novaMensagem.senderAvatar,
-          mensagem: novaMensagem.mensagem,
+          mensagem: novaMensagem.mensagem, // conteudo da mensagem
           sala: normalizedRoom,
           createdAt: novaMensagem.createdAt,
         };
@@ -134,6 +148,9 @@ export default function multiplayerSocket(io) {
       }
     });
 
+    // trata da desconexao de um socket e vai criar um tempo de tolerancia para 
+    // a reconexao antes de remover o jogador da sala dde forma definitiva
+    // se nao houver reconexao, atualiza a lista de jogadores e o estado da sala
     socket.on("disconnect", async () => {
       try {
         console.log("Socket desconectado");
@@ -241,106 +258,110 @@ export default function multiplayerSocket(io) {
       }
     });
 
-socket.on("startGame", async ({ codigoSala, userId }) => {
-    try {
-        const codigoNormalizado = codigoSala?.trim().toUpperCase();
+    // inicia o jogo numa sala, valida permissoes , numero minimo de jogadores e estado atual da sala
+    // gera a palavra mestra, as palavras que sao validas de acordo com a palavra mestrae temporizador
+    socket.on("startGame", async ({ codigoSala, userId }) => {
+      try {
+          const codigoNormalizado = codigoSala?.trim().toUpperCase();
 
-        const sala = await Sala.findOne({codigo: codigoNormalizado});
+          const sala = await Sala.findOne({codigo: codigoNormalizado});
 
-        if (!sala) {
-            return socket.emit("erroSala", {mensagem: "Sala não encontrada."});
-        }
+          if (!sala) {
+              return socket.emit("erroSala", {mensagem: "Sala não encontrada."});
+          }
 
-        const isPublicRoom = sala.configuracoes.access === "Público";
+          const isPublicRoom = sala.configuracoes.access === "Público";
 
-        if (!isPublicRoom && !isHost(sala, userId)) {
-            return socket.emit("erroSala", {mensagem:"Só o administrador pode iniciar uma sala privada."});
-        }
+          if (!isPublicRoom && !isHost(sala, userId)) {
+              return socket.emit("erroSala", {mensagem:"Só o administrador pode iniciar uma sala privada."});
+          }
 
-        if (sala.jogo?.iniciado || sala.estado === "playing") {
-            return socket.emit("erroSala", {mensagem: "O jogo já foi iniciado."});
-        }
+          if (sala.jogo?.iniciado || sala.estado === "playing") {
+              return socket.emit("erroSala", {mensagem: "O jogo já foi iniciado."});
+          }
 
-        if (sala.jogadores.length < 2) {
-            return socket.emit("erroSala", {mensagem:"São necessários pelo menos 2 jogadores para iniciar."});
-        }
+          if (sala.jogadores.length < 2) {
+              return socket.emit("erroSala", {mensagem:"São necessários pelo menos 2 jogadores para iniciar."});
+          }
 
-        const palavraMestra = getRandomPalavraMestra();
-        const palavrasValidas = gerarPalavrasValidas(palavraMestra);
+          const palavraMestra = getRandomPalavraMestra();
+          const palavrasValidas = gerarPalavrasValidas(palavraMestra);
 
-        const timer = sala.configuracoes.timer || 0;
+          const timer = sala.configuracoes.timer || 0;
 
-        sala.jogo = {
-            iniciado: true,
-            terminado: false,
-            palavraMestra,
-            palavrasValidas,
-            inicio: new Date(),
-            fimJogo: timer > 0 ? Date.now() + (timer * 1000) : null,
-            palavrasDescobertas: {},
-            pontuacoes: {}
-        };
-        sala.estado = "playing";
-        await sala.save();
+          sala.jogo = {
+              iniciado: true,
+              terminado: false,
+              palavraMestra,
+              palavrasValidas,
+              inicio: new Date(),
+              fimJogo: timer > 0 ? Date.now() + (timer * 1000) : null,
+              palavrasDescobertas: {},
+              pontuacoes: {}
+          };
+          sala.estado = "playing";
+          await sala.save();
 
-        io.to(codigoNormalizado).emit("gameStarted", {
-                codigoSala: codigoNormalizado,
-                palavraMestra,
-                configuracoes: sala.configuracoes,
-                jogadores: sala.jogadores
-            }
-        );
+          io.to(codigoNormalizado).emit("gameStarted", {
+                  codigoSala: codigoNormalizado,
+                  palavraMestra,
+                  configuracoes: sala.configuracoes,
+                  jogadores: sala.jogadores
+              }
+          );
 
-        if (timer > 0) {
-            setTimeout(async () => {
-                try {
-                    const salaAtual = await Sala.findOne({ codigo: codigoNormalizado });
+          if (timer > 0) {
+              setTimeout(async () => {
+                  try {
+                      const salaAtual = await Sala.findOne({ codigo: codigoNormalizado });
 
-                    if (!salaAtual) {
-                        return;
-                    }
+                      if (!salaAtual) {
+                          return;
+                      }
 
-                    if (salaAtual.jogo?.terminado) { return; }
+                      if (salaAtual.jogo?.terminado) { return; }
 
-                    salaAtual.jogo.terminado = true;
+                      salaAtual.jogo.terminado = true;
 
-                    salaAtual.estado = "waiting";
+                      salaAtual.estado = "waiting";
 
-                    await salaAtual.save();
+                      await salaAtual.save();
 
-                    console.log("FINAL ROOM PLAYERS");
-                    console.log(salaAtual.jogadores);
+                      console.log("FINAL ROOM PLAYERS");
+                      console.log(salaAtual.jogadores);
 
-                    const resultados = salaAtual.jogadores.map(jogador => ({
-                            id: jogador.id,
-                            name: jogador.nickname,
-                            stats: {
-                                pontos:
-                                    jogador.pontos || 0,
-                                palavras:
-                                    jogador.palavras || 0,
-                                erros:
-                                    jogador.erros || 0,
-                                tempo: timer
-                            }
-                        }));
+                      const resultados = salaAtual.jogadores.map(jogador => ({
+                              id: jogador.id,
+                              name: jogador.nickname,
+                              stats: {
+                                  pontos:
+                                      jogador.pontos || 0,
+                                  palavras:
+                                      jogador.palavras || 0,
+                                  erros:
+                                      jogador.erros || 0,
+                                  tempo: timer
+                              }
+                          }));
 
-                    console.log("RESULTADOS");
-                    console.log(resultados);
+                      console.log("RESULTADOS");
+                      console.log(resultados);
 
-                    io.to(codigoNormalizado).emit("gameFinished", resultados);
+                      io.to(codigoNormalizado).emit("gameFinished", resultados);
 
-                } catch (err) {
-                    console.error(err);
-                }
-            }, timer * 1000);
-        }
+                  } catch (err) {
+                      console.error(err);
+                  }
+              }, timer * 1000);
+          }
 
-    } catch (err) {
-        console.error("Erro ao iniciar jogo:", err);
-        socket.emit("erroSala", { mensagem: "Erro ao iniciar o jogo."});
-    }
-});
+      } catch (err) {
+          console.error("Erro ao iniciar jogo:", err);
+          socket.emit("erroSala", { mensagem: "Erro ao iniciar o jogo."});
+      }
+  });
+
+//termina manualmente o jogo e repoe o estado da sala para espera
 
 socket.on("endGame", async ({ codigoSala }) => {
   try {
@@ -372,13 +393,9 @@ socket.on("endGame", async ({ codigoSala }) => {
   }
 });
 
-
-
-
-
-
-
-
+    // processa uam palavra submetida por um jogador, validando se o jogo esta ativo,
+    // se a palavra ja foi descoberta e se pertence ao conjunto de palavras validas 
+    //depois atualiza a pontuacao e o progresso do jogador quando a palavra é aceite
     socket.on("submitWord", async ({ codigoSala, userId, palavra }) => {
 
         try {
@@ -487,6 +504,10 @@ socket.on("endGame", async ({ codigoSala }) => {
         await sala.save();
     });
 
+
+    // finaliza o jogo, calcula os resultados com base nas 
+    // estatisticas atuais dos jogadores e emite os resultados 
+    // para todos os clientes da sala
     socket.on("finishGame", async ({ codigoSala, tempo }) => {
 
         const sala = await Sala.findOne({ codigo: codigoSala });

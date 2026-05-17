@@ -10,16 +10,19 @@ const salaCodigo = config.dataset.salaCodigo;
 
 let originalValue = nomeSalaInput.value;
 
+// mostra a barra de guardar quando o nome da sala é alterado 
 nomeSalaInput.addEventListener('input', () => {
   const isDirty = nomeSalaInput.value !== originalValue;
   saveBar.classList.toggle('show', isDirty);
 });
 
+// repoe o nome original da sala e esconde a barra de guardar 
 btnReset.addEventListener('click', () => {
   nomeSalaInput.value = originalValue;
   saveBar.classList.remove('show');
 });
 
+// guarda o novo nome da sala no servidor
 btnSave.addEventListener('click', async () => {
   const novoNome = nomeSalaInput.value.trim();
 
@@ -44,6 +47,7 @@ btnSave.addEventListener('click', async () => {
       return;
     }
 
+    // atualiza o valor original apos guardar com sucesso
     originalValue = data.sala.nome;
     nomeSalaInput.value = data.sala.nome;
     saveBar.classList.remove('show');

@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const usernameInput = form.querySelector('input[name="username"]');
   const passwordInput = form.querySelector('input[name="password"]');
 
+  // valida os campos comuns de username e password
   const validateUserPassword = (usernameInput, passwordInput) => {
     const username = usernameInput.value.trim();
     const password = passwordInput.value.trim();
@@ -28,6 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return true;
   };
 
+  // valida todos os campos do formulario do registo
   const validateSignupInputs = (nicknameInput, usernameInput, passwordInput) => {
     const nickname = nicknameInput.value.trim();
 
@@ -40,6 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return validateUserPassword(usernameInput, passwordInput);
   };
 
+  // impede o envio do formulario se os dados forem invalidos
   form.addEventListener("submit", (event) => {
     if (!validateSignupInputs(nicknameInput, usernameInput, passwordInput)) {
       event.preventDefault();

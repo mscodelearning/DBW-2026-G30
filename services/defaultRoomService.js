@@ -1,5 +1,9 @@
 import Sala from "../models/sala.js";
 
+/**
+ * garante que as salas publicas predefinidas existam na base de dados 
+ * se alguma sala default nao existir, ela é criaada automaticamente
+ */
 export async function garantirSalasPublicasDefault() {
   const defaults = [
     {

@@ -3,10 +3,12 @@
 const entrarLink = document.getElementById("entrar-link");
 const inputCodigo = document.getElementById("codigoSala");
 
+// trata a tentativa de entrada numa sala privada atraves do codigo inserido
 entrarLink.addEventListener("click", async function (event) {
 
     event.preventDefault();
 
+    // obtem e normaliza o codigo da sala introduzido pelo utilizador
     const codigo = inputCodigo.value
         .trim()
         .toUpperCase();
@@ -17,7 +19,7 @@ entrarLink.addEventListener("click", async function (event) {
     }
 
     try {
-
+        // envia um pedido ao servidor para entrar na sala indicada
         const resposta = await fetch(
             `/multiplayer/sala/${codigo}/entrar`,
             {
@@ -31,7 +33,7 @@ entrarLink.addEventListener("click", async function (event) {
         const dados = await resposta.json();
 
         if (dados.sucesso) {
-
+            // redireciona o user para a pagina da sala
             window.location.href =
                 `/multiplayer/sala/${codigo}`;
 

@@ -3,10 +3,12 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
+  // carrega as estatisticas finais do jogo guardadas no navegador
     const stats = JSON.parse(localStorage.getItem("estatisticasJogo"));
 
     if (!stats) return;
 
+    // mostra as estitisticas do jogador na pagina inical
     document.getElementById("palavras").textContent = stats.palavrasDescobertas;
     document.getElementById("erros").textContent = stats.erros;
     document.getElementById("pontos").textContent = stats.pontos;
