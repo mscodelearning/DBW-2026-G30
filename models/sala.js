@@ -1,5 +1,9 @@
 import mongoose from "mongoose";
 
+
+/**
+ * schema responsavel por armazenar os dados das salas multiplayer
+ */
 const salaSchema = new mongoose.Schema({
 
     codigo: {
@@ -131,6 +135,10 @@ const salaSchema = new mongoose.Schema({
     timestamps: true
 });
 
+
+/**
+ * modelo MongoDB usado para gerir salas multiplayer
+ */
 const Sala = mongoose.model("Sala", salaSchema);
 
 export default Sala;

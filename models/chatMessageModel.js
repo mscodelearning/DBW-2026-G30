@@ -1,5 +1,8 @@
 import mongoose from "mongoose";
 
+/**
+ * schema responsável por armazenar mensagens enviadas no chat das salas multiplayer.
+ */
 const chatMessageSchema = new mongoose.Schema(
   {
     salaCodigo: {
@@ -32,6 +35,9 @@ const chatMessageSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+/**
+ * modelo MongoDB usado para gerir mensagens de chat
+ */
 const ChatMessage = mongoose.model("ChatMessage", chatMessageSchema);
 
 export default ChatMessage;

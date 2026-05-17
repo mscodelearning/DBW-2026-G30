@@ -1,5 +1,8 @@
 'use strict';
 
+/**
+ * gere a criação de salas multiplayer, incluindo seleção de configurações, validação dos dados e envio da sala para o servidor.
+ */
 document.addEventListener("DOMContentLoaded", () => {
     const customInput = document.getElementById("custom-timer");
     const timerOptions = document.querySelectorAll("#timer-options .item");
@@ -18,6 +21,12 @@ document.addEventListener("DOMContentLoaded", () => {
     let selectedAccess= null;
     let selectedPlayers = null;
 
+
+
+    /**
+     * atualiza o estado do botão de criação da sala, verificando se todas as configurações obrigatórias foram selecionadas
+     * @returns {void}
+     */
     function updateButton() {
         let timerValid = selectedTimer !== null;
 
@@ -31,6 +40,14 @@ document.addEventListener("DOMContentLoaded", () => {
         startButton.disabled = !(timerValid && challengeValid && accessValid && playersValid);
     }
 
+
+    /**
+     * 
+     * @param {NodeList} group - grupo de opções disponíveis
+     * @param {HTMLElement} clicked - elemento selecionado pelo utilizador
+     * @param {string} type - tipo de configuração a atualizar
+     * @returns {void}
+     */
     function selectOne(group, clicked, type) {
         group.forEach(item => item.classList.remove("selected"));
         clicked.classList.add("selected");
