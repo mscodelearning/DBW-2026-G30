@@ -9,10 +9,22 @@ https://www.figma.com/design/V4CnCRUhqRlRt3aMpqBMty/Prototipo---DBW?node-id=0-1&
 https://app.diagrams.net/#G1lKmWgwfIUZr4TAZwQtRTPHAeSgalVQSE#%7B%22pageId%22%3A%22Dm8GCAjloSy8AhbAD12E%22%7D
 
 # Configuração a ser feita para a execução do projeto
-Após descarregar o projeto, abrir o terminal/consola e executar o comando 
+
+1.crie uma pasta no ambiente de trabalho
+2.abra essa pasta no VS Code e abra o terminal
+3.execute o comando:
+   git clone [link do GitHub do projeto]
+
+4.verifique se esta dentro do diretorio correto no terminal e se nao estiver, execute o comando:
+   cd nome-da-pasta
+
+5.para instalar todas as packages necessarias, executar o comando seguinte:
+   npm install
+
+6.após descarregar ou estar dentro da pasta do projeto, abrir o terminal/consola e executar o comando 
     'node index.js'  +  enter 
 
-De seguida abrir um browser e pesquisar o seguinte url
+7.de seguida abrir um browser e pesquisar o seguinte url
     'http://localhost:3000/'.
 Esta ação abrirá a página web da aplicação desenvolvida e agora está tudo pronto para comecar a explorar a aplicação.
 
